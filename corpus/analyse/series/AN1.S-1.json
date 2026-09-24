@@ -1,0 +1,3512 @@
+{
+ "id": "AN1.S-1",
+ "matiere": "AN1",
+ "numero": -1,
+ "titre": "Série -1",
+ "chapitre": "Prélude",
+ "sources": {
+  "enonce": "pdf/Serie__-1_v01.pdf",
+  "corrige": "pdf/Corrige_Serie__-1_v01.pdf"
+ },
+ "avant_propos": "Le but est de repérer les faiblesses que vous pourriez avoir. Si vous avez des difficultés pour résoudre ces exercices, il est vivement conseillé de rattraper le matériel en question. ♦ Les sujets des exercices avec ce symbole vont (brièvement) réapparaître dans le cours ou les exercices. Néanmoins ces concepts devraient déjà être connus (et donc ces exercices aussi résolus maintenant).",
+ "exercices": [
+  {
+   "id": "AN1.S-1.I.1",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 1,
+   "losange": false,
+   "page": 1,
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.1.a",
+     "sub": "a",
+     "enonce": "(-2)^3",
+     "corrige": "-8",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "-8",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(-2)**3",
+        "answer": "-8"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.1.b",
+     "sub": "b",
+     "enonce": "-2^3",
+     "corrige": "-8",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "-8",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "-2**3",
+        "answer": "-8"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.1.c",
+     "sub": "c",
+     "enonce": "2^{-3}",
+     "corrige": "\\frac{1}{8}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{1}{8}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "2**(-3)",
+        "answer": "1/8"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.1.d",
+     "sub": "d",
+     "enonce": "\\frac{7^{19}}{7^{17}}",
+     "corrige": "49",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "49",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "7**19/7**17",
+        "answer": "49"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.1.e",
+     "sub": "e",
+     "enonce": "\\left(\\frac{4}{5}\\right)^{-2}",
+     "corrige": "\\frac{25}{16}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{25}{16}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(4/5)**(-2)",
+        "answer": "25/16"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.1.f",
+     "sub": "f",
+     "enonce": "32^{-3/5}",
+     "corrige": "\\frac{1}{8}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{1}{8}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "32**(-3/5)",
+        "answer": "1/8"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.2",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 2,
+   "losange": false,
+   "page": 1,
+   "consigne": "Simplifier chaque expression. Ecrire la réponse sans exposants négatifs.",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.racines"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.2.a",
+     "sub": "a",
+     "enonce": "\\sqrt{300}-\\sqrt{48}",
+     "corrige": "6\\sqrt{3}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "6 \\sqrt{3}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "sqrt(300)-sqrt(48)",
+        "answer": "6*sqrt(3)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.2.b",
+     "sub": "b",
+     "enonce": "(9a^2b^4)(2ab^5)^3",
+     "corrige": "72a^5b^{19}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "72 a^{5} b^{19}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(9*a**2*b**4)*(2*a*b**5)**3",
+        "answer": "72*a**5*b**19"
+       }
+      ]
+     },
+     "note": "Dans le PDF du corrigé, l'exposant 19 est mal composé (le 9 est sur la ligne). Le texte du PDF donne bien b^19."
+    },
+    {
+     "id": "AN1.S-1.I.2.c",
+     "sub": "c",
+     "enonce": "\\left(\\frac{2x^3y^{3/2}}{x^2y^{-1/2}}\\right)^{-3}",
+     "corrige": "\\frac{1}{8x^3y^6}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{1}{8 x^{3} y^{6}}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(2*x**3*y**(3/2)/(x**2*y**(-1/2)))**(-3)",
+        "answer": "1/(8*x**3*y**6)",
+        "assume": {
+         "x": {
+          "positive": true
+         },
+         "y": {
+          "positive": true
+         }
+        }
+       }
+      ]
+     },
+     "note": "Hypothèse x, y > 0 (exposants fractionnaires, convention du cours)."
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.3",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 3,
+   "losange": false,
+   "page": 1,
+   "consigne": "Développer et simplifier.",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.3.a",
+     "sub": "a",
+     "enonce": "4(2x+6)+3(5x-8)",
+     "corrige": "23x",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "23 x",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "4*(2*x+6)+3*(5*x-8)",
+        "answer": "23*x",
+        "form": "developpee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.3.b",
+     "sub": "b",
+     "enonce": "(2x+5)(7x-2)",
+     "corrige": "14x^2+31x-10",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "14 x^{2} + 31 x - 10",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "(2*x+5)*(7*x-2)",
+        "answer": "14*x**2+31*x-10",
+        "form": "developpee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.3.c",
+     "sub": "c",
+     "enonce": "\\left(\\sqrt{a}+\\sqrt{b}\\right)\\left(\\sqrt{a}-\\sqrt{b}\\right)",
+     "corrige": "a^{1/2}",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "a - b",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(sqrt(a)+sqrt(b))*(sqrt(a)-sqrt(b))",
+        "answer": "a**(1/2)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.3.d",
+     "sub": "d",
+     "enonce": "(2x+3)^2",
+     "corrige": "9x^2+12x+4",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "4 x^{2} + 12 x + 9",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "(2*x+3)**2",
+        "answer": "9*x**2+12*x+4",
+        "form": "developpee"
+       }
+      ]
+     },
+     "note": "La réponse officielle correspond à (3x+2)^2."
+    },
+    {
+     "id": "AN1.S-1.I.3.e",
+     "sub": "e",
+     "enonce": "(x+2)^3",
+     "corrige": "8x^3+36x^2+54x+27",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "x^{3} + 6 x^{2} + 12 x + 8",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "(x+2)**3",
+        "answer": "8*x**3+36*x**2+54*x+27",
+        "form": "developpee"
+       }
+      ]
+     },
+     "note": "La réponse officielle correspond à (2x+3)^3."
+    },
+    {
+     "id": "AN1.S-1.I.3.f",
+     "sub": "f",
+     "enonce": "\\left(a^{4/3}-a^{2/3}+1\\right)\\left(a^{2/3}+1\\right)",
+     "corrige": "a^2+1",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{2} + 1",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(a**(4/3)-a**(2/3)+1)*(a**(2/3)+1)",
+        "answer": "a**2+1"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.4",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 4,
+   "losange": false,
+   "page": 1,
+   "consigne": "Factoriser chaque expression.",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.4.a",
+     "sub": "a",
+     "enonce": "9x^2-16",
+     "corrige": "(3x-4)(3x+4)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(3 x - 4\\right) \\left(3 x + 4\\right)",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "9*x**2-16",
+        "answer": "(3*x-4)*(3*x+4)",
+        "form": "factorisee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.4.b",
+     "sub": "b",
+     "enonce": "3x^2+7x-6",
+     "corrige": "(x+3)(3x-2)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(x + 3\\right) \\left(3 x - 2\\right)",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "3*x**2+7*x-6",
+        "answer": "(x+3)*(3*x-2)",
+        "form": "factorisee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.4.c",
+     "sub": "c",
+     "enonce": "x^3-3x^2-4x+12",
+     "corrige": "(x-2)(x+2)(x-3)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(x - 3\\right) \\left(x - 2\\right) \\left(x + 2\\right)",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "x**3-3*x**2-4*x+12",
+        "answer": "(x-2)*(x+2)*(x-3)",
+        "form": "factorisee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.4.d",
+     "sub": "d",
+     "enonce": "x^3+x^2-2",
+     "corrige": "(x-2)(x^2+2x+2)",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "\\left(x - 1\\right) \\left(x^{2} + 2 x + 2\\right)",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "x**3+x**2-2",
+        "answer": "(x-2)*(x**2+2*x+2)",
+        "form": "factorisee"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.4.e",
+     "sub": "e",
+     "enonce": "2x^{3/2}-6x^{1/2}+4x^{-1/2}",
+     "corrige": "\\frac{2}{\\sqrt{x}}(x-1)(x-2)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{2 \\left(x - 2\\right) \\left(x - 1\\right)}{\\sqrt{x}}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "2*x**(3/2)-6*x**(1/2)+4*x**(-1/2)",
+        "answer": "2/sqrt(x)*(x-1)*(x-2)",
+        "form": "factorisee",
+        "assume": {
+         "x": {
+          "positive": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.4.f",
+     "sub": "f",
+     "enonce": "x^2y^2-3xy^3",
+     "corrige": "xy^2(x-3y)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "x y^{2} \\left(x - 3 y\\right)",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "form",
+        "expr": "x**2*y**2-3*x*y**3",
+        "answer": "x*y**2*(x-3*y)",
+        "form": "factorisee"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.5",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 5,
+   "losange": false,
+   "page": 1,
+   "consigne": "Simplifier l'expression rationnelle.",
+   "notions": [
+    "AN1.N.fractions-rationnelles",
+    "AN1.N.factoriser"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.5.a",
+     "sub": "a",
+     "enonce": "\\frac{x^2+4x+4}{x^2+3x+2}",
+     "corrige": "1+\\frac{1}{x+1}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{x + 2}{x + 1}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(x**2+4*x+4)/(x**2+3*x+2)",
+        "answer": "1+1/(x+1)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.5.b",
+     "sub": "b",
+     "enonce": "\\frac{2x^2-3x-2}{x^2-16}\\cdot\\frac{x+4}{2x+1}",
+     "corrige": "1+\\frac{2}{x-4}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{x - 2}{x - 4}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(2*x**2-3*x-2)/(x**2-16)*(x+4)/(2*x+1)",
+        "answer": "1+2/(x-4)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.5.c",
+     "sub": "c",
+     "enonce": "\\frac{x^2}{x^2-9}-\\frac{x+1}{x+3}",
+     "corrige": "\\frac{2x+3}{x^2-9}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{2 x + 3}{x^{2} - 9}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "x**2/(x**2-9)-(x+1)/(x+3)",
+        "answer": "(2*x+3)/(x**2-9)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.5.d",
+     "sub": "d",
+     "enonce": "\\frac{\\frac{y}{x}-\\frac{x}{y}}{\\frac{1}{y}-\\frac{1}{x}}",
+     "corrige": "-(y+x)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "- x - y",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(y/x-x/y)/(1/y-1/x)",
+        "answer": "-(y+x)"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.6",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 6,
+   "losange": false,
+   "page": 1,
+   "consigne": "Rendre le dénominateur rationnel et simplifier.",
+   "notions": [
+    "AN1.N.rationaliser",
+    "AN1.N.racines"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.6.a",
+     "sub": "a",
+     "enonce": "\\frac{\\sqrt{10}}{5-\\sqrt{2}}",
+     "corrige": "\\frac{5\\sqrt{10}+2\\sqrt{5}}{23}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{2 \\sqrt{5}}{23} + \\frac{5 \\sqrt{10}}{23}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "sqrt(10)/(5-sqrt(2))",
+        "answer": "(5*sqrt(10)+2*sqrt(5))/23"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.6.b",
+     "sub": "b",
+     "enonce": "\\frac{h}{\\sqrt{h+4}+2}",
+     "corrige": "\\sqrt{h+4}-2",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{h}{\\sqrt{h + 4} + 2}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "h/(sqrt(h+4)+2)",
+        "answer": "sqrt(h+4)-2",
+        "assume": {
+         "h": {
+          "positive": true
+         }
+        }
+       }
+      ]
+     },
+     "note": "Vérifié pour h > 0 (l'expression est définie pour h ≥ -4)."
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.7",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 7,
+   "losange": false,
+   "page": 1,
+   "consigne": "Simplifier les expressions, où $a,b>0$ et $p,q\\in\\mathbb{R}^*$.",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.7.a",
+     "sub": "a",
+     "enonce": "(ab)^pb^{q-p}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(a*b)**p*b**(q-p)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.b",
+     "sub": "b",
+     "enonce": "a^{p-q}(ab)^q",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "a**(p-q)*(a*b)**q",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.c",
+     "sub": "c",
+     "enonce": "\\frac{a^p}{b^{-q}}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "a**p/b**(-q)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.d",
+     "sub": "d",
+     "enonce": "\\frac{b^q}{a^{-p}}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "b**q/a**(-p)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.e",
+     "sub": "e",
+     "enonce": "\\left(ab^{\\frac{q}{p}}\\right)^p",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(a*b**(q/p))**p",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.f",
+     "sub": "f",
+     "enonce": "\\left(a^{\\frac{p}{q}}b\\right)^q",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(a**(p/q)*b)**q",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.g",
+     "sub": "g",
+     "enonce": "\\left(a^{\\frac{1}{q}}b^{\\frac{1}{p}}\\right)^{pq}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(a**(1/q)*b**(1/p))**(p*q)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.h",
+     "sub": "h",
+     "enonce": "\\sqrt{a^{2p}}\\,b^q",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "sqrt(a**(2*p))*b**q",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.i",
+     "sub": "i",
+     "enonce": "\\left(\\left(\\tfrac{1}{a}\\right)^q+\\left(\\tfrac{1}{b}\\right)^p\\right)\\frac{a^p(ab)^q}{1+\\frac{a^q}{b^p}}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "((1/a)**q+(1/b)**p)*a**p*(a*b)**q/(1+a**q/b**p)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.j",
+     "sub": "j",
+     "enonce": "a^{p-q}b^{q-p}\\left(a^q+b^p\\right)\\left(\\left(\\tfrac{1}{a}\\right)^q+\\left(\\tfrac{1}{b}\\right)^p\\right)^{-1}",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "a**(p-q)*b**(q-p)*(a**q+b**p)*((1/a)**q+(1/b)**p)**(-1)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.k",
+     "sub": "k",
+     "enonce": "a^qb^p\\left(\\left(a^{\\frac{1}{q}-\\frac{1}{p}}\\,b^{\\frac{1}{p}-\\frac{1}{q}}\\right)^p\\right)^q",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "a**q*b**p*((a**(1/q-1/p)*b**(1/p-1/q))**p)**q",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.7.m",
+     "sub": "m",
+     "enonce": "\\left(\\sqrt{a^p\\left(b^q+a^{-p}\\right)}-1\\right)\\left(\\sqrt{b^q\\left(a^p+b^{-q}\\right)}+1\\right)",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(sqrt(a**p*(b**q+a**(-p)))-1)*(sqrt(b**q*(a**p+b**(-q)))+1)",
+        "answer": "a**p*b**q",
+        "assume": {
+         "p": {
+          "real": true,
+          "nonzero": true
+         },
+         "q": {
+          "real": true,
+          "nonzero": true
+         }
+        }
+       }
+      ]
+     }
+    }
+   ],
+   "corrige_global": "La réponse est $a^pb^q$ dans tous les cas."
+  },
+  {
+   "id": "AN1.S-1.I.8",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 8,
+   "losange": false,
+   "page": 1,
+   "consigne": "Compléter le carré.",
+   "notions": [
+    "AN1.N.completer-carre"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.8.a",
+     "sub": "a",
+     "enonce": "x^2-x-1",
+     "corrige": "\\left(x-\\tfrac{1}{2}\\right)^2-\\tfrac{5}{4}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "x^{2} - x - 1",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "x**2-x-1",
+        "answer": "(x-1/2)**2-5/4"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.8.b",
+     "sub": "b",
+     "enonce": "3x^2-12x+11",
+     "corrige": "3(x-2)^2-1",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "3 x^{2} - 12 x + 11",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "3*x**2-12*x+11",
+        "answer": "3*(x-2)**2-1"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.8.c",
+     "sub": "c",
+     "enonce": "9x^2+8x+2",
+     "corrige": "9\\left(x+\\tfrac{4}{9}\\right)^2+\\tfrac{2}{9}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "9 x^{2} + 8 x + 2",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "9*x**2+8*x+2",
+        "answer": "9*(x+4/9)**2+2/9"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.9",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 9,
+   "losange": false,
+   "page": 2,
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.9.a",
+     "sub": "a",
+     "enonce": "2x+9=12-\\frac{1}{2}x",
+     "corrige": "x=\\tfrac{6}{5}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{\\frac{6}{5}\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "2*x+9",
+        "rhs": "12-x/2",
+        "answer": "FiniteSet(6/5)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.b",
+     "sub": "b",
+     "enonce": "\\frac{3x+2}{x+1}=\\frac{3x-1}{x}",
+     "corrige": "\\text{Cette équation n'admet pas de solutions.}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\emptyset",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "(3*x+2)/(x+1)",
+        "rhs": "(3*x-1)/x",
+        "answer": "EmptySet"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.c",
+     "sub": "c",
+     "enonce": "x^2+7x+12=0",
+     "corrige": "x_1=-3 \\text{ et } x_2=-4",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{-4, -3\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "x**2+7*x+12",
+        "rhs": "0",
+        "answer": "FiniteSet(-3, -4)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.d",
+     "sub": "d",
+     "enonce": "2x^2+6x+3=0",
+     "corrige": "x_{1,2}=-\\tfrac{3}{2}\\pm\\tfrac{\\sqrt{3}}{2}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{- \\frac{3}{2} - \\frac{\\sqrt{3}}{2}, - \\frac{3}{2} + \\frac{\\sqrt{3}}{2}\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "2*x**2+6*x+3",
+        "rhs": "0",
+        "answer": "FiniteSet(-3/2+sqrt(3)/2, -3/2-sqrt(3)/2)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.e",
+     "sub": "e",
+     "enonce": "x^4-x^2-12=0",
+     "corrige": "3=x^2 \\text{ n'admet pas de solution, et } x^2=4\\Rightarrow x_{1,2}=\\pm 2",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{-2, 2\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "x**4-x**2-12",
+        "rhs": "0",
+        "answer": "FiniteSet(2, -2)"
+       }
+      ]
+     },
+     "note": "Le résultat final ±2 est vérifiable. Dans le raisonnement officiel, « 3 = x² n'admet pas de solution » est faux tel quel (x = ±√3) : il s'agit probablement de −3 = x², signe « − » manquant. À confirmer par toi sur le PDF."
+    },
+    {
+     "id": "AN1.S-1.I.9.f",
+     "sub": "f",
+     "enonce": "5\\,|x-2|=12",
+     "corrige": "x_1=\\tfrac{22}{5},\\ x_2=-\\tfrac{2}{5}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{- \\frac{2}{5}, \\frac{22}{5}\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "5*Abs(x-2)",
+        "rhs": "12",
+        "answer": "FiniteSet(22/5, -2/5)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.g",
+     "sub": "g",
+     "enonce": "\\frac{3x-1}{\\sqrt{2-x}}-6\\sqrt{2-x}=0",
+     "corrige": "x=\\tfrac{13}{9}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{\\frac{13}{9}\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "(3*x-1)/sqrt(2-x)-6*sqrt(2-x)",
+        "rhs": "0",
+        "answer": "FiniteSet(13/9)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.9.h",
+     "sub": "h",
+     "enonce": "\\frac{3}{x-2}=\\frac{1}{x-1}+\\frac{3}{(x-1)(x-2)}",
+     "corrige": "\\text{Cette équation n'admet pas de solution (car on sait que) } x\\neq 2",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\emptyset",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "3/(x-2)",
+        "rhs": "1/(x-1)+3/((x-1)*(x-2))",
+        "answer": "EmptySet"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.10",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 10,
+   "losange": true,
+   "page": 2,
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.10.a",
+     "sub": "a",
+     "enonce": "-2<3-5x\\le 18",
+     "corrige": "x\\in[-3,1[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left[-3, 1\\right)",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "(-2 < 3-5*x) & (3-5*x <= 18)",
+        "answer": "Interval.Ropen(-3, 1)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.10.b",
+     "sub": "b",
+     "enonce": "x^2<x+12",
+     "corrige": "x\\in\\,]-3,4[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-3, 4\\right)",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "x**2 < x+12",
+        "answer": "Interval.open(-3, 4)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.10.c",
+     "sub": "c",
+     "enonce": "x(x-2)(x-4)<0",
+     "corrige": "x\\in\\,]-\\infty,0[\\,\\cup\\,]2,4[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-\\infty, 0\\right) \\cup \\left(2, 4\\right)",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "x*(x-2)*(x-4) < 0",
+        "answer": "Union(Interval.open(-oo, 0), Interval.open(2, 4))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.10.d",
+     "sub": "d",
+     "enonce": "|x-3|<2",
+     "corrige": "x\\in\\,]1,5[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(1, 5\\right)",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "Abs(x-3) < 2",
+        "answer": "Interval.open(1, 5)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.10.e",
+     "sub": "e",
+     "enonce": "\\frac{3x-2}{2x+1}\\le 2",
+     "corrige": "x\\in\\,]-\\infty,-4]\\,\\cup\\,]-\\tfrac{1}{2},\\infty[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-\\infty, -4\\right] \\cup \\left(- \\frac{1}{2}, \\infty\\right)",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "(3*x-2)/(2*x+1) <= 2",
+        "answer": "Union(Interval(-oo, -4), Interval.open(-1/2, oo))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.10.f",
+     "sub": "f",
+     "enonce": "|x^2-4|\\le 2",
+     "corrige": "x\\in\\left[-\\sqrt{6},-\\sqrt{2}\\right]\\cup\\left[\\sqrt{2},\\sqrt{6}\\right]",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left[- \\sqrt{6}, - \\sqrt{2}\\right] \\cup \\left[\\sqrt{2}, \\sqrt{6}\\right]",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "rel": "Abs(x**2-4) <= 2",
+        "answer": "Union(Interval(-sqrt(6), -sqrt(2)), Interval(sqrt(2), sqrt(6)))"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.11",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 11,
+   "losange": false,
+   "page": 2,
+   "consigne": "Ces équations sont-elles vraies ou fausses ? Pour chaque équation, le domaine des variables est supposé tel que tout soit bien défini.",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.racines",
+    "AN1.N.fractions-rationnelles"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.11.a",
+     "sub": "a",
+     "enonce": "(p+q)^2=p^2+q^2",
+     "corrige": "Faux.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "Faux",
+      "detail": "l'égalité est fausse en général",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "(p+q)**2",
+        "rhs": "p**2+q**2",
+        "answer": "Faux"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.b",
+     "sub": "b",
+     "enonce": "\\sqrt{ab}=\\sqrt{a}\\sqrt{b}",
+     "corrige": "Vrai.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "Vrai",
+      "detail": "l'égalité est toujours vraie",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "sqrt(a*b)",
+        "rhs": "sqrt(a)*sqrt(b)",
+        "answer": "Vrai"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.c",
+     "sub": "c",
+     "enonce": "\\sqrt{a^2+b^2}=a+b",
+     "corrige": "Faux.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "Faux",
+      "detail": "l'égalité est fausse en général",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "sqrt(a**2+b**2)",
+        "rhs": "a+b",
+        "answer": "Faux"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.d",
+     "sub": "d",
+     "enonce": "\\frac{1+TC}{C}=1+T",
+     "corrige": "Faux.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "Faux",
+      "detail": "l'égalité est fausse en général",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "(1+T*C)/C",
+        "rhs": "1+T",
+        "answer": "Faux"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.e",
+     "sub": "e",
+     "enonce": "(bc+1)\\frac{a}{b}=\\frac{(bc+1)ad}{bd}",
+     "corrige": "Vrai.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "Vrai",
+      "detail": "l'égalité est toujours vraie",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "(b*c+1)*a/b",
+        "rhs": "(b*c+1)*a*d/(b*d)",
+        "answer": "Vrai"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.f",
+     "sub": "f",
+     "enonce": "\\frac{1}{x-y}=\\frac{1}{x}-\\frac{1}{y}",
+     "corrige": "Faux.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "Faux",
+      "detail": "l'égalité est fausse en général",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "1/(x-y)",
+        "rhs": "1/x-1/y",
+        "answer": "Faux"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.g",
+     "sub": "g",
+     "enonce": "\\frac{\\frac{1}{x}}{\\frac{a}{x}-\\frac{b}{x}}=\\frac{1}{a-b}",
+     "corrige": "Vrai.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "Vrai",
+      "detail": "l'égalité est toujours vraie",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "(1/x)/(a/x-b/x)",
+        "rhs": "1/(a-b)",
+        "answer": "Vrai"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.11.h",
+     "sub": "h",
+     "enonce": "\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}",
+     "corrige": "Vrai.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "Vrai",
+      "detail": "l'égalité est toujours vraie",
+      "spec": [
+       {
+        "type": "truth",
+        "lhs": "a/b+c/d",
+        "rhs": "(a*d+b*c)/(b*d)",
+        "answer": "Vrai"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.I.12",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 12,
+   "losange": false,
+   "page": 2,
+   "consigne": "Vérifier les identités.",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.sommes"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.12.a",
+     "sub": "a",
+     "enonce": "3^{2(n+1)+4}-2^{n+1}=9\\left(3^{2n+4}-2^n\\right)+7\\cdot 2^n,\\quad \\text{où } n\\in\\mathbb{N}",
+     "corrige": "\\text{Commencer par la partie droite.}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "- 2^{n + 1} + 3^{2 n + 6}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "3**(2*(n+1)+4)-2**(n+1)",
+        "answer": "9*(3**(2*n+4)-2**n)+7*2**n",
+        "assume": {
+         "n": {
+          "integer": true,
+          "nonnegative": true
+         }
+        }
+       }
+      ]
+     },
+     "note": "Le corrigé donne une indication, pas un résultat : SymPy vérifie l'identité elle-même."
+    },
+    {
+     "id": "AN1.S-1.I.12.b",
+     "sub": "b",
+     "enonce": "\\left(\\sum_{k=0}^{7}a^k\\right)(1-a)=(1-a)(1+a)(1+a^2)(1+a^4)",
+     "corrige": "\\text{Pour la partie gauche, ne pas développer la somme parce qu'elle devient télescopique après la multiplication. Pour la partie droite, utiliser la troisième identité remarquable. Le résultat est } 1-a^8.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "1 - a^{8}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(1+a+a**2+a**3+a**4+a**5+a**6+a**7)*(1-a)",
+        "answer": "1-a**8",
+        "assume": {
+         "a": {
+          "real": true
+         }
+        }
+       }
+      ]
+     },
+     "note": "SymPy vérifie que les deux membres valent 1 − a⁸ (le membre de droite est vérifié à part)."
+    }
+   ],
+   "corrige_global": "Les indications ci-après ne sont bien sûr pas les seules manières de vérifier les identités."
+  },
+  {
+   "id": "AN1.S-1.I.13",
+   "partie": "I",
+   "partie_titre": "Algèbre",
+   "num": 13,
+   "losange": false,
+   "page": 2,
+   "consigne": "Soient $b>0$ et $m\\in\\mathbb{Z}$. Simplifier l'expression $A=\\left(-b(-b^{-2})^m\\right)^{-2m}$. Déterminer $m$ pour que $A$ soit égal à $16^5$ lorsque $b=2$.",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.equations"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.I.13.a",
+     "sub": "a",
+     "enonce": "\\text{Simplifier } A",
+     "corrige": "A=b^{2m(2m-1)}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "b^{2 m \\left(2 m - 1\\right)}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(-b*(-b**(-2))**m)**(-2*m)",
+        "answer": "b**(2*m*(2*m-1))",
+        "assume": {
+         "m": {
+          "integer": true
+         }
+        }
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.I.13.b",
+     "sub": "b",
+     "enonce": "\\text{Déterminer } m \\text{ pour que } A=16^5 \\text{ lorsque } b=2",
+     "corrige": "\\text{On trouve } 2^{2m(2m-1)}=16^5 \\Rightarrow m(2m-1)=10. \\text{ Comme } m \\text{ doit être entier, la seule possibilité est } m=-2.",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{-2\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "m*(2*m-1)",
+        "rhs": "10",
+        "var": "m",
+        "domain": "Integers",
+        "answer": "FiniteSet(-2)"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.1",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 1,
+   "losange": false,
+   "page": 2,
+   "consigne": "Convertir de degrés en radians.",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.1.a",
+     "sub": "a",
+     "enonce": "270^\\circ",
+     "corrige": "\\frac{3\\pi}{2}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{3 \\pi}{2}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "270*pi/180",
+        "answer": "3*pi/2"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.1.b",
+     "sub": "b",
+     "enonce": "-24^\\circ",
+     "corrige": "-\\frac{2\\pi}{15}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "- \\frac{2 \\pi}{15}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "-24*pi/180",
+        "answer": "-2*pi/15"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.1.c",
+     "sub": "c",
+     "enonce": "50^\\circ",
+     "corrige": "-\\frac{5\\pi}{18}",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "\\frac{5 \\pi}{18}",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "50*pi/180",
+        "answer": "-5*pi/18"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.2",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 2,
+   "losange": false,
+   "page": 2,
+   "consigne": "Convertir de radians en degrés.",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.2.a",
+     "sub": "a",
+     "enonce": "\\frac{7\\pi}{6}",
+     "corrige": "210^\\circ",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "210",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "7*pi/6*180/pi",
+        "answer": "210"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.2.b",
+     "sub": "b",
+     "enonce": "5",
+     "corrige": "\\frac{900}{\\pi}\\approx 286{,}5^\\circ",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{900}{\\pi}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "5*180/pi",
+        "answer": "900/pi"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.2.c",
+     "sub": "c",
+     "enonce": "\\frac{\\pi}{4}",
+     "corrige": "45^\\circ",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "45",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "pi/4*180/pi",
+        "answer": "45"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.3",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 3,
+   "losange": false,
+   "page": 2,
+   "consigne": "Calculer la longueur de l'arc d'un cercle de rayon 15 cm et d'angle $50^\\circ$.",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.3",
+     "sub": "",
+     "enonce": "",
+     "corrige": "13{,}09\\ \\text{cm}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "13.0900",
+      "detail": "écart 3.061e-05 (tolérance 0.006)",
+      "spec": [
+       {
+        "type": "numeric",
+        "expr": "15*50*pi/180",
+        "answer": "13.09",
+        "tol": 0.006
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.4",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 4,
+   "losange": false,
+   "page": 2,
+   "consigne": "Quelles sont les valeurs suivantes ?",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.4.a",
+     "sub": "a",
+     "enonce": "\\cos\\left(\\tfrac{7\\pi}{6}\\right)",
+     "corrige": "-\\frac{\\sqrt{3}}{2}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "- \\frac{\\sqrt{3}}{2}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "cos(7*pi/6)",
+        "answer": "-sqrt(3)/2"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.4.b",
+     "sub": "b",
+     "enonce": "\\sin\\left(\\tfrac{7\\pi}{4}\\right)",
+     "corrige": "\\frac{\\sqrt{2}}{2}",
+     "verification": {
+      "statut": "divergence",
+      "methode": [
+       "numerique"
+      ],
+      "sympy": "- \\frac{\\sqrt{2}}{2}",
+      "detail": "égalité infirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "sin(7*pi/4)",
+        "answer": "sqrt(2)/2"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.4.c",
+     "sub": "c",
+     "enonce": "\\tan\\left(\\tfrac{2\\pi}{3}\\right)",
+     "corrige": "-\\sqrt{3}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "- \\sqrt{3}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "tan(2*pi/3)",
+        "answer": "-sqrt(3)"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.5",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 5,
+   "losange": false,
+   "page": 2,
+   "consigne": "Exprimer les longueurs $a$ et $b$ de la figure ci-dessous en termes de $\\theta$. (Triangle rectangle d'hypoténuse 24, angle $\\theta$ entre l'hypoténuse et le côté $b$ ; $a$ est le côté opposé à $\\theta$.)",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.5",
+     "sub": "",
+     "enonce": "",
+     "corrige": "a=24\\sin(\\theta),\\quad b=24\\cos(\\theta)",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de figure : pas de vérification SymPy possible au-delà de a² + b² = 24²."
+    }
+   ],
+   "figures_enonce": [
+    "fig/S-1_II5_triangle.png"
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.6",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 6,
+   "losange": false,
+   "page": 3,
+   "consigne": "Calculer $\\sin(x+y)$ sachant que $\\sin(x)=\\frac{1}{3}$, $\\cos(y)=\\frac{4}{5}$ et que $x$ et $y$ sont compris entre $0$ et $\\frac{\\pi}{2}$.",
+   "notions": [
+    "AN1.N.trigo-identites",
+    "AN1.N.trigo-valeurs"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.6",
+     "sub": "",
+     "enonce": "",
+     "corrige": "\\frac{1}{15}\\left(4+6\\sqrt{2}\\right)",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\sin{\\left(\\operatorname{asin}{\\left(\\frac{1}{3} \\right)} + \\operatorname{acos}{\\left(\\frac{4}{5} \\right)} \\right)}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "sin(asin(1/3)+acos(4/5))",
+        "answer": "(4+6*sqrt(2))/15"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.7",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 7,
+   "losange": false,
+   "page": 3,
+   "consigne": "Démontrer ces identités en supposant que tout soit bien défini.",
+   "notions": [
+    "AN1.N.trigo-identites"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.7.a",
+     "sub": "a",
+     "enonce": "\\tan(\\theta)\\sin(\\theta)+\\cos(\\theta)=\\frac{1}{\\cos(\\theta)}",
+     "corrige": "\\text{(indication ci-dessus)}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{1}{\\cos{\\left(θ \\right)}}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "tan(theta)*sin(theta)+cos(theta)",
+        "answer": "1/cos(theta)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.7.b",
+     "sub": "b",
+     "enonce": "\\frac{2\\tan(x)}{1+\\tan(x)^2}=\\sin(2x)",
+     "corrige": "\\text{(indication ci-dessus)}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\sin{\\left(2 x \\right)}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "2*tan(x)/(1+tan(x)**2)",
+        "answer": "sin(2*x)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.II.7.c",
+     "sub": "c",
+     "enonce": "\\cos(\\alpha)\\cos(\\beta)=\\tfrac{1}{2}\\left(\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)\\right)",
+     "corrige": "\\text{(indication ci-dessus)}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\cos{\\left(α \\right)} \\cos{\\left(β \\right)}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "cos(alpha)*cos(beta)",
+        "answer": "(cos(alpha+beta)+cos(alpha-beta))/2"
+       }
+      ]
+     }
+    }
+   ],
+   "corrige_global": "Développer les parties gauches en utilisant la définition de la fonction tan."
+  },
+  {
+   "id": "AN1.S-1.II.8",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 8,
+   "losange": false,
+   "page": 3,
+   "consigne": "Chercher toutes les valeurs de $x$ comprises entre $0$ et $2\\pi$ telles que $\\sin(2x)=\\sin(x)$.",
+   "notions": [
+    "AN1.N.trigo-identites",
+    "AN1.N.equations"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.8",
+     "sub": "",
+     "enonce": "",
+     "corrige": "x\\in\\left\\{0,\\tfrac{\\pi}{3},\\pi,\\tfrac{5\\pi}{3},2\\pi\\right\\}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left\\{0, \\frac{\\pi}{3}, \\pi, \\frac{5 \\pi}{3}, 2 \\pi\\right\\}",
+      "detail": "ensemble des solutions identique",
+      "spec": [
+       {
+        "type": "solve",
+        "lhs": "sin(2*x)",
+        "rhs": "sin(x)",
+        "domain": "Interval(0, 2*pi)",
+        "answer": "FiniteSet(0, pi/3, pi, 5*pi/3, 2*pi)"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.II.9",
+   "partie": "II",
+   "partie_titre": "Trigonométrie",
+   "num": 9,
+   "losange": false,
+   "page": 3,
+   "consigne": "Dessiner le graphe de la fonction $y=1+\\sin(2x)$ sans faire usage de la calculatrice.",
+   "notions": [
+    "AN1.N.trigo-valeurs",
+    "AN1.N.transformations-graphe",
+    "AN1.N.graphe-fonction"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.II.9",
+     "sub": "",
+     "enonce": "",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_II9_corrige.png"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.1",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 1,
+   "losange": false,
+   "page": 3,
+   "consigne": "La figure ci-dessous montre le graphe d'une fonction $f$.",
+   "notions": [
+    "AN1.N.graphe-fonction",
+    "AN1.N.domaine"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.1.a",
+     "sub": "a",
+     "enonce": "\\text{Quelle est la valeur } f(-1)\\,?",
+     "corrige": "-2",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de graphe : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.1.b",
+     "sub": "b",
+     "enonce": "\\text{Que vaut } f(2)\\,?",
+     "corrige": "2.8",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de graphe : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.1.c",
+     "sub": "c",
+     "enonce": "\\text{Pour quelles valeurs de } x \\text{ a-t-on } f(x)=2\\,?",
+     "corrige": "-3,\\ 1",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de graphe : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.1.d",
+     "sub": "d",
+     "enonce": "\\text{Chercher les valeurs de } x \\text{ pour lesquelles } f(x)=0.",
+     "corrige": "-2.5,\\ 0.3",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de graphe : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.1.e",
+     "sub": "e",
+     "enonce": "\\text{Déterminer le domaine de définition et l'ensemble image de } f.",
+     "corrige": "\\text{domaine } [-3,3],\\ \\text{image } [-2,3]",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Lecture de graphe : non vérifiable par SymPy."
+    }
+   ],
+   "figures_enonce": [
+    "fig/S-1_III1_graphe.png"
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.2",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 2,
+   "losange": false,
+   "page": 3,
+   "consigne": "Pour $f(x)=x^3$, calculer le quotient différentiel $\\frac{f(2+h)-f(2)}{h}$ et le simplifier.",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.2",
+     "sub": "",
+     "enonce": "",
+     "corrige": "12+6h+h^2",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\frac{\\left(h + 2\\right)^{3} - 8}{h}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "((2+h)**3-8)/h",
+        "answer": "12+6*h+h**2"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.3",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 3,
+   "losange": false,
+   "page": 3,
+   "consigne": "Déterminer le domaine de définition de la fonction.",
+   "notions": [
+    "AN1.N.domaine"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.3.a",
+     "sub": "a",
+     "enonce": "f(x)=\\frac{2x+1}{x^2+x-2}",
+     "corrige": "]-\\infty,-2[\\,\\cup\\,]-2,1[\\,\\cup\\,]1,\\infty[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-\\infty, -2\\right) \\cup \\left(-2, 1\\right) \\cup \\left(1, \\infty\\right)",
+      "detail": "domaine identique",
+      "spec": [
+       {
+        "type": "domain",
+        "expr": "(2*x+1)/(x**2+x-2)",
+        "answer": "Union(Interval.open(-oo, -2), Interval.open(-2, 1), Interval.open(1, oo))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.3.b",
+     "sub": "b",
+     "enonce": "g(x)=\\frac{x^{1/3}}{x^2+1}",
+     "corrige": "]0,\\infty[",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Le corrigé applique la convention du cours (note 1) : « les puissances avec exposants non-entiers sont définies seulement pour les nombres strictement positifs ». Réponse conventionnelle : SymPy n'est pas utilisé ici."
+    },
+    {
+     "id": "AN1.S-1.III.3.c",
+     "sub": "c",
+     "enonce": "h(x)=\\sqrt{4-x}+\\sqrt{x^2-1}",
+     "corrige": "]-\\infty,-1]\\,\\cup\\,[1,4]",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-\\infty, -1\\right] \\cup \\left[1, 4\\right]",
+      "detail": "domaine identique",
+      "spec": [
+       {
+        "type": "domain",
+        "expr": "sqrt(4-x)+sqrt(x**2-1)",
+        "answer": "Union(Interval(-oo, -1), Interval(1, 4))"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.4",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 4,
+   "losange": true,
+   "page": 3,
+   "consigne": "Par quelles transformations du graphe de $f$ obtient-on les graphes des fonctions suivantes ?",
+   "notions": [
+    "AN1.N.transformations-graphe"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.4.a",
+     "sub": "a",
+     "enonce": "y=-f(x)",
+     "corrige": "\\text{Réflexion par rapport à l'axe } Ox.",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse descriptive : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.4.b",
+     "sub": "b",
+     "enonce": "y=2f(x)-1",
+     "corrige": "\\text{Étirement vertical d'un facteur 2, suivi d'une translation d'une unité vers le bas.}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse descriptive : non vérifiable par SymPy."
+    },
+    {
+     "id": "AN1.S-1.III.4.c",
+     "sub": "c",
+     "enonce": "y=f(x-3)+2",
+     "corrige": "\\text{Translation de trois unités vers la droite, puis de deux unités vers le haut.}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse descriptive : non vérifiable par SymPy."
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.5",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 5,
+   "losange": false,
+   "page": 3,
+   "consigne": "Esquisser à la main et sans l'aide d'une calculatrice les graphes suivants.",
+   "notions": [
+    "AN1.N.graphe-fonction",
+    "AN1.N.transformations-graphe"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.5.a",
+     "sub": "a",
+     "enonce": "y=x^3",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.b",
+     "sub": "b",
+     "enonce": "y=(x+1)^3",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.c",
+     "sub": "c",
+     "enonce": "y=(x-2)^3+3",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.d",
+     "sub": "d",
+     "enonce": "y=4-x^2",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.e",
+     "sub": "e",
+     "enonce": "y=\\sqrt{x}",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.f",
+     "sub": "f",
+     "enonce": "y=2\\sqrt{x}",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.g",
+     "sub": "g",
+     "enonce": "y=-2^x",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.5.h",
+     "sub": "h",
+     "enonce": "y=1+x^{-1}",
+     "corrige": "\\text{(graphe)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.6",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 6,
+   "losange": true,
+   "page": 3,
+   "consigne": "Soit $f(x)=\\begin{cases}1-x^2, & \\text{si } x\\le 0\\\\ 2x+1, & \\text{si } x>0\\end{cases}$.",
+   "notions": [
+    "AN1.N.graphe-fonction"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.6.a",
+     "sub": "a",
+     "enonce": "\\text{Calculer } f(-2) \\text{ et } f(1).",
+     "corrige": "f(-2)=-3,\\ f(1)=3",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "-3 ; 3",
+      "detail": "égalité confirmée ; égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "1-(-2)**2",
+        "answer": "-3"
+       },
+       {
+        "type": "eq",
+        "expr": "2*1+1",
+        "answer": "3"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.6.b",
+     "sub": "b",
+     "enonce": "\\text{Dessiner le graphe de } f.",
+     "corrige": "\\text{Ci-dessus (à la fin de l'Ex. 5).}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Réponse graphique : non vérifiable par SymPy.",
+     "figures_corrige": [
+      "fig/S-1_III5_corrige_1.png",
+      "fig/S-1_III5_corrige_2.png"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.7",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 7,
+   "losange": true,
+   "page": 3,
+   "consigne": "Soient $f(x)=x^2+2x-1$ et $g(x)=2x-3$. Déterminer les fonctions suivantes.",
+   "notions": [
+    "AN1.N.composition"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.7.a",
+     "sub": "a",
+     "enonce": "f\\circ g",
+     "corrige": "4x^2-8x+2",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "4 x^{2} - 8 x + 2",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "(2*x-3)**2+2*(2*x-3)-1",
+        "answer": "4*x**2-8*x+2"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.7.b",
+     "sub": "b",
+     "enonce": "g\\circ f",
+     "corrige": "2x^2+4x-5",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "2 x^{2} + 4 x - 5",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "2*(x**2+2*x-1)-3",
+        "answer": "2*x**2+4*x-5"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.7.c",
+     "sub": "c",
+     "enonce": "g\\circ g\\circ g",
+     "corrige": "8x-21",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "8 x - 21",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "2*(2*(2*x-3)-3)-3",
+        "answer": "8*x-21"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.III.8",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 8,
+   "losange": false,
+   "page": 3,
+   "consigne": "Soit $a,b>0$ et $p,q\\in\\mathbb{R}$. Simplifier les expressions suivantes.",
+   "notions": [
+    "AN1.N.exp-ln",
+    "AN1.N.puissances"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.8.a",
+     "sub": "a",
+     "enonce": "\\exp\\big(p\\ln(a)+q\\ln(b)\\big)",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "exp(p*log(a)+q*log(b))",
+        "answer": "a**p*b**q"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.8.b",
+     "sub": "b",
+     "enonce": "\\exp\\big(p(\\ln(a)-\\ln(b))+\\ln(b)(p+q)\\big)",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "exp(p*(log(a)-log(b))+log(b)*(p+q))",
+        "answer": "a**p*b**q"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.8.c",
+     "sub": "c",
+     "enonce": "\\exp\\big(p\\ln(ab^{-1})+\\ln(b^{p+q})\\big)",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "exp(p*log(a/b)+log(b**(p+q)))",
+        "answer": "a**p*b**q"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.III.8.d",
+     "sub": "d",
+     "enonce": "\\exp\\big(q\\ln\\left(\\tfrac{b}{a}\\right)+\\ln(a^q)+p\\ln(a)\\big)",
+     "corrige": "a^pb^q",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "a^{p} b^{q}",
+      "detail": "égalité confirmée",
+      "spec": [
+       {
+        "type": "eq",
+        "expr": "exp(q*log(b/a)+log(a**q)+p*log(a))",
+        "answer": "a**p*b**q"
+       }
+      ]
+     }
+    }
+   ],
+   "corrige_global": "La réponse est $a^pb^q$ dans tous les cas."
+  },
+  {
+   "id": "AN1.S-1.III.9",
+   "partie": "III",
+   "partie_titre": "Fonctions réelles",
+   "num": 9,
+   "losange": true,
+   "page": 4,
+   "consigne": "Pour chaque fonction $f$ définie sur l'intervalle $I$, trouver le domaine de définition de la fonction réciproque $f^{-1}$ et dessiner les graphes de $f$ et $f^{-1}$. N.B. : Tous les domaines $I$ sont choisis en sorte que la fonction réciproque existe. Rappel : La fonction réciproque d'une fonction bijective $f\\colon X\\to Y$ fait correspondre à tout élément $y$ de $Y$ l'unique élément $x$ de $X$ qui est solution de l'équation $f(x)=y$. On a donc $f^{-1}(y)=x$.",
+   "notions": [
+    "AN1.N.fonction-reciproque",
+    "AN1.N.trigo-valeurs",
+    "AN1.N.exp-ln"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.III.9.a",
+     "sub": "a",
+     "enonce": "f(x)=\\sin(x) \\text{ sur } I=\\left[-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}\\right]",
+     "corrige": "D(f^{-1})=[-1,1]",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left[-1, 1\\right]",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "sin(x)",
+        "interval": "Interval(-pi/2, pi/2)",
+        "answer": "Interval(-1, 1)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.9.b",
+     "sub": "b",
+     "enonce": "f(x)=\\cos(x) \\text{ sur } I=[0,\\pi]",
+     "corrige": "D(f^{-1})=[-1,1]",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left[-1, 1\\right]",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "cos(x)",
+        "interval": "Interval(0, pi)",
+        "answer": "Interval(-1, 1)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.9.c",
+     "sub": "c",
+     "enonce": "f(x)=\\tan(x) \\text{ sur } I=\\left]-\\tfrac{\\pi}{2},\\tfrac{\\pi}{2}\\right[",
+     "corrige": "D(f^{-1})=\\mathbb{R}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(-\\infty, \\infty\\right)",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "tan(x)",
+        "interval": "Interval.open(-pi/2, pi/2)",
+        "answer": "Reals"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.9.d",
+     "sub": "d",
+     "enonce": "f(x)=e^x \\text{ sur } I=\\mathbb{R}",
+     "corrige": "D(f^{-1})=\\,]0,\\infty[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(0, \\infty\\right)",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "exp(x)",
+        "interval": "Reals",
+        "answer": "Interval.open(0, oo)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.9.e",
+     "sub": "e",
+     "enonce": "f(x)=e^{-x} \\text{ sur } I=\\mathbb{R}",
+     "corrige": "D(f^{-1})=\\,]0,\\infty[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(0, \\infty\\right)",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "exp(-x)",
+        "interval": "Reals",
+        "answer": "Interval.open(0, oo)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.III.9.f",
+     "sub": "f",
+     "enonce": "f(x)=a^x \\text{ avec } a=\\tfrac{1}{2} \\text{ sur } I=\\mathbb{R}",
+     "corrige": "D(f^{-1})=\\,]0,\\infty[",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "\\left(0, \\infty\\right)",
+      "detail": "image identique",
+      "spec": [
+       {
+        "type": "range",
+        "expr": "(1/2)**x",
+        "interval": "Reals",
+        "answer": "Interval.open(0, oo)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_III9_corrige_1.png",
+      "fig/S-1_III9_corrige_2.png"
+     ]
+    }
+   ],
+   "corrige_global": "Le domaine $D(f^{-1})$ de la fonction réciproque $f^{-1}$ est l'image de $f$. En effet, $I$ a été choisi pour que $f$ soit injective, et donc $f$ est bijective entre $I$ et son image. Une fois qu'on a tracé le graphe de $f$, on peut trouver le graphe de $f^{-1}$ géométriquement en faisant une réflexion par rapport à la droite $y=x$."
+  },
+  {
+   "id": "AN1.S-1.IV.1",
+   "partie": "IV",
+   "partie_titre": "Calcul propositionnel",
+   "num": 1,
+   "losange": true,
+   "page": 4,
+   "consigne": "(Équivalences logiques) Soient $p$, $q$ et $r$ des propositions. Montrer que :",
+   "notions": [
+    "AN1.N.logique"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.IV.1.a",
+     "sub": "a",
+     "enonce": "(\\neg(\\neg p))\\Leftrightarrow p \\text{ (loi de la double négation)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(~(~p), p)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.b",
+     "sub": "b",
+     "enonce": "(p\\wedge p)\\Leftrightarrow p \\text{ et } (p\\vee p)\\Leftrightarrow p \\text{ (idempotence)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(p & p, p) & Equivalent(p | p, p)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.c",
+     "sub": "c",
+     "enonce": "(p\\wedge q)\\Leftrightarrow(q\\wedge p) \\text{ et } (p\\vee q)\\Leftrightarrow(q\\vee p) \\text{ (commutativité)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(p & q, q & p) & Equivalent(p | q, q | p)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.d",
+     "sub": "d",
+     "enonce": "(\\neg(p\\wedge q))\\Leftrightarrow((\\neg p)\\vee(\\neg q)) \\text{ et } (\\neg(p\\vee q))\\Leftrightarrow((\\neg p)\\wedge(\\neg q)) \\text{ (lois de De Morgan)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(~(p & q), ~p | ~q) & Equivalent(~(p | q), ~p & ~q)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.e",
+     "sub": "e",
+     "enonce": "((p\\wedge q)\\wedge r)\\Leftrightarrow(p\\wedge(q\\wedge r)) \\text{ et } ((p\\vee q)\\vee r)\\Leftrightarrow(p\\vee(q\\vee r)) \\text{ (associativité)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent((p & q) & r, p & (q & r)) & Equivalent((p | q) | r, p | (q | r))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.f",
+     "sub": "f",
+     "enonce": "((p\\wedge q)\\vee r)\\Leftrightarrow((p\\vee r)\\wedge(q\\vee r)) \\text{ et } ((p\\vee q)\\wedge r)\\Leftrightarrow((p\\wedge r)\\vee(q\\wedge r)) \\text{ (distributivité)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent((p & q) | r, (p | r) & (q | r)) & Equivalent((p | q) & r, (p & r) | (q & r))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.g",
+     "sub": "g",
+     "enonce": "(p\\Rightarrow q)\\Leftrightarrow((\\neg p)\\vee q) \\text{ (définition de l'implication)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(Implies(p, q), ~p | q)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.h",
+     "sub": "h",
+     "enonce": "(\\neg(p\\Rightarrow q))\\Leftrightarrow(p\\wedge(\\neg q)) \\text{ (négation de l'implication)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(~Implies(p, q), p & ~q)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.i",
+     "sub": "i",
+     "enonce": "((p\\Rightarrow q)\\wedge(q\\Rightarrow r))\\Rightarrow(p\\Rightarrow r) \\text{ (transitivité de l'implication)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Implies(Implies(p, q) & Implies(q, r), Implies(p, r))"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.1.j",
+     "sub": "j",
+     "enonce": "(p\\Leftrightarrow q)\\Leftrightarrow((p\\Rightarrow q)\\wedge(q\\Rightarrow p)) \\text{ (propositions équivalentes)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(Equivalent(p, q), Implies(p, q) & Implies(q, p))"
+       }
+      ]
+     },
+     "note": "Dans le corrigé, les tableaux (j) et (k) ont 8 lignes pour 2 variables : chaque ligne apparaît deux fois. C'est sans conséquence sur le résultat."
+    },
+    {
+     "id": "AN1.S-1.IV.1.k",
+     "sub": "k",
+     "enonce": "((\\neg q)\\Rightarrow(\\neg p))\\Leftrightarrow(p\\Rightarrow q) \\text{ (contraposé de l'implication)}",
+     "corrige": "\\text{Par la construction des tableaux de vérité (voir corrigé).}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "symbolique"
+      ],
+      "sympy": "tautologie",
+      "detail": "vraie pour toutes les valeurs de vérité",
+      "spec": [
+       {
+        "type": "logic",
+        "expr": "Equivalent(Implies(~q, ~p), Implies(p, q))"
+       }
+      ]
+     }
+    }
+   ],
+   "corrige_global": "Toutes les propositions de cet exercice se montrent par la construction des tableaux de vérité à partir des tableaux de vérité des définitions.",
+   "apres": "A noter que la véracité de la réciproque de la proposition $p\\Rightarrow q$ c'est-à-dire la proposition $q\\Rightarrow p$ n'a aucun rapport avec la véracité de la proposition $p\\Rightarrow q$. Dans la suite, pour économiser des parenthèses, nous utiliserons les priorités habituelles sur les opérations et, si convenable, nous écrirons que $p\\Leftarrow q$ au lieu de $q\\Rightarrow p$.",
+   "figures_corrige": [
+    "fig/S-1_IV1_corrige_1.png",
+    "fig/S-1_IV1_corrige_2.png",
+    "fig/S-1_IV1_corrige_3.png"
+   ],
+   "intro_partie": "Une « proposition (logique) » est un énoncé qui peut être vrai ou faux (mais pas les deux à la fois). Soit $p$ et $q$ des propositions. Par les tableaux de vérité suivants, on introduit les opérations $\\neg$ (« non » logique), $\\wedge$ (« et » logique), $\\vee$ (« ou » logique), $\\Leftrightarrow$ (l'équivalence logique) et $\\Rightarrow$ (l'implication logique), où $V:=$ vrai, et $F:=$ faux.",
+   "figures_intro": [
+    "fig/S-1_IV_tables.png"
+   ]
+  },
+  {
+   "id": "AN1.S-1.IV.2",
+   "partie": "IV",
+   "partie_titre": "Calcul propositionnel",
+   "num": 2,
+   "losange": true,
+   "page": 5,
+   "consigne": "(Les quantificateurs $\\forall$ et $\\exists$, une variable) Soit $E$ un ensemble et pour $x\\in E$ soit $p(x)$ et $q(x)$ des propositions (dont les valeurs de vérité peuvent dépendre de $x$). On écrira $\\forall x\\in E,\\ p(x)$ pour dire que « pour tous les éléments $x\\in E$, la proposition $p(x)$ est vraie », et $\\exists x\\in E,\\ p(x)$ pour dire que « il existe $x\\in E$ tel que la proposition $p(x)$ est vraie ». Se convaincre que : [...] Pour les deux cas où il n'y a pas équivalence, trouver un contre-exemple à la proposition réciproque.",
+   "notions": [
+    "AN1.N.quantificateurs",
+    "AN1.N.logique"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.IV.2.a",
+     "sub": "a",
+     "enonce": "(\\neg(\\forall x\\in E,p(x)))\\Leftrightarrow(\\exists x\\in E,\\neg(p(x)))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Le corrigé officiel ne traite que (e) et (f)."
+    },
+    {
+     "id": "AN1.S-1.IV.2.b",
+     "sub": "b",
+     "enonce": "(\\neg(\\exists x\\in E,p(x)))\\Leftrightarrow(\\forall x\\in E,\\neg(p(x)))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.2.c",
+     "sub": "c",
+     "enonce": "(\\forall x\\in E,p(x)\\wedge q(x))\\Leftrightarrow((\\forall x\\in E,p(x))\\wedge(\\forall x\\in E,q(x)))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.2.d",
+     "sub": "d",
+     "enonce": "(\\exists x\\in E,p(x)\\vee q(x))\\Leftrightarrow((\\exists x\\in E,p(x))\\vee(\\exists x\\in E,q(x)))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.2.e",
+     "sub": "e",
+     "enonce": "(\\forall x\\in E,p(x)\\vee q(x))\\Leftarrow((\\forall x\\in E,p(x))\\vee(\\forall x\\in E,q(x)))",
+     "corrige": "\\text{Soit } E=\\{1,2\\} \\text{ et } p(x), q(x) \\text{ telles que } p(1) \\text{ et } q(2) \\text{ sont vraies et } p(2) \\text{ et } q(1) \\text{ sont fausses. Alors } \\forall x\\in E,\\ p(x)\\vee q(x) \\text{ est vraie mais } (\\forall x\\in E,\\ p(x))\\vee(\\forall x\\in E,\\ q(x)) \\text{ est fausse : la réciproque } (\\Rightarrow) \\text{ est fausse.}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "enumeration"
+      ],
+      "sympy": "{'n': 2, 'p': [False, True], 'q': [True, False]}",
+      "detail": "la réciproque est fausse (contre-exemple)",
+      "spec": [
+       {
+        "type": "quantifiers",
+        "kind": "converse_fails",
+        "preds": "pq",
+        "lhs": "all(p(x) or q(x) for x in E)",
+        "rhs": "all(p(x) for x in E) or all(q(x) for x in E)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_IV2_corrige_1.png",
+      "fig/S-1_IV2_corrige_2.png"
+     ]
+    },
+    {
+     "id": "AN1.S-1.IV.2.f",
+     "sub": "f",
+     "enonce": "(\\exists x\\in E,p(x)\\wedge q(x))\\Rightarrow((\\exists x\\in E,p(x))\\wedge(\\exists x\\in E,q(x)))",
+     "corrige": "\\text{Même } E \\text{ et mêmes } p, q \\text{ : } (\\exists x\\in E,\\ p(x))\\wedge(\\exists x\\in E,\\ q(x)) \\text{ est vraie mais } \\exists x\\in E,\\ p(x)\\wedge q(x) \\text{ est fausse : la réciproque } (\\Leftarrow) \\text{ est fausse.}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "enumeration"
+      ],
+      "sympy": "{'n': 2, 'p': [False, True], 'q': [True, False]}",
+      "detail": "la réciproque est fausse (contre-exemple)",
+      "spec": [
+       {
+        "type": "quantifiers",
+        "kind": "converse_fails",
+        "preds": "pq",
+        "lhs": "any(p(x) for x in E) and any(q(x) for x in E)",
+        "rhs": "any(p(x) and q(x) for x in E)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_IV2_corrige_1.png",
+      "fig/S-1_IV2_corrige_2.png"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "AN1.S-1.IV.3",
+   "partie": "IV",
+   "partie_titre": "Calcul propositionnel",
+   "num": 3,
+   "losange": true,
+   "page": 5,
+   "consigne": "(Les quantificateurs $\\forall$ et $\\exists$, deux variables) Soit $E$ et $F$ des ensembles et pour $x\\in E$ et $y\\in F$ soit $p(x,y)$ des propositions (dont les valeurs de vérité peuvent dépendre de $x$ et de $y$). Se convaincre que : [...] Pour le cas où il n'y a pas équivalence, trouver un contre-exemple à la proposition réciproque.",
+   "notions": [
+    "AN1.N.quantificateurs",
+    "AN1.N.logique"
+   ],
+   "items": [
+    {
+     "id": "AN1.S-1.IV.3.a",
+     "sub": "a",
+     "enonce": "((\\forall x\\in E),(\\forall y\\in F),p(x,y))\\Leftrightarrow((\\forall y\\in F),(\\forall x\\in E),p(x,y))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     },
+     "note": "Le corrigé officiel ne traite que (c)."
+    },
+    {
+     "id": "AN1.S-1.IV.3.b",
+     "sub": "b",
+     "enonce": "((\\exists x\\in E),(\\exists y\\in F),p(x,y))\\Leftrightarrow((\\exists y\\in F),(\\exists x\\in E),p(x,y))",
+     "corrige": "\\text{(pas de corrigé)}",
+     "verification": {
+      "statut": "non_verifiable"
+     }
+    },
+    {
+     "id": "AN1.S-1.IV.3.c",
+     "sub": "c",
+     "enonce": "((\\exists x\\in E),(\\forall y\\in F),p(x,y))\\Rightarrow((\\forall y\\in F),(\\exists x\\in E),p(x,y))",
+     "corrige": "\\text{Soit } E=F=\\{1,2\\} \\text{ et } p(x,y) \\text{ telle que } p(1,1) \\text{ et } p(2,2) \\text{ sont vraies et } p(1,2) \\text{ et } p(2,1) \\text{ sont fausses. Alors } \\forall y\\in F,\\ \\exists x\\in E,\\ p(x,y) \\text{ est vraie mais } \\exists x\\in E,\\ \\forall y\\in F,\\ p(x,y) \\text{ est fausse : la réciproque est fausse.}",
+     "verification": {
+      "statut": "conforme",
+      "methode": [
+       "enumeration"
+      ],
+      "sympy": "{'n': 2, 'p': {'0,0': False, '0,1': True, '1,0': True, '1,1': False}}",
+      "detail": "la réciproque est fausse (contre-exemple)",
+      "spec": [
+       {
+        "type": "quantifiers",
+        "kind": "converse_fails",
+        "preds": "p2",
+        "lhs": "all(any(p(x, y) for x in E) for y in E)",
+        "rhs": "any(all(p(x, y) for y in E) for x in E)"
+       }
+      ]
+     },
+     "figures_corrige": [
+      "fig/S-1_IV3_corrige.png"
+     ]
+    }
+   ]
+  }
+ ],
+ "verifications_complementaires": [
+  {
+   "ref": "AN1.S-1.IV.2.e",
+   "statut": "conforme",
+   "methode": [
+    "enumeration"
+   ],
+   "sympy": "aucun contre-exemple (n ≤ 3)",
+   "detail": "implication vraie sur tous les modèles finis testés",
+   "spec": [
+    {
+     "type": "quantifiers",
+     "kind": "implies",
+     "preds": "pq",
+     "lhs": "all(p(x) for x in E) or all(q(x) for x in E)",
+     "rhs": "all(p(x) or q(x) for x in E)"
+    }
+   ]
+  },
+  {
+   "ref": "AN1.S-1.IV.2.f",
+   "statut": "conforme",
+   "methode": [
+    "enumeration"
+   ],
+   "sympy": "aucun contre-exemple (n ≤ 3)",
+   "detail": "implication vraie sur tous les modèles finis testés",
+   "spec": [
+    {
+     "type": "quantifiers",
+     "kind": "implies",
+     "preds": "pq",
+     "lhs": "any(p(x) and q(x) for x in E)",
+     "rhs": "any(p(x) for x in E) and any(q(x) for x in E)"
+    }
+   ]
+  },
+  {
+   "ref": "AN1.S-1.IV.3.c",
+   "statut": "conforme",
+   "methode": [
+    "enumeration"
+   ],
+   "sympy": "aucun contre-exemple (n ≤ 3)",
+   "detail": "implication vraie sur tous les modèles finis testés",
+   "spec": [
+    {
+     "type": "quantifiers",
+     "kind": "implies",
+     "preds": "p2",
+     "lhs": "any(all(p(x, y) for y in E) for x in E)",
+     "rhs": "all(any(p(x, y) for x in E) for y in E)"
+    }
+   ]
+  }
+ ]
+}
