@@ -1106,13 +1106,14 @@
       "methode": [
        "symbolique"
       ],
-      "sympy": "x^{2} - x - 1",
+      "sympy": "\\left(x - \\frac{1}{2}\\right)^{2} - \\frac{5}{4}",
       "detail": "égalité confirmée",
       "spec": [
        {
-        "type": "eq",
+        "type": "form",
         "expr": "x**2-x-1",
-        "answer": "(x-1/2)**2-5/4"
+        "answer": "(x-1/2)**2-5/4",
+        "form": "carre"
        }
       ]
      }
@@ -1127,13 +1128,14 @@
       "methode": [
        "symbolique"
       ],
-      "sympy": "3 x^{2} - 12 x + 11",
+      "sympy": "3 \\left(x - 2\\right)^{2} - 1",
       "detail": "égalité confirmée",
       "spec": [
        {
-        "type": "eq",
+        "type": "form",
         "expr": "3*x**2-12*x+11",
-        "answer": "3*(x-2)**2-1"
+        "answer": "3*(x-2)**2-1",
+        "form": "carre"
        }
       ]
      }
@@ -1148,13 +1150,14 @@
       "methode": [
        "symbolique"
       ],
-      "sympy": "9 x^{2} + 8 x + 2",
+      "sympy": "9 \\left(x + \\frac{4}{9}\\right)^{2} + \\frac{2}{9}",
       "detail": "égalité confirmée",
       "spec": [
        {
-        "type": "eq",
+        "type": "form",
         "expr": "9*x**2+8*x+2",
-        "answer": "9*(x+4/9)**2+2/9"
+        "answer": "9*(x+4/9)**2+2/9",
+        "form": "carre"
        }
       ]
      }

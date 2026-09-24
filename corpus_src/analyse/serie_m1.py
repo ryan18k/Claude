@@ -145,9 +145,9 @@ I = {"num": "I", "titre": "Algèbre", "exercices": [
     {"num": 8, "page": 1, "notions": [N["carre"]],
      "consigne": r"Compléter le carré.",
      "items": [
-         it("a", r"x^2-x-1", r"\left(x-\tfrac{1}{2}\right)^2-\tfrac{5}{4}", eq("x**2-x-1", "(x-1/2)**2-5/4")),
-         it("b", r"3x^2-12x+11", r"3(x-2)^2-1", eq("3*x**2-12*x+11", "3*(x-2)**2-1")),
-         it("c", r"9x^2+8x+2", r"9\left(x+\tfrac{4}{9}\right)^2+\tfrac{2}{9}", eq("9*x**2+8*x+2", "9*(x+4/9)**2+2/9")),
+         it("a", r"x^2-x-1", r"\left(x-\tfrac{1}{2}\right)^2-\tfrac{5}{4}", form("x**2-x-1", "(x-1/2)**2-5/4", "carre")),
+         it("b", r"3x^2-12x+11", r"3(x-2)^2-1", form("3*x**2-12*x+11", "3*(x-2)**2-1", "carre")),
+         it("c", r"9x^2+8x+2", r"9\left(x+\tfrac{4}{9}\right)^2+\tfrac{2}{9}", form("9*x**2+8*x+2", "9*(x+4/9)**2+2/9", "carre")),
      ]},
     {"num": 9, "page": 2, "notions": [N["eq"]],
      "consigne": r"Résoudre l'équation. (Chercher seulement les solutions réelles.)",

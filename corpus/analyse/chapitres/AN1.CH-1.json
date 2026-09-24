@@ -1,0 +1,728 @@
+{
+ "id": "AN1.CH-1",
+ "matiere": "AN1",
+ "numero": -1,
+ "titre": "Prélude",
+ "but": "Faire le lien entre les mathématiques comme tu les connais et le contenu du cours. « Nombre » veut dire nombre réel, comme tu les connais ; la définition précise vient au chapitre 1.",
+ "serie": "AN1.S-1",
+ "intro_video": "Bonjour et bienvenue au prélude de ce MOOC. Le but de ce prélude, c'est de faire le lien entre les mathématiques comme vous les connaissez et le contenu de ce MOOC. Le prélude a trois parties. Les premières deux parties traitent de sinus, cosinus et d'autres fonctions élémentaires. La troisième partie traite des opérations arithmétiques et ainsi de suite. Tout le long de ce prélude, je vais parler de nombres et quand je dis « nombres », je vous invite à penser aux nombres réels, comme vous les connaissez. En fait, la définition précise de ce que c'est, un nombre réel, sera une partie importante de cette première partie du MOOC. Donc à tout de suite dans la première partie du prélude.",
+ "sections": [
+  {
+   "id": "AN1.CH-1.1",
+   "titre": "Fonctions élémentaires (exemples)",
+   "passages": [
+    {
+     "id": "AN1.CH-1.1.p1",
+     "titre": "sin, cos : graphes",
+     "tex": "Prélude — voir série -1.\n\nFonctions élémentaires (exemples) : $\\sin(x)$, $\\cos(x)$, $\\tan(x)$.\n\nGraphes de $\\sin(x)$ et $\\cos(x)$ sur $[0, 2\\pi]$, avec les points $\\frac{\\pi}{6}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{3}$ marqués et la valeur $\\frac{\\sqrt{2}}{2}$ au croisement.\n\n$$\\cos(x) = \\sin\\left(x + \\frac{\\pi}{2}\\right)$$",
+     "notions": [
+      "AN1.N.trigo-valeurs",
+      "AN1.N.transformations-graphe"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.1.p1.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:00:00",
+      "fin": "00:01:44",
+      "transcription": "Bonjour. Dans cette première partie du prélude, nous discutons quelques fonctions élémentaires, plus spécifiquement sinus, cosinus et tangente. Les trois fonctions que nous allons discuter sont sinus de x et cosinus de x et dans la suite aussi tangente de x. Commençons avec sinus de x et cosinus de x. Quand j'entends sinus de x et cosinus de x, ce que je m'imagine, c'est en fait le graphe de ces fonctions. Dessinons le graphe de ces fonctions. En fait ici, on a donc le graphe de sinus de x : donc vous avez que sinus de 0 est 0. Après, sinus monte à 1 à π/2, il redescend à 0 à π, il va à −1 à 3π/2, il est 0 à 2π et puis c'est périodique, comment on dit. Nous allons encore introduire tous ces concepts plus tard en détail. Là, vous avez le graphe de cosinus de x. C'est facile de voir qu'en fait, ce graphe de cosinus vous l'obtenez à partir du graphe de sinus en poussant le graphe de sinus de π/2 à gauche. Ceci s'exprime mathématiquement par le fait que cosinus en un point x est égal à sinus en ce point x + π/2. Donc ajouter π/2 dans l'argument pousse le graphe d'une fonction de π/2 à gauche Contrôlons. Par exemple, cosinus en 0 devrait être la même chose que sinus à π/2. Justement, cosinus en 0 vaut 1, sinus en π/2 vaut aussi 1"
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.1.p2",
+     "titre": "Triangle isocèle : sin et cos de π/4",
+     "tex": "Triangle isocèle rectangle de côtés $1$, $1$ ; hypoténuse $\\sqrt{2} = \\sqrt{1^2 + 1^2}$ par Pythagore. Angles : $\\frac{\\pi}{4}$, $\\frac{\\pi}{4}$, $\\frac{\\pi}{2}$.\n\n$$\\sin\\left(\\frac{\\pi}{4}\\right) = \\frac{1}{\\sqrt{2}} = \\frac{1}{\\sqrt{2}}\\cdot 1 = \\frac{1}{\\sqrt{2}}\\cdot\\frac{\\sqrt{2}}{\\sqrt{2}} = \\frac{\\sqrt{2}}{\\sqrt{2}\\sqrt{2}} = \\frac{\\sqrt{2}}{2}$$\n\n$$\\cos\\left(\\frac{\\pi}{4}\\right) = \\frac{1}{\\sqrt{2}}$$",
+     "notions": [
+      "AN1.N.trigo-valeurs",
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.1.p2.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:01:44",
+      "fin": "00:05:24",
+      "transcription": "et donc c'est cette égalité qui est vraie pour tous les x. Ce qu'on va comprendre dans la suite, c'est que c'est possible de calculer certaines valeurs de sinus et cosinus et c'est avec ces valeurs-là qu'on va travailler dans la suite, de sorte qu'on n'ai pas besoin d'une calculatrice pour les calculer. Un des points où on peut calculer la valeur, c'est en π/4 c'est là où les graphes de sinus et cosinus se croisent et nous allons voir tout de suite après que la valeur, là, c'est √2/2. L'autre point où on peut calculer sinus et cosinus, c'est là où ils valent, en fait, 1/2. Pour sinus, ceci est vrai à π/6 et pour cosinus, ceci est vrai à π/3. Nous allons tout de suite vérifier ça. Et c'est donc ces valeurs-là qu'on va retenir dans la suite pour qu'on puisse s'en servir dans nos exemples. Alors la manière d'obtenir ces valeurs, c'est en fait, en regardant des triangles ou bien isocèles ou équilatéraux. Commençons avec le triangle isocèle. Il a donc cette allure-là. Je vais choisir la longueur ici 1 et 1. Ça, c'est un angle droit et donc par Pythagore, ceci donne une longueur pour l'hypothénuse qui est √2 Je suis pas obligé de prendre 1. Sinus et cosinus sont définis en terme de rapport des côtés et donc 1, c'est juste un choix qui est très pratique. J'ai donc un triangle isocèle que je viens de dessiner et le √2 s'explique par Pythagore : ce √2, c'est la longueur des carrés des côtés, donc 1²＋1² et la racine de ça, c'est donc par Pythagore. Du coup, je peux considérer les angles de ce triangle. La somme des angles d'un triangle fait π. On a déjà π/2 pour l'angle droit qui est ici. Par symétrie, les deux autres angles ont la même taille, donc c'est π/4 pour celui-là et π/4 pour celui-là. Et c'est donc cet angle-là que je vais considérer. Alors c'est quoi, du coup, sinus de π/4 ? C'est la longueur du côté qui est opposé, qui est donc 1, divisée par l'hypoténuse qui vaut √2 et on va profiter pour écrire ceci d'une manière plus agréable à utiliser : c'est la même chose que 1/√2 × 1 et ce 1, je vais l'écrire d'une manière plus sophistiquée, je vais l'écrire comme √2/√2. Du coup ceci fait √ 2 divisé par √2, fois √2 mais par définition, √2 fois √2, ça fait 2 et donc ça fait √2/2. Vous voyez que je viens de montrer que la valeur de 1/√2 est égale à la valeur de racine de √2/2. Alors, de même, parce que c'est le même angle, vous avez que cosinus de π/4, cette fois-ci c'est adjacent divisé par hypoténuse. C'est donc aussi un 1/√2 qu'on peut aussi écrire comme √2/2 si on a envie."
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "sin(pi/4)",
+         "answer": "sqrt(2)/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "cos(pi/4)",
+         "answer": "1/sqrt(2)"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.1.p3",
+     "titre": "Triangle équilatéral : π/6 et π/3",
+     "tex": "Triangle équilatéral de côté $1$, coupé en deux : côtés $1$, $\\frac12$ et la hauteur, angles $\\frac{\\pi}{6}$ et $\\frac{\\pi}{3}$.\n\nHauteur : $\\sqrt{1 - \\left(\\frac12\\right)^2} = \\sqrt{\\frac34} = \\frac{\\sqrt3}{2}$.\n\n$$\\sin\\left(\\frac{\\pi}{6}\\right) = \\frac{\\frac12}{1} = \\frac12,\\qquad \\cos\\left(\\frac{\\pi}{6}\\right) = \\frac{\\frac{\\sqrt3}{2}}{1} = \\frac{\\sqrt3}{2}$$\n\n$$\\sin\\left(\\frac{\\pi}{3}\\right) = \\frac{\\frac{\\sqrt3}{2}}{1} = \\frac{\\sqrt3}{2},\\qquad \\cos\\left(\\frac{\\pi}{3}\\right) = \\frac{\\frac12}{1} = \\frac12$$",
+     "notions": [
+      "AN1.N.trigo-valeurs",
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.1.p3.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:05:24",
+      "fin": "00:08:33",
+      "transcription": "Pour le 1/2, ce qu'il faut regarder, c'est un triangle équilatéral. Essayons de dessiner notre triangle équilatéral. Le voilà. Et je vais aussi dessiner ici la ligne qui divise aussi bien les angles que les côtés. Donc cette fois-ci, je vais choisir 1, 1 et puis aussi 1 en bas, mais ce 1 en bas, je l'écris comme 1/2 et 1/2. J'ai coupé en deux mon côté. Ici vous avez un angle droit et en fait c'est ce triangle, ici, que je regarde et cet angle-là, ce qui reste, c'est en fait... Tous les angles d'un triangle équilatéral sont π/3. Là, j'ai la moitié de cet angle, j'ai donc ici un π/6 et là, j'ai un π/3, donc je peux aussi calculer la longueur de cette hauteur dans mon triangle. C'est cette fois-ci aussi par Pythagore. C'est un racine de... Cette fois-ci, c'est hypoténuse au carré qui est 1², qui est 1, moins le 1/2 qui est ici en bas, au carré, (1/2)² Vous voyez que ceci donne la racine carrée de... 1, je peux l'écrire comme 4/4. Moins 1/4, ça fait 3/4. C'est donc √3/4 qui n'est en fait rien d'autre que √3/2. Nous allons encore rappeler toutes ces règles de calcul un peu plus loin. Ici, on a pris un triangle équilatéral. Alors du coup... En considérant donc notre triangle, ici en magenta, on peut calculer sinus et cosinus de π/6 et π/3. Commençons à calculer sinus de π divisé par 6. C'est l'opposé, c'est donc le 1/2 qu'on a ici divisé par 1. Ça fait donc 1/2 divisé par 1, qui fait 1/2. Il faut savoir manipuler les doubles fractions, on va revenir à ça aussi. Et cosinus de π/6, c'est adjacent divisé par l'hypoténuse, c'est donc √3/2 divisé par 1 et ça fait √3/2. De même, je peux calculer sinus de π/3, qui me donne cette fois-ci l'opposé, c'est en fait le √3/2. Ça me donne donc le √3/2 qui est divisé par la longueur de l'hypoténuse qui me donne le √3/2. Et pour le cosinus de π/3, j'ai maintenant 1/2, qui est la longueur du côté adjacent"
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "sin(pi/6)",
+         "answer": "1/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "cos(pi/6)",
+         "answer": "sqrt(3)/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "sin(pi/3)",
+         "answer": "sqrt(3)/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "cos(pi/3)",
+         "answer": "1/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "sqrt(1-(1/2)**2)",
+         "answer": "sqrt(3)/2"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.1.p4",
+     "titre": "Valeurs approchées",
+     "tex": "> $\\sqrt2 = 1.414\\ldots,\\quad \\frac{\\sqrt2}{2} = 0.707\\ldots,$\n> $\\sqrt3 = 1.732\\ldots,\\quad \\frac{\\sqrt3}{2} = 0.866\\ldots,\\quad \\frac{\\sqrt3}{3} = 0.577\\ldots$",
+     "notions": [
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.1.p4.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:08:33",
+      "fin": "00:09:40",
+      "transcription": "divisé par 1, qui fait 1/2. Donc voici comment on obtient quelques valeurs et on va se servir de ces valeurs, comme j'ai indiqué, dans la suite, pour avoir des valeurs numériques pour sinus et cosinus dans nos exemples. Je vous rappelle, et on va aussi trouver plus tard des algorithmes qui nous permettent de calculer ça, que la valeur de √2 est approximativement 1,414... donc une infinité de digits et puis √2/2, il faut diviser ceci par 2. C'est 0,707 et ainsi de suite. De même pour √3, une approximation qu'on va utiliser : 1,732. Il y a une infinité de digits de nouveau. Et en fait, √3/2, il faut diviser ceci par 2 et ça donne 0,866. Et comme vous le verrez, on a parfois aussi besoin de √3/3,"
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "numeric",
+         "expr": "sqrt(2)",
+         "answer": "1.414",
+         "tol": 0.001
+        },
+        "ok": true,
+        "methode": "numerique",
+        "detail": "écart 0.0002136 (tolérance 0.001)"
+       },
+       {
+        "spec": {
+         "type": "numeric",
+         "expr": "sqrt(3)/3",
+         "answer": "0.577",
+         "tol": 0.001
+        },
+        "ok": true,
+        "methode": "numerique",
+        "detail": "écart 0.0003503 (tolérance 0.001)"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.1.p5",
+     "titre": "tan : définition et notations",
+     "tex": "Graphe de $\\tan(x)$ (asymptotes verticales en $\\frac{\\pi}{2}$, $\\frac{3\\pi}{2}$, …).\n\n$\\mathrm{tg}(x) \\equiv \\tan(x)$ : « $\\equiv$ » signifie notations équivalentes.\n\n$$\\tan(x) := \\frac{\\sin(x)}{\\cos(x)}$$\n\n« $:=$ » se lit « est par définition égal à ».",
+     "notions": [
+      "AN1.N.trigo-valeurs"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.1.p5.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:09:36",
+      "fin": "00:11:25",
+      "transcription": "Et comme vous le verrez, on a parfois aussi besoin de √3/3, Qui est 0,577 et ainsi de suite. Voici donc pour la discussion de sinus et cosinus. Discutons maintenant encore la fonction tangente. De nouveau, on va commencer par le graphe de tangente et pour la première fois, maintenant, je vais introduire trois lignes pour dire que c'est des notations équivalente. Donc selon le livre que vous allez ouvrir, peut-être vous allez voir tan(x)... C'est ce que nous allons utiliser dans ce cours. ...ou bien encore écrit tangente de x avec tg(x). Ça c'est pour dire que c'est des notations équivalentes, donc c'est juste au niveau de l'écriture de la fonction que ces choses se distinguent. Par contre, la tangente de x, vu que c'est l'opposé divisé par l'adjacent dans un triangle rectangle ceci n'est rien d'autre que sinus de x divisé par cosinus de x Et là, j'ai mis un « : = » pour dire qu'on va en fait définir tangente de x de cette manière-là. Donc ceci veut dire que le « : = » est... C'est comme ça qu'il faut le lire. ...est « par définition égal à ». Et c'est comme ça qu'il faudra lire ce « : = ». Alors dans le graphique que j'ai ici, vous voyez que vous avez ici 0 et pour vous avez les points pour lesquels nous avons tout à l'heure calculé les valeurs de sinus et cosinus,"
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.1.p6",
+     "titre": "tan de π/4, π/6, π/3",
+     "tex": "$$\\tan\\left(\\frac{\\pi}{4}\\right) = \\frac{\\sin(\\frac{\\pi}{4})}{\\cos(\\frac{\\pi}{4})} = \\frac{\\frac{\\sqrt2}{2}}{\\frac{\\sqrt2}{2}} = 1$$\n\n$$\\tan\\left(\\frac{\\pi}{6}\\right) = \\frac{\\sin(\\frac{\\pi}{6})}{\\cos(\\frac{\\pi}{6})} = \\frac{\\frac12}{\\frac{\\sqrt3}{2}} = \\frac{1}{\\sqrt3} = \\frac{\\sqrt3}{3}$$\n\n$$\\tan\\left(\\frac{\\pi}{3}\\right) = \\frac{\\sin(\\frac{\\pi}{3})}{\\cos(\\frac{\\pi}{3})} = \\frac{\\frac{\\sqrt3}{2}}{\\frac12} = \\sqrt3$$",
+     "notions": [
+      "AN1.N.trigo-valeurs",
+      "AN1.N.fractions-rationnelles"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No01_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.1.p6.png",
+     "video": {
+      "fichier": "Prelude__Fonctions-elementaires__v1.fr.srt",
+      "debut": "00:11:25",
+      "fin": "00:14:00",
+      "transcription": "Il y a ici π/4, on va s'intéresser à ce point-là, et puis il y a π/6 et π/3. π/3 se trouve ici et π/6 se trouve à peu près là. On va donc maintenant calculer les valeurs des tangentes en ces points-là. Alors, c'est quoi tangente de π/4 ? En utilisant la définition, c'est simplement le sinus de π/4, divisé par le cosinus de π/4 égal... Et le sinus de π/4, c'était un √2/2. Ceci, il faut diviser par la valeur de cosinus de π/4 qui est aussi un √2/2. C'est donc un nombre divisé par lui-même et ceci fait, là encore, revenir à la manipulation des doubles fractions qui est néanmoins censée être connue. De même on peut calculer tangente de π/6 qui est par définition sinus de π/6 divisé par cosinus de π/6 qui est donc égal à 1/2, on vient de calculer ça. Cosinus de π/6, on l'a aussi calculé, c'est √3/2. Si on manipule correctement la double fraction, on obtient que c'est 1/√3 et en faisant la même manipulation que tout à l'heure pour le 1/√2, c'est-à-dire je multiplie avec √3, je divise par √3 c'est-à-dire que je multiplie avec 1, je vois que ce n'est rien d'autre que √3/3. C'est la raison pour laquelle j'ai indiqué la valeur approximative de √3/3 tout à l'heure. Finalement, on a encore la tangente de π/3 qu'on peut calculer en utilisant la définition. C'est donc un sinus de π/3 divisé par cosinus de  π/3 Cette fois-ci, c'est le sinus qui vaut √3/2 et c'est le cosinus qui vaut 1/2. Si on manipule correctement la double fraction, on voit que ceci fait √3. Voici les valeurs pour lesquelles il faut connaître sinus cosinus et tangente."
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "tan(pi/4)",
+         "answer": "1"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "tan(pi/6)",
+         "answer": "sqrt(3)/3"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "tan(pi/3)",
+         "answer": "sqrt(3)"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.CH-1.2",
+   "titre": "Paires de fonctions réciproques",
+   "passages": [
+    {
+     "id": "AN1.CH-1.2.p1",
+     "titre": "x² et √x",
+     "tex": "i) $x^2$, $\\sqrt{x}$. Graphes de $y = x^2$, $y = \\sqrt{x}$ et de la diagonale $y = x$.\n\nPour $x$ un nombre positif ou zéro :\n\n$$\\sqrt{x^2} = x,\\qquad \\left(\\sqrt{x}\\right)^2 = x \\qquad (*)$$\n\n$(*)$ implique que $x^2$ et $\\sqrt{x}$ sont des fonctions réciproques.",
+     "notions": [
+      "AN1.N.fonction-reciproque",
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No02_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.2.p1.png",
+     "video": {
+      "fichier": "Prelude__Paires-de-fonctions-reciproques__v1.fr.srt",
+      "debut": "00:00:00",
+      "fin": "00:04:28",
+      "transcription": "Bonjour et bienvenue à cette deuxième partie du prélude du MOOC d'Analyse I dans lequel nous allons traiter de ce qu'on appelle des paires de fonctions réciproques. Le premier exemple que nous allons donner, c'est un exemple tout simple : c'est la fonction x². Vous connaissez le graphe de la fonction x² c'est la parabole que vous avez tous appris à dessiner et puis il y a une deuxième fonction que vous connaissez peut-être aussi qui est la fonction √x mais en fait, il se trouve que quelque part, c'est la même fonction. Ces deux fonctions sont intimement liées et on verra ça tout de suite en regardant le graphe de ses fonctions-là. Contrairement à la première partie du prélude, dans cette deuxième partie, je vais dessiner moi les graphes de cette fonction parce qu'il est très important d'être à l'aise avec le dessin des graphes de fonctions. En fait, chaque fois qu'on a une fonction, on devrait avoir le réflexe de dessiner son graphe si c'est possible. À quoi ressemble le graphe de la fonction x² ? Sur l'horizontale, je dessine donc x. Sur le vertical, je dessine y et je m'intéresse donc à dessiner le graphe de la fonction y = x². Donc c'est un graphe qui est à peu près quelque chose comme ça donc y = x² au moins pour les x positifs et puis pour les x qui sont négatifs, je vais en fait le refléter par rapport à l'axe des y. Je vais me concentrer ici sur les x qui sont positifs. Comment je trouve le graphe de la fonction √x ? En fait, ces deux graphes sont liés dans la mesure où j'obtiens le graphe de la fonction √x par réflexion à la diagonale. En fait, ici, j'ai le point 1 et la fonction y = x² au point 1, elle vaut 1. La diagonale, elle passe donc par l'origine, elle passe par (0, 0) et puis elle passe aussi par (1, 1), elle passe par tous les points de la forme y = x. Ça, c'est la droite y = x J'obtiens le graphe de la fonction racine par réflexion à cette droite-là et donc vous voyez bien que le graphe de la racine devrait être... quelque chose du genre. Effectivement, ça c'est le graphe de la fonction √x En fait, cette vérité qu'il y a un lien entre la fonction x² et √x s'exprime algébriquement de la manière suivante : pour x, un nombre positif ou 0... Comme je l'ai dit au début du prélude, je vous invite pour le moment quand je parle des nombres, de penser aux nombre réels comme vous les avez appris. On verra dans la suite ce que sont exactement les nombres réels, mais pour le moment, il n'y a pas de mal de simplement penser aux nombres réels que vous connaissez. Donc on a la vérité suivante : si vous prenez le carré d'un nombre positif ou 0 suivi du calcul de la racine du résultat, vous retrouvez x. De même, si vous avez un nombre positif ou 0 vous commencez par calculer justement sa racine comme nous l'avons fait tout à l'heure pour √2, vous prenez de suite le carré du résultat : vous retrouvez aussi x. Et ceci, ces relations-là, vous disent que vous avez en main deux fois la même fonction pour ainsi dire de ce qu'on appelle justement une paire de fonctions réciproques. Alors l'étoile... Pourquoi je mets une étoile ? C'est pour dire que l'étoile implique"
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "sqrt(x**2)",
+         "answer": "x",
+         "assume": {
+          "x": {
+           "nonnegative": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.2.p2",
+     "titre": "eˣ et ln(x)",
+     "tex": "ii) $e^x \\equiv \\exp(x)$, $\\ln(x)$ ($=$ logarithme népérien). Autre notation : $\\mathrm{Log}(x) \\equiv \\ln(x)$.\n\nGraphes de $y = e^x$, $y = \\ln(x)$ et de la diagonale $y = x$.\n\nPour $x$ un nombre positif : $e^{\\ln(x)} = x$.\n\nPour $x$ un nombre « quelconque » (positif, zéro ou négatif) : $\\ln(e^x) = x$. $\\quad(*)$\n\n$(*)$ implique que $e^x$ et $\\ln(x)$ sont des fonctions réciproques.",
+     "notions": [
+      "AN1.N.fonction-reciproque",
+      "AN1.N.exp-ln"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No02_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.2.p2.png",
+     "video": {
+      "fichier": "Prelude__Paires-de-fonctions-reciproques__v1.fr.srt",
+      "debut": "00:04:28",
+      "fin": "00:09:28",
+      "transcription": "que x² et √x sont des fonctions dites réciproques et nous allons nous intéresser dans la suite de ce MOOC, encore en détail à cette propriété de réciprocité et de fonction. Un deuxième exemple d'une paire de fonctions réciproques que vous connaissez sûrement : la fonction exponentielle eˣ et la fonction ln(x). Je profite pour revenir à mes trois barres qui sont donc des notations équivalentes. Parfois, si dans l'exponentielle, on n'a pas simplement x, mais une expression plus compliquée c'est un avantage d'écrire ça sous la forme exp(x) ici, ou exp de l'expression que vous avez. Écrire eˣ ou exp(x), c'est juste deux notations équivalentes pour la même fonction. Et puis, la réciproque de l'exponentielle, c'est ln(x) qui est ce qu'on appelle aussi le logarithme népérien, je mets ici entre parenthèses, parce que ce n'est pas très répandu, mais c'est une notation qui est quand même utilisée dans certains livres que vous allez peut-être voir dans d'autres cours : parfois, on écrit ceci aussi comme Log. C'est donc, de nouveau, juste une autre notation, mais ici nous allons utiliser la notation standard qui est ln(x). Alors, de nouveau, on va essayer de dessiner ou de faire une esquisse du graphe de ces fonctions-la. Donc, j'ai ici l'axe des y, je vais dessiner ici l'axe des x et je vais essayer de dessiner le graphe de la fonction exponentielle qui en 0 passe par 1. Le graphe, il ressemble à quelque chose comme ça. Ça monte assez rapidement à droite et puis à gauche, ça s'approche de plus en plus à 0. C'est donc important d'essayer d'exprimer ça au niveau graphique correct. De nouveau je vais dessiner la diagonale qui est donc là et pour trouver le graphe de logarithme, il suffira de faire la réflexion par rapport à cette diagonale-là. Le 1 sur la verticale devient le 1 qui est là et donc le graphe du logarithme va ressembler à quelque chose comme ça. Ici, vous avez y = ln(x) et là, vous avez y = eˣ et sur la diagonale, vous avez y = x. Je vous invite de contrôler que si vous regardez, du coup... Au lieu de regarder y en fonction de x, vous tournez la tête un petit peu à gauche et vous regardez x comme fonction de y, cette courbe qui est là, c'est exactement cette courbe qui est là, juste reflétée parce que y monte du coup et donc ça va à gauche si vous regardez ceci comme un axe. De nouveau, il y a des identités qui expriment que ces deux fonctions sont des fonctions réciproques. Donc la première identité que vous avez c'est que pour x un nombre positif, vous pouvez calculer le ln(x) suivi du calcul de l'exponentielle. J'écris ça comme l'exponentielle du nombre que j'obtiens si je calcule le ln(x). En fait, ceci vous redonne x. Et pour x, nombre quelconque... Pour x un nombre quelconque... Je mets ça entre guillemets. Qu'est-ce que j'entends par quelconque ? Avec ça, j'entends que c'est un nombre positif, négatif ou 0. C'est ça que j'entends par « quelconque » : positif, 0 ou négatif. Alors, je peux écrire que l'exponentielle de n'importe quel nombre c'est un nombre positif duquel je peux, du coup, calculer le logarithme qui me redonne x. De nouveau, c'est deux manières d'écrire la même chose"
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "exp(log(x))",
+         "answer": "x",
+         "assume": {
+          "x": {
+           "positive": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "log(exp(x))",
+         "answer": "x"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.2.p3",
+     "titre": "tan(x) et arctan(x)",
+     "tex": "iii) $\\tan(x)$, $\\arctan(x)$. Graphes de $y = \\tan(x)$ sur $]-\\frac{\\pi}{2}, \\frac{\\pi}{2}[$, de $y = \\arctan(x)$ (asymptotes horizontales $y = \\pm\\frac{\\pi}{2}$) et de la diagonale.\n\nPour $x$ un nombre « quelconque » : $\\tan(\\arctan(x)) = x$.\n\nPour $x$ un nombre entre $-\\frac{\\pi}{2}$ et $\\frac{\\pi}{2}$ : $\\arctan(\\tan(x)) = x$. $\\quad(*)$\n\n$(*)$ implique que $\\tan(x)$ et $\\arctan(x)$ sont des fonctions réciproques.",
+     "notions": [
+      "AN1.N.fonction-reciproque",
+      "AN1.N.trigo-valeurs"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No02_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.2.p3.png",
+     "video": {
+      "fichier": "Prelude__Paires-de-fonctions-reciproques__v1.fr.srt",
+      "debut": "00:09:28",
+      "fin": "00:14:30",
+      "transcription": "et ceci exprime le fait que l'exponentielle et ln sont une paire de fonctions réciproques. Donc étoile exprime le fait que... Ou ceci implique que eˣ ainsi que la fonction ln(x) sont des fonctions réciproques. Le troisième et dernier exemple est la fonction tangente de tout à l'heure : tan(x). En fait, je vais construire la fonction arctangente ici dans ce prélude, simplement en dessinant le graphe de cette fonction arctangente et on va utiliser déjà cette fonction dans la suite. Évidemment, nous allons définir aussi cette fonction-là d'une manière précise plus tard. Alors pour ceci, il faut qu'on dessine le graphe de la fonction tangente. C'est donc le graphe d'une des fonctions élémentaires que nous allons utiliser dans la suite pour faire des exemples. C'est donc important de savoir dessiner le graphe de cette fonction-là. Nous avons vu que tangente est définie sur... entre −π/2 et π/2 et après, elle se répète. C'est ce qu'on avait vu dans l'autre graphe. C'est-à-dire c'est sinus divisé par cosinus. Le cosinus étant 0 à π/2... On verra dans la suite comment on analyse ce genre de point, mais pour le moment nous notons que le graphe de tangente est essentiellement vertical proche de ces points-là. C'est donc −π/2 et là c'est π/2. Je dessine de nouveau la diagonale qui est donc là. Voilà, la diagonale. Je vais juste la redresser légèrement ici, pour que ça fasse ce qu'il faut proche de l'origine et tout ce qu'on va faire, c'est refléter le graphe par rapport à cet axe-là. Vous voyez bien que, du coup, ça va me faire... Parce qu'il y a les traits verticaux à −π/2 et à π/2. ...va me faire des traits horizontaux ici, ainsi que là. Donc il y a un deuxième trait horizontal qui est là. Et en fait, le graphe de la fonction arctangente va être juste le reflet, donc il va commencer à dévier là, et il va aller vers π/2 qui est là et de ce côté-là, il va dévier là et aller vers −π/2 qui se trouve là. Ceci est le graphe de y = arctan(x). En noir, on avait le graphe de y = tan(x) et ici, comme toujours dans ces dessins, c'était la diagonale donc ceci est y = x. D'une manière algébrique, ceci s'exprime de la manière suivante : pour x un nombre quelconque, on a que la tangente de arctangente de x vaut x et, vu qu'on ne peut calculer la tangente qu'entre −π/2 et π/2, pour x un nombre entre −π/2 et π/2, vous pouvez calculer l'arctangent de la tangente de x, qui va aussi vous donner x. Et cette vérité, de nouveau, exprime le fait que tangent et arctangent sont des fonctions réciproques donc ceci implique que la fonction tangente de x et la fonction arctangente de x, qui est ici définie par son graphe pour le moment, sont des fonctions réciproques."
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "tan(atan(x))",
+         "answer": "x"
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "AN1.CH-1.3",
+   "titre": "Puissances, racines, etc. (règles de calcul)",
+   "passages": [
+    {
+     "id": "AN1.CH-1.3.p1",
+     "titre": "Convention a⁰ = 1 et règles des puissances",
+     "tex": "Pour $a, b$ des nombres positifs et $m, n$ des entiers positifs ou zéro :\n\n> Convention : $a^0 = 1$\n\n> $a^n\\cdot a^m = a^{n+m},\\qquad (a^n)^m = a^{mn} = (a^m)^n$\n> $(a\\cdot b)^m = a^m\\cdot b^m$\n> $\\left(\\frac{a}{b}\\right)^m = \\frac{a^m}{b^m} = a^m\\cdot b^{-m} = \\frac{b^{-m}}{a^{-m}} = \\left(\\frac{b}{a}\\right)^{-m}$\n> $\\frac{a^n}{a^m} = a^{n-m}$",
+     "notions": [
+      "AN1.N.puissances"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.3.p1.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:00:00",
+      "fin": "00:03:37",
+      "transcription": "Bonjour et bienvenue dans cette troisième partie du prélude du MOOC d'Analyse I dans lequel nous allons rappeler les règles de calcul pour les puissances, les fractions et ainsi de suite. Pour a, b des nombres positifs et m et n des entiers positifs ou 0, dans le cas où la puissance est 0, on a la convention suivante : donc convention : a⁰, par convention, ceci est égal à 1. Ça c'est un zéro. Il y a rien à comprendre, c'est une convention de notation quand vous avez un nombre positif  à la puissance zéro, c'est simplement 1. Plus tard nous allons élargir cette convention même à 0⁰ qui va aussi être simplement une manière d'écrire 1. Ceci va simplifier certaines notations. C'est pour cette raison-là qu'on fait cette convention. Donc ça, c'est une convention qu'on va faire dans ce cours et qui est très souvent faite, c'est que a⁰ = 1 Il y a aucun calcul à faire, c'est une convention. Alors maintenant, à partir de là, a est positif et n et n sont donc positifs ou 0. Avec cette convention que je viens de donner on a les identités suivantes : on a que aⁿ × aᵐ, c'est égal à aⁿ⁺ᵐ, on a que (aⁿ)ᵐ est égal à aᵐⁿ qui est la même chose que aⁿᵐ, qui est donc égal à (aᵐ)ⁿ Puis, si j'ai le produit (a × b)ᵐ ceci n'est rien d'autre que aᵐ × bᵐ. De même, si j'ai la division de deux nombres où évidement b est supposé différent de 0, mais j'ai supposé que a et b sont positifs donc b est différent de 0, j'ai (a/b)ᵐ est égal à aᵐ/bᵐ, qu'on peut aussi écrire, et on verra ça dans les chapitres à suivre comme aᵐ × b‾ᵐ que je peux donc écrire, aussi à être vu de nouveau dans les chapitres à suivre, comme b‾ᵐ/a‾ᵐ qui est donc égal à (b/a)‾ᵐ Alors en utilisant ça vous voyez bien que on a la règle que (aⁿ)/(aᵐ), c'est en fait la même chose que aⁿ‾¹ Ça c'est les règles de base pour les calculs avec les puissances avec a, b des nombres positifs. On a les mêmes règles de calcul, en fait, quand n et m ne sont pas des entiers."
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "(a/b)**m",
+         "answer": "(b/a)**(-m)",
+         "assume": {
+          "m": {
+           "integer": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "a**n/a**m",
+         "answer": "a**(n-m)",
+         "assume": {
+          "m": {
+           "integer": true
+          },
+          "n": {
+           "integer": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     }
+    },
+    {
+     "id": "AN1.CH-1.3.p2",
+     "titre": "Exposants non entiers, racine n-ième",
+     "tex": "On a les mêmes règles de calcul pour $a^x$ pour $x$ un nombre non entier. En particulier on écrit\n\n> $\\sqrt[n]{a} \\equiv a^{\\frac1n}\\qquad$ (où $a > 0$ !)\n\npour (l'unique) nombre positif tel que $\\left(a^{\\frac1n}\\right)^n = a$.",
+     "notions": [
+      "AN1.N.puissances",
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.3.p2.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:03:37",
+      "fin": "00:04:54",
+      "transcription": "On élargit ce concept et on verra comment on fait ça exactement dans la suite. On a les mêmes règles de calcul pour aˣ, pour x un nombre non entier et on verra dans les chapitres à suivre comment on peut définir aˣ d'une manière précise. Donc en particulier, on écrit que la n-ième racine d'un nombre positif a, on va aussi noter ça comme a à la puissance 1/n. Et j'insiste lourdement sur le fait que a est censé être un nombre positif. On note ceci : a à la puissance 1/n ou ⁿ√a de manière équivalente pour l'unique nombre positif tel que... Nous l'avons déjà vu pour √2 : √2, c'est le nombre qui est de sorte que son carré vaut 2."
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.3.p3",
+     "titre": "Remarque : racine d'un nombre négatif",
+     "tex": "> Remarque : pour $n$ un entier naturel impair on trouve dans la littérature la notation $\\sqrt[n]{a}$ aussi pour $a < 0$, et dans ce cas, et dans ce cas seulement,\n> $$\\sqrt[n]{a} = -\\sqrt[n]{|a|}$$",
+     "notions": [
+      "AN1.N.racines"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 1
+     },
+     "original": "orig/AN1.CH-1.3.p3.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:04:54",
+      "fin": "00:07:36",
+      "transcription": "Si j'ai la n-ième racine d'un nombre positif c'est le nombre positif qui est tel que sa n-ième puissance vaut a. Donc j'ai que a à la puissance 1/n et vous retrouver les calculs d'en haut, en fait, ça redonne a, d'où la notation. C'est le moment de faire une remarque. Pour un n un nombre qui naturel, impair, on trouve dans la littérature la notation suivante : la notation ⁿ√a. Exemple : troisième racine de... Justement, −8 par exemple donc aussi pour a négatif quand n est un entier naturel impair, donc quelque chose comme 3, 5 et ainsi de suite. Et dans ce cas... Et dans ce cas seulement, on a que ⁿ√a où n est maintenant un entier positif, un entier naturel impair et a, on admet négatif, en fait, ceci est juste une autre notation pour le négatif de la n-ième racine de la valeur absolue de a. Exemple : ³√−8 est donc juste une autre notation pour −³√8 qui vaut 2, C'est donc −2. Dans ce MOOC, nous allons toujours écrire les choses sous cette manière-là. Je ne vais donc jamais écrire ³√−8 mais je vais écrire −³√8 pour ne pas traiter le cas d'une puissance d'un entier naturel impair différemment des autres puissances. La fonction réciproque de la fonction aˣ va être vue dans les chapitres à suivre mais introduit déjà la notation que vous connaissez probablement :"
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.3.p4",
+     "titre": "log_a : réciproque de aˣ",
+     "tex": "La fonction réciproque de la fonction $a^x$, $a > 0$, $a \\neq 1$, est appelée $\\log_a(x)$, ce qui veut dire que\n\n> $a^{\\log_a(x)} = x\\qquad$ pour $x$ un nombre positif\n> $\\log_a(a^x) = x\\qquad$ pour $x$ un nombre quelconque",
+     "notions": [
+      "AN1.N.exp-ln",
+      "AN1.N.fonction-reciproque"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.3.p4.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:07:36",
+      "fin": "00:08:58",
+      "transcription": "cette fonction est appelée le logarithme à base a de x ou juste loga(x). Ce qui veut dire, le fait que c'est une fonction réciproque, comme nous l'avons vu dans la deuxième partie de ce prélude, je peux l'exprimer de la manière suivante : c'est que j'ai que a à la puissance le loga(x) ceci vous donne x pour x un nombre positif ou, d'une manière équivalente, si vous prenez le loga(aˣ) ceci vous redonne aussi x et ceci pour x un nombre quelconque. Vu que loga(x) est la fonction réciproque de aˣ et qu'on a certaines règles de calcul pour aˣ, ceci implique, en utilisant ces identités-là, des règles de calcul des identités pour la fonction réciproque"
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.3.p5",
+     "titre": "Identités des logarithmes",
+     "tex": "Identités qui découlent de la réciprocité :\n\n> $\\log_a(1) = 0\\quad$ et $\\quad\\log_a(a) = 1\\qquad$ pourquoi ?\n\n> $\\log_a(x\\cdot y) = \\log_a(x) + \\log_a(y)$\n> $\\log_a\\left(\\frac1x\\right) = -\\log_a(x)$\n> $\\log_a\\left(\\frac{x}{y}\\right) = \\log_a(x) - \\log_a(y)\\qquad$ ($x, y$ des nombres positifs)\n> $\\log_a(x^r) = r\\cdot\\log_a(x)\\qquad$ ($x$ un nombre positif, $r$ un nombre quelconque)",
+     "notions": [
+      "AN1.N.exp-ln"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.3.p5.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:08:58",
+      "fin": "00:11:53",
+      "transcription": "donc pour loga(x). Donc on a des identités qui découlent de la réciprocité. Par exemple, ce qu'on trouve facilement, c'est que loga(1) est égal à 0, c'est juste un petit jeu mental qu'il faut faire pour le comprendre, et que loga(a) est égal à 1. Donc, à ce moment-là, je vous invite à vérifier ça en utilisant les identités qu'on a pour aˣ ainsi que le fait que loga soit la fonction réciproque. J'ai écrit ici « pourquoi ? », pourquoi est-ce que ceci est vrai ? Ceci voudra dire qu'à priori, vous êtes censés être capables de montrer la chose, ici donc loga(1) = 0 et loga(a) = 1. Donc réfléchissez d'abord, après vous vérifiez que vos réflexions sont correctes. Ceci est la bonne manière d'absorber le matériel, ça vous permet de travailler avec le matériel théorique et ça vous permet d'avancer dans vos connaissances. Quelles sont les autres identités qu'on trouve ? On trouve aussi que loga(xy) = loga(x) + loga(y), que loga(1/x) est égal à −loga(x), que loga(x/y) est égal à loga(x) − loga(y) et que loga(xʳ) est égal à r × loga(x). Ceci est vrai pour x et y des nombres positifs et la dernière égalité est vraie pour x un nombre positif et r un nombre quelconque. Je mettrai donc ceci aussi dans une boîte"
+     },
+     "verification": {
+      "statut": "conforme",
+      "details": [
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "log(x*y, a)",
+         "answer": "log(x, a)+log(y, a)",
+         "assume": {
+          "x": {
+           "positive": true
+          },
+          "y": {
+           "positive": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       },
+       {
+        "spec": {
+         "type": "eq",
+         "expr": "log(x**r, a)",
+         "answer": "r*log(x, a)",
+         "assume": {
+          "x": {
+           "positive": true
+          }
+         }
+        },
+        "ok": true,
+        "methode": "symbolique",
+        "detail": "égalité confirmée"
+       }
+      ]
+     },
+     "complement": "AN1.CH-1.c1"
+    },
+    {
+     "id": "AN1.CH-1.3.p6",
+     "titre": "Remarque : ln = log_e",
+     "tex": "> Remarque : $\\ln(x) \\equiv \\log_e(x)$, $e = 2.718281828\\ldots$",
+     "notions": [
+      "AN1.N.exp-ln"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.3.p6.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:11:53",
+      "fin": "00:12:40",
+      "transcription": "et finalement je vais faire la remarque que... et on verra ça aussi dans la suite. ...que ln(x) qui était la fonction réciproque de eˣ, vu que loga(x) est la fonction réciproque de aˣ, n'est donc rien d'autre que le log par rapport à la base e de x avec e le nombre d'Euler qui vaut 2,718281828 et ainsi de suite. Et finalement, pour vous permettre de manipuler un peu ces règles de calcul Je finirai cette troisième partie de cette introduction, de ce prélude,"
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     }
+    },
+    {
+     "id": "AN1.CH-1.3.p7",
+     "titre": "Challenge du jour",
+     "tex": "$$\\log_a(\\sqrt5) = \\log_a\\left(5^{\\frac12}\\right) = \\frac12\\log_a(5) \\neq \\left(\\log_a(5)\\right)^{\\frac12}$$\n\nen général ! Mais on a égalité pour $a = $ ?",
+     "notions": [
+      "AN1.N.exp-ln",
+      "AN1.N.puissances"
+     ],
+     "source": {
+      "pdf": "Manuscrit_Cours_Chapitre-1_Prelude__No03_v04.pdf",
+      "page": 2
+     },
+     "original": "orig/AN1.CH-1.3.p7.png",
+     "video": {
+      "fichier": "Prelude__Puissances-racines-etc.-regles-de-calcul__v1.fr.srt",
+      "debut": "00:12:40",
+      "fin": "00:14:10",
+      "transcription": "par un challenge du jour qui consiste à faire la vérification suivante : c'est qu'avec les règles, on a que le logarithme par la base a de √5, vous voyez bien, je peux réécrire √5 comme 5 à la puissance 1/2. Ce qui est la même chose que 1/2 de log par rapport à la base a de 5 et qui n'est donc pas égal à loga(5) à la puissance 1/2. Ça, c'est une faute qu'on voit très souvent. Que le 1/2 est mis au mauvais endroit, la puissance est mise au mauvais endroit. J'ai dis que ceci n'est pas vrai, en fait... Et ça c'est le challenge du jour. ...ceci n'est pas vrai, en général. Mais, à vrai dire, on a égalité pour un certain a que je vous invite à calculer et vous pouvez de nouveau comparer avec les documents en annexe Ceci est donc la fin de la troisième partie du prélude. C'est aussi la fin du prélude. Je vous invite de compléter ce module et de nous rejoindre après pour le chapitre zéro."
+     },
+     "verification": {
+      "statut": "non_verifiable",
+      "details": []
+     },
+     "complement": "AN1.CH-1.c2"
+    }
+   ]
+  }
+ ],
+ "complements": [
+  {
+   "id": "AN1.CH-1.c1",
+   "titre": "Pourquoi log_a(1) = 0 et log_a(a) = 1",
+   "pour": "AN1.CH-1.3.p5",
+   "notions": [
+    "AN1.N.exp-ln"
+   ],
+   "tex": "En utilisant l'identité $\\log_a(a^x) = x$ on obtient\n\n$$\\log_a(1) = \\log_a(a^0) = 0$$\n\n$$\\log_a(a) = \\log_a(a^1) = 1$$",
+   "source": {
+    "pdf": "Complements_Chapitre-1_Prélude__1-1.pdf",
+    "page": 1
+   },
+   "original": "orig/AN1.CH-1.c1.png",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "log(1, a)",
+       "answer": "0"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     },
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "log(a, a)",
+       "answer": "1"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.CH-1.c2",
+   "titre": "Solution du challenge du jour",
+   "pour": "AN1.CH-1.3.p7",
+   "notions": [
+    "AN1.N.exp-ln",
+    "AN1.N.equations"
+   ],
+   "tex": "Trouver $a$ t.q. $\\frac12\\log_a(5) = \\left(\\log_a(5)\\right)^{\\frac12}$.\n\nSoit $x := \\log_a 5$ ; alors $\\frac12 x = x^{\\frac12} \\Rightarrow x^{\\frac12} = 2 \\Rightarrow x = 4$\n\n$\\Rightarrow a^x = 5 \\Rightarrow a^4 = 5 \\Rightarrow a = 5^{\\frac14}$.",
+   "source": {
+    "pdf": "Complements_Chapitre_Prelude.pdf",
+    "page": 1
+   },
+   "original": "orig/AN1.CH-1.c2.png",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "log(5, 5**(1/4))/2",
+       "answer": "sqrt(log(5, 5**(1/4)))"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   },
+   "note": "Le passage « x^{1/2} = 2 » divise par x^{1/2} : cela écarte x = 0, qui est impossible ici car log_a(5) = 0 voudrait dire 5 = 1. Remarque du tuteur, pas du corrigé."
+  }
+ ]
+}

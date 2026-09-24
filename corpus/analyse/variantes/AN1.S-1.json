@@ -1,0 +1,1067 @@
+{
+ "serie": "AN1.S-1",
+ "variantes": [
+  {
+   "id": "AN1.S-1.I.1.v1",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "(-3)^3",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(-3)**3"
+   },
+   "solution": "-27",
+   "solution_tex": "-27",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.1.v2",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "5^{-2}",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "5**(-2)"
+   },
+   "solution": "1/25",
+   "solution_tex": "\\frac{1}{25}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.1.v3",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "\\frac{2^{15}}{2^{12}}",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "2**15/2**12"
+   },
+   "solution": "8",
+   "solution_tex": "8",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.1.v4",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "\\left(\\frac{2}{3}\\right)^{-3}",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(2/3)**(-3)"
+   },
+   "solution": "27/8",
+   "solution_tex": "\\frac{27}{8}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.1.v5",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "27^{-2/3}",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "27**(-2/3)"
+   },
+   "solution": "1/9",
+   "solution_tex": "\\frac{1}{9}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.1.v6",
+   "base": "AN1.S-1.I.1",
+   "consigne": "Calculer, sans calculatrice, chacune des expressions suivantes.",
+   "enonce": "-3^2",
+   "notions": [
+    "AN1.N.puissances"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "-3**2"
+   },
+   "solution": "-9",
+   "solution_tex": "-9",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.2.v1",
+   "base": "AN1.S-1.I.2",
+   "consigne": "Simplifier chaque expression. Ecrire la réponse sans exposants négatifs.",
+   "enonce": "\\sqrt{200}-\\sqrt{18}",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.racines"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "sqrt(200)-sqrt(18)"
+   },
+   "solution": "7*sqrt(2)",
+   "solution_tex": "7 \\sqrt{2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.2.v2",
+   "base": "AN1.S-1.I.2",
+   "consigne": "Simplifier chaque expression. Ecrire la réponse sans exposants négatifs.",
+   "enonce": "(3a^3b^2)(2a^2b)^3",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.racines"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(3*a**3*b**2)*(2*a**2*b)**3"
+   },
+   "solution": "24*a**9*b**5",
+   "solution_tex": "24 a^{9} b^{5}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.2.v3",
+   "base": "AN1.S-1.I.2",
+   "consigne": "Simplifier chaque expression. Ecrire la réponse sans exposants négatifs.",
+   "enonce": "\\left(\\frac{3x^2y^{1/2}}{xy^{-3/2}}\\right)^{-2}",
+   "notions": [
+    "AN1.N.puissances",
+    "AN1.N.racines"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(3*x**2*y**(1/2)/(x*y**(-3/2)))**(-2)",
+    "assume": {
+     "x": {
+      "positive": true
+     },
+     "y": {
+      "positive": true
+     }
+    }
+   },
+   "solution": "1/(9*x**2*y**4)",
+   "solution_tex": "\\frac{1}{9 x^{2} y^{4}}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.3.v1",
+   "base": "AN1.S-1.I.3",
+   "consigne": "Développer et simplifier.",
+   "enonce": "(3x-1)(2x+4)",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "(3*x-1)*(2*x+4)",
+    "form": "developpee"
+   },
+   "solution": "6*x**2 + 10*x - 4",
+   "solution_tex": "6 x^{2} + 10 x - 4",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.3.v2",
+   "base": "AN1.S-1.I.3",
+   "consigne": "Développer et simplifier.",
+   "enonce": "(x-3)^2",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "(x-3)**2",
+    "form": "developpee"
+   },
+   "solution": "x**2 - 6*x + 9",
+   "solution_tex": "x^{2} - 6 x + 9",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.3.v3",
+   "base": "AN1.S-1.I.3",
+   "consigne": "Développer et simplifier.",
+   "enonce": "(2x-1)^3",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "(2*x-1)**3",
+    "form": "developpee"
+   },
+   "solution": "8*x**3 - 12*x**2 + 6*x - 1",
+   "solution_tex": "8 x^{3} - 12 x^{2} + 6 x - 1",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.3.v4",
+   "base": "AN1.S-1.I.3",
+   "consigne": "Développer et simplifier.",
+   "enonce": "(3x+2)^2",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "(3*x+2)**2",
+    "form": "developpee"
+   },
+   "solution": "9*x**2 + 12*x + 4",
+   "solution_tex": "9 x^{2} + 12 x + 4",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.4.v1",
+   "base": "AN1.S-1.I.4",
+   "consigne": "Factoriser chaque expression.",
+   "enonce": "4x^2-25",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "4*x**2-25",
+    "form": "factorisee"
+   },
+   "solution": "(2*x - 5)*(2*x + 5)",
+   "solution_tex": "\\left(2 x - 5\\right) \\left(2 x + 5\\right)",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.4.v2",
+   "base": "AN1.S-1.I.4",
+   "consigne": "Factoriser chaque expression.",
+   "enonce": "2x^2+5x-3",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "2*x**2+5*x-3",
+    "form": "factorisee"
+   },
+   "solution": "(x + 3)*(2*x - 1)",
+   "solution_tex": "\\left(x + 3\\right) \\left(2 x - 1\\right)",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.4.v3",
+   "base": "AN1.S-1.I.4",
+   "consigne": "Factoriser chaque expression.",
+   "enonce": "x^3+2x^2-x-2",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "x**3+2*x**2-x-2",
+    "form": "factorisee"
+   },
+   "solution": "(x - 1)*(x + 1)*(x + 2)",
+   "solution_tex": "\\left(x - 1\\right) \\left(x + 1\\right) \\left(x + 2\\right)",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.4.v4",
+   "base": "AN1.S-1.I.4",
+   "consigne": "Factoriser chaque expression.",
+   "enonce": "x^3-x^2-4",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "x**3-x**2-4",
+    "form": "factorisee"
+   },
+   "solution": "(x - 2)*(x**2 + x + 2)",
+   "solution_tex": "\\left(x - 2\\right) \\left(x^{2} + x + 2\\right)",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.4.v5",
+   "base": "AN1.S-1.I.4",
+   "consigne": "Factoriser chaque expression.",
+   "enonce": "x^3y-4xy^3",
+   "notions": [
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "x**3*y-4*x*y**3",
+    "form": "factorisee"
+   },
+   "solution": "x*y*(x - 2*y)*(x + 2*y)",
+   "solution_tex": "x y \\left(x - 2 y\\right) \\left(x + 2 y\\right)",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.5.v1",
+   "base": "AN1.S-1.I.5",
+   "consigne": "Simplifier l'expression rationnelle.",
+   "enonce": "\\frac{x^2-9}{x^2+x-6}",
+   "notions": [
+    "AN1.N.fractions-rationnelles",
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(x**2-9)/(x**2+x-6)"
+   },
+   "solution": "(x - 3)/(x - 2)",
+   "solution_tex": "\\frac{x - 3}{x - 2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.5.v2",
+   "base": "AN1.S-1.I.5",
+   "consigne": "Simplifier l'expression rationnelle.",
+   "enonce": "\\frac{x^2}{x^2-4}-\\frac{x+1}{x+2}",
+   "notions": [
+    "AN1.N.fractions-rationnelles",
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "x**2/(x**2-4)-(x+1)/(x+2)"
+   },
+   "solution": "1/(x - 2)",
+   "solution_tex": "\\frac{1}{x - 2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.5.v3",
+   "base": "AN1.S-1.I.5",
+   "consigne": "Simplifier l'expression rationnelle.",
+   "enonce": "\\frac{\\frac{a}{b}-\\frac{b}{a}}{\\frac{1}{a}+\\frac{1}{b}}",
+   "notions": [
+    "AN1.N.fractions-rationnelles",
+    "AN1.N.factoriser"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "(a/b-b/a)/(1/a+1/b)"
+   },
+   "solution": "a - b",
+   "solution_tex": "a - b",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.6.v1",
+   "base": "AN1.S-1.I.6",
+   "consigne": "Rendre le dénominateur rationnel et simplifier.",
+   "enonce": "\\frac{\\sqrt{6}}{3-\\sqrt{3}}",
+   "notions": [
+    "AN1.N.rationaliser",
+    "AN1.N.racines"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "sqrt(6)/(3-sqrt(3))"
+   },
+   "solution": "sqrt(2)/2 + sqrt(6)/2",
+   "solution_tex": "\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{6}}{2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.6.v2",
+   "base": "AN1.S-1.I.6",
+   "consigne": "Rendre le dénominateur rationnel et simplifier.",
+   "enonce": "\\frac{h}{\\sqrt{h+9}-3}",
+   "notions": [
+    "AN1.N.rationaliser",
+    "AN1.N.racines"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "h/(sqrt(h+9)-3)",
+    "assume": {
+     "h": {
+      "positive": true
+     }
+    }
+   },
+   "solution": "h/(sqrt(h + 9) - 3)",
+   "solution_tex": "\\frac{h}{\\sqrt{h + 9} - 3}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.8.v1",
+   "base": "AN1.S-1.I.8",
+   "consigne": "Compléter le carré.",
+   "enonce": "x^2+3x+1",
+   "notions": [
+    "AN1.N.completer-carre"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "x**2+3*x+1",
+    "form": "carre"
+   },
+   "solution": "(x + 3/2)**2 - 5/4",
+   "solution_tex": "\\left(x + \\frac{3}{2}\\right)^{2} - \\frac{5}{4}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.8.v2",
+   "base": "AN1.S-1.I.8",
+   "consigne": "Compléter le carré.",
+   "enonce": "2x^2-8x+5",
+   "notions": [
+    "AN1.N.completer-carre"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "2*x**2-8*x+5",
+    "form": "carre"
+   },
+   "solution": "2*(x - 2)**2 - 3",
+   "solution_tex": "2 \\left(x - 2\\right)^{2} - 3",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v1",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "3x-4=2+\\frac{x}{3}",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "3*x-4",
+    "rhs": "2+x/3"
+   },
+   "solution": "{9/4}",
+   "solution_tex": "\\left\\{\\frac{9}{4}\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v2",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "x^2-5x+6=0",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "x**2-5*x+6",
+    "rhs": "0"
+   },
+   "solution": "{2, 3}",
+   "solution_tex": "\\left\\{2,\\ 3\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v3",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "x^4-5x^2+4=0",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "x**4-5*x**2+4",
+    "rhs": "0"
+   },
+   "solution": "{-2, -1, 1, 2}",
+   "solution_tex": "\\left\\{-2,\\ -1,\\ 1,\\ 2\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v4",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "2|x+1|=7",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "2*Abs(x+1)",
+    "rhs": "7"
+   },
+   "solution": "{-9/2, 5/2}",
+   "solution_tex": "\\left\\{- \\frac{9}{2},\\ \\frac{5}{2}\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v5",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "\\frac{2x+1}{\\sqrt{3-x}}-4\\sqrt{3-x}=0",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "(2*x+1)/sqrt(3-x)-4*sqrt(3-x)",
+    "rhs": "0"
+   },
+   "solution": "{11/6}",
+   "solution_tex": "\\left\\{\\frac{11}{6}\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.9.v6",
+   "base": "AN1.S-1.I.9",
+   "consigne": "Résoudre l'équation. (Chercher seulement les solutions réelles.)",
+   "enonce": "\\frac{2}{x-3}=\\frac{1}{x+1}+\\frac{8}{(x+1)(x-3)}",
+   "notions": [
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "2/(x-3)",
+    "rhs": "1/(x+1)+8/((x+1)*(x-3))"
+   },
+   "solution": "EmptySet",
+   "solution_tex": "\\emptyset",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v1",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "1<2x+3\\le 9",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "(1 < 2*x+3) & (2*x+3 <= 9)"
+   },
+   "solution": "Interval.Lopen(-1, 3)",
+   "solution_tex": "]-1,\\,3]",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v2",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "x^2<2x+8",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "x**2 < 2*x+8"
+   },
+   "solution": "Interval.open(-2, 4)",
+   "solution_tex": "]-2,\\,4[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v3",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "(x+1)(x-3)(x-5)>0",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "(x+1)*(x-3)*(x-5) > 0"
+   },
+   "solution": "Union(Interval.open(-1, 3), Interval.open(5, oo))",
+   "solution_tex": "]-1,\\,3[\\,\\cup\\,]5,\\,\\infty[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v4",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "|2x-1|\\le 3",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "Abs(2*x-1) <= 3"
+   },
+   "solution": "Interval(-1, 2)",
+   "solution_tex": "[-1,\\,2]",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v5",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "\\frac{x+3}{x-1}\\ge 2",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "(x+3)/(x-1) >= 2"
+   },
+   "solution": "Interval.Lopen(1, 5)",
+   "solution_tex": "]1,\\,5]",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.I.10.v6",
+   "base": "AN1.S-1.I.10",
+   "consigne": "Résoudre chaque inégalité. Ecrire les réponses sous forme d'intervalles.",
+   "enonce": "|x^2-5|<4",
+   "notions": [
+    "AN1.N.inequations",
+    "AN1.N.valeur-absolue"
+   ],
+   "spec": {
+    "type": "solve",
+    "rel": "Abs(x**2-5) < 4"
+   },
+   "solution": "Union(Interval.open(-3, -1), Interval.open(1, 3))",
+   "solution_tex": "]-3,\\,-1[\\,\\cup\\,]1,\\,3[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.1.v1",
+   "base": "AN1.S-1.II.1",
+   "consigne": "Convertir de degrés en radians.",
+   "enonce": "135^\\circ",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "135*pi/180"
+   },
+   "solution": "3*pi/4",
+   "solution_tex": "\\frac{3 \\pi}{4}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.1.v2",
+   "base": "AN1.S-1.II.1",
+   "consigne": "Convertir de degrés en radians.",
+   "enonce": "-210^\\circ",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "-210*pi/180"
+   },
+   "solution": "-7*pi/6",
+   "solution_tex": "- \\frac{7 \\pi}{6}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.2.v1",
+   "base": "AN1.S-1.II.2",
+   "consigne": "Convertir de radians en degrés.",
+   "enonce": "\\frac{5\\pi}{4}",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "5*pi/4*180/pi"
+   },
+   "solution": "225",
+   "solution_tex": "225",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.2.v2",
+   "base": "AN1.S-1.II.2",
+   "consigne": "Convertir de radians en degrés.",
+   "enonce": "\\frac{2\\pi}{9}",
+   "notions": [
+    "AN1.N.trigo-radians"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "2*pi/9*180/pi"
+   },
+   "solution": "40",
+   "solution_tex": "40",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.4.v1",
+   "base": "AN1.S-1.II.4",
+   "consigne": "Quelles sont les valeurs suivantes ?",
+   "enonce": "\\cos\\left(\\tfrac{5\\pi}{6}\\right)",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "cos(5*pi/6)"
+   },
+   "solution": "-sqrt(3)/2",
+   "solution_tex": "- \\frac{\\sqrt{3}}{2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.4.v2",
+   "base": "AN1.S-1.II.4",
+   "consigne": "Quelles sont les valeurs suivantes ?",
+   "enonce": "\\sin\\left(\\tfrac{4\\pi}{3}\\right)",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "sin(4*pi/3)"
+   },
+   "solution": "-sqrt(3)/2",
+   "solution_tex": "- \\frac{\\sqrt{3}}{2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.4.v3",
+   "base": "AN1.S-1.II.4",
+   "consigne": "Quelles sont les valeurs suivantes ?",
+   "enonce": "\\tan\\left(\\tfrac{3\\pi}{4}\\right)",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "tan(3*pi/4)"
+   },
+   "solution": "-1",
+   "solution_tex": "-1",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.4.v4",
+   "base": "AN1.S-1.II.4",
+   "consigne": "Quelles sont les valeurs suivantes ?",
+   "enonce": "\\cos\\left(\\tfrac{11\\pi}{6}\\right)",
+   "notions": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "cos(11*pi/6)"
+   },
+   "solution": "sqrt(3)/2",
+   "solution_tex": "\\frac{\\sqrt{3}}{2}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.II.8.v1",
+   "base": "AN1.S-1.II.8",
+   "consigne": "Chercher toutes les valeurs de $x$ comprises entre $0$ et $2\\pi$ telles que $\\sin(2x)=\\sin(x)$.",
+   "enonce": "\\cos(2x)=\\cos(x),\\ x\\in[0,2\\pi]",
+   "notions": [
+    "AN1.N.trigo-identites",
+    "AN1.N.equations"
+   ],
+   "spec": {
+    "type": "solve",
+    "lhs": "cos(2*x)",
+    "rhs": "cos(x)",
+    "domain": "Interval(0, 2*pi)"
+   },
+   "solution": "{0, 2*pi/3, 4*pi/3, 2*pi}",
+   "solution_tex": "\\left\\{0,\\ \\frac{2 \\pi}{3},\\ \\frac{4 \\pi}{3},\\ 2 \\pi\\right\\}",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.2.v1",
+   "base": "AN1.S-1.III.2",
+   "consigne": "Pour $f(x)=x^3$, calculer le quotient différentiel $\\frac{f(2+h)-f(2)}{h}$ et le simplifier.",
+   "enonce": "f(x)=x^2:\\ \\frac{f(3+h)-f(3)}{h}",
+   "notions": [
+    "AN1.N.developper"
+   ],
+   "spec": {
+    "type": "eq",
+    "expr": "((3+h)**2-9)/h"
+   },
+   "solution": "h + 6",
+   "solution_tex": "h + 6",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.3.v1",
+   "base": "AN1.S-1.III.3",
+   "consigne": "Déterminer le domaine de définition de la fonction.",
+   "enonce": "f(x)=\\frac{x-1}{x^2-4x+3}",
+   "notions": [
+    "AN1.N.domaine"
+   ],
+   "spec": {
+    "type": "domain",
+    "expr": "(x-1)/(x**2-4*x+3)"
+   },
+   "solution": "Union(Interval.open(-oo, 1), Interval.open(1, 3), Interval.open(3, oo))",
+   "solution_tex": "]-\\infty,\\,1[\\,\\cup\\,]1,\\,3[\\,\\cup\\,]3,\\,\\infty[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.3.v2",
+   "base": "AN1.S-1.III.3",
+   "consigne": "Déterminer le domaine de définition de la fonction.",
+   "enonce": "h(x)=\\sqrt{9-x^2}+\\sqrt{x}",
+   "notions": [
+    "AN1.N.domaine"
+   ],
+   "spec": {
+    "type": "domain",
+    "expr": "sqrt(9-x**2)+sqrt(x)"
+   },
+   "solution": "Interval(0, 3)",
+   "solution_tex": "[0,\\,3]",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.7.v1",
+   "base": "AN1.S-1.III.7",
+   "consigne": "Soient $f(x)=x^2+2x-1$ et $g(x)=2x-3$. Déterminer les fonctions suivantes.",
+   "enonce": "f(x)=x^2-1,\\ g(x)=3x+2:\\ f\\circ g",
+   "notions": [
+    "AN1.N.composition"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "(3*x+2)**2-1",
+    "form": "developpee"
+   },
+   "solution": "9*x**2 + 12*x + 3",
+   "solution_tex": "9 x^{2} + 12 x + 3",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.7.v2",
+   "base": "AN1.S-1.III.7",
+   "consigne": "Soient $f(x)=x^2+2x-1$ et $g(x)=2x-3$. Déterminer les fonctions suivantes.",
+   "enonce": "f(x)=x^2-1,\\ g(x)=3x+2:\\ g\\circ f",
+   "notions": [
+    "AN1.N.composition"
+   ],
+   "spec": {
+    "type": "form",
+    "expr": "3*(x**2-1)+2",
+    "form": "developpee"
+   },
+   "solution": "3*x**2 - 1",
+   "solution_tex": "3 x^{2} - 1",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.9.v1",
+   "base": "AN1.S-1.III.9",
+   "consigne": "Pour chaque fonction $f$ définie sur l'intervalle $I$, trouver le domaine de définition de la fonction réciproque $f^{-1}$ et dessiner les graphes de $f$ et $f^{-1}$. N.B. : Tous les domaines $I$ sont choisis en sorte que la fonction réciproque existe. Rappel : La fonction réciproque d'une fonction bijective $f\\colon X\\to Y$ fait correspondre à tout élément $y$ de $Y$ l'unique élément $x$ de $X$ qui est solution de l'équation $f(x)=y$. On a donc $f^{-1}(y)=x$.",
+   "enonce": "f(x)=e^{2x} \\text{ sur } \\mathbb{R}",
+   "notions": [
+    "AN1.N.fonction-reciproque",
+    "AN1.N.trigo-valeurs",
+    "AN1.N.exp-ln"
+   ],
+   "spec": {
+    "type": "range",
+    "expr": "exp(2*x)",
+    "interval": "Reals"
+   },
+   "solution": "Interval.open(0, oo)",
+   "solution_tex": "]0,\\,\\infty[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  },
+  {
+   "id": "AN1.S-1.III.9.v2",
+   "base": "AN1.S-1.III.9",
+   "consigne": "Pour chaque fonction $f$ définie sur l'intervalle $I$, trouver le domaine de définition de la fonction réciproque $f^{-1}$ et dessiner les graphes de $f$ et $f^{-1}$. N.B. : Tous les domaines $I$ sont choisis en sorte que la fonction réciproque existe. Rappel : La fonction réciproque d'une fonction bijective $f\\colon X\\to Y$ fait correspondre à tout élément $y$ de $Y$ l'unique élément $x$ de $X$ qui est solution de l'équation $f(x)=y$. On a donc $f^{-1}(y)=x$.",
+   "enonce": "f(x)=x^2 \\text{ sur } [0,\\infty[",
+   "notions": [
+    "AN1.N.fonction-reciproque",
+    "AN1.N.trigo-valeurs",
+    "AN1.N.exp-ln"
+   ],
+   "spec": {
+    "type": "range",
+    "expr": "x**2",
+    "interval": "Interval(0, oo)"
+   },
+   "solution": "Interval(0, oo)",
+   "solution_tex": "[0,\\,\\infty[",
+   "origine": "tuteur",
+   "verification": {
+    "statut": "solution_sympy"
+   }
+  }
+ ]
+}

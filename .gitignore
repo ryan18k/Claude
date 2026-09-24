@@ -1,2 +1,4 @@
 data/raw/
+data/vendor/
+app/dist/
 __pycache__/

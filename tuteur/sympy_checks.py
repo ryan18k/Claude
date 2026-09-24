@@ -105,6 +105,9 @@ def check_form(spec, answer):
     if form == "developpee":
         good = sp.expand(r) == r
         res["sympy"] = tex(sp.expand(P(spec["expr"], A)))
+    elif form == "carre":  # a(x + h)^2 + k
+        good = _is_completed_square(r)
+        res["sympy"] = tex(_completed_square(P(spec["expr"], A), symbols(A)[spec.get("var", "x")]))
     elif form == "factorisee":
         good = r.is_Mul or r.is_Pow
         res["sympy"] = tex(sp.factor(P(spec["expr"], A)))
@@ -122,7 +125,24 @@ def _as_set(s, assume=None):
     loc.update({"FiniteSet": sp.FiniteSet, "Interval": sp.Interval, "Union": sp.Union,
                 "EmptySet": sp.S.EmptySet, "Reals": sp.S.Reals, "Complement": sp.Complement,
                 "Integers": sp.S.Integers})
-    return sp.sympify(s, locals=loc)
+    return parse_expr(s, local_dict=loc, transformations=_T, evaluate=True)
+
+
+def _completed_square(e, x):
+    a, b, c = sp.Poly(sp.expand(e), x).all_coeffs()
+    h = sp.nsimplify(b / (2 * a))
+    k = sp.nsimplify(c - b ** 2 / (4 * a))
+    sq = sp.Pow(x + h, 2, evaluate=False)
+    return sp.Add(sq if a == 1 else sp.Mul(a, sq, evaluate=False), k, evaluate=False)
+
+
+def _is_completed_square(r):
+    """Vrai si r s'écrit a*(x + h)**2 + k (un seul carré d'un binôme du premier degré, plus une constante)."""
+    terms = sp.Add.make_args(r)
+    squares = [t for t in terms if any(isinstance(f, sp.Pow) and f.exp == 2 and sp.Poly(f.base).degree() == 1
+                                       for f in sp.Mul.make_args(t))]
+    rest = [t for t in terms if t not in squares]
+    return len(squares) == 1 and all(t.is_number for t in rest)
 
 
 def check_solve(spec, answer):
@@ -263,3 +283,217 @@ def run(spec, answer=None):
         return CHECKS[spec["type"]](spec, answer if answer is not None else spec.get("answer"))
     except Exception as e:  # une spec illisible ne doit jamais passer pour « vérifiée »
         return {"ok": None, "methode": "erreur", "sympy": "", "detail": f"{type(e).__name__}: {e}"}
+
+
+# ---------------------------------------------------------------- Lecture des réponses « comme sur papier »
+import re
+
+_SUP = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", "0123456789-+")
+_SUPRUN = re.compile(r"[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+")
+
+
+def _sqrt_unicode(s):
+    """√3 → sqrt(3), √(x+1) → sqrt(x+1), √x → sqrt(x), ∛8 → 8**(1/3)."""
+    out, i = [], 0
+    while i < len(s):
+        ch = s[i]
+        if ch in "√∛":
+            j = i + 1
+            if j < len(s) and s[j] == "(":
+                depth, k = 0, j
+                while k < len(s):
+                    depth += s[k] == "("
+                    depth -= s[k] == ")"
+                    if depth == 0:
+                        break
+                    k += 1
+                arg, i = s[j + 1:k], k + 1
+            else:
+                m = re.match(r"[0-9.]+|[A-Za-zπ]", s[j:])
+                arg = m.group(0) if m else ""
+                i = j + len(arg)
+            out.append(f"sqrt({arg})" if ch == "√" else f"({arg})**(1/3)")
+        else:
+            out.append(ch)
+            i += 1
+    return "".join(out)
+
+
+def normalize_expr(t, decimal_comma=True):
+    """Écriture manuscrite/clavier → syntaxe SymPy pour une expression."""
+    s = t.strip()
+    s = s.replace("−", "-").replace("–", "-").replace("×", "*").replace("·", "*").replace("÷", "/")
+    s = s.replace("π", "pi").replace("∞", "oo").replace("≤", "<=").replace("≥", ">=").replace("≠", "!=")
+    s = s.replace("θ", "theta").replace("α", "alpha").replace("β", "beta").replace("°", "")
+    s = _SUPRUN.sub(lambda m: "**(" + m.group(0).translate(_SUP) + ")", s)
+    s = _sqrt_unicode(s)
+    s = re.sub(r"\bln\b", "log", s)
+    s = re.sub(r"\btg\b", "tan", s)
+    s = re.sub(r"\barctg\b|\bArctg\b|\bArctan\b", "atan", s)
+    s = re.sub(r"\barcsin\b|\bArcsin\b", "asin", s)
+    s = re.sub(r"\barccos\b|\bArccos\b", "acos", s)
+    if decimal_comma:
+        s = re.sub(r"(\d),(\d)", r"\1.\2", s)
+    s = re.sub(r"^\s*[a-zA-Z]\w*\s*(\([a-z]\))?\s*=\s*", "", s)  # « x = … », « f(x) = … »
+    return s
+
+
+def _split_top(s, seps):
+    """Coupe s aux séparateurs de niveau 0 (hors parenthèses/crochets/accolades)."""
+    parts, depth, cur = [], 0, ""
+    i = 0
+    while i < len(s):
+        ch = s[i]
+        if ch in "({":
+            depth += 1
+        elif ch in ")}":
+            depth -= 1
+        for sep in seps:
+            if depth == 0 and s.startswith(sep, i):
+                parts.append(cur)
+                cur = ""
+                i += len(sep)
+                break
+        else:
+            cur += ch
+            i += 1
+    parts.append(cur)
+    return [p.strip() for p in parts]
+
+
+def normalize_set(t):
+    """« ]-3,1] ∪ {5} », « x ∈ [1,4[ », « x1 = -3 et x2 = -4 », « ±2 », « ∅ », « ℝ\\{1} » → ensemble SymPy."""
+    s = t.strip().replace("−", "-").replace("–", "-")
+    low = s.lower()
+    if re.search(r"∅|aucune solution|pas de solution|n'admet pas|ensemble vide|^\{\s*\}$", low):
+        return "EmptySet"
+    s = re.sub(r"^\s*[a-z]\s*∈\s*", "", s)
+    s = s.replace("∪", " U ").replace("ℝ", "Reals").replace("\\", " minus ")
+    s = re.sub(r"\bR\b", "Reals", s)
+    # « x1 = -3 et x2 = -4 », « x = 2 ou x = -2 », « -3, -4 » (sans crochets)
+    if not re.search(r"[\[\]{}]|Reals", s):
+        vals = []
+        for part in re.split(r"\s+(?:et|ou)\s+|;|,(?!\d)", s):
+            part = part.strip()
+            if not part:
+                continue
+            part = re.sub(r"^\s*[a-z]\w*\s*=\s*", "", part)
+            if "±" in part:
+                a, b = part.split("±", 1)
+                a = a.strip() or "0"
+                vals += [f"({normalize_expr(a)})+({normalize_expr(b)})", f"({normalize_expr(a)})-({normalize_expr(b)})"]
+            else:
+                vals.append(normalize_expr(part))
+        return f"FiniteSet({', '.join(vals)})"
+    pieces = []
+    for piece in _split_top(s, [" U ", " minus "]):
+        pieces.append(piece)
+    ops = re.findall(r" U | minus ", s)
+    def one(p):
+        p = p.strip()
+        if p == "Reals":
+            return "Reals"
+        m = re.fullmatch(r"([\[\]])(.*),(.*)([\[\]])", p)
+        if m:
+            lo, a, b, hi = m.groups()
+            a, b = normalize_expr(a), normalize_expr(b)
+            lopen, ropen = lo == "]", hi == "["
+            return f"Interval({a}, {b}, {lopen}, {ropen})"
+        m = re.fullmatch(r"\{(.*)\}", p)
+        if m:
+            return "FiniteSet(" + ", ".join(normalize_expr(x) for x in m.group(1).split(",") if x.strip()) + ")"
+        return f"FiniteSet({normalize_expr(p)})"
+    expr = one(pieces[0])
+    for op, p in zip(ops, pieces[1:]):
+        expr = f"Union({expr}, {one(p)})" if op.strip() == "U" else f"Complement({expr}, {one(p)})"
+    return expr
+
+
+def answer_from_text(spec, text):
+    """Traduit la réponse de l'élève selon le type de question."""
+    t = spec["type"]
+    if t in ("solve", "domain", "range"):
+        return normalize_set(text)
+    if t == "truth":
+        return "Vrai" if text.strip().lower().startswith("v") else "Faux"
+    if t == "numeric":
+        return normalize_expr(re.sub(r"[a-zA-Z° ]+$", "", text))
+    return normalize_expr(text)
+
+
+def check_text(spec, text):
+    """Vérifie une réponse écrite par l'élève. Renvoie aussi l'interprétation lue."""
+    try:
+        ans = answer_from_text(spec, text)
+    except Exception as e:
+        return {"ok": None, "methode": "lecture", "sympy": "", "lu": "", "detail": f"réponse illisible : {e}"}
+    r = run(spec, ans)
+    try:
+        A = spec.get("assume")
+        r["lu"] = fr_set(_as_set(ans, A)) if spec["type"] in ("solve", "domain", "range") else \
+            ans if spec["type"] == "truth" else tex(P(ans, A))
+    except Exception:
+        r["lu"] = ans
+    return r
+
+
+# ---------------------------------------------------------------- Solutions calculées par SymPy (variantes)
+
+def fr_set(S):
+    """Ensemble → LaTeX à la française : ]a,b[, ∅, ℝ."""
+    if S == sp.S.EmptySet:
+        return r"\emptyset"
+    if S == sp.S.Reals:
+        return r"\mathbb{R}"
+    if isinstance(S, sp.Interval):
+        lo = "]" if S.left_open else "["
+        hi = "[" if S.right_open else "]"
+        return f"{lo}{tex(S.start)},\\,{tex(S.end)}{hi}".replace("\\infty", "\\infty")
+    if isinstance(S, sp.Union):
+        return r"\,\cup\,".join(fr_set(a) for a in S.args)
+    if isinstance(S, sp.FiniteSet):
+        return r"\left\{" + ",\\ ".join(tex(a) for a in sorted(S.args, key=lambda z: float(z))) + r"\right\}"
+    if isinstance(S, sp.Complement):
+        return fr_set(S.args[0]) + r"\setminus " + fr_set(S.args[1])
+    return tex(S)
+
+
+def compute(spec):
+    """Calcule la réponse attendue avec SymPy seul. Renvoie {"answer": str SymPy, "latex": str} ou lève."""
+    A = spec.get("assume")
+    t = spec["type"]
+    if t in ("eq", "form"):
+        e = P(spec["expr"], A)
+        f = spec.get("form")
+        if f == "carre":
+            r = _completed_square(e, symbols(A)[spec.get("var", "x")])
+            return {"answer": sp.sstr(r), "latex": tex(r)}
+        r = sp.expand(e) if f == "developpee" else sp.factor(e) if f == "factorisee" else sp.simplify(e)
+        return {"answer": sp.sstr(r), "latex": tex(r)}
+    if t == "solve":
+        x = symbols(A)[spec.get("var", "x")]
+        dom = _as_set(spec.get("domain", "Reals"), A)
+        if "rel" in spec:
+            rel = P(spec["rel"], A)
+            sol = dom
+            for r_ in (rel.args if isinstance(rel, sp.And) else (rel,)):
+                sol = sp.Intersection(sol, sp.solveset(r_, x, dom))
+        else:
+            lhs, rhs = P(spec["lhs"], A), P(spec["rhs"], A)
+            d = continuous_domain(lhs - rhs, x, dom) if dom != sp.S.Integers else dom
+            sol = sp.solveset(sp.Eq(lhs, rhs), x, d)
+        sol = sp.simplify(sol)
+        if isinstance(sol, (sp.ConditionSet, sp.ImageSet)):
+            raise ValueError("SymPy ne résout pas cette équation exactement")
+        return {"answer": sp.srepr(sol) if False else str(sol), "latex": fr_set(sol)}
+    if t == "domain":
+        x = symbols(A)[spec.get("var", "x")]
+        d = continuous_domain(P(spec["expr"], A), x, sp.S.Reals)
+        return {"answer": str(d), "latex": fr_set(d)}
+    if t == "range":
+        x = symbols(A)[spec.get("var", "x")]
+        r = function_range(P(spec["expr"], A), x, _as_set(spec["interval"], A))
+        return {"answer": str(r), "latex": fr_set(r)}
+    if t == "numeric":
+        return {"answer": str(float(P(spec["expr"]))), "latex": f"{float(P(spec['expr'])):.4g}"}
+    raise ValueError(f"type {t} : pas de calcul automatique")

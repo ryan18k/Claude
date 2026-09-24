@@ -1,0 +1,757 @@
+{
+ "chapitre": "AN1.CH-1",
+ "notions": [
+  {
+   "id": "AN1.N.puissances",
+   "titre": "Puissances",
+   "prerequis": [],
+   "idee": "Même base : on additionne les exposants. Puissance d'une puissance : on multiplie.",
+   "formule": "a^n a^m = a^{n+m},\\quad (a^n)^m = a^{nm},\\quad (ab)^m = a^m b^m,\\quad a^{-m} = \\frac{1}{a^m},\\quad a^0 = 1",
+   "piege": "$-2^2 = -4$ mais $(-2)^2 = 4$ : l'exposant ne porte que sur ce qui est juste avant lui.",
+   "passages": [
+    "AN1.CH-1.3.p1",
+    "AN1.CH-1.3.p2"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.1",
+    "AN1.S-1.I.2",
+    "AN1.S-1.I.7",
+    "AN1.S-1.I.11",
+    "AN1.S-1.I.12",
+    "AN1.S-1.I.13",
+    "AN1.S-1.III.8"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "-2**2",
+       "answer": "-4"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     },
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "(-2)**2",
+       "answer": "4"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     },
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "a**(-m)",
+       "answer": "1/a**m"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.racines",
+   "titre": "Racines",
+   "prerequis": [
+    "AN1.N.puissances"
+   ],
+   "idee": "La racine n-ième est la puissance $\\frac1n$, pour $a > 0$ : toutes les règles des puissances s'appliquent.",
+   "formule": "\\sqrt[n]{a} = a^{1/n},\\quad \\sqrt{ab} = \\sqrt a\\,\\sqrt b,\\quad \\sqrt{a^2 + b^2} \\neq a + b",
+   "piege": "Dans ce cours on n'écrit jamais $\\sqrt[3]{-8}$ mais $-\\sqrt[3]{8}$ (vidéo Puissances, 06:16).",
+   "passages": [
+    "AN1.CH-1.3.p2",
+    "AN1.CH-1.3.p3"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.2",
+    "AN1.S-1.I.6",
+    "AN1.S-1.I.11"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "truth",
+       "lhs": "sqrt(a**2+b**2)",
+       "rhs": "a+b",
+       "answer": "Faux"
+      },
+      "ok": true,
+      "methode": "numerique",
+      "detail": "l'égalité est fausse en général"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.developper",
+   "titre": "Développer (identités remarquables)",
+   "prerequis": [
+    "AN1.N.puissances"
+   ],
+   "idee": "Chaque terme de la première parenthèse multiplie chaque terme de la seconde.",
+   "formule": "(a+b)^2 = a^2 + 2ab + b^2,\\quad (a+b)(a-b) = a^2 - b^2,\\quad (a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3",
+   "piege": "$(p+q)^2 \\neq p^2 + q^2$ : on oublie le double produit $2pq$ (série -1, I.11a).",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.3",
+    "AN1.S-1.III.2"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "(a+b)**3",
+       "answer": "a**3+3*a**2*b+3*a*b**2+b**3"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.factoriser",
+   "titre": "Factoriser",
+   "prerequis": [
+    "AN1.N.developper"
+   ],
+   "idee": "Mettre en évidence, reconnaître une identité remarquable, ou trouver une racine $r$ et diviser par $(x - r)$.",
+   "formule": "x^3 + x^2 - 2 \\text{ s'annule en } x = 1 \\ \\Rightarrow\\ x^3 + x^2 - 2 = (x - 1)(x^2 + 2x + 2)",
+   "piege": "Toujours re-développer pour contrôler : c'est ainsi qu'on voit l'erreur du corrigé officiel en I.4d.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.4",
+    "AN1.S-1.I.5"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "x**3+x**2-2",
+       "answer": "(x-1)*(x**2+2*x+2)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.fractions-rationnelles",
+   "titre": "Fractions (et doubles fractions)",
+   "prerequis": [
+    "AN1.N.factoriser"
+   ],
+   "idee": "Factoriser numérateur et dénominateur, puis simplifier. Diviser par une fraction = multiplier par son inverse.",
+   "formule": "\\frac{\\frac{a}{b}}{\\frac{c}{d}} = \\frac{a}{b}\\cdot\\frac{d}{c},\\qquad \\frac{a}{b} + \\frac{c}{d} = \\frac{ad + bc}{bd}",
+   "piege": "$\\frac{1}{x - y} \\neq \\frac1x - \\frac1y$ (série -1, I.11f).",
+   "passages": [
+    "AN1.CH-1.1.p6"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.5",
+    "AN1.S-1.I.11"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "(a/b)/(c/d)",
+       "answer": "a*d/(b*c)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.rationaliser",
+   "titre": "Rendre un dénominateur rationnel",
+   "prerequis": [
+    "AN1.N.racines",
+    "AN1.N.developper"
+   ],
+   "idee": "Multiplier en haut et en bas par l'expression conjuguée, pour utiliser $(a+b)(a-b) = a^2 - b^2$.",
+   "formule": "\\frac{1}{\\sqrt2} = \\frac{1}{\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2} = \\frac{\\sqrt2}{2},\\qquad \\frac{1}{5 - \\sqrt2} = \\frac{5 + \\sqrt2}{25 - 2}",
+   "piege": "On multiplie par $1$ écrit astucieusement ; ne changer que le dénominateur change la valeur.",
+   "passages": [
+    "AN1.CH-1.1.p2",
+    "AN1.CH-1.1.p6"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.6"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "1/(5-sqrt(2))",
+       "answer": "(5+sqrt(2))/23"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.completer-carre",
+   "titre": "Compléter le carré",
+   "prerequis": [
+    "AN1.N.developper"
+   ],
+   "idee": "Écrire $ax^2 + bx + c$ comme $a(x + \\ldots)^2 + $ constante, en corrigeant le terme ajouté.",
+   "formule": "ax^2 + bx + c = a\\left(x + \\frac{b}{2a}\\right)^2 + c - \\frac{b^2}{4a}",
+   "piege": "Mettre $a$ en évidence d'abord : le terme correcteur est $\\frac{b^2}{4a}$, pas $\\frac{b^2}{4}$.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.8"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "a*x**2+b*x+c",
+       "answer": "a*(x+b/(2*a))**2+c-b**2/(4*a)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.equations",
+   "titre": "Équations",
+   "prerequis": [
+    "AN1.N.factoriser",
+    "AN1.N.completer-carre",
+    "AN1.N.fractions-rationnelles"
+   ],
+   "idee": "Noter d'abord le domaine (dénominateurs $\\neq 0$, racines $\\geq 0$), résoudre, puis rejeter les solutions hors domaine.",
+   "formule": "ax^2 + bx + c = 0 \\iff x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\quad (b^2 - 4ac \\geq 0)",
+   "piege": "En I.9h, $x = 2$ sort du calcul mais est interdit : l'équation n'a pas de solution.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.9",
+    "AN1.S-1.I.13",
+    "AN1.S-1.II.8"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "solve",
+       "lhs": "3/(x-2)",
+       "rhs": "1/(x-1)+3/((x-1)*(x-2))",
+       "answer": "EmptySet"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "ensemble des solutions identique"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.inequations",
+   "titre": "Inéquations",
+   "prerequis": [
+    "AN1.N.equations"
+   ],
+   "idee": "Tout passer d'un côté, factoriser, puis faire un tableau de signes.",
+   "formule": "\\frac{3x-2}{2x+1} \\leq 2 \\iff \\frac{-x-4}{2x+1} \\leq 0 \\iff x \\in\\, ]-\\infty, -4] \\cup ]-\\tfrac12, \\infty[",
+   "piege": "Ne jamais multiplier par une expression de signe inconnu (comme $2x + 1$) : le sens de l'inégalité pourrait changer.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.10"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "solve",
+       "rel": "(3*x-2)/(2*x+1) <= 2",
+       "answer": "Union(Interval(-oo, -4), Interval.open(-1/2, oo))"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "ensemble des solutions identique"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.valeur-absolue",
+   "titre": "Valeur absolue",
+   "prerequis": [
+    "AN1.N.inequations"
+   ],
+   "idee": "$|x - a|$ est la distance entre $x$ et $a$.",
+   "formule": "|x - a| < r \\iff a - r < x < a + r",
+   "piege": "$|x - 2| = \\frac{12}{5}$ a deux solutions : $x - 2 = \\pm\\frac{12}{5}$.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.10"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "solve",
+       "rel": "Abs(x-3) < 2",
+       "answer": "Interval.open(1, 5)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "ensemble des solutions identique"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.trigo-radians",
+   "titre": "Radians",
+   "prerequis": [],
+   "idee": "$180^\\circ = \\pi$ rad ; la longueur d'un arc est rayon × angle en radians.",
+   "formule": "\\theta_{\\text{rad}} = \\theta_{\\text{deg}}\\cdot\\frac{\\pi}{180},\\qquad s = r\\,\\theta",
+   "piege": "$50^\\circ = \\frac{5\\pi}{18}$, positif : le corrigé officiel (II.1c) a un signe moins en trop.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.II.1",
+    "AN1.S-1.II.2",
+    "AN1.S-1.II.3"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "50*pi/180",
+       "answer": "5*pi/18"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.trigo-valeurs",
+   "titre": "Valeurs de sin, cos, tan",
+   "prerequis": [
+    "AN1.N.trigo-radians",
+    "AN1.N.racines"
+   ],
+   "idee": "Les valeurs en $\\frac\\pi6, \\frac\\pi4, \\frac\\pi3$ viennent du triangle isocèle et du demi-triangle équilatéral ; $\\tan := \\frac{\\sin}{\\cos}$.",
+   "formule": "\\sin\\tfrac\\pi6 = \\tfrac12,\\ \\sin\\tfrac\\pi4 = \\tfrac{\\sqrt2}{2},\\ \\sin\\tfrac\\pi3 = \\tfrac{\\sqrt3}{2};\\quad \\cos\\tfrac\\pi6 = \\tfrac{\\sqrt3}{2},\\ \\cos\\tfrac\\pi3 = \\tfrac12;\\quad \\tan\\tfrac\\pi4 = 1",
+   "piege": "Hors de $[0, \\frac\\pi2]$, le signe dépend du quadrant : $\\sin\\frac{7\\pi}{4} = -\\frac{\\sqrt2}{2}$ (le corrigé officiel II.4b oublie le signe).",
+   "passages": [
+    "AN1.CH-1.1.p2",
+    "AN1.CH-1.1.p3",
+    "AN1.CH-1.1.p5",
+    "AN1.CH-1.1.p6"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.II.4",
+    "AN1.S-1.II.5",
+    "AN1.S-1.II.6",
+    "AN1.S-1.II.9",
+    "AN1.S-1.III.9"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "sin(7*pi/4)",
+       "answer": "-sqrt(2)/2"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.trigo-identites",
+   "titre": "Identités trigonométriques",
+   "prerequis": [
+    "AN1.N.trigo-valeurs"
+   ],
+   "idee": "Presque tout se déduit de $\\sin^2 + \\cos^2 = 1$ et des formules d'addition.",
+   "formule": "\\sin^2 x + \\cos^2 x = 1,\\quad \\sin(x + y) = \\sin x\\cos y + \\cos x\\sin y,\\quad \\sin 2x = 2\\sin x\\cos x",
+   "piege": "Connaissant $\\sin x$, $\\cos x = \\sqrt{1 - \\sin^2 x}$ seulement si $\\cos x \\geq 0$ (d'où « $x$ entre $0$ et $\\frac\\pi2$ » en II.6).",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.II.6",
+    "AN1.S-1.II.7",
+    "AN1.S-1.II.8"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "sin(2*x)",
+       "answer": "2*sin(x)*cos(x)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     },
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "sin(x+y)",
+       "answer": "sin(x)*cos(y)+cos(x)*sin(y)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.graphe-fonction",
+   "titre": "Lire un graphe",
+   "prerequis": [],
+   "idee": "$f(a)$ se lit à la verticale de $a$ ; « $f(x) = c$ » se lit à l'horizontale de hauteur $c$.",
+   "formule": "\\text{domaine} = \\text{projection sur } Ox,\\qquad \\text{image} = \\text{projection sur } Oy",
+   "piege": "Le prof insiste : avoir le réflexe de dessiner le graphe de chaque fonction (vidéo Paires, 00:46).",
+   "passages": [
+    "AN1.CH-1.1.p1"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.II.9",
+    "AN1.S-1.III.1",
+    "AN1.S-1.III.5",
+    "AN1.S-1.III.6"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "non_verifiable",
+    "details": []
+   }
+  },
+  {
+   "id": "AN1.N.domaine",
+   "titre": "Domaine de définition",
+   "prerequis": [
+    "AN1.N.inequations"
+   ],
+   "idee": "Exclure ce qui est interdit : dénominateur nul, racine carrée d'un négatif, $\\ln$ d'un nombre $\\leq 0$.",
+   "formule": "\\text{Convention du cours : } x^{r} \\text{ avec } r \\text{ non entier n'est défini que pour } x > 0",
+   "piege": "À cause de cette convention, $x^{1/3}$ a pour domaine $]0, \\infty[$ dans ce cours (corrigé III.3b, note 1).",
+   "passages": [
+    "AN1.CH-1.3.p2"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.III.1",
+    "AN1.S-1.III.3"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "domain",
+       "expr": "sqrt(4-x)+sqrt(x**2-1)",
+       "answer": "Union(Interval(-oo, -1), Interval(1, 4))"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "domaine identique"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.transformations-graphe",
+   "titre": "Transformer un graphe",
+   "prerequis": [
+    "AN1.N.graphe-fonction"
+   ],
+   "idee": "Modifier l'argument déplace horizontalement (à l'envers) ; modifier la valeur déplace verticalement.",
+   "formule": "f(x - 3):\\ \\to 3,\\quad f(x) + 2:\\ \\uparrow 2,\\quad -f(x):\\ \\text{réflexion } Ox,\\quad 2f(x):\\ \\text{étirement vertical}",
+   "piege": "$\\cos(x) = \\sin(x + \\frac\\pi2)$ : ajouter $\\frac\\pi2$ dans l'argument pousse le graphe vers la gauche (vidéo Fonctions élémentaires, 00:54).",
+   "passages": [
+    "AN1.CH-1.1.p1"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.II.9",
+    "AN1.S-1.III.4",
+    "AN1.S-1.III.5"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "sin(x+pi/2)",
+       "answer": "cos(x)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.composition",
+   "titre": "Composition",
+   "prerequis": [
+    "AN1.N.developper"
+   ],
+   "idee": "$(f\\circ g)(x) = f(g(x))$ : on remplace $x$ par $g(x)$ dans $f$. L'ordre compte.",
+   "formule": "f(x) = x^2 + 2x - 1,\\ g(x) = 2x - 3:\\quad f\\circ g = 4x^2 - 8x + 2,\\quad g\\circ f = 2x^2 + 4x - 5",
+   "piege": "$f\\circ g \\neq g\\circ f$ en général.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.III.7"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "(2*x-3)**2+2*(2*x-3)-1",
+       "answer": "4*x**2-8*x+2"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.fonction-reciproque",
+   "titre": "Fonctions réciproques",
+   "prerequis": [
+    "AN1.N.composition",
+    "AN1.N.graphe-fonction"
+   ],
+   "idee": "$f^{-1}$ défait $f$ : $f^{-1}(f(x)) = x$. Son graphe est le reflet de celui de $f$ par rapport à $y = x$.",
+   "formule": "D(f^{-1}) = \\text{image de } f;\\quad \\sqrt{x^2} = x\\ (x\\geq 0),\\quad \\ln(e^x) = x,\\quad \\arctan(\\tan x) = x\\ (|x| < \\tfrac\\pi2)",
+   "piege": "Chaque identité a sa condition : $\\sqrt{x^2} = x$ seulement pour $x \\geq 0$ (sinon $\\sqrt{x^2} = |x|$).",
+   "passages": [
+    "AN1.CH-1.2.p1",
+    "AN1.CH-1.2.p2",
+    "AN1.CH-1.2.p3"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.III.9"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "sqrt(x**2)",
+       "answer": "Abs(x)"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.exp-ln",
+   "titre": "Exponentielle et logarithmes",
+   "prerequis": [
+    "AN1.N.fonction-reciproque",
+    "AN1.N.puissances"
+   ],
+   "idee": "$\\log_a$ est la réciproque de $a^x$ ; ses règles viennent de celles des puissances.",
+   "formule": "\\log_a(xy) = \\log_a x + \\log_a y,\\quad \\log_a(x^r) = r\\log_a x,\\quad \\log_a 1 = 0,\\quad \\ln = \\log_e",
+   "piege": "$\\log_a(\\sqrt5) = \\frac12\\log_a 5$, pas $(\\log_a 5)^{1/2}$ : la puissance mal placée est une faute fréquente (challenge du jour).",
+   "passages": [
+    "AN1.CH-1.2.p2",
+    "AN1.CH-1.3.p4",
+    "AN1.CH-1.3.p5",
+    "AN1.CH-1.3.p6",
+    "AN1.CH-1.3.p7"
+   ],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.III.8",
+    "AN1.S-1.III.9"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "log(sqrt(5), a)",
+       "answer": "log(5, a)/2"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.sommes",
+   "titre": "Sommes et télescopage",
+   "prerequis": [
+    "AN1.N.puissances"
+   ],
+   "idee": "Multiplier $\\sum a^k$ par $(1 - a)$ fait se simplifier les termes deux à deux.",
+   "formule": "\\left(\\sum_{k=0}^{n} a^k\\right)(1 - a) = 1 - a^{n+1}",
+   "piege": "Ne pas développer la somme terme à terme : écrire les deux lignes et barrer (indication du corrigé I.12b).",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.I.12"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "eq",
+       "expr": "(1+a+a**2+a**3)*(1-a)",
+       "answer": "1-a**4"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "égalité confirmée"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.logique",
+   "titre": "Calcul propositionnel",
+   "prerequis": [],
+   "idee": "Une proposition est vraie ou fausse ; on prouve une équivalence en comparant les tableaux de vérité.",
+   "formule": "(p\\Rightarrow q) \\iff (\\neg p \\vee q),\\qquad (p\\Rightarrow q) \\iff (\\neg q \\Rightarrow \\neg p)",
+   "piege": "La réciproque $q \\Rightarrow p$ n'a aucun rapport avec $p \\Rightarrow q$ (série -1, partie IV). Sujet marqué ♦ : il revient au chapitre 0.",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.IV.1",
+    "AN1.S-1.IV.2",
+    "AN1.S-1.IV.3"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "conforme",
+    "details": [
+     {
+      "spec": {
+       "type": "logic",
+       "expr": "Equivalent(Implies(p, q), Implies(~q, ~p))"
+      },
+      "ok": true,
+      "methode": "symbolique",
+      "detail": "vraie pour toutes les valeurs de vérité"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AN1.N.quantificateurs",
+   "titre": "Quantificateurs ∀ et ∃",
+   "prerequis": [
+    "AN1.N.logique"
+   ],
+   "idee": "Nier échange $\\forall$ et $\\exists$ ; l'ordre des quantificateurs change le sens.",
+   "formule": "\\neg(\\forall x,\\ p(x)) \\iff \\exists x,\\ \\neg p(x);\\qquad \\exists x\\,\\forall y \\Rightarrow \\forall y\\,\\exists x \\text{ (pas l'inverse)}",
+   "piege": "Pour réfuter une implication, un seul contre-exemple suffit (corrigé IV.2e, IV.2f, IV.3c).",
+   "passages": [],
+   "chapitre": "AN1.CH-1",
+   "exercices": [
+    "AN1.S-1.IV.2",
+    "AN1.S-1.IV.3"
+   ],
+   "origine": "tuteur",
+   "verification": {
+    "statut": "non_verifiable",
+    "details": []
+   }
+  }
+ ]
+}

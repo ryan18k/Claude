@@ -1,0 +1,1006 @@
+<title>Carnet de prépa</title>
+<meta name="description" content="Suivi d'apprentissage et professeur particulier pour la préparation à l'EPFL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --paper: #FBFCFE; --card: #FFFFFF; --ink: #1A2230; --muted: #5A6477; --faint: #8A93A5;
+  --line: #E3E8F0; --rule: #D5E3F5; --accent: #C8127A; --accent-soft: #FCEAF4; --pen: #2F55D4; --pen-soft: #EAF0FF;
+  --ok: #1F7A4D; --ok-soft: #E4F4EB; --warn: #9A5A00; --warn-soft: #FFF3DC; --bad: #B3261E; --bad-soft: #FCE9E7;
+  --shadow: 0 1px 2px rgba(26,34,48,.06), 0 4px 16px rgba(26,34,48,.05);
+  --r: 10px; --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
+    --line: #273041; --rule: #22324A; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
+    --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
+    --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
+  --line: #273041; --rule: #22324A; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
+  --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
+  --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.55 var(--font); margin: 0; -webkit-text-size-adjust: 100%; }
+* { box-sizing: border-box; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; border-radius: 6px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.25; margin: 0; }
+h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } h3 { font-size: 1.02rem; }
+.mono { font-family: var(--mono); font-size: .78rem; letter-spacing: .01em; }
+.muted { color: var(--muted); } .small { font-size: .88rem; }
+
+/* ---------- ossature ---------- */
+.app { display: grid; grid-template-columns: 76px minmax(0, 1fr); height: 100%; }
+.app.with-chat { grid-template-columns: 76px minmax(0, 1fr) minmax(340px, 420px); }
+.rail { border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 6px; padding-block: 14px; background: var(--card); }
+.rail .brand { font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; writing-mode: vertical-rl; transform: rotate(180deg); }
+.tab { width: 62px; border: 0; background: none; border-radius: 12px; padding: 8px 2px; display: grid; justify-items: center; gap: 3px; font-size: .7rem; color: var(--muted); }
+.tab svg { width: 22px; height: 22px; }
+.tab[aria-current="page"] { background: var(--pen-soft); color: var(--pen); font-weight: 700; }
+.tab.prof { margin-top: auto; color: var(--accent); }
+.tab.prof[aria-pressed="true"] { background: var(--accent-soft); }
+main { overflow-y: auto; padding-inline: 28px; padding-block: 22px 60px; }
+.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
+.topline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
+.status { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ---------- éléments ---------- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: grid; gap: 10px; }
+.card.lift { box-shadow: var(--shadow); }
+.encadre { border: 1.5px solid var(--accent); border-radius: 4px; padding: 8px 12px; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.btn { border: 1px solid var(--line); background: var(--card); border-radius: 9px; padding: 8px 14px; min-height: 40px; display: inline-flex; align-items: center; gap: 6px; }
+.btn:hover { border-color: var(--faint); }
+.btn.primary { background: var(--pen); border-color: var(--pen); color: #fff; font-weight: 700; }
+.btn.ghost { border-color: transparent; background: none; color: var(--pen); padding-inline: 8px; }
+.btn.small { min-height: 32px; padding: 4px 10px; font-size: .88rem; }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 99px; padding: 2px 10px; font-size: .78rem; border: 1px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap; }
+button.chip { cursor: pointer; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+.chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.chip.bad { background: var(--bad-soft); color: var(--bad); border-color: transparent; }
+.chip.pen { background: var(--pen-soft); color: var(--pen); border-color: transparent; }
+.chip.acc { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: inline-block; flex: none; }
+.dot.en_cours { background: var(--warn); } .dot.reussi { background: var(--ok); } .dot.a_revoir { background: var(--bad); } .dot.fait { background: var(--pen); }
+.bar { height: 7px; border-radius: 9px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--pen); border-radius: 9px; }
+.list { display: grid; gap: 2px; }
+.li { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 9px; border: 0; background: none; text-align: left; width: 100%; }
+.li:hover { background: var(--pen-soft); }
+.li .grow { flex: 1; min-width: 0; }
+.eyebrow { font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); font-weight: 700; }
+.math-block { overflow-x: auto; overflow-y: hidden; padding-block: 2px; }
+.tex p { margin: 0 0 .5em; } .tex p:last-child { margin-bottom: 0; }
+.tex .katex-display { margin: .4em 0; overflow-x: auto; overflow-y: hidden; }
+details > summary { cursor: pointer; color: var(--pen); list-style: none; font-size: .9rem; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] > summary { margin-bottom: 8px; }
+.orig { max-width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #fff; }
+.transcript { font-size: .92rem; color: var(--muted); border-left: 3px solid var(--rule); padding-left: 12px; }
+.goto { display: flex; gap: 8px; }
+.goto input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; background: var(--card); }
+.plan-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 10px 4px; border-bottom: 1px dashed var(--line); }
+.plan-item:last-child { border-bottom: 0; }
+.plan-n { font-family: var(--mono); color: var(--accent); font-weight: 600; }
+.breadcrumb { display: flex; gap: 6px; flex-wrap: wrap; font-size: .88rem; color: var(--muted); }
+.breadcrumb button { border: 0; background: none; color: var(--pen); padding: 0; }
+
+/* ---------- exercice ---------- */
+.item { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
+.item:first-of-type { border-top: 0; padding-top: 0; }
+.item-head { display: flex; gap: 10px; align-items: baseline; }
+.item-head .sub { font-weight: 700; color: var(--accent); min-width: 1.4em; }
+.answer { display: grid; gap: 8px; }
+.answer textarea { width: 100%; min-height: 46px; resize: vertical; border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; background: var(--paper); }
+.feedback { border-radius: 9px; padding: 10px 12px; display: grid; gap: 6px; font-size: .95rem; }
+.feedback.ok { background: var(--ok-soft); } .feedback.bad { background: var(--bad-soft); } .feedback.warn { background: var(--warn-soft); } .feedback.info { background: var(--pen-soft); }
+.corrige { background: var(--paper); border: 1px dashed var(--faint); border-radius: 9px; padding: 10px 12px; display: grid; gap: 6px; }
+.thumbs { display: flex; gap: 6px; flex-wrap: wrap; }
+.thumbs img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+
+/* ---------- professeur ---------- */
+.chat { border-left: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; min-height: 0; height: 100%; }
+.chat-head { padding: 12px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+.chat-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 92%; border-radius: 12px; padding: 9px 12px; font-size: .96rem; }
+.msg.user { align-self: flex-end; background: var(--pen-soft); }
+.msg.prof { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); }
+.msg .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.chat-foot { border-top: 1px solid var(--line); padding: 10px; display: grid; gap: 8px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
+.chat-foot textarea { width: 100%; min-height: 44px; max-height: 160px; resize: none; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; background: var(--paper); }
+.close-chat { display: none; }
+
+/* ---------- étroit : barre du bas, professeur en plein écran ---------- */
+@media (max-width: 1099px) {
+  .app.with-chat { grid-template-columns: 76px minmax(0, 1fr); }
+  .chat { position: fixed; inset: 0; z-index: 20; border-left: 0; padding-top: env(safe-area-inset-top, 0px); }
+  .close-chat { display: inline-flex; }
+}
+@media (max-width: 700px) {
+  .app, .app.with-chat { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  .rail { order: 2; flex-direction: row; justify-content: space-around; border-right: 0; border-top: 1px solid var(--line); padding: 4px 4px calc(4px + env(safe-area-inset-bottom, 0px)); }
+  .rail .brand { display: none; }
+  .tab.prof { margin-top: 0; }
+  main { padding-inline: 16px; padding-block: 16px 40px; }
+}
+@media (prefers-reduced-motion: no-preference) { .msg { animation: rise .18s ease-out; } }
+@keyframes rise { from { transform: translateY(3px); opacity: .6; } to { transform: none; opacity: 1; } }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<div class="app" id="app">
+  <nav class="rail" aria-label="Navigation">
+    <div class="brand">Carnet</div>
+    <button class="tab" data-tab="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Aujourd'hui</button>
+    <button class="tab" data-tab="cours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M8 7h8M8 11h6"/></svg>Cours</button>
+    <button class="tab" data-tab="exos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20l1-4L16 6l3 3L9 19z"/><path d="M14 8l3 3"/></svg>Exercices</button>
+    <button class="tab" data-tab="progres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progrès</button>
+    <button class="tab prof" id="profBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/></svg>Prof</button>
+  </nav>
+  <main id="main"><div class="wrap"><p class="muted">Chargement du cours…</p></div></main>
+  <aside class="chat" id="chat" hidden aria-label="Professeur"></aside>
+</div>
+<input type="file" id="photoInput" accept="image/*" capture="environment" multiple hidden>
+
+<script>
+'use strict';
+/* ====================================================================== utilitaires */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const today = () => new Date().toLocaleDateString('sv-SE');           // AAAA-MM-JJ, heure locale
+const addDays = (d, n) => { const x = new Date(d + 'T12:00:00'); x.setDate(x.getDate() + n); return x.toLocaleDateString('sv-SE'); };
+const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('fr-CH', {weekday: 'long', day: 'numeric', month: 'long'});
+const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+const deaccent = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+async function getJSON(u) { const r = await fetch(u); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }
+
+/* ====================================================================== rendu des maths */
+function kx(tex, display) {
+  if (!window.katex) return `<code>${esc(tex)}</code>`;
+  try { return katex.renderToString(tex, {displayMode: !!display, throwOnError: false, strict: 'ignore', output: 'html'}); }
+  catch (e) { return `<code>${esc(tex)}</code>`; }
+}
+// Texte avec $…$, $$…$$, \(…\), \[…\] ; « > » en début de ligne = encadré ; ligne vide = paragraphe ; **gras**.
+function inline(s) {
+  const out = [];
+  const re = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\$([^$]+?)\$|\\\(([\s\S]+?)\\\)/g;
+  let last = 0, m;
+  while ((m = re.exec(s))) {
+    out.push(esc(s.slice(last, m.index)).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'));
+    const disp = m[1] ?? m[2];
+    out.push(disp != null ? `<div class="math-block">${kx(disp, true)}</div>` : kx(m[3] ?? m[4], false));
+    last = re.lastIndex;
+  }
+  out.push(esc(s.slice(last)).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'));
+  return out.join('');
+}
+function renderTex(src) {
+  const blocks = String(src || '').split(/\n\s*\n/);
+  return '<div class="tex">' + blocks.map(b => {
+    const lines = b.split('\n');
+    if (lines.every(l => l.startsWith('>'))) return `<div class="encadre">${lines.map(l => `<p>${inline(l.replace(/^>\s?/, ''))}</p>`).join('')}</div>`;
+    return `<p>${lines.map(inline).join('<br>')}</p>`;
+  }).join('') + '</div>';
+}
+const math = (tex, display) => tex ? (display ? `<div class="math-block">${kx(tex, true)}</div>` : kx(tex, false)) : '';
+
+/* ====================================================================== état global */
+const APP = {
+  C: {matieres: [], chap: {}, serie: {}, notions: {}, variantes: {}},     // corpus
+  EX: {}, ITEM: {}, PASS: {}, NOTION: {}, VAR: {}, VARBASE: {},          // index
+  S: {profil: null, ex: {}, notion: {}, session: null, fils: {}},        // état d'apprentissage
+  cap: {db: null, sample: null, user: null, limits: null},
+  store: 'local', sympy: {state: 'off', info: null},
+  view: {tab: 'today', route: null},
+  chat: {open: false, ref: 'general', busy: false, ctl: null, photos: []},
+  answers: {},                                                            // brouillons, par item
+};
+
+/* ====================================================================== stockage : db synchronisée, sinon navigateur */
+const Store = {
+  q: {},
+  async init() {
+    const db = await (window.claude?.use ? claude.use('db').catch(() => null) : null);
+    if (db) { APP.cap.db = db; this.mode = 'db'; } else { this.mode = 'local'; }
+    APP.store = this.mode;
+  },
+  key: p => 'carnet:' + p,
+  async get(path) {
+    if (this.mode === 'db') { const s = await APP.cap.db.doc(path).get(); return s.exists ? s.data() : null; }
+    try { return JSON.parse(localStorage.getItem(this.key(path)) || 'null'); } catch (e) { return null; }
+  },
+  async list(coll) {
+    if (this.mode === 'db') { const s = await APP.cap.db.collection(coll).limit(1000).get(); return Object.fromEntries(s.docs.map(d => [d.id, d.data()])); }
+    const out = {};
+    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('carnet:' + coll + '/')) out[k.split('/').pop()] = JSON.parse(localStorage.getItem(k)); } } catch (e) {}
+    return out;
+  },
+  set(path, data) {                                                        // une écriture à la fois par document
+    const body = JSON.parse(JSON.stringify(data));
+    const run = async () => {
+      if (this.mode === 'db') {
+        try { await APP.cap.db.doc(path).set(body); }
+        catch (e) { if (e?.code === 'unavailable') { await new Promise(r => setTimeout(r, 800 + Math.random() * 800)); await APP.cap.db.doc(path).set(body); } else { toast('Sauvegarde impossible : ' + (e?.message || e?.code)); } }
+      } else { try { localStorage.setItem(this.key(path), JSON.stringify(body)); } catch (e) {} }
+    };
+    this.q[path] = (this.q[path] || Promise.resolve()).then(run, run);
+    return this.q[path];
+  },
+  watch(coll, onChange) {                                                  // synchro iPad ↔ ordinateur
+    if (this.mode !== 'db') return;
+    APP.cap.db.collection(coll).onSnapshot(s => {
+      let changed = false;
+      for (const ch of s.docChanges()) if (ch.type !== 'removed' && !ch.doc.metadata.hasPendingWrites) { onChange(ch.doc.id, ch.doc.data()); changed = true; }
+      if (changed) render();
+    }, () => {});
+  },
+};
+function toast(msg) { const t = document.createElement('div'); t.className = 'chip warn'; t.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:50;padding:8px 14px;font-size:.9rem;white-space:normal;max-width:calc(100% - 32px);text-align:center'; t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 4000); }
+
+/* ====================================================================== SymPy (worker Pyodide) */
+const Sym = {
+  w: null, n: 0, wait: {},
+  start() {
+    if (this.w || APP.sympy.state === 'ko') return;
+    APP.sympy.state = 'chargement'; renderStatus();
+    const base = new URL('py/', location.href).href;
+    const boot = w => {
+      this.w = w;
+      w.onmessage = e => { const p = this.wait[e.data.id]; if (p) { delete this.wait[e.data.id]; e.data.ok ? p.res(e.data.result) : p.rej(new Error(e.data.error)); } };
+      w.onerror = e => { this.fail('le worker ne démarre pas (' + (e.message || 'erreur') + ')'); };
+      this.call('init', {}, 180000).then(info => { APP.sympy = {state: 'pret', info}; renderStatus(); }, err => this.fail(err.message));
+    };
+    try { boot(new Worker(base + 'worker.js', {type: 'module'})); }
+    catch (e) {                                                            // repli : worker depuis un blob
+      fetch(base + 'worker.js').then(r => r.text()).then(src => {
+        const w = new Worker(URL.createObjectURL(new Blob([src], {type: 'text/javascript'})), {type: 'module'});
+        w.postMessage({id: -1, op: 'noop', base}); boot(w);
+      }).catch(err => this.fail(err.message));
+    }
+  },
+  fail(msg) { APP.sympy = {state: 'ko', info: msg}; Object.values(this.wait).forEach(p => p.rej(new Error(msg))); this.wait = {}; renderStatus(); },
+  call(op, args, timeout = 60000) {
+    this.start();
+    if (!this.w) return Promise.reject(new Error('SymPy indisponible'));
+    const id = ++this.n;
+    return new Promise((res, rej) => {
+      this.wait[id] = {res, rej};
+      this.w.postMessage({id, op, args, base: new URL('py/', location.href).href});
+      setTimeout(() => { if (this.wait[id]) { delete this.wait[id]; rej(new Error('SymPy trop lent')); } }, timeout);
+    });
+  },
+  check(spec, text) { return this.call('check_text', {spec, text}, 90000); },
+  run(spec, answer) { return this.call('run', {spec, answer}, 90000); },
+  compute(spec) { return this.call('compute', {spec}, 90000); },
+};
+function badge(v) {                                                        // l'app dit toujours d'où vient la validation
+  if (!v) return '<span class="chip">non vérifié</span>';
+  if (v === 'sympy_ok') return '<span class="chip ok">✓ vérifié par SymPy</span>';
+  if (v === 'sympy_ko') return '<span class="chip bad">✗ SymPy : faux</span>';
+  if (v === 'conforme') return '<span class="chip ok">✓ conforme au corrigé EPFL (SymPy)</span>';
+  if (v === 'divergence') return '<span class="chip bad">⚠ SymPy contredit le corrigé EPFL</span>';
+  if (v === 'solution_sympy') return '<span class="chip pen">solution calculée par SymPy</span>';
+  if (v === 'non_verifiable') return '<span class="chip">non vérifiable par SymPy</span>';
+  return '<span class="chip">non vérifié</span>';
+}
+
+/* ====================================================================== corpus */
+async function loadCorpus() {
+  const idx = await getJSON('corpus/index.json');
+  APP.C.matieres = idx.matieres;
+  for (const m of idx.matieres) for (const ch of m.chapitres) {
+    const [chap, notions, serie, vars] = await Promise.all([getJSON(ch.chapitre), getJSON(ch.notions), getJSON(ch.serie), ch.variantes ? getJSON(ch.variantes) : null]);
+    APP.C.chap[chap.id] = chap; APP.C.serie[serie.id] = serie;
+    for (const s of chap.sections) for (const p of s.passages) APP.PASS[p.id] = {...p, section: s};
+    for (const c of chap.complements) APP.PASS[c.id] = {...c, complementaire: true};
+    for (const n of notions.notions) APP.NOTION[n.id] = n;
+    for (const e of serie.exercices) {
+      e.serie = serie.id; APP.EX[e.id] = e;
+      for (const it of e.items) { it.ex = e; APP.ITEM[it.id] = it; }
+    }
+    for (const v of vars?.variantes || []) { APP.VAR[v.id] = v; (APP.VARBASE[v.base] ||= []).push(v); }
+  }
+}
+const itemKey = it => it.sub || '_';
+const exOfItem = id => APP.ITEM[id]?.ex;
+const label = id => {                                                      // « Série -1 · I.7 i »
+  const it = APP.ITEM[id]; const e = it ? it.ex : APP.EX[id];
+  if (e) return `Série ${APP.C.serie[e.serie].numero} · ${e.partie}.${e.num}${it?.sub ? ' ' + it.sub : ''}`;
+  if (APP.PASS[id]) return APP.PASS[id].titre;
+  if (APP.NOTION[id]) return APP.NOTION[id].titre;
+  if (APP.VAR[id]) return 'Variante de ' + label(APP.VAR[id].base);
+  return 'Question libre';
+};
+
+/* ====================================================================== état d'apprentissage */
+function exState(exId) { return (APP.S.ex[exId] ||= {items: {}, variantes: {}}); }
+function itemState(id) { const it = APP.ITEM[id]; const st = exState(it.ex.id); return (st.items[itemKey(it)] ||= {statut: 'nouveau', tentatives: 0}); }
+function notionState(id) { return (APP.S.notion[id] ||= {maitrise: null, n: 0}); }
+function saveEx(exId) { const st = exState(exId); st.maj = new Date().toISOString(); return Store.set('ex/' + exId, st); }
+function saveNotion(id) { return Store.set('notion/' + id, notionState(id)); }
+function saveProfil() { return Store.set('profil/moi', APP.S.profil); }
+
+// Répétition espacée (SM-2 simplifié) : q = 1 juste, 0.5 partiel, 0 faux.
+function srs(st, q) {
+  const s = st.srs || {int: 0, ease: 2.5, reps: 0};
+  if (q >= 1) { s.reps += 1; s.int = s.reps === 1 ? 1 : s.reps === 2 ? 3 : Math.round(s.int * s.ease); s.ease = clamp(s.ease + .1, 1.3, 3); }
+  else if (q > 0) { s.reps = Math.max(0, s.reps - 1); s.int = 1; s.ease = clamp(s.ease - .15, 1.3, 3); }
+  else { s.reps = 0; s.int = 1; s.ease = clamp(s.ease - .2, 1.3, 3); }
+  s.due = addDays(today(), s.int);
+  st.srs = s;
+}
+function record(id, {verdict, reponse, verif, erreurs = [], blocage, source = 'texte'}) {
+  const it = APP.ITEM[id]; const st = itemState(id);
+  const q = verdict === 'juste' ? 1 : verdict === 'partiel' ? .5 : 0;
+  st.tentatives = (st.tentatives || 0) + 1;
+  st.statut = q >= 1 ? 'reussi' : 'a_revoir';
+  st.derniere = {date: new Date().toISOString(), reponse: String(reponse || '').slice(0, 300), verdict, verif: verif || null, source};
+  if (erreurs.length) st.erreurs = [...new Set([...(st.erreurs || []), ...erreurs.map(e => e.tag)])].slice(-6);
+  if (blocage) st.blocage = blocage.slice(0, 160);
+  srs(st, q);
+  for (const n of it.ex.notions) { const ns = notionState(n); ns.maitrise = ns.maitrise == null ? q : .7 * ns.maitrise + .3 * q; ns.n = (ns.n || 0) + 1; ns.derniere = today(); saveNotion(n); }
+  const P = APP.S.profil;
+  P.erreurs ||= {};
+  for (const e of erreurs) {
+    const r = (P.erreurs[e.tag] ||= {n: 0, description: e.description, refs: []});
+    r.n += 1; r.derniere = today(); r.description = e.description || r.description; r.refs = [...new Set([...r.refs, id])].slice(-8);
+  }
+  P.dernier = id; saveProfil(); saveEx(it.ex.id);
+  logEvent({type: 'reponse', ref: id, verdict, verif});
+}
+function markManual(id, statut) {                                          // import de ce qui était déjà fait sur papier
+  const st = itemState(id); st.statut = statut;
+  if (statut === 'fait') { st.srs = {int: 3, ease: 2.5, reps: 1, due: addDays(today(), 3)}; }
+  if (statut === 'a_revoir') { st.srs = {int: 1, ease: 2.3, reps: 0, due: today()}; }
+  if (statut === 'nouveau') { delete st.srs; }
+  saveEx(APP.ITEM[id].ex.id); logEvent({type: 'marque', ref: id, statut});
+}
+function logEvent(ev) {
+  const S = APP.S.session;
+  S.evenements.push({...ev, t: new Date().toTimeString().slice(0, 5)});
+  if (S.evenements.length > 150) S.evenements = S.evenements.slice(-150);
+  Store.set('session/' + S.date, S);
+}
+async function loadState() {
+  const [profil, ex, notion] = await Promise.all([Store.get('profil/moi'), Store.list('ex'), Store.list('notion')]);
+  APP.S.profil = profil || {prenom: 'Ryan', debut: today(), erreurs: {}, stats: {reponses: 0, longues: 0}};
+  APP.S.profil.stats ||= {reponses: 0, longues: 0};
+  APP.S.ex = ex; APP.S.notion = notion;
+  const d = today();
+  APP.S.session = (await Store.get('session/' + d)) || {date: d, evenements: []};
+  if (!profil) saveProfil();
+  if (APP.S.profil.derniere_session !== d) {                               // la session précédente devient « à résumer »
+    APP.S.profil.session_precedente = APP.S.profil.derniere_session || null;
+    APP.S.profil.derniere_session = d; saveProfil();
+  }
+  Store.watch('ex', (id, data) => { APP.S.ex[id] = data; });
+  Store.watch('notion', (id, data) => { APP.S.notion[id] = data; });
+}
+
+/* ====================================================================== « Analyse I, série 2, exercice 1 » → identifiant */
+const ROMAN = {i: 'I', ii: 'II', iii: 'III', iv: 'IV', '1': 'I', '2': 'II', '3': 'III', '4': 'IV'};
+function resolveRef(text, ctxEx) {
+  const t = deaccent(text).replace(/\s+/g, ' ');
+  let serie = (t.match(/serie\s*(-\s*1|-?\d+)/) || [])[1];
+  if (serie == null && /prelude/.test(t)) serie = '-1';
+  if (serie != null) serie = serie.replace(/\s/g, '');
+  const partie = ROMAN[(t.match(/partie\s*(iv|iii|ii|i|[1-4])\b/) || [])[1]];
+  let num = null, sub = null, p2 = null;
+  let m = t.match(/\b(iv|iii|ii|i)\s*[.\s]\s*(\d{1,2})\s*[.\s]?\s*([a-m])?\b/);                     // « I.7.i », « II 4 b »
+  if (m) { p2 = ROMAN[m[1]]; num = +m[2]; sub = m[3] || null; }
+  m = !num && t.match(/ex(?:ercice|o)?\.?\s*(\d{1,2})\s*(?:[.,]?\s*(?:question\s*)?\(?([a-m])\)?)?\b/);
+  if (m) { num = +m[1]; sub = m[2] || null; }
+  if (!num) return null;
+  const sid = 'AN1.S' + (serie ?? (ctxEx ? String(APP.C.serie[ctxEx.serie].numero) : '-1'));
+  const S = APP.C.serie[sid]; if (!S) return null;
+  const part = p2 || partie || (ctxEx && ctxEx.serie === sid ? ctxEx.partie : null);
+  const cands = S.exercices.filter(e => e.num === num && (!part || e.partie === part));
+  if (!cands.length) return null;
+  const e = cands[0];
+  const it = sub && e.items.find(i => i.sub === sub);
+  return {id: it ? it.id : e.id, ambigu: cands.length > 1 ? cands.map(c => c.id) : null};
+}
+
+/* ====================================================================== plan du jour */
+function plan() {
+  const d = today(), out = [];
+  const P = APP.S.profil;
+  const last = P.dernier && APP.ITEM[P.dernier];
+  if (last && itemState(last.id).statut !== 'reussi') out.push({kind: 'reprendre', ref: last.id, why: 'là où tu t\'étais arrêté'});
+  const dues = [];
+  for (const [exId, st] of Object.entries(APP.S.ex)) for (const [k, s] of Object.entries(st.items || {}))
+    if (s.srs?.due && s.srs.due <= d) { const e = APP.EX[exId]; const it = e && e.items.find(i => itemKey(i) === k); if (it) dues.push({it, due: s.srs.due}); }
+  dues.sort((a, b) => a.due.localeCompare(b.due));
+  for (const x of dues.slice(0, 3)) if (!out.some(o => o.ref === x.it.id)) out.push({kind: 'revision', ref: x.it.id, why: 'révision prévue ' + (x.due < d ? 'en retard' : 'aujourd\'hui')});
+  // suite logique : premier item jamais touché, dans l'ordre de la série, précédé des passages de ses notions pas encore lus
+  for (const S of Object.values(APP.C.serie)) {
+    const next = S.exercices.flatMap(e => e.items).find(it => (itemState(it.id).statut || 'nouveau') === 'nouveau');
+    if (next) {
+      const unread = next.ex.notions.flatMap(n => APP.NOTION[n]?.passages || []).find(p => !(P.lus || {})[p]);
+      if (unread) out.push({kind: 'lire', ref: unread, why: 'avant ' + label(next.id)});
+      out.push({kind: 'nouveau', ref: next.id, why: 'suite de la série'});
+      break;
+    }
+  }
+  const weak = Object.entries(APP.S.notion).filter(([id, s]) => s.n >= 2 && s.maitrise < .5 && APP.NOTION[id]).sort((a, b) => a[1].maitrise - b[1].maitrise)[0];
+  if (weak) out.push({kind: 'notion', ref: weak[0], why: 'notion fragile (' + Math.round(weak[1].maitrise * 100) + ' %)'});
+  return out.slice(0, 6);
+}
+
+/* ====================================================================== navigation */
+function go(tab, route = null) { APP.view = {tab, route}; render(); $('#main').scrollTop = 0; }
+function openRef(id) {
+  if (APP.ITEM[id]) return go('exos', {ex: APP.ITEM[id].ex.id, focus: id});
+  if (APP.EX[id]) return go('exos', {ex: id});
+  if (APP.PASS[id]) return go('cours', {passage: id});
+  if (APP.NOTION[id]) return go('cours', {notion: id});
+  if (APP.VAR[id]) return go('exos', {ex: APP.VAR[id].base, variante: id});
+}
+function render() {
+  document.querySelectorAll('.tab[data-tab]').forEach(b => b.setAttribute('aria-current', b.dataset.tab === APP.view.tab ? 'page' : 'false'));
+  const V = {today: viewToday, cours: viewCours, exos: viewExos, progres: viewProgres}[APP.view.tab];
+  $('#main').innerHTML = `<div class="wrap">${V()}</div>`;
+  renderStatus();
+  const r = APP.view.route || {};
+  const anchor = r.focus ? 'it-' + r.focus : r.variante ? 'it-' + r.variante : r.passage ? 'pa-' + r.passage : null;
+  if (anchor && !r.scrolled) { r.scrolled = true; document.getElementById(anchor)?.scrollIntoView({block: 'start'}); }
+}
+function renderStatus() {
+  const el = $('#status'); if (!el) return;
+  const s = APP.sympy.state;
+  const sy = s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>'
+    : s === 'ko' ? `<span class="chip bad" title="${esc(APP.sympy.info)}">SymPy indisponible</span>` : '<button class="chip" data-a="sympy-start">Charger SymPy</button>';
+  const st = APP.store === 'db' ? '<span class="chip ok">synchronisé</span>' : '<span class="chip warn" title="La progression reste dans ce navigateur">non synchronisé</span>';
+  const cl = APP.cap.sample ? '' : '<span class="chip warn">professeur indisponible</span>';
+  el.innerHTML = sy + st + cl;
+}
+const statusBar = () => '<div class="status" id="status"></div>';
+
+/* ====================================================================== vue : Aujourd'hui */
+function viewToday() {
+  const P = APP.S.profil, items = plan();
+  const kinds = {reprendre: 'Reprendre', revision: 'Réviser', nouveau: 'Nouvel exercice', lire: 'Lire', notion: 'Consolider'};
+  const allItems = Object.values(APP.ITEM);
+  const done = allItems.filter(i => ['reussi', 'fait'].includes(itemState(i.id).statut)).length;
+  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 3);
+  const prev = P.session_precedente;
+  return `
+  <div class="topline"><div><div class="eyebrow">${esc(fmtDate(today()))}</div><h1>Salut ${esc(P.prenom)}</h1></div>${statusBar()}</div>
+  <form class="goto" data-f="goto"><input id="gotoInput" placeholder="Aller à… ex. « série -1, I.7 i »" autocomplete="off" aria-label="Aller à un exercice"><button class="btn">Ouvrir</button></form>
+  <section class="card lift"><div class="row" style="justify-content:space-between"><h2>Plan du jour</h2><span class="muted small">${items.length} étapes</span></div>
+    ${items.map((p, i) => `<div class="plan-item"><span class="plan-n">${i + 1}</span>
+      <div><div><b>${kinds[p.kind]}</b> · ${esc(label(p.ref))}</div><div class="muted small">${esc(p.why)}</div></div>
+      <button class="btn small" data-a="open" data-ref="${esc(p.ref)}">Ouvrir</button></div>`).join('') || '<p class="muted">Rien de prévu : tout est à jour.</p>'}
+  </section>
+  <section class="card"><div class="row" style="justify-content:space-between"><h2>Où tu en es</h2><button class="btn ghost small" data-tab-go="progres">Détails</button></div>
+    <div class="row"><span class="mono">${done}/${allItems.length}</span><span class="muted small">questions de la série -1 faites</span></div>
+    <div class="bar"><i style="width:${Math.round(100 * done / Math.max(1, allItems.length))}%"></i></div>
+    ${errs.length ? `<div class="small"><span class="eyebrow">Erreurs qui reviennent</span><div class="list">${errs.map(([t, e]) => `<div class="row"><span class="chip bad">${e.n}×</span><span>${esc(e.description || t)}</span></div>`).join('')}</div></div>` : ''}
+    ${prev ? `<div class="row small"><span class="muted">Session du ${esc(fmtDate(prev))} pas encore résumée.</span><button class="btn small" data-a="resume-session" data-d="${esc(prev)}">Résumer</button></div>` : ''}
+  </section>
+  <section class="card"><h2>Déjà commencé sur papier ?</h2><p class="muted small">Dans Exercices, marque ce que tu as déjà fait (« fait » ou « à revoir »). Le plan en tiendra compte.</p>
+    <div class="row"><button class="btn" data-a="open" data-ref="AN1.S-1.I.1">Série -1, partie I</button></div></section>`;
+}
+
+/* ====================================================================== vue : Cours */
+function viewCours() {
+  const r = APP.view.route || {};
+  if (r.notion) return viewNotion(r.notion);
+  const chap = Object.values(APP.C.chap)[0];
+  const P = APP.S.profil; P.lus ||= {};
+  const passageCard = p => {
+    const lu = P.lus[p.id];
+    const comp = p.complement && APP.PASS[p.complement];
+    return `<article class="card" id="pa-${esc(p.id)}">
+      <div class="row" style="justify-content:space-between"><h3>${esc(p.titre)}</h3><span class="mono muted">${esc(p.id)}</span></div>
+      ${renderTex(p.tex)}
+      <div class="row">${p.notions.map(n => `<button class="chip pen" data-a="notion" data-ref="${n}">${esc(APP.NOTION[n]?.titre || n)}</button>`).join('')}
+        ${p.verification?.statut === 'conforme' ? '<span class="chip ok">calculs vérifiés par SymPy</span>' : ''}</div>
+      <details><summary>Voir l'original (manuscrit, p. ${p.source.page})</summary><img class="orig" loading="lazy" src="corpus/AN1/${esc(p.original)}" alt="Page manuscrite d'origine : ${esc(p.titre)}"></details>
+      ${p.video ? `<details><summary>Ce que dit le prof dans la vidéo (${esc(p.video.debut.slice(3))})</summary><div class="transcript">${esc(p.video.transcription)}</div></details>` : ''}
+      ${comp ? `<details><summary>Complément : ${esc(comp.titre)}</summary>${renderTex(comp.tex)}${comp.note ? `<p class="muted small">${esc(comp.note)}</p>` : ''}<img class="orig" loading="lazy" src="corpus/AN1/${esc(comp.original)}" alt="Complément d'origine"></details>` : ''}
+      <div class="row"><button class="btn small" data-a="ask" data-ref="${esc(p.id)}">Poser une question</button>
+        <button class="btn small ${lu ? '' : 'ghost'}" data-a="lu" data-ref="${esc(p.id)}">${lu ? '✓ Lu' : 'Marquer comme lu'}</button></div>
+    </article>`;
+  };
+  return `
+  <div class="topline"><div><div class="eyebrow">Analyse I</div><h1>${esc(chap.titre)}</h1></div>${statusBar()}</div>
+  <p class="muted">${esc(chap.but)}</p>
+  <div class="row">${chap.sections.map(s => `<button class="chip" data-a="scroll" data-ref="sec-${esc(s.id)}">${esc(s.titre)}</button>`).join('')}<button class="chip acc" data-a="notions">Carte des notions</button></div>
+  ${chap.sections.map(s => `<section class="wrap" id="sec-${esc(s.id)}" style="gap:12px"><h2>${esc(s.titre)}</h2>${s.passages.map(passageCard).join('')}</section>`).join('')}
+  <section class="card"><h2>Ensuite</h2><p>Série -1 : elle sert à repérer tes points faibles avant le chapitre 0.</p><div><button class="btn primary" data-a="open" data-ref="AN1.S-1.I.1">Ouvrir la série -1</button></div></section>`;
+}
+function viewNotion(id) {
+  if (id === '*') return viewNotionMap();
+  const n = APP.NOTION[id]; const s = notionState(id);
+  const pre = n.prerequis.map(p => `<button class="chip pen" data-a="notion" data-ref="${p}">${esc(APP.NOTION[p].titre)}</button>`).join('') || '<span class="muted small">aucun</span>';
+  const vars = n.exercices.flatMap(e => APP.VARBASE[e] || []);
+  return `
+  <div class="breadcrumb"><button data-tab-go="cours">Cours</button>›<button data-a="notions">Notions</button>›<span>${esc(n.titre)}</span></div>
+  <div class="topline"><h1>${esc(n.titre)}</h1>${statusBar()}</div>
+  <section class="card lift"><div class="row" style="justify-content:space-between"><span class="eyebrow">Fiche du tuteur</span>${n.verification?.statut === 'conforme' ? '<span class="chip ok">formules vérifiées par SymPy</span>' : ''}</div>
+    <p style="margin:0">${inline(n.idee)}</p>${math(n.formule, true)}
+    <div class="feedback warn"><div><b>Piège</b> · ${inline(n.piege)}</div></div>
+    <div class="row small"><span class="muted">Prérequis :</span>${pre}</div>
+    <div class="row small"><span class="muted">Maîtrise :</span>${s.maitrise == null ? '<span class="muted">pas encore mesurée</span>' : `<div class="bar" style="width:140px"><i style="width:${Math.round(s.maitrise * 100)}%"></i></div><span class="mono">${Math.round(s.maitrise * 100)} %</span>`}</div>
+  </section>
+  ${n.passages.length ? `<section class="card"><h3>Dans le cours officiel</h3><div class="list">${n.passages.map(p => `<button class="li" data-a="open" data-ref="${p}"><span class="grow">${esc(APP.PASS[p].titre)}</span><span class="mono muted">${p}</span></button>`).join('')}</div></section>` : ''}
+  ${n.exercices.length ? `<section class="card"><h3>Exercices officiels</h3><div class="list">${n.exercices.map(e => `<button class="li" data-a="open" data-ref="${e}"><span class="grow">${esc(label(e))}</span>${exDots(e)}</button>`).join('')}</div></section>` : ''}
+  <div class="row"><button class="btn primary" data-a="new-variant" data-notion="${esc(id)}" ${vars.length ? '' : 'disabled'}>Un exercice sur cette notion</button><button class="btn" data-a="ask" data-ref="${esc(id)}">Poser une question</button></div>`;
+}
+function viewNotionMap() {
+  const N = Object.values(APP.NOTION);
+  const depth = {}; const d = id => depth[id] ??= (APP.NOTION[id].prerequis.length ? 1 + Math.max(...APP.NOTION[id].prerequis.map(d)) : 0);
+  N.forEach(n => d(n.id));
+  const levels = [...new Set(Object.values(depth))].sort();
+  return `
+  <div class="breadcrumb"><button data-tab-go="cours">Cours</button>›<span>Carte des notions</span></div>
+  <div class="topline"><h1>Carte des notions</h1>${statusBar()}</div>
+  <p class="muted small">Chaque niveau s'appuie sur les précédents. La barre montre ta maîtrise mesurée.</p>
+  ${levels.map(l => `<section class="card"><span class="eyebrow">Niveau ${l}</span><div class="list">${N.filter(n => depth[n.id] === l).map(n => {
+    const s = notionState(n.id);
+    return `<button class="li" data-a="notion" data-ref="${n.id}"><span class="grow"><b>${esc(n.titre)}</b>${n.prerequis.length ? `<br><span class="muted small">après : ${n.prerequis.map(p => esc(APP.NOTION[p].titre)).join(', ')}</span>` : ''}</span>
+      <div class="bar" style="width:80px"><i style="width:${Math.round((s.maitrise || 0) * 100)}%"></i></div></button>`; }).join('')}</div></section>`).join('')}`;
+}
+
+/* ====================================================================== vue : Exercices */
+function exDots(exId) {
+  const e = APP.EX[exId];
+  return `<span class="row" style="gap:3px">${e.items.map(it => `<span class="dot ${itemState(it.id).statut}" title="${esc(it.sub || '')} ${itemState(it.id).statut}"></span>`).join('')}</span>`;
+}
+function viewExos() {
+  const r = APP.view.route || {};
+  if (r.ex) return viewExercise(r.ex, r);
+  const S = Object.values(APP.C.serie)[0];
+  const parts = [...new Set(S.exercices.map(e => e.partie))];
+  return `
+  <div class="topline"><div><div class="eyebrow">Analyse I · ${esc(S.chapitre)}</div><h1>${esc(S.titre)}</h1></div>${statusBar()}</div>
+  <p class="muted small">${esc(S.avant_propos)}</p>
+  <div class="row small"><span class="dot"></span>à faire <span class="dot en_cours"></span>en cours <span class="dot reussi"></span>réussi <span class="dot fait"></span>fait sur papier <span class="dot a_revoir"></span>à revoir</div>
+  ${parts.map(p => { const ex = S.exercices.filter(e => e.partie === p); return `<section class="card"><h2>Partie ${p} · ${esc(ex[0].partie_titre)}</h2><div class="list">
+    ${ex.map(e => `<button class="li" data-a="open" data-ref="${e.id}"><span class="mono muted" style="min-width:3.2em">${p}.${e.num}</span><span class="grow">${e.losange ? '♦ ' : ''}${inline(e.consigne.length > 90 ? e.consigne.slice(0, 88) + '…' : e.consigne)}</span>${exDots(e.id)}</button>`).join('')}
+  </div></section>`; }).join('')}`;
+}
+function viewExercise(exId, r) {
+  const e = APP.EX[exId]; const S = APP.C.serie[e.serie];
+  const idx = S.exercices.indexOf(e); const prev = S.exercices[idx - 1], next = S.exercices[idx + 1];
+  const img = (fs, alt) => (fs || []).map(f => `<img class="orig" loading="lazy" src="corpus/AN1/${esc(f)}" alt="${esc(alt)}">`).join('');
+  const variant = r.variante && APP.VAR[r.variante] ? APP.VAR[r.variante] : r.live || null;
+  return `
+  <div class="breadcrumb"><button data-tab-go="exos">${esc(S.titre)}</button>›<span>Partie ${e.partie} · ${esc(e.partie_titre)}</span></div>
+  <div class="topline"><div><div class="eyebrow mono">${esc(e.id)}${e.losange ? ' · ♦ revient dans le cours' : ''}</div><h1>Exercice ${e.partie}.${e.num}</h1></div>${statusBar()}</div>
+  ${e.intro_partie ? `<details class="card"><summary>Introduction de la partie ${e.partie}</summary>${renderTex(e.intro_partie)}${img(e.figures_intro, 'Tableaux de vérité')}</details>` : ''}
+  <section class="card lift">
+    ${renderTex(e.consigne)}${img(e.figures_enonce, 'Figure de l\'énoncé')}
+    <div class="row">${e.notions.map(n => `<button class="chip pen" data-a="notion" data-ref="${n}">${esc(APP.NOTION[n]?.titre || n)}</button>`).join('')}</div>
+    ${e.items.map(it => itemBlock(it)).join('')}
+    ${e.corrige_global || e.figures_corrige ? `<details class="corrige"><summary>Corrigé officiel (commentaire général)</summary>${e.corrige_global ? renderTex(e.corrige_global) : ''}${img(e.figures_corrige, 'Corrigé')}</details>` : ''}
+    ${e.apres ? `<div class="muted small">${renderTex(e.apres)}</div>` : ''}
+  </section>
+  ${variant ? variantBlock(variant) : ''}
+  <div class="row" style="justify-content:space-between">
+    ${prev ? `<button class="btn" data-a="open" data-ref="${prev.id}">← ${prev.partie}.${prev.num}</button>` : '<span></span>'}
+    <button class="btn" data-a="photo" data-ref="${esc(e.id)}" data-photo-only ${APP.cap.limits?.images ? '' : 'hidden'}>📷 Corriger une photo de ma feuille</button>
+    ${next ? `<button class="btn" data-a="open" data-ref="${next.id}">${next.partie}.${next.num} →</button>` : '<span></span>'}
+  </div>`;
+}
+function itemBlock(it) {
+  const st = itemState(it.id);
+  const v = it.verification;
+  const fb = APP.answers[it.id]?.fb;
+  const vbadge = v.statut === 'conforme' ? badge('conforme') : v.statut === 'divergence' ? badge('divergence') : badge('non_verifiable');
+  const canCheck = !!v.spec?.length;
+  return `<div class="item" id="it-${esc(it.id)}">
+    <div class="item-head">${it.sub ? `<span class="sub">${esc(it.sub)})</span>` : ''}<div class="grow" style="flex:1;min-width:0">${it.enonce ? `<div class="math-block">${kx(it.enonce, false)}</div>` : ''}</div>
+      <span class="dot ${st.statut}" title="${esc(st.statut)}"></span></div>
+    ${st.blocage ? `<div class="small muted">Dernière fois : ${esc(st.blocage)}</div>` : ''}
+    <div class="answer">
+      <textarea id="ans-${esc(it.id)}" rows="1" placeholder="${canCheck ? 'Ta réponse finale, ex. ]1,5[ ou (x-1)(x²+2x+2)' : 'Ta réponse (lue par le prof)'}" aria-label="Réponse ${esc(it.sub || '')}">${esc(APP.answers[it.id]?.text || '')}</textarea>
+      <div class="row">
+        <button class="btn primary small" data-a="check" data-ref="${esc(it.id)}">Vérifier</button>
+        <button class="btn small" data-a="photo" data-ref="${esc(it.id)}" ${APP.cap.limits?.images ? '' : 'hidden'}>📷 Photo</button>
+        <button class="btn small" data-a="ask" data-ref="${esc(it.id)}">Aide du prof</button>
+        ${(APP.VARBASE[it.ex.id] || []).length || canCheck ? `<button class="btn small ghost" data-a="variant" data-ref="${esc(it.id)}">Variante</button>` : ''}
+        <span style="flex:1"></span>
+        <button class="chip" data-a="mark" data-s="fait" data-ref="${esc(it.id)}" title="Déjà fait sur papier">fait</button>
+        <button class="chip" data-a="mark" data-s="a_revoir" data-ref="${esc(it.id)}">à revoir</button>
+      </div>
+      ${fb ? fb : ''}
+    </div>
+    <details class="corrige" ${APP.answers[it.id]?.showCorr ? 'open' : ''}><summary>Voir le corrigé officiel</summary>
+      <div class="math-block">${kx(it.corrige, false)}</div>
+      <div class="row">${vbadge}${v.statut === 'divergence' ? `<span class="small">SymPy trouve ${math(v.sympy)}. Non tranché : vérifie toi-même.</span>` : ''}</div>
+      ${it.note ? `<div class="small muted">Note du tuteur : ${esc(it.note)}</div>` : ''}
+      ${(it.figures_corrige || []).map(f => `<img class="orig" loading="lazy" src="corpus/AN1/${esc(f)}" alt="Figure du corrigé">`).join('')}
+    </details>
+  </div>`;
+}
+function variantBlock(v) {
+  const fb = APP.answers[v.id]?.fb;
+  return `<section class="card" id="it-${esc(v.id)}"><div class="row" style="justify-content:space-between"><span class="eyebrow">Variante · pas un exercice EPFL</span>${badge('solution_sympy')}</div>
+    <div class="muted small">${renderTex(v.consigne)}</div><div class="math-block">${kx(v.enonce, true)}</div>
+    <div class="answer"><textarea id="ans-${esc(v.id)}" rows="1" placeholder="Ta réponse">${esc(APP.answers[v.id]?.text || '')}</textarea>
+      <div class="row"><button class="btn primary small" data-a="check-var" data-ref="${esc(v.id)}">Vérifier</button><button class="btn small" data-a="ask" data-ref="${esc(v.id)}">Aide du prof</button>
+        <button class="btn small ghost" data-a="variant" data-ref="${esc(v.base)}">Une autre</button></div>${fb || ''}</div>
+    <details class="corrige"><summary>Voir la solution</summary><div class="math-block">${kx(v.solution_tex, true)}</div>${badge('solution_sympy')}</details></section>`;
+}
+
+/* ====================================================================== vue : Progrès */
+function viewProgres() {
+  const P = APP.S.profil;
+  const N = Object.values(APP.NOTION).map(n => ({n, s: notionState(n.id)})).sort((a, b) => (a.s.maitrise ?? 2) - (b.s.maitrise ?? 2));
+  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n);
+  const items = Object.values(APP.ITEM); const cnt = s => items.filter(i => itemState(i.id).statut === s).length;
+  const due = items.filter(i => itemState(i.id).srs?.due <= today()).length;
+  const st = P.stats || {};
+  return `
+  <div class="topline"><h1>Progrès</h1>${statusBar()}</div>
+  <section class="card"><h2>Série -1</h2><div class="row">
+    <span class="chip ok">${cnt('reussi')} réussies</span><span class="chip pen">${cnt('fait')} faites sur papier</span><span class="chip bad">${cnt('a_revoir')} à revoir</span><span class="chip">${cnt('nouveau')} à faire</span><span class="chip warn">${due} révisions dues</span></div></section>
+  <section class="card"><h2>Notions</h2><div class="list">${N.map(({n, s}) => `<button class="li" data-a="notion" data-ref="${n.id}"><span class="grow">${esc(n.titre)}</span>
+    ${s.maitrise == null ? '<span class="muted small">pas mesurée</span>' : `<div class="bar" style="width:110px"><i style="width:${Math.round(s.maitrise * 100)}%"></i></div><span class="mono" style="min-width:3em;text-align:right">${Math.round(s.maitrise * 100)}%</span>`}</button>`).join('')}</div></section>
+  <section class="card"><h2>Erreurs récurrentes</h2>${errs.length ? `<div class="list">${errs.map(([t, e]) => `<div class="li"><span class="chip bad">${e.n}×</span><span class="grow">${esc(e.description || t)}<br><span class="muted small">${e.refs.map(r => esc(label(r))).join(' · ')}</span></span></div>`).join('')}</div>` : '<p class="muted small">Aucune pour l\'instant.</p>'}</section>
+  <section class="card"><h2>Le professeur respecte-t-il la règle « court » ?</h2><p class="small">${st.reponses ? `${st.reponses - st.longues} réponses courtes sur ${st.reponses} (limite : 70 mots hors formules).` : 'Pas encore de réponse du professeur.'}</p></section>
+  <section class="card"><h2>Sessions</h2><div id="sessions" class="list small"><button class="btn small" data-a="load-sessions">Afficher l'historique</button></div></section>`;
+}
+
+/* ====================================================================== professeur : contexte minimal */
+const RULES = `Tu es le professeur particulier de Ryan, qui prépare son entrée à l'EPFL (bachelor en informatique, 2027) avec les cours de préparation en ligne. Il travaille sur papier. Tu le tutoies, en français.
+
+Règles, à respecter strictement :
+1. Court. 1 à 3 phrases, 60 mots au maximum sans compter les formules. L'idée clé d'abord, puis une formule ou un exemple si besoin. Pas de titres, pas de liste de plus de 3 points, pas de politesse, pas de récapitulatif.
+2. Pas à pas. Une seule étape par message, puis UNE question courte pour vérifier qu'il a compris ou pour le faire avancer.
+3. Jamais la réponse d'emblée. Ne donne ni le résultat final ni le corrigé tant qu'il ne l'a pas demandé explicitement (« montre le corrigé », « donne la réponse »). Guide-le pour qu'il la trouve.
+4. Le cours officiel d'abord. Appuie-toi sur les passages fournis et cite-les avec leur identifiant entre crochets, ex. [AN1.CH-1.3.p1]. Garde les notations du cours. Si le corpus ne couvre pas la question, dis-le en une phrase au lieu d'inventer.
+5. Maths en LaTeX entre $...$.
+6. S'il veut creuser (« explique plus », « pourquoi »), va plus loin, toujours par petites étapes.
+7. Si l'exercice est marqué DIVERGENCE, ne tranche pas : dis que SymPy et le corrigé EPFL ne sont pas d'accord et fais-lui vérifier le calcul.
+8. Si ton message affirme un calcul précis (une égalité, un ensemble de solutions), termine par une ligne seule, en syntaxe SymPy :
+VERIFS: [{"type":"eq","expr":"(x+1)**2","answer":"x**2+2*x+1"}]
+Types : "eq" (expr, answer) ; "solve" (lhs, rhs ou rel, answer comme "FiniteSet(2, -2)" ou "Interval.open(1, 5)"). La page les vérifie avec SymPy. Sinon, pas de ligne VERIFS.`;
+
+function passagesFor(ref, query) {
+  const ids = new Set();
+  const add = id => { if (APP.PASS[id]) ids.add(id); };
+  const it = APP.ITEM[ref] || (APP.VAR[ref] && APP.EX[APP.VAR[ref].base]?.items[0]);
+  const e = it?.ex || APP.EX[ref];
+  if (e) e.notions.forEach(n => (APP.NOTION[n]?.passages || []).slice(0, 2).forEach(add));
+  if (APP.PASS[ref]) { add(ref); add(APP.PASS[ref].complement); }
+  if (APP.NOTION[ref]) APP.NOTION[ref].passages.slice(0, 3).forEach(add);
+  if (query && ids.size < 3) {                                            // recherche simple par mots communs
+    const words = new Set(deaccent(query).split(/[^a-z0-9]+/).filter(w => w.length > 3));
+    const scored = Object.values(APP.PASS).map(p => [p.id, deaccent(p.titre + ' ' + p.tex).split(/[^a-z0-9]+/).filter(w => words.has(w)).length]).filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]);
+    scored.slice(0, 3 - ids.size).forEach(([id]) => add(id));
+  }
+  return [...ids].slice(0, 4);
+}
+function contextFor(ref, query) {
+  const P = APP.S.profil; const L = [];
+  const it = APP.ITEM[ref]; const v = APP.VAR[ref]; const e = it?.ex || (v && APP.EX[v.base]) || APP.EX[ref];
+  L.push(`[ÉLÈVE] ${P.prenom}. Début : ${P.debut}.`);
+  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 3);
+  if (errs.length) L.push('[ERREURS RÉCURRENTES] ' + errs.map(([t, x]) => `${t} (${x.n}×) : ${x.description}`).join(' ; '));
+  const notions = e ? e.notions : APP.PASS[ref]?.notions || (APP.NOTION[ref] ? [ref] : []);
+  if (notions.length) L.push('[MAÎTRISE] ' + notions.map(n => `${APP.NOTION[n]?.titre} : ${notionState(n).maitrise == null ? 'non mesurée' : Math.round(notionState(n).maitrise * 100) + ' %'}`).join(' ; '));
+  if (it) {
+    const st = itemState(it.id);
+    L.push(`[EXERCICE ${it.id}] Consigne : ${e.consigne}`);
+    if (it.enonce) L.push(`Question ${it.sub || ''} : $${it.enonce}$`);
+    L.push(`Corrigé officiel EPFL (NE PAS RÉVÉLER sans demande explicite) : ${it.corrige}${e.corrige_global ? ' — ' + e.corrige_global : ''}`);
+    L.push(`Vérification : ${it.verification.statut === 'divergence' ? `DIVERGENCE — SymPy trouve ${it.verification.sympy}` : it.verification.statut}${it.note ? '. Note : ' + it.note : ''}`);
+    L.push(`[SON ÉTAT SUR CETTE QUESTION] statut ${st.statut}, ${st.tentatives || 0} tentative(s)` + (st.derniere ? `, dernière réponse « ${st.derniere.reponse} » (${st.derniere.verdict})` : '') + (st.blocage ? `, ce qui avait bloqué : ${st.blocage}` : ''));
+  } else if (v) {
+    L.push(`[VARIANTE ${v.id} de ${v.base}] Consigne : ${v.consigne} Question : $${v.enonce}$. Solution (SymPy, NE PAS RÉVÉLER sans demande) : $${v.solution_tex}$`);
+  } else if (e) {
+    L.push(`[EXERCICE ${e.id}] ${e.consigne} Questions : ${e.items.map(i => `${i.sub}) $${i.enonce}$`).join(' ; ')}`);
+  }
+  if (APP.NOTION[ref]) { const n = APP.NOTION[ref]; L.push(`[FICHE ${n.id}] ${n.idee} Formule : $${n.formule}$. Piège : ${n.piege}`); }
+  for (const pid of passagesFor(ref, query)) { const p = APP.PASS[pid]; L.push(`[${pid}] (cours officiel, ${p.titre}) ${p.tex}`); }
+  for (const n of notions.slice(0, 2)) { const f = APP.NOTION[n]; if (f && n !== ref) L.push(`[FICHE ${n}] (tuteur) ${f.idee} Piège : ${f.piege}`); }
+  const fil = APP.S.fils[ref];
+  if (fil?.resume) L.push('[RÉSUMÉ DE VOS ÉCHANGES PRÉCÉDENTS SUR CE SUJET] ' + fil.resume);
+  if (P.derniere_resume) L.push('[DERNIÈRE SESSION] ' + P.derniere_resume);
+  return L.join('\n').slice(0, 14000);
+}
+
+/* ====================================================================== professeur : discussion */
+async function loadFil(ref) { if (!APP.S.fils[ref]) APP.S.fils[ref] = (await Store.get('fil/' + ref)) || {resume: '', tours: []}; return APP.S.fils[ref]; }
+async function openChat(ref) {
+  APP.chat.open = true; APP.chat.ref = ref || APP.chat.ref || 'general';
+  await loadFil(APP.chat.ref);
+  $('#app').classList.add('with-chat'); $('#chat').hidden = false; $('#profBtn').setAttribute('aria-pressed', 'true');
+  renderChat(); setTimeout(() => $('#chatInput')?.focus(), 50);
+}
+function closeChat() { APP.chat.open = false; $('#app').classList.remove('with-chat'); $('#chat').hidden = true; $('#profBtn').setAttribute('aria-pressed', 'false'); }
+function wordCount(t) { return t.replace(/\$\$[\s\S]*?\$\$|\$[^$]*\$|VERIFS:.*$/gm, ' ').split(/\s+/).filter(Boolean).length; }
+function renderMsg(m) {
+  if (m.role === 'user') return `<div class="msg user">${inline(m.content)}${m.photos ? `<div class="meta"><span class="chip">📷 ${m.photos} photo(s)</span></div>` : ''}</div>`;
+  const body = m.content.replace(/^VERIFS:.*$/m, '').trim();
+  const meta = [];
+  for (const v of m.verifs || []) meta.push(v.ok === true ? `<span class="chip ok" title="${esc(v.detail)}">✓ SymPy : ${esc(v.label)}</span>` : v.ok === false ? `<span class="chip bad" title="${esc(v.detail)}">✗ SymPy conteste : ${esc(v.label)}</span>` : `<span class="chip">non vérifié : ${esc(v.label)}</span>`);
+  if (m.long) meta.push('<button class="chip warn" data-a="shorter">réponse longue · raccourcir</button>');
+  return `<div class="msg prof">${renderTex(body)}${meta.length ? `<div class="meta">${meta.join('')}</div>` : ''}</div>`;
+}
+function renderChat() {
+  const fil = APP.S.fils[APP.chat.ref] || {tours: []};
+  $('#chat').innerHTML = `
+    <div class="chat-head"><div class="row" style="justify-content:space-between"><b>Professeur</b><button class="btn small close-chat" data-a="close-chat">Fermer</button></div>
+      <div class="row small"><span class="muted">À propos de :</span><span class="chip acc">${esc(label(APP.chat.ref))}</span>${APP.chat.ref !== 'general' ? '<button class="chip" data-a="ctx-general">question libre</button>' : ''}</div></div>
+    <div class="chat-log" id="chatLog">${fil.resume ? `<div class="small muted">Déjà vu ensemble : ${esc(fil.resume)}</div>` : ''}
+      ${fil.tours.map(renderMsg).join('') || `<p class="muted small">Pose ta question sur la théorie ou l'exercice. Le prof avance une étape à la fois et cite le cours. Tu peux écrire « série -1, I.9 e » pour changer de sujet.</p>`}
+      <div id="liveMsg"></div></div>
+    <form class="chat-foot" data-f="chat">
+      ${APP.cap.sample ? '' : '<p class="small" style="margin:0;color:var(--bad)">Le professeur n\'est pas disponible dans cette vue (Claude non autorisé ou hors de claude.ai).</p>'}
+      <div class="thumbs">${APP.chat.photos.map(f => `<img alt="photo jointe" src="${URL.createObjectURL(f)}">`).join('')}</div>
+      <textarea id="chatInput" rows="2" placeholder="Écris ta question (ou dicte-la avec le micro du clavier)" ${APP.cap.sample ? '' : 'disabled'}></textarea>
+      <div class="row"><button class="btn primary" ${APP.chat.busy || !APP.cap.sample ? 'disabled' : ''}>Envoyer</button>
+        <button type="button" class="btn" data-a="chat-photo" ${APP.cap.limits?.images ? '' : 'hidden'}>📷</button>
+        ${APP.chat.busy ? '<button type="button" class="btn" data-a="stop">Stop</button>' : ''}
+        <span style="flex:1"></span><button type="button" class="chip" data-a="deeper">explique plus</button></div>
+    </form>`;
+  const log = $('#chatLog'); log.scrollTop = log.scrollHeight;
+}
+async function verifyClaims(text) {
+  const m = text.match(/^VERIFS:\s*(\[.*\])\s*$/m); if (!m) return [];
+  let specs; try { specs = JSON.parse(m[1]); } catch (e) { return [{ok: null, label: 'ligne VERIFS illisible', detail: ''}]; }
+  const out = [];
+  for (const s of specs.slice(0, 4)) {
+    const lab = (s.type === 'solve' ? `${s.lhs || s.rel}${s.rhs ? ' = ' + s.rhs : ''} → ${s.answer}` : `${s.expr} = ${s.answer}`).replace(/\*\*/g, '^').replace(/\*/g, '·');
+    try { const r = await Sym.run(s, s.answer); out.push({ok: r.ok, label: lab.slice(0, 60), detail: r.detail}); }
+    catch (e) { out.push({ok: null, label: lab.slice(0, 60), detail: e.message}); }
+  }
+  return out;
+}
+async function sendChat(text, {photos = [], extra = ''} = {}) {
+  const sample = APP.cap.sample; if (!sample || APP.chat.busy) return;
+  const r = resolveRef(text, APP.ITEM[APP.chat.ref]?.ex);                  // « série -1, I.9 e » change le sujet
+  if (r && r.id !== APP.chat.ref) { APP.chat.ref = r.id; await loadFil(r.id); openRef(r.id); }
+  const ref = APP.chat.ref; const fil = await loadFil(ref);
+  fil.tours.push({role: 'user', content: text, photos: photos.length || undefined, t: Date.now()});
+  APP.chat.busy = true; APP.chat.photos = []; renderChat();
+  const live = $('#liveMsg'); live.innerHTML = '<div class="msg prof muted">Réflexion…</div>';
+  const turns = [{role: 'user', content: RULES + '\n\n' + contextFor(ref, text) + (extra ? '\n\n' + extra : '') + '\n\n(Fin du contexte. La discussion suit.)'}];
+  for (const t of fil.tours.slice(-7, -1)) turns.push({role: t.role === 'user' ? 'user' : 'assistant', content: t.content});
+  turns.push({role: 'user', content: text + (photos.length ? '\n(Photo de ma feuille jointe.)' : '')});
+  const ctl = APP.chat.ctl = new AbortController();
+  let reply = '';
+  try {
+    const opts = {cache: false, signal: ctl.signal,
+      onText: ({text: t}) => { reply = t; live.innerHTML = renderMsg({role: 'prof', content: t}); const lg = $('#chatLog'); lg.scrollTop = lg.scrollHeight; }};
+    if (photos.length) opts.images = photos;
+    const res = await sample(turns, opts);
+    reply = res.text;
+  } catch (e) {
+    reply = e.text || '';
+    if (e.code !== 'cancelled') toast(e.code === 'rate_limited' ? 'Limite d\'usage atteinte : réessaie plus tard.' : e.code === 'not_granted' ? 'Claude n\'est pas autorisé pour cette page.' : 'Le professeur n\'a pas pu répondre (' + e.code + ').');
+    if (e.code === 'not_granted' || e.code === 'sampling_disabled') APP.cap.sample = null;
+  }
+  APP.chat.busy = false;
+  if (reply.trim()) {
+    const long = wordCount(reply) > 70;
+    const msg = {role: 'prof', content: reply, t: Date.now(), long};
+    fil.tours.push(msg);
+    const P = APP.S.profil; P.stats.reponses += 1; if (long) P.stats.longues += 1; saveProfil();
+    renderChat();
+    msg.verifs = await verifyClaims(reply); renderChat();
+  } else renderChat();
+  if (fil.tours.length > 14) await compressFil(ref, fil);
+  fil.maj = new Date().toISOString(); Store.set('fil/' + ref, fil);
+  logEvent({type: 'question', ref});
+}
+async function compressFil(ref, fil) {                                    // la mémoire ne sature pas : les vieux échanges deviennent un résumé
+  const old = fil.tours.slice(0, 8);
+  try {
+    const {text} = await APP.cap.sample(`Résume en 60 mots maximum, en texte simple, cette discussion entre Ryan et son professeur sur « ${label(ref)} » : ce qui est compris, ce qui bloque encore.\n\nRésumé précédent : ${fil.resume || '(aucun)'}\n\n` + old.map(t => (t.role === 'user' ? 'Ryan : ' : 'Prof : ') + t.content.replace(/^VERIFS:.*$/m, '')).join('\n'), {modelTier: 'quick', cache: false});
+    fil.resume = text.trim().slice(0, 600); fil.tours = fil.tours.slice(8);
+  } catch (e) { fil.tours = fil.tours.slice(-14); }
+}
+
+/* ====================================================================== correction */
+function setFb(id, html) { (APP.answers[id] ||= {}).fb = html; const el = document.getElementById('it-' + id); if (el) render(); }
+async function checkItem(id) {
+  const it = APP.ITEM[id]; const text = ($('#ans-' + CSS.escape(id))?.value || '').trim();
+  (APP.answers[id] ||= {}).text = text;
+  if (!text) return toast('Écris d\'abord ta réponse, ou envoie une photo.');
+  const spec = it.verification.spec?.[0];
+  let sym = null;
+  if (spec) {
+    setFb(id, '<div class="feedback info">SymPy vérifie… (le premier chargement peut prendre 10 à 30 s)</div>');
+    try { sym = await Sym.check(spec, text); } catch (e) { sym = {ok: null, detail: e.message}; }
+  }
+  if (sym?.ok === true) {                                                  // juste et vérifié : pas besoin d'appeler Claude
+    record(id, {verdict: 'juste', reponse: text, verif: 'sympy_ok'});
+    return setFb(id, `<div class="feedback ok"><div><b>Juste.</b> ${badge('sympy_ok')}</div><div class="small">Lu : ${math(sym.lu)}</div></div>`);
+  }
+  const symLine = sym ? (sym.ok === false ? `SymPy : FAUX (réponse lue : ${sym.lu || text} ; ${sym.detail})` : `SymPy n'a pas pu conclure (${sym.detail})`) : 'Pas de vérification SymPy possible pour cette question.';
+  if (!APP.cap.sample) {
+    record(id, {verdict: sym?.ok === false ? 'faux' : 'partiel', reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null});
+    return setFb(id, `<div class="feedback ${sym?.ok === false ? 'bad' : 'warn'}"><div>${sym?.ok === false ? '<b>Pas encore.</b> ' + badge('sympy_ko') : badge(null)}</div>${sym?.lu ? `<div class="small">Lu : ${math(sym.lu)}</div>` : ''}</div>`);
+  }
+  setFb(id, `<div class="feedback info">${sym?.ok === false ? badge('sympy_ko') + ' ' : ''}Le prof regarde où ça coince…</div>`);
+  const tags = Object.keys(APP.S.profil.erreurs || {}).join(', ') || '(aucun)';
+  const prompt = `Tu corriges la réponse de Ryan à une question d'exercice. Réponds UNIQUEMENT par un objet JSON :
+{"verdict":"juste|partiel|faux","ou":"où exactement ça coince, 1 phrase de 25 mots max","indice":"une question ou un indice court pour avancer, sans donner la réponse, 25 mots max","erreurs":[{"tag":"mot-cle-court-en-kebab","description":"12 mots max"}],"blocage":"ce qui lui a posé problème, 15 mots max"}
+SymPy fait foi pour la valeur finale. Réutilise un tag d'erreur existant si c'est la même erreur : ${tags}. Liste vide si pas d'erreur.
+
+${contextFor(id)}
+
+Réponse de Ryan : « ${text} »
+${symLine}`;
+  try {
+    const j = await APP.cap.sample.json(prompt, {cache: false});
+    let verdict = ['juste', 'partiel', 'faux'].includes(j.verdict) ? j.verdict : 'partiel';
+    if (sym?.ok === false) verdict = 'faux';                                // SymPy l'emporte sur la valeur finale
+    const errs = Array.isArray(j.erreurs) ? j.erreurs.filter(x => x?.tag).map(x => ({tag: String(x.tag).slice(0, 40), description: String(x.description || '').slice(0, 90)})) : [];
+    record(id, {verdict, reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null, erreurs: verdict === 'juste' ? [] : errs, blocage: verdict === 'juste' ? null : j.blocage});
+    setFb(id, `<div class="feedback ${verdict === 'juste' ? 'ok' : verdict === 'faux' ? 'bad' : 'warn'}">
+      <div class="row"><b>${verdict === 'juste' ? 'Juste.' : verdict === 'faux' ? 'Pas encore.' : 'Presque.'}</b>${sym?.ok === false ? badge('sympy_ko') : badge(null)}</div>
+      ${sym?.lu ? `<div class="small">Lu : ${math(sym.lu)}</div>` : ''}
+      ${j.ou && verdict !== 'juste' ? `<div>${inline(String(j.ou))}</div>` : ''}${j.indice && verdict !== 'juste' ? `<div><b>Indice</b> · ${inline(String(j.indice))}</div>` : ''}
+      <div><button class="btn small" data-a="ask" data-ref="${esc(id)}">Continuer avec le prof</button></div></div>`);
+  } catch (e) {
+    record(id, {verdict: sym?.ok === false ? 'faux' : 'partiel', reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null});
+    setFb(id, `<div class="feedback warn">${sym?.ok === false ? badge('sympy_ko') : ''} Le prof n'a pas pu analyser (${esc(e.code || e.message)}).</div>`);
+  }
+}
+async function checkPhoto(ref, files) {
+  const it = APP.ITEM[ref]; const e = it ? it.ex : APP.EX[ref];
+  const items = it ? [it] : e.items;
+  const target = it ? it.id : e.items[0].id;
+  items.forEach(i => setFb(i.id, '<div class="feedback info">Lecture de ta feuille…</div>'));
+  const prompt = `Voici la photo de la feuille de Ryan pour l'exercice ${e.id}. Consigne : ${e.consigne}
+Sous-questions : ${items.map(i => `${i.sub || '(unique)'}) $${i.enonce}$`).join(' ; ')}
+Transcris ce qu'il a écrit, sans rien corriger. Réponds UNIQUEMENT par un JSON :
+{"items":[{"sub":"a","lu":"réponse finale lue, en LaTeX","texte":"réponse finale en texte simple, ex. 6/5 ou ]1,5[ ou (x-1)(x^2+2x+2)","etapes":"étapes principales lues, 30 mots max","doute":"ce qui est illisible, sinon vide","ou":"si une étape est fausse, laquelle exactement (20 mots max), sinon vide"}]}
+Seulement les sous-questions visibles sur la photo. Pour une question sans sous-lettre, "sub" vaut "".
+Corrigé officiel (pour repérer l'étape fausse, ne pas le recopier) : ${items.map(i => `${i.sub}) ${i.corrige}`).join(' ; ')}`;
+  try {
+    const j = await APP.cap.sample.json(prompt, {images: files, cache: false});
+    for (const r of j.items || []) {
+      const i = items.find(x => (x.sub || '') === String(r.sub || '')); if (!i) continue;
+      const spec = i.verification.spec?.[0];
+      let sym = null;
+      if (spec && r.texte) { try { sym = await Sym.check(spec, String(r.texte)); } catch (err) { sym = {ok: null, detail: err.message}; } }
+      const verdict = sym?.ok === true ? (r.ou ? 'partiel' : 'juste') : sym?.ok === false ? 'faux' : (r.ou ? 'partiel' : 'partiel');
+      record(i.id, {verdict, reponse: r.texte || r.lu, verif: sym?.ok === true ? 'sympy_ok' : sym?.ok === false ? 'sympy_ko' : null, source: 'photo',
+        erreurs: r.ou && verdict !== 'juste' ? [{tag: 'etape-fausse', description: String(r.ou).slice(0, 90)}] : [], blocage: r.ou || null});
+      (APP.answers[i.id] ||= {}).text = r.texte || '';
+      APP.answers[i.id].fb = `<div class="feedback ${verdict === 'juste' ? 'ok' : verdict === 'faux' ? 'bad' : 'warn'}">
+        <div class="row"><b>${verdict === 'juste' ? 'Juste.' : verdict === 'faux' ? 'Pas encore.' : 'À regarder.'}</b>${sym?.ok === true ? badge('sympy_ok') : sym?.ok === false ? badge('sympy_ko') : badge(null)}</div>
+        <div class="small">Lu sur ta feuille : ${r.lu ? math(String(r.lu)) : esc(r.texte)}${r.doute ? ` · <span style="color:var(--warn)">doute : ${esc(r.doute)}</span>` : ''}</div>
+        ${r.ou ? `<div>${inline(String(r.ou))}</div>` : ''}<div class="small muted">Si la lecture est fausse, corrige le texte ci-dessus et appuie sur Vérifier.</div></div>`;
+    }
+    render();
+  } catch (err) { items.forEach(i => setFb(i.id, `<div class="feedback warn">Lecture impossible (${esc(err.code || err.message)}). Essaie une photo plus nette ou tape ta réponse.</div>`)); }
+}
+
+/* ====================================================================== variantes : solution calculée par SymPy */
+async function showVariant(baseItemOrEx, notionId) {
+  const done = new Set(Object.keys(Object.values(APP.S.ex).reduce((a, s) => Object.assign(a, s.variantes || {}), {})));
+  let pool;
+  if (notionId) pool = APP.NOTION[notionId].exercices.flatMap(e => APP.VARBASE[e] || []);
+  else { const e = APP.ITEM[baseItemOrEx]?.ex || APP.EX[baseItemOrEx]; pool = APP.VARBASE[e.id] || []; }
+  const fresh = pool.filter(v => !done.has(v.id));
+  if (fresh.length) { const v = fresh[Math.floor(Math.random() * fresh.length)]; return openRef(v.id); }
+  if (notionId || !APP.cap.sample) return toast('Plus de variante en réserve pour ici.');
+  return liveVariant(APP.ITEM[baseItemOrEx]);
+}
+async function liveVariant(it) {
+  const spec = it?.verification.spec?.[0]; if (!spec) return toast('Pas de variante possible pour cette question.');
+  toast('Le prof prépare une variante, SymPy calculera la solution…');
+  const prompt = `Crée UNE variante de la question ci-dessous : même notion, même difficulté, nombres ou expression différents. Ne donne PAS la solution : SymPy la calculera.
+Réponds UNIQUEMENT par un JSON : {"enonce":"LaTeX de la nouvelle question, sans $","spec":{...}}
+"spec" garde exactement les mêmes clés que la spécification d'origine, sans "answer", avec de nouvelles expressions en syntaxe SymPy (** pour les puissances, sqrt(), pi, Abs()).
+Spécification d'origine : ${JSON.stringify({...spec, answer: undefined})}
+Consigne : ${it.ex.consigne}
+Question d'origine : ${it.enonce}`;
+  try {
+    const j = await APP.cap.sample.json(prompt, {cache: false});
+    const s = {...j.spec, type: spec.type}; if (spec.form) s.form = spec.form; delete s.answer;
+    const sol = await Sym.compute(s);
+    const back = await Sym.run(s, sol.answer);
+    if (back.ok !== true) throw new Error('SymPy ne confirme pas sa propre solution');
+    const v = {id: `${it.ex.id}.live${Date.now().toString(36)}`, base: it.ex.id, consigne: it.ex.consigne, enonce: String(j.enonce), notions: it.ex.notions, spec: s, solution: sol.answer, solution_tex: sol.latex, origine: 'tuteur'};
+    APP.VAR[v.id] = v; go('exos', {ex: it.ex.id, variante: v.id});
+  } catch (e) { toast('Variante écartée : ' + (e.code || e.message) + '. Réessaie.'); }
+}
+async function checkVariant(id) {
+  const v = APP.VAR[id]; const text = ($('#ans-' + CSS.escape(id))?.value || '').trim();
+  (APP.answers[id] ||= {}).text = text; if (!text) return;
+  setFb(id, '<div class="feedback info">SymPy vérifie…</div>');
+  let r; try { r = await Sym.check(v.spec, text); } catch (e) { r = {ok: null, detail: e.message}; }
+  const st = exState(v.base); st.variantes[v.id] = {date: today(), ok: r.ok, reponse: text.slice(0, 120)}; saveEx(v.base);
+  for (const n of v.notions) { const ns = notionState(n); if (r.ok != null) { const q = r.ok ? 1 : 0; ns.maitrise = ns.maitrise == null ? q : .7 * ns.maitrise + .3 * q; ns.n = (ns.n || 0) + 1; saveNotion(n); } }
+  logEvent({type: 'variante', ref: v.id, ok: r.ok});
+  setFb(id, `<div class="feedback ${r.ok ? 'ok' : r.ok === false ? 'bad' : 'warn'}"><div class="row"><b>${r.ok ? 'Juste.' : r.ok === false ? 'Pas encore.' : 'Non vérifié.'}</b>${r.ok === true ? badge('sympy_ok') : r.ok === false ? badge('sympy_ko') : badge(null)}</div>${r.lu ? `<div class="small">Lu : ${math(r.lu)}</div>` : ''}</div>`);
+}
+
+/* ====================================================================== sessions */
+async function summarizeSession(d) {
+  const S = await Store.get('session/' + d); const P = APP.S.profil;
+  if (!S?.evenements?.length) { P.session_precedente = null; saveProfil(); return render(); }
+  const counts = S.evenements.reduce((a, e) => (a[e.type] = (a[e.type] || 0) + 1, a), {});
+  let resume = `${counts.reponse || 0} réponses, ${counts.question || 0} questions au prof, ${counts.variante || 0} variantes.`;
+  let aRevoir = [...new Set(S.evenements.filter(e => e.verdict && e.verdict !== 'juste').map(e => e.ref))];
+  if (APP.cap.sample) {
+    try {
+      const j = await APP.cap.sample.json(`Résume la session d'étude de Ryan (${d}) pour s'en souvenir plus tard. Réponds UNIQUEMENT par un JSON : {"resume":"3 phrases courtes max : ce qui a été travaillé, ce qui a bloqué","a_revoir":["identifiants"]}\nÉvénements : ` +
+        S.evenements.map(e => `${e.t} ${e.type} ${e.ref || ''} ${e.verdict || e.statut || ''}`).join('\n') + '\nErreurs connues : ' + JSON.stringify(P.erreurs || {}).slice(0, 1500), {modelTier: 'quick', cache: false});
+      if (j.resume) resume = String(j.resume); if (Array.isArray(j.a_revoir)) aRevoir = j.a_revoir.filter(x => APP.ITEM[x]);
+    } catch (e) {}
+  }
+  S.resume = resume; S.a_revoir = aRevoir; await Store.set('session/' + d, S);
+  P.derniere_resume = `${d} : ${resume}`; P.session_precedente = null; saveProfil(); render();
+}
+
+/* ====================================================================== évènements */
+document.addEventListener('click', async ev => {
+  const t = ev.target.closest('[data-a],[data-tab],[data-tab-go]'); if (!t) return;
+  if (t.dataset.tab) return go(t.dataset.tab);
+  if (t.dataset.tabGo) return go(t.dataset.tabGo);
+  const a = t.dataset.a, ref = t.dataset.ref;
+  if (a === 'open') return openRef(ref);
+  if (a === 'notion') return go('cours', {notion: ref});
+  if (a === 'notions') return go('cours', {notion: '*'});
+  if (a === 'scroll') return document.getElementById(ref)?.scrollIntoView({behavior: 'smooth'});
+  if (a === 'ask') { if (APP.ITEM[ref]) (APP.answers[ref] ||= {}).text = $('#ans-' + CSS.escape(ref))?.value || ''; return openChat(ref); }
+  if (a === 'lu') { const P = APP.S.profil; (P.lus ||= {})[ref] = P.lus[ref] ? undefined : today(); if (!P.lus[ref]) delete P.lus[ref]; saveProfil(); logEvent({type: 'lecture', ref}); return render(); }
+  if (a === 'mark') { const cur = itemState(ref).statut; markManual(ref, cur === t.dataset.s ? 'nouveau' : t.dataset.s); return render(); }
+  if (a === 'check') return checkItem(ref);
+  if (a === 'check-var') return checkVariant(ref);
+  if (a === 'variant') return showVariant(ref);
+  if (a === 'new-variant') return showVariant(null, t.dataset.notion);
+  if (a === 'photo') { APP.photoTarget = ref; return $('#photoInput').click(); }
+  if (a === 'chat-photo') { APP.photoTarget = '@chat'; return $('#photoInput').click(); }
+  if (a === 'close-chat') return closeChat();
+  if (a === 'ctx-general') { APP.chat.ref = 'general'; await loadFil('general'); return renderChat(); }
+  if (a === 'stop') return APP.chat.ctl?.abort();
+  if (a === 'shorter') return sendChat('Trop long. Redis-le en 2 phrases maximum.');
+  if (a === 'deeper') return sendChat('Explique plus, pas à pas.');
+  if (a === 'sympy-start') return Sym.start();
+  if (a === 'resume-session') { t.disabled = true; t.textContent = 'Résumé…'; return summarizeSession(t.dataset.d); }
+  if (a === 'load-sessions') {
+    const list = await Store.list('session');
+    $('#sessions').innerHTML = Object.values(list).sort((x, y) => y.date.localeCompare(x.date)).slice(0, 20).map(s => `<div class="li"><span class="mono">${esc(s.date)}</span><span class="grow">${esc(s.resume || s.evenements.length + ' événements (pas encore résumée)')}</span></div>`).join('') || '<p class="muted">Aucune session.</p>';
+  }
+});
+document.addEventListener('submit', ev => {
+  ev.preventDefault();
+  const f = ev.target.dataset.f;
+  if (f === 'goto') { const v = $('#gotoInput').value; const r = resolveRef(v); if (r) openRef(r.id); else toast('Je ne trouve pas « ' + v + ' ». Essaie « série -1, II.4 b ».'); }
+  if (f === 'chat') { const inp = $('#chatInput'); const v = inp.value.trim(); if (!v && !APP.chat.photos.length) return; const ph = APP.chat.photos; inp.value = ''; sendChat(v || 'Voici ma feuille.', {photos: ph}); }
+});
+document.addEventListener('input', ev => { if (ev.target.id?.startsWith('ans-')) (APP.answers[ev.target.id.slice(4)] ||= {}).text = ev.target.value; });
+document.addEventListener('keydown', ev => { if (ev.target.id === 'chatInput' && ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); ev.target.form.requestSubmit(); } });
+$('#photoInput').addEventListener('change', ev => {
+  const files = [...ev.target.files].slice(0, APP.cap.limits?.images?.maxCount || 1); ev.target.value = '';
+  if (!files.length) return;
+  if (APP.photoTarget === '@chat') { APP.chat.photos = files; return renderChat(); }
+  checkPhoto(APP.photoTarget, files);
+});
+$('#profBtn').addEventListener('click', () => APP.chat.open ? closeChat() : openChat(APP.view.route?.focus || APP.view.route?.ex || APP.view.route?.passage || APP.view.route?.notion || 'general'));
+
+/* ====================================================================== démarrage */
+(async function boot() {
+  fetch('katex/katex.css').then(r => r.ok ? r.text() : '').then(css => { const s = document.createElement('style'); s.textContent = css; document.head.append(s); if (APP.C.matieres.length) render(); }).catch(() => {});
+  try { await loadCorpus(); } catch (e) { $('#main').innerHTML = `<div class="wrap"><p>Le cours ne se charge pas : ${esc(e.message)}</p></div>`; return; }
+  await Store.init();
+  await loadState();
+  render();
+  if (window.claude?.use) {
+    claude.use('sample').then(async s => { APP.cap.sample = s; if (s) APP.cap.limits = await s.limits().catch(() => null); render(); if (APP.chat.open) renderChat(); });
+  }
+  setTimeout(() => Sym.start(), 1500);                                    // SymPy se charge en arrière-plan
+})();
+</script>
