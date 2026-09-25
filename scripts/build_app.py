@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "app/dist"
 VENDOR = ROOT / "data/vendor"
-PYODIDE = "314.0.7"
+PYODIDE = "0.27.7"
 SYMPY, MPMATH = "1.13.3", "1.3.0"
 KATEX = "0.16.11"
 
@@ -64,7 +64,7 @@ def main():
 
     # SymPy dans le navigateur
     py = npm("pyodide", PYODIDE)
-    for f in ("pyodide.mjs", "pyodide.asm.mjs", "pyodide.asm.wasm", "pyodide-lock.json"):
+    for f in ("pyodide.mjs", "pyodide.asm.js", "pyodide.asm.wasm", "pyodide-lock.json"):
         shutil.copy(py / f, DIST / "py" / f)
     b64(py / "python_stdlib.zip", DIST / "py/python_stdlib.b64.txt")
     for name, whl in wheels().items():

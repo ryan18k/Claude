@@ -39,7 +39,7 @@
 "katex/katex.css",
 "py/mpmath.b64.txt",
 "py/pyodide-lock.json",
-"py/pyodide.asm.mjs",
+"py/pyodide.asm.js",
 "py/pyodide.asm.wasm",
 "py/pyodide.mjs",
 "py/python_stdlib.b64.txt",

@@ -435,19 +435,46 @@ function renderCards() {
   const open = APP.cards.filter(c => !c.min);
   if (!isNarrow()) { const {W, H} = stageBox(); for (const c of open) { c.w = clamp(c.w || 260, 200, W - 16); c.h = clamp(c.h || 240, 110, H - 16); c.x = clamp(c.x ?? 12, -c.w + 90, W - 90); c.y = clamp(c.y ?? 8, 0, H - 44); } }
   host.innerHTML = open.map(c => `<article class="card ${c.big ? 'big' : ''}" data-id="${c.id}" style="--tc:${TSTYLE[c.type]?.[1] || '#6B4EFF'};${c.z && !c.big ? 'z-index:' + c.z + ';' : ''}left:${c.big ? 16 : c.x}px;top:${c.big ? 8 : c.y}px;width:${c.big ? 'calc(100% - 32px)' : c.w + 'px'};height:${c.big ? 'calc(100% - 16px)' : c.h + 'px'}">
-      <div class="card-h" data-drag="${c.id}"><span class="ic">${TSTYLE[c.type]?.[0] || '▢'}</span><span class="t">${esc(c.titre || TITLES[c.type])}</span>
+      <div class="card-h" data-drag="${c.id}"><span class="ic">${TSTYLE[c.type]?.[0] || '▢'}</span><span class="t">${titleHTML(c.titre || TITLES[c.type])}</span>
         <button data-a="min" data-id="${c.id}" title="Réduire" aria-label="Réduire">–</button><button data-a="big" data-id="${c.id}" title="${c.big ? 'Taille normale' : 'Agrandir'}" aria-label="Agrandir">${c.big ? '⤡' : '⤢'}</button><button data-a="close" data-id="${c.id}" title="Fermer" aria-label="Fermer">✕</button></div>
       <div class="card-b">${cardBody(c)}</div><div class="rz" data-rz="${c.id}"></div></article>`).join('');
-  $('#dock').innerHTML = APP.cards.filter(c => c.min).map(c => `<button class="chip acc" data-a="restore" data-id="${c.id}">${TSTYLE[c.type]?.[0] || '▢'} ${esc(c.titre || TITLES[c.type])}</button>`).join('');
+  $('#dock').innerHTML = APP.cards.filter(c => c.min).map(c => `<button class="chip acc" data-a="restore" data-id="${c.id}">${TSTYLE[c.type]?.[0] || '▢'} ${titleHTML(c.titre || TITLES[c.type])}</button>`).join('');
   open.filter(c => c.type === 'graphe').forEach(c => drawPlot(c).catch(e => console.warn('graphique', e)));
   renderStatus();
 }
+function titleHTML(t) {                                               // « log_4(x^2) », « \\log_2 x » → rendu mathématique
+  t = String(t ?? '');
+  if (/\$/.test(t)) return inline(t);
+  if (!/[\\^_]/.test(t)) return esc(t);
+  const parts = t.split(/(\s+(?:et|and|,)\s+)/);
+  return parts.map(p => /^\s+(et|and|,)\s+$/.test(p) ? esc(p) : /[\\^_]/.test(p) ? kx(/\\/.test(p) ? p : plainToTex(p)) : esc(p)).join('');
+}
 const p2t = e => String(e ?? '').replace(/\*\*/g, '^').replace(/\*/g, '·');
+let mathjs = null;
+function loadMathJS() {
+  return mathjs ||= new Promise((res, rej) => { if (window.math) return res(window.math); const sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.min.js'; sc.onload = () => res(window.math); sc.onerror = () => rej(new Error('math.js ne se charge pas')); document.head.append(sc); });
+}
+async function jsPlot(fonctions, x0, x1) {                            // même syntaxe que SymPy : 2**x, log(x, 2), sqrt, exp, Abs, pi
+  const m = await loadMathJS();
+  return fonctions.map(f => {
+    const code = m.compile(String(f.expr).replace(/\*\*/g, '^').replace(/\bAbs\(/g, 'abs(').replace(/\bE\b/g, 'e'));
+    const points = [];
+    for (let i = 0; i <= 360; i++) {
+      const x = x0 + (x1 - x0) * i / 360; let y = null;
+      try { const v = code.evaluate({x}); y = typeof v === 'number' && isFinite(v) ? v : null; } catch (e) {}
+      points.push([x, y]);
+    }
+    return {points};
+  });
+}
 async function drawPlot(c) {
   const el = document.querySelector(`.plot[data-id="${c.id}"]`); if (!el) return;
   const [x0, x1] = (Array.isArray(c.xr) ? c.xr : [-5, 5]).map(Number);
-  try { if (!c._pts) c._pts = await Promise.all((c.fonctions || []).map(f => Sym.call('plot', {expr: String(f.expr), xmin: x0, xmax: x1, n: 360}))); }
-  catch (e) { el.innerHTML = B.nv('SymPy : ' + e.message); return; }
+  try { if (!c._pts) { c._pts = await Promise.all((c.fonctions || []).map(f => Sym.call('plot', {expr: String(f.expr), xmin: x0, xmax: x1, n: 360}))); c._src = 'sympy'; } }
+  catch (e) {
+    try { c._pts = await jsPlot(c.fonctions || [], x0, x1); c._src = 'js'; }
+    catch (e2) { el.innerHTML = B.nv('graphique impossible : ' + e2.message); return; }
+  }
   const el2 = document.querySelector(`.plot[data-id="${c.id}"]`); if (!el2) return;
   const W = Math.max(200, el2.clientWidth), H = Math.max(140, (el2.closest('.card-b')?.clientHeight || 280) - 46);
   const ys = c._pts.flatMap(p => p.points.map(q => q[1])).filter(y => y != null).sort((a, b) => a - b);
@@ -471,7 +498,7 @@ async function drawPlot(c) {
     }
     s += `<path d="${d}" fill="none" stroke="${cols[k % 4]}" stroke-width="2.2" ${c.fonctions[k].pointille ? 'stroke-dasharray="5 4"' : ''}/>`;
   });
-  el2.innerHTML = s + `</svg><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:.88rem">${c.fonctions.map((f, k) => `<span style="color:${cols[k % 4]}">━ ${kx(f.label || p2t(f.expr))}</span>`).join('')}<span class="chip ok">points calculés par SymPy</span></div>`;
+  el2.innerHTML = s + `</svg><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:.88rem">${c.fonctions.map((f, k) => `<span style="color:${cols[k % 4]}">━ ${kx(f.label || p2t(f.expr))}</span>`).join('')}${c._src === 'sympy' ? '<span class="chip ok">points calculés par SymPy</span>' : '<span class="chip warn">tracé par le navigateur (math.js) : SymPy indisponible</span>'}</div>`;
 }
 function progressionHTML() {
   const S = Object.values(APP.SERIE)[0]; const parts = [...new Set(S.exercices.map(e => e.partie))];
@@ -566,7 +593,7 @@ function onInput() {
 function strip(t) { return String(t).replace(/```cartes[\s\S]*?(```|$)/g, '').trim(); }
 function msgHTML(m) {
   if (m.r === 'u') return `<div class="msg me">${inline(m.x)}${m.ph ? `<div class="meta"><span class="chip">📷 ${m.ph} photo${m.ph > 1 ? 's' : ''}</span></div>` : ''}${m.v ? `<div class="meta">${m.v}</div>` : ''}</div>`;
-  const chips = (m.ops || []).map((o, k) => o.chip ? `<button class="chip acc" data-a="reopen" data-t="${m.t}" data-k="${k}">${esc(o.chip)}</button>` : '').join('');
+  const chips = (m.ops || []).map((o, k) => o.chip ? `<button class="chip acc" data-a="reopen" data-t="${m.t}" data-k="${k}">${esc(o.chip.split(' ')[0])} ${titleHTML(o.chip.split(' ').slice(1).join(' '))}</button>` : '').join('');
   return `<div class="msg prof">${renderTex(strip(m.x))}${chips || m.v ? `<div class="meta">${chips}${m.v || ''}</div>` : ''}</div>`;
 }
 function renderLog(live) {
@@ -835,7 +862,7 @@ async function maintainMemory() {                                      // la mé
 function renderStatus() {
   if (!APP.profil) return;
   const s = APP.sympy.state;
-  $('#status').innerHTML = (s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>' : s === 'ko' ? `<span class="chip bad" title="${esc(APP.sympy.info)}">SymPy indisponible</span>` : '')
+  $('#status').innerHTML = (s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>' : s === 'ko' ? `<button class="chip bad" data-a="sympy-info">SymPy indisponible · détails</button>` : '')
     + (APP.store === 'db' ? '' : '<span class="chip warn" title="La progression reste dans ce navigateur">non synchronisé</span>')
     + (APP.cap.sample ? '' : '<span class="chip warn">prof indisponible ici</span>')
     + (APP.cap.sample && APP.cap.limits && !APP.cap.limits.images ? '<span class="chip warn" title="claude.ai ne transmet pas les images depuis cette vue">photos non transmises ici</span>' : '');
@@ -856,6 +883,7 @@ document.addEventListener('click', ev => {
   if (a === 'big' && c) { c.big = !c.big; renderCards(); saveBoard(); }
   if (a === 'next-step' && c) { c.vu = (c.vu || 1) + 1; renderCards(); saveBoard(); }
   if (a === 'all-steps' && c) { c.vu = c.etapes.length; renderCards(); saveBoard(); }
+  if (a === 'sympy-info') { addCard({type: 'tableau', titre: 'Diagnostic SymPy', lignes: [['Élément', 'Valeur'], ['Erreur', esc(APP.sympy.info || '?')], ['Navigateur', esc(navigator.userAgent)], ['Page', esc(location.origin)]], legende: 'Envoie une capture de cette carte à Claude Code.'}).big = true; renderCards(); return; }
   if (a === 'say') { $('#input').value = t.dataset.t; onInput(); $('#composer').requestSubmit(); }
   if (a === 'reopen') { const m = APP.msgs.find(x => String(x.t) === t.dataset.t); const o = m?.ops?.[+t.dataset.k]; if (o) applyOps([o], {}); }
 });
