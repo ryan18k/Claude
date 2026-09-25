@@ -1,0 +1,32 @@
+<!doctype html><meta charset=utf-8><link rel=stylesheet href=common.css><style id=k></style>
+<div class="top"><b>Carnet</b><span>Analyse I · Prélude</span><span style="flex:1"></span><span class="chip pen">Mémoire : série -1 partie I faite · exposants négatifs à revoir</span><span class="chip ok">SymPy prêt</span></div>
+
+<!-- carte formules : en haut à droite -->
+<div class="card" style="top:62px;right:20px;width:330px">
+ <h4>Formules épinglées <span class="x">✕</span></h4>
+ <div style="font-size:.8rem;color:var(--muted)">Puissances (<span data-tex="a,b>0"></span>)</div>
+ <div class="enc"><span data-tex="a^m a^n=a^{m+n}"></span> &nbsp; <span data-tex="(a^m)^n=a^{mn}"></span><br><span data-tex="a^{-m}=\frac1{a^m}"></span> &nbsp; <span data-tex="a^{1/n}=\sqrt[n]{a}"></span></div>
+ <div style="font-size:.8rem;color:var(--muted);margin-top:6px">Logarithmes (<span data-tex="x,y>0"></span>)</div>
+ <div class="enc"><span data-tex="\log_a(xy)=\log_a x+\log_a y"></span><br><span data-tex="\log_a(x^r)=r\log_a x"></span> &nbsp; <span data-tex="\log_a 1=0"></span></div>
+ <div style="font-size:.72rem;color:var(--faint);margin-top:4px">Source : polycopié Prélude, p. 1–2</div>
+</div>
+
+<!-- carte graphique : à gauche -->
+<div class="card" style="top:62px;left:20px;width:380px">
+ <h4>Graphique <span class="x">✕</span></h4>
+ <div id="g"></div>
+ <div style="font-size:.78rem;color:var(--muted);margin-top:4px">Réflexion par rapport à <span data-tex="y=x"></span> : <span data-tex="2^x"></span> et <span data-tex="\log_2 x"></span> sont réciproques.</div>
+</div>
+
+<!-- conversation au centre -->
+<div style="position:absolute;left:430px;right:370px;top:330px;display:grid;gap:10px">
+ <div class="msg me">montre moi le graphe de 2^x et de log en base 2</div>
+ <div class="msg prof">Voilà, à gauche. Le graphe de <span data-tex="\log_2"></span> est le reflet de celui de <span data-tex="2^x"></span> par rapport à la diagonale <b>[AN1.CH-1.2.p2]</b>.<br>Question : combien vaut <span data-tex="\log_2 8"></span> ? Lis-le sur le graphe.</div>
+</div>
+
+<div class="composer"><div class="ph">Écris, dicte, ou envoie une photo de ta feuille…</div>
+ <div class="tools"><span class="ico">📷</span><span class="ico">🎙</span><span class="chip">Réfléchi ▾</span><span class="send">↑</span></div></div>
+<div class="label">Maquette A — espace libre : les cartes apparaissent où le prof (ou toi) le décide</div>
+<script src=katex.min.js></script><script src=graph.js></script>
+<script>fetch('katex.css').then(r=>r.text()).then(t=>k.textContent=t);
+plot(g,[{f:x=>x,c:'#C9CFDA',w:1.2,dash:1},{f:x=>2**x,c:'#2F55D4',lab:'2ˣ',lx:1.4,ly:3.4},{f:x=>Math.log2(x),c:'#C8127A',lab:'log₂ x',lx:3.1,ly:1.1}],[-3,4.5],[-3,4.5],350,230)</script>

@@ -32,6 +32,7 @@ const OPS = {
   run: 'C.run(A["spec"], A.get("answer"))',
   compute: 'C.compute(A["spec"])',
   latex: 'C.tex(C.P(C.normalize_expr(A["text"])))',
+  plot: 'C.plot_points(A["expr"], float(A["xmin"]), float(A["xmax"]), int(A.get("n", 400)))',
 };
 
 self.onmessage = async (e) => {

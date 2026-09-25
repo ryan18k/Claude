@@ -497,3 +497,23 @@ def compute(spec):
     if t == "numeric":
         return {"answer": str(float(P(spec["expr"]))), "latex": f"{float(P(spec['expr'])):.4g}"}
     raise ValueError(f"type {t} : pas de calcul automatique")
+
+
+# ---------------------------------------------------------------- Graphiques du tableau
+def plot_points(expr, xmin, xmax, n=400, var="x"):
+    """Points (x, y) d'une fonction pour le tableau. y = None là où la fonction n'est pas définie
+    (racine d'un négatif, puissance non entière d'un négatif — convention du cours —, division par 0)."""
+    import math
+    x = symbols()[var]
+    e = P(expr)
+    f = sp.lambdify(x, e, modules=["math"])
+    pts = []
+    for i in range(n + 1):
+        xv = xmin + (xmax - xmin) * i / n
+        try:
+            y = f(xv)
+            y = float(y) if isinstance(y, (int, float)) and math.isfinite(y) else None
+        except Exception:
+            y = None
+        pts.append([round(xv, 6), None if y is None else round(y, 6)])
+    return {"points": pts, "latex": tex(e)}

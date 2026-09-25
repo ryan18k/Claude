@@ -1,0 +1,46 @@
+<!doctype html><meta charset=utf-8><link rel=stylesheet href=common.css><style id=k></style>
+<div class="top"><b>Carnet</b><span>Analyse I · Prélude</span><span style="flex:1"></span><span class="chip ok">SymPy prêt</span></div>
+
+<!-- photo corrigée -->
+<div class="card" style="top:62px;left:20px;width:430px">
+ <h4>Ta feuille · série -1, I.10 e <span class="x">✕</span></h4>
+ <div style="background:#fbfbf7;border:1px solid var(--line);border-radius:8px;padding:12px;font-family:'Comic Sans MS','Segoe Print',cursive;color:#2b3950;line-height:1.9">
+  (3x−2)/(2x+1) ≤ 2<br>
+  <span style="background:var(--bad-soft);outline:2px solid var(--bad);border-radius:4px;padding:0 4px">3x − 2 ≤ 4x + 2</span> ← ici<br>
+  −x ≤ 4 &nbsp;⇒&nbsp; x ≥ −4
+ </div>
+ <div style="margin-top:8px;font-size:.9rem">Tu as multiplié par <span data-tex="2x+1"></span> sans connaître son signe.</div>
+ <div style="margin-top:6px"><span class="chip bad">✗ SymPy : faux</span> <span class="chip">solution attendue : 2 intervalles</span></div>
+</div>
+
+<!-- mémoire / progression -->
+<div class="card" style="bottom:130px;left:20px;width:430px">
+ <h4>Où tu en es <span class="x">✕</span></h4>
+ <div style="display:grid;gap:6px;font-size:.9rem">
+  <div>Série -1 partie I &nbsp;<span class="chip ok">11 faits</span> <span class="chip bad">2 à revoir</span></div>
+  <div>Difficulté qui revient : <b>multiplier une inégalité par une expression de signe inconnu</b> <span class="chip warn">3 fois</span></div>
+  <div style="height:7px;border-radius:9px;background:var(--line)"><div style="width:62%;height:100%;border-radius:9px;background:var(--pen)"></div></div>
+ </div>
+</div>
+
+<!-- carte tableau de signes -->
+<div class="card" style="top:62px;right:20px;width:360px">
+ <h4>Méthode · tableau de signes <span class="x">✕</span></h4>
+ <table style="border-collapse:collapse;width:100%;font-size:.9rem;text-align:center">
+  <tr style="border-bottom:1px solid var(--line)"><td></td><td></td><td data-tex="-4"></td><td></td><td data-tex="-\tfrac12"></td><td></td></tr>
+  <tr><td style="text-align:left" data-tex="-x-4"></td><td>+</td><td>0</td><td>−</td><td>−</td><td>−</td></tr>
+  <tr><td style="text-align:left" data-tex="2x+1"></td><td>−</td><td>−</td><td>−</td><td>0</td><td>+</td></tr>
+  <tr style="border-top:1px solid var(--line)"><td style="text-align:left">quotient</td><td>−</td><td>0</td><td>+</td><td>‖</td><td>−</td></tr>
+ </table>
+ <div style="margin-top:6px;font-size:.85rem">Quotient ≤ 0 : <span data-tex="x\in\,]-\infty,-4]\cup]-\tfrac12,\infty["></span> <span class="chip ok">✓ SymPy</span></div>
+</div>
+
+<div style="position:absolute;right:20px;top:300px;width:600px;display:grid;gap:10px">
+ <div class="msg me">📷 <i>photo de ma feuille</i> — le 10e c'est bon ?</div>
+ <div class="msg prof">Presque : l'erreur est surlignée à gauche. On ne multiplie pas par <span data-tex="2x+1"></span>, on ramène tout d'un côté et on fait le tableau de signes (à droite).<br>C'est la 3ᵉ fois que ce piège revient, je le note. Refais la dernière ligne ?</div>
+</div>
+
+<div class="composer" style="left:auto;right:20px;transform:none;width:600px"><div class="ph">Écris ou envoie une nouvelle photo…</div>
+ <div class="tools"><span class="ico">📷</span><span class="ico">🎙</span><span class="chip">Réfléchi ▾</span><span class="send">↑</span></div></div>
+<div class="label" style="bottom:auto;top:785px">Maquette C — photo corrigée, mémoire des difficultés</div>
+<script src=katex.min.js></script><script src=graph.js></script><script>fetch('katex.css').then(r=>r.text()).then(t=>k.textContent=t)</script>
