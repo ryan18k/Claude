@@ -2,34 +2,35 @@
 <meta name="description" content="Professeur particulier pour la préparation à l'EPFL : conversation, cartes modulables, vérification SymPy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root {
-  --paper: #F7F8FB; --card: #FFFFFF; --ink: #1A2230; --muted: #5A6477; --faint: #8A93A5;
+  --paper: #F2F3F9; --dots: #D7DAE8; --card: #FFFFFF; --ink: #1B1F33; --muted: #565C78; --faint: #8C91AB;
+  --grad: linear-gradient(135deg, #00C4CC 0%, #6B4EFF 55%, #A43CF0 100%); --grad-soft: linear-gradient(135deg, #E3FAFB 0%, #EEEAFF 100%);
   --line: #E3E8F0; --grid: #EEF1F6; --accent: #C8127A; --accent-soft: #FCEAF4; --pen: #2F55D4; --pen-soft: #EAF0FF;
   --ok: #1F7A4D; --ok-soft: #E4F4EB; --warn: #9A5A00; --warn-soft: #FFF3DC; --bad: #B3261E; --bad-soft: #FCE9E7;
-  --shadow: 0 2px 4px rgba(26,34,48,.05), 0 10px 30px rgba(26,34,48,.09);
-  --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --shadow: 0 1px 2px rgba(27,31,51,.06), 0 12px 32px rgba(60,50,140,.12);
+  --font: "Nunito", "Avenir Next", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --c1: #2F55D4; --c2: #C8127A; --c3: #1F7A4D; --c4: #9A5A00;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
+    --paper: #12131C; --dots: #262839; --card: #1C1E2B; --ink: #ECEDF6; --muted: #A9ADC6; --faint: #7D82A0; --grad-soft: linear-gradient(135deg, #10363A 0%, #2A2350 100%);
     --line: #273041; --grid: #1E2531; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
     --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
     --shadow: 0 2px 4px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35); --c1: #93AAFF; --c2: #FF5FB0; --c3: #5FCF95; --c4: #F0B45A; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
+  --paper: #12131C; --dots: #262839; --card: #1C1E2B; --ink: #ECEDF6; --muted: #A9ADC6; --faint: #7D82A0; --grad-soft: linear-gradient(135deg, #10363A 0%, #2A2350 100%);
   --line: #273041; --grid: #1E2531; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
   --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
   --shadow: 0 2px 4px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35); --c1: #93AAFF; --c2: #FF5FB0; --c3: #5FCF95; --c4: #F0B45A; color-scheme: dark;
 }
 [hidden] { display: none !important; }
 html, body { height: 100%; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--font); overflow: hidden; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background-color: var(--paper); background-image: radial-gradient(var(--dots) 1.1px, transparent 1.3px); background-size: 22px 22px; color: var(--ink); font: 16.5px/1.55 var(--font); overflow: hidden; -webkit-text-size-adjust: 100%; }
 * { box-sizing: border-box; }
 button, input, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
@@ -45,33 +46,37 @@ button.chip:hover { border-color: var(--faint); }
 
 /* ---------- ossature : barre du haut, scène, conversation au centre ---------- */
 .app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
-.top { display: flex; align-items: center; gap: 8px; padding: 10px 16px; flex-wrap: wrap; }
-.brand { font-weight: 700; font-size: .76rem; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+.top { display: flex; align-items: center; gap: 8px; padding: 10px 16px; flex-wrap: wrap; background: color-mix(in srgb, var(--card) 80%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.brand { font-weight: 800; font-size: 1.15rem; letter-spacing: -.01em; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .top .grow { flex: 1; }
 .dock { display: flex; gap: 6px; flex-wrap: wrap; }
 .stage { position: relative; min-height: 0; overflow: hidden; }
 .convo { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: min(640px, 100% - 32px); display: flex; flex-direction: column; z-index: 1; }
 .log { flex: 1; overflow-y: auto; padding: 8px 4px 16px; display: flex; flex-direction: column; gap: 12px; scrollbar-width: thin; }
 .msg { border-radius: 16px; padding: 9px 14px; max-width: 100%; overflow-wrap: anywhere; }
-.msg.me { align-self: flex-end; background: var(--pen-soft); max-width: 85%; }
-.msg.prof { align-self: flex-start; }
+.msg.me { align-self: flex-end; background: var(--grad-soft); max-width: 85%; border-bottom-right-radius: 6px; font-weight: 600; }
+.msg.prof { align-self: flex-start; background: var(--card); box-shadow: var(--shadow); border-bottom-left-radius: 6px; }
 .msg .tex p { margin: 0 0 .45em; } .msg .tex p:last-child { margin: 0; }
 .msg .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
 .math-block { overflow-x: auto; overflow-y: hidden; }
 .katex-display { margin: .35em 0; overflow-x: auto; overflow-y: hidden; }
 .welcome { margin: auto 0; text-align: center; display: grid; gap: 12px; padding-block: 20px; }
-.welcome h1 { margin: 0; font-size: 1.6rem; }
+.welcome h1 { margin: 0; font-size: 2.1rem; font-weight: 800; letter-spacing: -.02em; }
+.welcome h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .welcome .sugg { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.welcome .sugg .chip { padding: 7px 13px; font-size: .88rem; }
+.welcome .sugg { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.tile { border: 0; border-radius: 16px; background: var(--card); box-shadow: var(--shadow); padding: 14px 14px 12px; text-align: left; display: grid; gap: 6px; font-weight: 700; font-size: .95rem; border-top: 4px solid var(--tc, #6B4EFF); }
+.tile .ic { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: color-mix(in srgb, var(--tc, #6B4EFF) 15%, transparent); font-size: 18px; }
+.tile:hover { transform: translateY(-1px); }
 
 /* ---------- barre de saisie ---------- */
-.composer { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 10px 12px; display: grid; gap: 8px; margin-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+.composer { background: var(--card); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); padding: 10px 12px; display: grid; gap: 8px; margin-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
 .composer textarea { border: 0; outline: 0; resize: none; background: transparent; width: 100%; min-height: 26px; max-height: 150px; padding: 2px 4px; line-height: 1.45; }
 .preview { font-size: .95rem; padding: 4px 6px; border-radius: 10px; background: var(--paper); overflow-x: auto; }
 .tools { display: flex; align-items: center; gap: 8px; }
-.ico { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); display: grid; place-items: center; font-size: 15px; color: var(--muted); padding: 0; }
+.ico { width: 42px; height: 42px; border-radius: 14px; border: 1px solid var(--line); background: var(--paper); display: grid; place-items: center; font-size: 15px; color: var(--muted); padding: 0; }
 .ico[aria-pressed="true"] { background: var(--pen-soft); color: var(--pen); border-color: transparent; }
-.send { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--pen); color: #fff; font-size: 18px; display: grid; place-items: center; }
+.send { margin-left: auto; width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--grad); color: #fff; font-size: 19px; font-weight: 800; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(107,78,255,.35); }
 .send:disabled { opacity: .45; }
 .tier { border: 1px solid var(--line); border-radius: 99px; background: var(--card); padding: 5px 10px; font-size: .82rem; color: var(--muted); }
 .thumbs { display: flex; gap: 6px; }
@@ -83,23 +88,25 @@ button.chip:hover { border-color: var(--faint); }
 .kb-tabs button { border: 0; background: none; color: var(--muted); font-size: .8rem; padding: 2px 6px; border-radius: 6px; }
 .kb-tabs button[aria-pressed="true"] { background: var(--pen-soft); color: var(--pen); font-weight: 700; }
 .keys { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 5px; }
-.key { min-height: 42px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); display: grid; place-items: center; font-size: .95rem; padding: 2px; }
+.key { min-height: 46px; border: 0; border-radius: 12px; background: var(--paper); box-shadow: inset 0 -2px 0 var(--line); display: grid; place-items: center; font-size: .95rem; padding: 2px; }
 .key:active { background: var(--pen-soft); }
 .key.wide { grid-column: span 2; }
 
 /* ---------- cartes modulables ---------- */
 .cards { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-.card { position: absolute; pointer-events: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; min-width: 200px; min-height: 90px; overflow: hidden; }
+.card { position: absolute; pointer-events: auto; background: var(--card); border: 0; border-top: 4px solid var(--tc, #6B4EFF); border-radius: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; min-width: 200px; min-height: 90px; overflow: hidden; }
 .card.big { z-index: 5; }
 .card-h { display: flex; align-items: center; gap: 4px; padding: 7px 8px 5px 12px; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
-.card-h .t { flex: 1; font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.card-h button { border: 0; background: none; color: var(--faint); width: 30px; height: 30px; border-radius: 8px; font-size: 15px; padding: 0; }
+.card-h .t { flex: 1; font-size: .95rem; color: var(--ink); font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-h .ic { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; background: color-mix(in srgb, var(--tc, #6B4EFF) 15%, transparent); font-size: 15px; flex: none; }
+.card-h { min-height: 46px; }
+.card-h button { border: 0; background: none; color: var(--faint); width: 36px; height: 36px; border-radius: 8px; font-size: 15px; padding: 0; }
 .card-h button:hover { background: var(--paper); color: var(--ink); }
 .card-b { padding: 4px 14px 14px; overflow: auto; flex: 1; }
 .card-b .tex p { margin: 0 0 .4em; }
-.rz { position: absolute; right: 0; bottom: 0; width: 26px; height: 26px; cursor: nwse-resize; touch-action: none; }
+.rz { position: absolute; right: 0; bottom: 0; width: 38px; height: 38px; cursor: nwse-resize; touch-action: none; }
 .rz::after { content: ""; position: absolute; right: 6px; bottom: 6px; width: 9px; height: 9px; border-right: 2px solid var(--faint); border-bottom: 2px solid var(--faint); border-radius: 0 0 3px 0; }
-.enc { border: 1.5px solid var(--accent); border-radius: 4px; padding: 6px 10px; margin: 4px 0; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.enc { border: 0; border-left: 4px solid var(--accent); border-radius: 10px; padding: 6px 10px; margin: 4px 0; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
 .src { font-size: .72rem; color: var(--faint); margin-top: 4px; }
 .step { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; padding: 5px 0; }
 .step .n { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--muted); }
@@ -144,7 +151,7 @@ svg text { font-family: var(--font); }
         <textarea id="input" rows="1" placeholder="Écris, dicte, ou envoie une photo de ta feuille…" aria-label="Message"></textarea>
         <div class="mathkb" id="mathkb" hidden></div>
         <div class="tools">
-          <button type="button" class="ico" id="photoBtn" title="Photo de ta feuille" hidden>📷</button>
+          <button type="button" class="ico" id="photoBtn" title="Photo de ta feuille">📷</button>
           <button type="button" class="ico" id="kbBtn" aria-pressed="false" title="Clavier maths"><b style="font-family:serif">√x</b></button>
           <select class="tier" id="tier" aria-label="Niveau de réflexion">
             <option value="quick">Rapide</option><option value="default" selected>Normal</option><option value="complex">Réfléchi</option>
@@ -351,8 +358,9 @@ function duesToday() {
 }
 
 /* ============================================================ cartes modulables */
+const TSTYLE = {formules: ['📌', '#E6007E'], graphe: ['📈', '#3B6CFF'], dessin: ['✏️', '#00A99D'], tableau: ['▦', '#7B61FF'], demo: ['🪜', '#FF8A00'], exercice: ['📄', '#7B61FF'], cours: ['📖', '#3B6CFF'], exo: ['✍️', '#FF8A00'], progression: ['🎯', '#00A99D'], photo: ['📷', '#64748B']};
 const TITLES = {formules: 'Formules', graphe: 'Graphique', dessin: 'Dessin', tableau: 'Tableau', demo: 'Démonstration', exercice: 'Exercice officiel', cours: 'Cours officiel', exo: 'À toi', progression: 'Où tu en es', photo: 'Ta feuille'};
-const isNarrow = () => window.innerWidth < 900;
+const isNarrow = () => window.innerWidth < 600;
 function stageBox() { const r = $('#stage').getBoundingClientRect(); return {W: r.width, H: r.height}; }
 function place(c) {                                                  // à gauche : graphes, démonstrations, énoncés ; à droite : formules, progression, exercices
   const {W, H} = stageBox(); const chatW = Math.min(640, W - 32);
@@ -425,11 +433,12 @@ function cardBody(c) {
 function renderCards() {
   const host = $('#cards'); $('#app').classList.toggle('narrow', isNarrow());
   const open = APP.cards.filter(c => !c.min);
-  host.innerHTML = open.map(c => `<article class="card ${c.big ? 'big' : ''}" data-id="${c.id}" style="left:${c.big ? 16 : c.x}px;top:${c.big ? 8 : c.y}px;width:${c.big ? 'calc(100% - 32px)' : c.w + 'px'};height:${c.big ? 'calc(100% - 16px)' : c.h + 'px'}">
-      <div class="card-h" data-drag="${c.id}"><span class="t">${esc(c.titre || TITLES[c.type])}</span>
+  if (!isNarrow()) { const {W, H} = stageBox(); for (const c of open) { c.w = clamp(c.w || 260, 200, W - 16); c.h = clamp(c.h || 240, 110, H - 16); c.x = clamp(c.x ?? 12, -c.w + 90, W - 90); c.y = clamp(c.y ?? 8, 0, H - 44); } }
+  host.innerHTML = open.map(c => `<article class="card ${c.big ? 'big' : ''}" data-id="${c.id}" style="--tc:${TSTYLE[c.type]?.[1] || '#6B4EFF'};${c.z && !c.big ? 'z-index:' + c.z + ';' : ''}left:${c.big ? 16 : c.x}px;top:${c.big ? 8 : c.y}px;width:${c.big ? 'calc(100% - 32px)' : c.w + 'px'};height:${c.big ? 'calc(100% - 16px)' : c.h + 'px'}">
+      <div class="card-h" data-drag="${c.id}"><span class="ic">${TSTYLE[c.type]?.[0] || '▢'}</span><span class="t">${esc(c.titre || TITLES[c.type])}</span>
         <button data-a="min" data-id="${c.id}" title="Réduire" aria-label="Réduire">–</button><button data-a="big" data-id="${c.id}" title="${c.big ? 'Taille normale' : 'Agrandir'}" aria-label="Agrandir">${c.big ? '⤡' : '⤢'}</button><button data-a="close" data-id="${c.id}" title="Fermer" aria-label="Fermer">✕</button></div>
       <div class="card-b">${cardBody(c)}</div><div class="rz" data-rz="${c.id}"></div></article>`).join('');
-  $('#dock').innerHTML = APP.cards.filter(c => c.min).map(c => `<button class="chip acc" data-a="restore" data-id="${c.id}">▢ ${esc(c.titre || TITLES[c.type])}</button>`).join('');
+  $('#dock').innerHTML = APP.cards.filter(c => c.min).map(c => `<button class="chip acc" data-a="restore" data-id="${c.id}">${TSTYLE[c.type]?.[0] || '▢'} ${esc(c.titre || TITLES[c.type])}</button>`).join('');
   open.filter(c => c.type === 'graphe').forEach(c => drawPlot(c).catch(e => console.warn('graphique', e)));
   renderStatus();
 }
@@ -478,22 +487,48 @@ function progressionHTML() {
     ${N.length ? `<div><b>Notions</b>${N.map(([id, s]) => `<div style="display:flex;gap:8px;align-items:center"><span style="flex:1">${esc(APP.NOTION[id].titre)}</span><div class="bar" style="width:70px"><i style="width:${Math.round(s.m * 100)}%"></i></div></div>`).join('')}</div>` : ''}
   </div>`;
 }
-// Déplacer et redimensionner au doigt (souris, doigt, stylet)
+// Déplacer, redimensionner, pincer : doigt, stylet ou souris
 let drag = null;
-document.addEventListener('pointerdown', ev => {
-  if (isNarrow()) return;
-  const h = ev.target.closest('[data-drag]'), rz = ev.target.closest('[data-rz]');
-  if ((!h && !rz) || ev.target.closest('button')) return;
-  const c = APP.cards.find(x => x.id === (h ? h.dataset.drag : rz.dataset.rz)); if (!c || c.big) return;
-  drag = {c, mode: h ? 'move' : 'size', x: ev.clientX, y: ev.clientY, o: {x: c.x, y: c.y, w: c.w, h: c.h}, el: ev.target.closest('.card')};
-  drag.el.style.zIndex = 4; ev.preventDefault();
-});
-document.addEventListener('pointermove', ev => {
-  if (!drag) return; const {W, H} = stageBox(); const dx = ev.clientX - drag.x, dy = ev.clientY - drag.y, c = drag.c;
-  if (drag.mode === 'move') { c.x = clamp(drag.o.x + dx, -c.w + 80, W - 80); c.y = clamp(drag.o.y + dy, 0, H - 40); drag.el.style.left = c.x + 'px'; drag.el.style.top = c.y + 'px'; }
-  else { c.w = clamp(drag.o.w + dx, 200, W); c.h = clamp(drag.o.h + dy, 90, H); drag.el.style.width = c.w + 'px'; drag.el.style.height = c.h + 'px'; }
-});
-document.addEventListener('pointerup', () => { if (!drag) return; const c = drag.c, moved = drag.mode; drag.el.style.zIndex = ''; drag = null; saveBoard(); if (c.type === 'graphe' && moved === 'size') drawPlot(c); });
+function grab(target, x, y) {
+  if (isNarrow()) return false;
+  const h = target.closest('[data-drag]'), rz = target.closest('[data-rz]');
+  if ((!h && !rz) || target.closest('button')) return false;
+  const c = APP.cards.find(o => o.id === (h ? h.dataset.drag : rz.dataset.rz)); if (!c || c.big) return false;
+  const el = target.closest('.card');
+  drag = {c, mode: h ? 'move' : 'size', x, y, o: {x: c.x, y: c.y, w: c.w, h: c.h}, el};
+  bringToFront(c, el); return true;
+}
+function bringToFront(c, el) { APP.z = (APP.z || 10) + 1; c.z = APP.z; if (el) el.style.zIndex = c.z; }
+function dragTo(x, y) {
+  if (!drag) return; const {W, H} = stageBox(); const dx = x - drag.x, dy = y - drag.y, c = drag.c;
+  if (drag.mode === 'move') { c.x = clamp(drag.o.x + dx, -c.w + 90, W - 90); c.y = clamp(drag.o.y + dy, 0, H - 44); drag.el.style.left = c.x + 'px'; drag.el.style.top = c.y + 'px'; }
+  else { c.w = clamp(drag.o.w + dx, 200, W); c.h = clamp(drag.o.h + dy, 110, H); drag.el.style.width = c.w + 'px'; drag.el.style.height = c.h + 'px'; }
+}
+function drop() { if (!drag) return; const c = drag.c, m = drag.mode; drag = null; saveBoard(); if (c.type === 'graphe' && m === 'size') drawPlot(c).catch(() => {}); }
+if (window.PointerEvent) {
+  document.addEventListener('pointerdown', ev => { if (ev.pointerType === 'touch' && pinch) return; if (grab(ev.target, ev.clientX, ev.clientY)) { ev.preventDefault(); try { ev.target.setPointerCapture(ev.pointerId); } catch (e) {} } });
+  document.addEventListener('pointermove', ev => { if (drag) { ev.preventDefault(); dragTo(ev.clientX, ev.clientY); } }, {passive: false});
+  document.addEventListener('pointerup', drop); document.addEventListener('pointercancel', drop);
+} else {
+  document.addEventListener('touchstart', ev => { const t = ev.touches[0]; if (ev.touches.length === 1 && grab(ev.target, t.clientX, t.clientY)) ev.preventDefault(); }, {passive: false});
+  document.addEventListener('touchmove', ev => { if (drag && ev.touches.length === 1) { ev.preventDefault(); dragTo(ev.touches[0].clientX, ev.touches[0].clientY); } }, {passive: false});
+  document.addEventListener('touchend', drop);
+}
+// Pincer une carte à deux doigts pour l'agrandir ou la rétrécir
+let pinch = null;
+const dist = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+document.addEventListener('touchstart', ev => {
+  if (ev.touches.length !== 2 || isNarrow()) return;
+  const el = ev.target.closest('.card'); const c = el && APP.cards.find(o => o.id === el.dataset.id); if (!c || c.big) return;
+  drag = null; pinch = {c, el, d: dist(ev.touches[0], ev.touches[1]), w: c.w, h: c.h}; bringToFront(c, el); ev.preventDefault();
+}, {passive: false});
+document.addEventListener('touchmove', ev => {
+  if (!pinch || ev.touches.length !== 2) return; ev.preventDefault();
+  const {W, H} = stageBox(); const k = dist(ev.touches[0], ev.touches[1]) / pinch.d, c = pinch.c;
+  c.w = clamp(pinch.w * k, 200, W); c.h = clamp(pinch.h * k, 110, H); pinch.el.style.width = c.w + 'px'; pinch.el.style.height = c.h + 'px';
+}, {passive: false});
+document.addEventListener('touchend', ev => { if (pinch && ev.touches.length < 2) { const c = pinch.c; pinch = null; saveBoard(); if (c.type === 'graphe') drawPlot(c).catch(() => {}); } });
+document.addEventListener('pointerdown', ev => { const el = ev.target.closest('.card'); if (el) { const c = APP.cards.find(o => o.id === el.dataset.id); if (c) bringToFront(c, el); } }, true);
 window.addEventListener('resize', () => saveLater('rs', renderCards, 150));
 
 /* ============================================================ clavier maths : modèles à remplir */
@@ -551,9 +586,11 @@ function welcomeHTML() {
   sugg.push(['Commencer le Prélude', 'On commence le Prélude. Par quoi je commence ?']);
   sugg.push(['Je vais faire la série -1', 'Je vais faire la série -1. Qu\'est-ce que je dois maîtriser avant ?']);
   sugg.push(['Formules puissances et logs', 'Épingle-moi les formules des puissances et des logarithmes.']);
-  return `<div class="welcome"><h1>Salut ${esc(P.prenom)}.</h1>
+  sugg.push(['Le cercle trigo', 'Dessine-moi le cercle trigonométrique avec les valeurs à connaître.']);
+  const look = [['▶️', '#00C4CC'], ['🔁', '#FF8A00'], ['🎯', '#E6007E'], ['📐', '#6B4EFF']];
+  return `<div class="welcome"><h1>Salut <span>${esc(P.prenom)}</span> 👋</h1>
     <div style="color:var(--muted)">${last ? esc(last.resume) : 'Dis-moi ce que tu veux travailler, pose une question, ou envoie une photo de ta feuille.'}</div>
-    <div class="sugg">${sugg.slice(0, 4).map(([l, t], k) => `<button class="chip ${k ? '' : 'acc'}" data-a="say" data-t="${esc(t)}">${esc(l)}</button>`).join('')}</div></div>`;
+    <div class="sugg">${sugg.slice(0, 4).map(([l, t], k) => `<button class="tile" style="--tc:${look[k][1]}" data-a="say" data-t="${esc(t)}"><span class="ic">${look[k][0]}</span>${esc(l)}</button>`).join('')}</div></div>`;
 }
 
 /* ============================================================ consignes du professeur */
@@ -751,10 +788,10 @@ async function send(text, photos = []) {
   const tier = $('#tier').value; let reply = '', applied = null;
   const opts = {cache: false, signal: ctl.signal, modelTier: tier, onText: ({text: t}) => { reply = t; const L = $('#live'); if (L) { L.innerHTML = renderTex(strip(t)) || '…'; $('#log').scrollTop = $('#log').scrollHeight; } }};
   if (photos.length) opts.images = photos;
-  try { const r = await sample(turns, opts); reply = r.text; applied = r.modelTierApplied; if (r.truncated) toast('Réponse coupée : demande-lui de continuer.'); }
+  try { const r = await sample(turns, opts).catch(async e => { if (e.code === 'images_unavailable' && photos.length) { toast('Photo impossible dans cette vue : envoi sans la photo.'); delete opts.images; return sample(turns, opts); } throw e; }); reply = r.text; applied = r.modelTierApplied; if (r.truncated) toast('Réponse coupée : demande-lui de continuer.'); }
   catch (e) {
     reply = e.text || '';
-    if (e.code !== 'cancelled') toast({rate_limited: 'Limite d\'usage atteinte : réessaie plus tard.', not_granted: 'Claude n\'est pas autorisé pour cette page.', images_unavailable: 'Les photos ne passent pas dans cette vue.', prompt_too_large: 'Message trop long.'}[e.code] || 'Pas de réponse (' + e.code + ').');
+    if (e.code !== 'cancelled') toast({rate_limited: 'Limite d\'usage atteinte : réessaie plus tard.', not_granted: 'Claude n\'est pas autorisé pour cette page.', images_unavailable: 'Claude ne peut pas recevoir de photo dans cette vue (limite de claude.ai). Ton message est parti sans elle : décris ou tape ta réponse.', image_rejected: 'Photo refusée (format ou taille). Essaie une capture d\'écran de la photo.', prompt_too_large: 'Message trop long.'}[e.code] || 'Pas de réponse (' + e.code + ').');
     if (e.code === 'not_granted' || e.code === 'sampling_disabled') APP.cap.sample = null;
   }
   const tn = $('#tierNote'); tn.hidden = !applied || applied === tier; if (applied && applied !== tier) tn.textContent = 'réponse en mode ' + ({quick: 'Rapide', default: 'Normal', complex: 'Réfléchi'}[applied] || applied);
@@ -800,7 +837,8 @@ function renderStatus() {
   const s = APP.sympy.state;
   $('#status').innerHTML = (s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>' : s === 'ko' ? `<span class="chip bad" title="${esc(APP.sympy.info)}">SymPy indisponible</span>` : '')
     + (APP.store === 'db' ? '' : '<span class="chip warn" title="La progression reste dans ce navigateur">non synchronisé</span>')
-    + (APP.cap.sample ? '' : '<span class="chip warn">prof indisponible ici</span>');
+    + (APP.cap.sample ? '' : '<span class="chip warn">prof indisponible ici</span>')
+    + (APP.cap.sample && APP.cap.limits && !APP.cap.limits.images ? '<span class="chip warn" title="claude.ai ne transmet pas les images depuis cette vue">photos non transmises ici</span>' : '');
   const mc = $('#memChip'); const D = Object.entries(APP.profil.difficultes || {}).sort((a, b) => b[1].n - a[1].n)[0];
   const txt = [APP.profil.reprise && 'reprise : ' + APP.profil.reprise, D && 'à revoir : ' + (D[1].description || D[0])].filter(Boolean).join(' · ');
   mc.hidden = !txt || isNarrow(); mc.textContent = 'Mémoire · ' + txt;
@@ -832,11 +870,24 @@ $('#input').addEventListener('input', onInput);
 $('#input').addEventListener('keydown', ev => { if (ev.key === 'Enter' && !ev.shiftKey && !isNarrow()) { ev.preventDefault(); $('#composer').requestSubmit(); } });
 $('#kbBtn').addEventListener('click', () => { const kb = $('#mathkb'); kb.hidden = !kb.hidden; $('#kbBtn').setAttribute('aria-pressed', String(!kb.hidden)); if (!kb.hidden) renderKB(); });
 $('#photoBtn').addEventListener('click', () => $('#photoInput').click());
-$('#photoInput').addEventListener('change', ev => {
-  APP.photos = [...ev.target.files].slice(0, APP.cap.limits?.images?.maxCount || 1); ev.target.value = '';
+// Toute photo (HEIC de l'iPad compris) devient un JPEG d'au plus 1600 px avant l'envoi
+async function toJpeg(file) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error('image illisible')); i.src = url; });
+    const k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+    const cv = document.createElement('canvas'); cv.width = Math.round(img.naturalWidth * k); cv.height = Math.round(img.naturalHeight * k);
+    cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
+    return await new Promise(res => cv.toBlob(b => res(b || file), 'image/jpeg', .88));
+  } catch (e) { return file; } finally { URL.revokeObjectURL(url); }
+}
+$('#photoInput').addEventListener('change', async ev => {
+  const max = APP.cap.limits?.images?.maxCount || 4;
+  const files = [...ev.target.files].slice(0, max); ev.target.value = '';
+  APP.photos = await Promise.all(files.map(toJpeg));
   $('#thumbs').innerHTML = APP.photos.map(f => `<img src="${URL.createObjectURL(f)}" alt="photo jointe">`).join('');
   if (APP.photos[0]) addCard({type: 'photo', titre: 'Ta feuille', src: URL.createObjectURL(APP.photos[0])});
-  onInput();
+  onInput(); $('#input').focus();
 });
 $('#progBtn').addEventListener('click', () => { const c = APP.cards.find(x => x.type === 'progression' && !x.min); if (c) { APP.cards = APP.cards.filter(x => x !== c); renderCards(); saveBoard(); } else addCard({type: 'progression', titre: 'Où tu en es'}); });
 $('#tier').addEventListener('change', () => { APP.profil.tier = $('#tier').value; saveProfil(); });
@@ -859,7 +910,7 @@ document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && APP.busy
   renderLog(); renderCards(); onInput();
   if (window.claude?.use) claude.use('sample').then(async s => {
     APP.cap.sample = s;
-    if (s) { APP.cap.limits = await s.limits().catch(() => null); $('#photoBtn').hidden = !APP.cap.limits?.images; if (APP.cap.limits?.images) $('#photoInput').accept = APP.cap.limits.images.mediaTypes.join(','); }
+    if (s) APP.cap.limits = await s.limits().catch(() => null);
     renderStatus();
   });
   setTimeout(() => Sym.start(), 800);
