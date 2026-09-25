@@ -1,254 +1,254 @@
 <title>Carnet de prépa</title>
-<meta name="description" content="Suivi d'apprentissage et professeur particulier pour la préparation à l'EPFL.">
+<meta name="description" content="Professeur particulier pour la préparation à l'EPFL : conversation, cartes modulables, vérification SymPy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
 :root {
-  --paper: #FBFCFE; --card: #FFFFFF; --ink: #1A2230; --muted: #5A6477; --faint: #8A93A5;
-  --line: #E3E8F0; --rule: #D5E3F5; --accent: #C8127A; --accent-soft: #FCEAF4; --pen: #2F55D4; --pen-soft: #EAF0FF;
+  --paper: #F7F8FB; --card: #FFFFFF; --ink: #1A2230; --muted: #5A6477; --faint: #8A93A5;
+  --line: #E3E8F0; --grid: #EEF1F6; --accent: #C8127A; --accent-soft: #FCEAF4; --pen: #2F55D4; --pen-soft: #EAF0FF;
   --ok: #1F7A4D; --ok-soft: #E4F4EB; --warn: #9A5A00; --warn-soft: #FFF3DC; --bad: #B3261E; --bad-soft: #FCE9E7;
-  --shadow: 0 1px 2px rgba(26,34,48,.06), 0 4px 16px rgba(26,34,48,.05);
-  --r: 10px; --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --shadow: 0 2px 4px rgba(26,34,48,.05), 0 10px 30px rgba(26,34,48,.09);
+  --font: "Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --c1: #2F55D4; --c2: #C8127A; --c3: #1F7A4D; --c4: #9A5A00;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
-    --line: #273041; --rule: #22324A; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
+    --line: #273041; --grid: #1E2531; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
     --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
-    --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+    --shadow: 0 2px 4px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35); --c1: #93AAFF; --c2: #FF5FB0; --c3: #5FCF95; --c4: #F0B45A; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #10141B; --card: #171C25; --ink: #E7EBF2; --muted: #A2ABBC; --faint: #7B8599;
-  --line: #273041; --rule: #22324A; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
+  --line: #273041; --grid: #1E2531; --accent: #FF5FB0; --accent-soft: #3A1730; --pen: #93AAFF; --pen-soft: #1D2740;
   --ok: #5FCF95; --ok-soft: #17301F; --warn: #F0B45A; --warn-soft: #34270F; --bad: #FF8A80; --bad-soft: #3A1B19;
-  --shadow: 0 1px 2px rgba(0,0,0,.4); color-scheme: dark;
+  --shadow: 0 2px 4px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35); --c1: #93AAFF; --c2: #FF5FB0; --c3: #5FCF95; --c4: #F0B45A; color-scheme: dark;
 }
 [hidden] { display: none !important; }
 html, body { height: 100%; }
-body { background: var(--paper); color: var(--ink); font: 16px/1.55 var(--font); margin: 0; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--font); overflow: hidden; -webkit-text-size-adjust: 100%; }
 * { box-sizing: border-box; }
-button, input, textarea { font: inherit; color: inherit; }
+button, input, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
-:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; border-radius: 6px; }
-h1, h2, h3 { text-wrap: balance; line-height: 1.25; margin: 0; }
-h1 { font-size: 1.5rem; } h2 { font-size: 1.2rem; } h3 { font-size: 1.02rem; }
-.mono { font-family: var(--mono); font-size: .78rem; letter-spacing: .01em; }
-.muted { color: var(--muted); } .small { font-size: .88rem; }
-
-/* ---------- ossature ---------- */
-.app { display: grid; grid-template-columns: 76px minmax(0, 1fr); height: 100%; }
-.app.with-chat { grid-template-columns: 76px minmax(0, 1fr) minmax(340px, 420px); }
-.rail { border-right: 1px solid var(--line); display: flex; flex-direction: column; align-items: center; gap: 6px; padding-block: 14px; background: var(--card); }
-.rail .brand { font-weight: 700; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; writing-mode: vertical-rl; transform: rotate(180deg); }
-.tab { width: 62px; border: 0; background: none; border-radius: 12px; padding: 8px 2px; display: grid; justify-items: center; gap: 3px; font-size: .7rem; color: var(--muted); }
-.tab svg { width: 22px; height: 22px; }
-.tab[aria-current="page"] { background: var(--pen-soft); color: var(--pen); font-weight: 700; }
-.tab.prof { margin-top: auto; color: var(--accent); }
-.tab.prof[aria-pressed="true"] { background: var(--accent-soft); }
-main { overflow-y: auto; padding-inline: 28px; padding-block: 22px 60px; }
-.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
-.topline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: space-between; }
-.status { display: flex; gap: 6px; flex-wrap: wrap; }
-
-/* ---------- éléments ---------- */
-.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; display: grid; gap: 10px; }
-.card.lift { box-shadow: var(--shadow); }
-.encadre { border: 1.5px solid var(--accent); border-radius: 4px; padding: 8px 12px; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
-.btn { border: 1px solid var(--line); background: var(--card); border-radius: 9px; padding: 8px 14px; min-height: 40px; display: inline-flex; align-items: center; gap: 6px; }
-.btn:hover { border-color: var(--faint); }
-.btn.primary { background: var(--pen); border-color: var(--pen); color: #fff; font-weight: 700; }
-.btn.ghost { border-color: transparent; background: none; color: var(--pen); padding-inline: 8px; }
-.btn.small { min-height: 32px; padding: 4px 10px; font-size: .88rem; }
-.btn:disabled { opacity: .5; cursor: default; }
-.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+:focus-visible { outline: 2px solid var(--pen); outline-offset: 2px; }
+.mono { font-family: var(--mono); font-size: .78rem; }
 .chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 99px; padding: 2px 10px; font-size: .78rem; border: 1px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap; }
-button.chip { cursor: pointer; }
+button.chip:hover { border-color: var(--faint); }
 .chip.ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
-.chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
 .chip.bad { background: var(--bad-soft); color: var(--bad); border-color: transparent; }
+.chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
 .chip.pen { background: var(--pen-soft); color: var(--pen); border-color: transparent; }
 .chip.acc { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
-.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: inline-block; flex: none; }
-.dot.en_cours { background: var(--warn); } .dot.reussi { background: var(--ok); } .dot.a_revoir { background: var(--bad); } .dot.fait { background: var(--pen); }
-.bar { height: 7px; border-radius: 9px; background: var(--line); overflow: hidden; }
-.bar > i { display: block; height: 100%; background: var(--pen); border-radius: 9px; }
-.list { display: grid; gap: 2px; }
-.li { display: flex; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 9px; border: 0; background: none; text-align: left; width: 100%; }
-.li:hover { background: var(--pen-soft); }
-.li .grow { flex: 1; min-width: 0; }
-.eyebrow { font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); font-weight: 700; }
-.math-block { overflow-x: auto; overflow-y: hidden; padding-block: 2px; }
-.tex p { margin: 0 0 .5em; } .tex p:last-child { margin-bottom: 0; }
-.tex .katex-display { margin: .4em 0; overflow-x: auto; overflow-y: hidden; }
-details > summary { cursor: pointer; color: var(--pen); list-style: none; font-size: .9rem; }
-details > summary::-webkit-details-marker { display: none; }
-details[open] > summary { margin-bottom: 8px; }
-.orig { max-width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #fff; }
-.transcript { font-size: .92rem; color: var(--muted); border-left: 3px solid var(--rule); padding-left: 12px; }
-.goto { display: flex; gap: 8px; }
-.goto input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; background: var(--card); }
-.plan-item { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: center; padding: 10px 4px; border-bottom: 1px dashed var(--line); }
-.plan-item:last-child { border-bottom: 0; }
-.plan-n { font-family: var(--mono); color: var(--accent); font-weight: 600; }
-.breadcrumb { display: flex; gap: 6px; flex-wrap: wrap; font-size: .88rem; color: var(--muted); }
-.breadcrumb button { border: 0; background: none; color: var(--pen); padding: 0; }
 
-/* ---------- exercice ---------- */
-.item { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 8px; }
-.item:first-of-type { border-top: 0; padding-top: 0; }
-.item-head { display: flex; gap: 10px; align-items: baseline; }
-.item-head .sub { font-weight: 700; color: var(--accent); min-width: 1.4em; }
-.answer { display: grid; gap: 8px; }
-.answer textarea { width: 100%; min-height: 46px; resize: vertical; border: 1px solid var(--line); border-radius: 9px; padding: 9px 12px; background: var(--paper); }
-.feedback { border-radius: 9px; padding: 10px 12px; display: grid; gap: 6px; font-size: .95rem; }
-.feedback.ok { background: var(--ok-soft); } .feedback.bad { background: var(--bad-soft); } .feedback.warn { background: var(--warn-soft); } .feedback.info { background: var(--pen-soft); }
-.corrige { background: var(--paper); border: 1px dashed var(--faint); border-radius: 9px; padding: 10px 12px; display: grid; gap: 6px; }
-.thumbs { display: flex; gap: 6px; flex-wrap: wrap; }
-.thumbs img { width: 64px; height: 64px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
-
-/* ---------- professeur ---------- */
-.chat { border-left: 1px solid var(--line); background: var(--card); display: flex; flex-direction: column; min-height: 0; height: 100%; }
-.chat-head { padding: 12px 14px; border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
-.chat-log { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
-.msg { max-width: 92%; border-radius: 12px; padding: 9px 12px; font-size: .96rem; }
-.msg.user { align-self: flex-end; background: var(--pen-soft); }
-.msg.prof { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); }
+/* ---------- ossature : barre du haut, scène, conversation au centre ---------- */
+.app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+.top { display: flex; align-items: center; gap: 8px; padding: 10px 16px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: .76rem; letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+.top .grow { flex: 1; }
+.dock { display: flex; gap: 6px; flex-wrap: wrap; }
+.stage { position: relative; min-height: 0; overflow: hidden; }
+.convo { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: min(640px, 100% - 32px); display: flex; flex-direction: column; z-index: 1; }
+.log { flex: 1; overflow-y: auto; padding: 8px 4px 16px; display: flex; flex-direction: column; gap: 12px; scrollbar-width: thin; }
+.msg { border-radius: 16px; padding: 9px 14px; max-width: 100%; overflow-wrap: anywhere; }
+.msg.me { align-self: flex-end; background: var(--pen-soft); max-width: 85%; }
+.msg.prof { align-self: flex-start; }
+.msg .tex p { margin: 0 0 .45em; } .msg .tex p:last-child { margin: 0; }
 .msg .meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
-.chat-foot { border-top: 1px solid var(--line); padding: 10px; display: grid; gap: 8px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)); }
-.chat-foot textarea { width: 100%; min-height: 44px; max-height: 160px; resize: none; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; background: var(--paper); }
-.close-chat { display: none; }
+.math-block { overflow-x: auto; overflow-y: hidden; }
+.katex-display { margin: .35em 0; overflow-x: auto; overflow-y: hidden; }
+.welcome { margin: auto 0; text-align: center; display: grid; gap: 12px; padding-block: 20px; }
+.welcome h1 { margin: 0; font-size: 1.6rem; }
+.welcome .sugg { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.welcome .sugg .chip { padding: 7px 13px; font-size: .88rem; }
 
-/* ---------- étroit : barre du bas, professeur en plein écran ---------- */
-@media (max-width: 1099px) {
-  .app.with-chat { grid-template-columns: 76px minmax(0, 1fr); }
-  .chat { position: fixed; inset: 0; z-index: 20; border-left: 0; padding-top: env(safe-area-inset-top, 0px); }
-  .close-chat { display: inline-flex; }
-}
-@media (max-width: 700px) {
-  .app, .app.with-chat { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
-  .rail { order: 2; flex-direction: row; justify-content: space-around; border-right: 0; border-top: 1px solid var(--line); padding: 4px 4px calc(4px + env(safe-area-inset-bottom, 0px)); }
-  .rail .brand { display: none; }
-  .tab.prof { margin-top: 0; }
-  main { padding-inline: 16px; padding-block: 16px 40px; }
-}
-@media (prefers-reduced-motion: no-preference) { .msg { animation: rise .18s ease-out; } }
-@keyframes rise { from { transform: translateY(3px); opacity: .6; } to { transform: none; opacity: 1; } }
+/* ---------- barre de saisie ---------- */
+.composer { background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); padding: 10px 12px; display: grid; gap: 8px; margin-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); }
+.composer textarea { border: 0; outline: 0; resize: none; background: transparent; width: 100%; min-height: 26px; max-height: 150px; padding: 2px 4px; line-height: 1.45; }
+.preview { font-size: .95rem; padding: 4px 6px; border-radius: 10px; background: var(--paper); overflow-x: auto; }
+.tools { display: flex; align-items: center; gap: 8px; }
+.ico { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); display: grid; place-items: center; font-size: 15px; color: var(--muted); padding: 0; }
+.ico[aria-pressed="true"] { background: var(--pen-soft); color: var(--pen); border-color: transparent; }
+.send { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--pen); color: #fff; font-size: 18px; display: grid; place-items: center; }
+.send:disabled { opacity: .45; }
+.tier { border: 1px solid var(--line); border-radius: 99px; background: var(--card); padding: 5px 10px; font-size: .82rem; color: var(--muted); }
+.thumbs { display: flex; gap: 6px; }
+.thumbs img { width: 52px; height: 52px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+
+/* ---------- clavier maths ---------- */
+.mathkb { display: grid; gap: 6px; }
+.kb-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.kb-tabs button { border: 0; background: none; color: var(--muted); font-size: .8rem; padding: 2px 6px; border-radius: 6px; }
+.kb-tabs button[aria-pressed="true"] { background: var(--pen-soft); color: var(--pen); font-weight: 700; }
+.keys { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 5px; }
+.key { min-height: 42px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); display: grid; place-items: center; font-size: .95rem; padding: 2px; }
+.key:active { background: var(--pen-soft); }
+.key.wide { grid-column: span 2; }
+
+/* ---------- cartes modulables ---------- */
+.cards { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.card { position: absolute; pointer-events: auto; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; min-width: 200px; min-height: 90px; overflow: hidden; }
+.card.big { z-index: 5; }
+.card-h { display: flex; align-items: center; gap: 4px; padding: 7px 8px 5px 12px; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+.card-h .t { flex: 1; font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--faint); font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.card-h button { border: 0; background: none; color: var(--faint); width: 30px; height: 30px; border-radius: 8px; font-size: 15px; padding: 0; }
+.card-h button:hover { background: var(--paper); color: var(--ink); }
+.card-b { padding: 4px 14px 14px; overflow: auto; flex: 1; }
+.card-b .tex p { margin: 0 0 .4em; }
+.rz { position: absolute; right: 0; bottom: 0; width: 26px; height: 26px; cursor: nwse-resize; touch-action: none; }
+.rz::after { content: ""; position: absolute; right: 6px; bottom: 6px; width: 9px; height: 9px; border-right: 2px solid var(--faint); border-bottom: 2px solid var(--faint); border-radius: 0 0 3px 0; }
+.enc { border: 1.5px solid var(--accent); border-radius: 4px; padding: 6px 10px; margin: 4px 0; background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.src { font-size: .72rem; color: var(--faint); margin-top: 4px; }
+.step { display: grid; grid-template-columns: 26px 1fr; gap: 8px; align-items: start; padding: 5px 0; }
+.step .n { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: .8rem; color: var(--muted); }
+.step.q { background: var(--pen-soft); border-radius: 10px; padding: 6px; }
+.orig { max-width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #fff; }
+.tbl { border-collapse: collapse; width: 100%; text-align: center; font-size: .92rem; }
+.tbl td, .tbl th { padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.tbl td:first-child { text-align: left; }
+.bar { height: 7px; border-radius: 9px; background: var(--line); overflow: hidden; } .bar > i { display: block; height: 100%; background: var(--pen); }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); display: inline-block; }
+.dot.reussi { background: var(--ok); } .dot.fait { background: var(--pen); } .dot.a_revoir { background: var(--bad); } .dot.en_cours { background: var(--warn); }
+svg text { font-family: var(--font); }
+
+/* ---------- étroit (iPad portrait, téléphone) : cartes empilées au-dessus de la conversation ---------- */
+.app.narrow .cards { position: static; pointer-events: auto; display: flex; gap: 10px; overflow-x: auto; padding: 0 16px 8px; scroll-snap-type: x mandatory; }
+.app.narrow .card { position: relative !important; left: auto !important; top: auto !important; width: min(88vw, 420px) !important; height: auto !important; max-height: 42vh; flex: none; scroll-snap-align: start; }
+.app.narrow .rz { display: none; }
+.app.narrow .stage { display: flex; flex-direction: column; }
+.app.narrow .convo { position: relative; left: auto; transform: none; width: auto; flex: 1; min-height: 0; margin-inline: 16px; }
+.app.narrow .card.big { position: fixed !important; inset: 8px !important; width: auto !important; max-height: none; }
+@media (prefers-reduced-motion: no-preference) { .msg, .card { animation: rise .16s ease-out; } }
+@keyframes rise { from { transform: translateY(3px); opacity: .7; } to { transform: none; opacity: 1; } }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 
 <div class="app" id="app">
-  <nav class="rail" aria-label="Navigation">
-    <div class="brand">Carnet</div>
-    <button class="tab" data-tab="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Aujourd'hui</button>
-    <button class="tab" data-tab="cours"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M8 7h8M8 11h6"/></svg>Cours</button>
-    <button class="tab" data-tab="exos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20l1-4L16 6l3 3L9 19z"/><path d="M14 8l3 3"/></svg>Exercices</button>
-    <button class="tab" data-tab="progres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progrès</button>
-    <button class="tab prof" id="profBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/></svg>Prof</button>
-  </nav>
-  <main id="main"><div class="wrap"><p class="muted">Chargement du cours…</p></div></main>
-  <aside class="chat" id="chat" hidden aria-label="Professeur"></aside>
+  <header class="top">
+    <span class="brand">Carnet</span>
+    <span class="chip pen" id="memChip" hidden></span>
+    <span class="grow"></span>
+    <div class="dock" id="dock" aria-label="Cartes réduites"></div>
+    <button class="chip" id="progBtn">Où j'en suis</button>
+    <span id="status" class="dock"></span>
+  </header>
+  <div class="stage" id="stage">
+    <div class="cards" id="cards"></div>
+    <section class="convo" aria-label="Conversation">
+      <div class="log" id="log"></div>
+      <form class="composer" id="composer">
+        <div class="thumbs" id="thumbs"></div>
+        <div class="preview" id="preview" hidden></div>
+        <textarea id="input" rows="1" placeholder="Écris, dicte, ou envoie une photo de ta feuille…" aria-label="Message"></textarea>
+        <div class="mathkb" id="mathkb" hidden></div>
+        <div class="tools">
+          <button type="button" class="ico" id="photoBtn" title="Photo de ta feuille" hidden>📷</button>
+          <button type="button" class="ico" id="kbBtn" aria-pressed="false" title="Clavier maths"><b style="font-family:serif">√x</b></button>
+          <select class="tier" id="tier" aria-label="Niveau de réflexion">
+            <option value="quick">Rapide</option><option value="default" selected>Normal</option><option value="complex">Réfléchi</option>
+          </select>
+          <span class="chip" id="tierNote" hidden></span>
+          <button class="send" id="sendBtn" aria-label="Envoyer">↑</button>
+        </div>
+      </form>
+    </section>
+  </div>
 </div>
-<input type="file" id="photoInput" accept="image/*" capture="environment" multiple hidden>
+<input type="file" id="photoInput" accept="image/*" multiple hidden>
 
 <script>
 'use strict';
-/* ====================================================================== utilitaires */
+/* ============================================================ utilitaires */
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
-const today = () => new Date().toLocaleDateString('sv-SE');           // AAAA-MM-JJ, heure locale
+const today = () => new Date().toLocaleDateString('sv-SE');
 const addDays = (d, n) => { const x = new Date(d + 'T12:00:00'); x.setDate(x.getDate() + n); return x.toLocaleDateString('sv-SE'); };
-const fmtDate = d => new Date(d + 'T12:00:00').toLocaleDateString('fr-CH', {weekday: 'long', day: 'numeric', month: 'long'});
 const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
-const deaccent = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const deaccent = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const uid = () => Math.random().toString(36).slice(2, 9);
 async function getJSON(u) { const r = await fetch(u); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }
+function toast(msg) { const t = document.createElement('div'); t.className = 'chip warn'; t.style.cssText = 'position:fixed;left:50%;top:56px;transform:translateX(-50%);z-index:60;padding:8px 14px;font-size:.9rem;white-space:normal;max-width:calc(100% - 32px);text-align:center'; t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 4500); }
 
-/* ====================================================================== rendu des maths */
+/* ============================================================ maths à l'écran */
 function kx(tex, display) {
   if (!window.katex) return `<code>${esc(tex)}</code>`;
-  try { return katex.renderToString(tex, {displayMode: !!display, throwOnError: false, strict: 'ignore', output: 'html'}); }
-  catch (e) { return `<code>${esc(tex)}</code>`; }
+  try { return katex.renderToString(String(tex), {displayMode: !!display, throwOnError: false, strict: 'ignore'}); } catch (e) { return `<code>${esc(tex)}</code>`; }
 }
-// Texte avec $…$, $$…$$, \(…\), \[…\] ; « > » en début de ligne = encadré ; ligne vide = paragraphe ; **gras**.
 function inline(s) {
-  const out = [];
-  const re = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\$([^$]+?)\$|\\\(([\s\S]+?)\\\)/g;
-  let last = 0, m;
-  while ((m = re.exec(s))) {
-    out.push(esc(s.slice(last, m.index)).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'));
-    const disp = m[1] ?? m[2];
-    out.push(disp != null ? `<div class="math-block">${kx(disp, true)}</div>` : kx(m[3] ?? m[4], false));
-    last = re.lastIndex;
-  }
-  out.push(esc(s.slice(last)).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'));
-  return out.join('');
+  const out = []; const re = /\$\$([\s\S]+?)\$\$|\\\[([\s\S]+?)\\\]|\$([^$\n]+?)\$|\\\(([\s\S]+?)\\\)/g; let last = 0, m;
+  const txt = t => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  s = String(s ?? '');
+  while ((m = re.exec(s))) { out.push(txt(s.slice(last, m.index))); const d = m[1] ?? m[2]; out.push(d != null ? `<div class="math-block">${kx(d, true)}</div>` : kx(m[3] ?? m[4])); last = re.lastIndex; }
+  out.push(txt(s.slice(last))); return out.join('');
 }
 function renderTex(src) {
-  const blocks = String(src || '').split(/\n\s*\n/);
-  return '<div class="tex">' + blocks.map(b => {
-    const lines = b.split('\n');
-    if (lines.every(l => l.startsWith('>'))) return `<div class="encadre">${lines.map(l => `<p>${inline(l.replace(/^>\s?/, ''))}</p>`).join('')}</div>`;
-    return `<p>${lines.map(inline).join('<br>')}</p>`;
+  return '<div class="tex">' + String(src || '').split(/\n\s*\n/).map(b => {
+    const L = b.split('\n');
+    if (L.every(l => l.startsWith('>'))) return `<div class="enc">${L.map(l => `<p>${inline(l.replace(/^>\s?/, ''))}</p>`).join('')}</div>`;
+    return `<p>${L.map(inline).join('<br>')}</p>`;
   }).join('') + '</div>';
 }
-const math = (tex, display) => tex ? (display ? `<div class="math-block">${kx(tex, true)}</div>` : kx(tex, false)) : '';
+// Écriture du clavier maths (√(x), √[3](x), (a)/(b), x^(2), log_(a)(x)) → LaTeX pour l'aperçu
+function plainToTex(src) {
+  const MAP = {'*': '\\cdot ', '·': '\\cdot ', '▢': '\\square ', '≤': '\\le ', '≥': '\\ge ', '≠': '\\neq ', '∞': '\\infty ', 'π': '\\pi ', '∈': '\\in ', '∪': '\\cup ', '∩': '\\cap ', 'ℝ': '\\mathbb{R}', '⇒': '\\Rightarrow ', '⇔': '\\Leftrightarrow ', '∀': '\\forall ', '∃': '\\exists ', '±': '\\pm ', '∅': '\\emptyset ', '→': '\\to ', 'θ': '\\theta ', '¬': '\\neg ', '∧': '\\wedge ', '∨': '\\vee ', '∘': '\\circ '};
+  const FN = ['arctan', 'arcsin', 'arccos', 'sin', 'cos', 'tan', 'exp', 'log', 'ln', 'lim'];
+  function conv(s) {
+    let i = 0, out = '';
+    const group = () => { let d = 0, j = i; for (; j < s.length; j++) { if (s[j] === '(') d++; else if (s[j] === ')') { d--; if (!d) break; } } const inner = s.slice(i + 1, j); i = Math.min(j + 1, s.length); return inner; };
+    const atom = () => { if (s[i] === '(') return conv(group()); const c = s[i] ?? ''; i++; return MAP[c] ?? c; };
+    while (i < s.length) {
+      const c = s[i];
+      if (c === '√') { i++; let n = null; if (s[i] === '[') { const j = s.indexOf(']', i); n = s.slice(i + 1, j < 0 ? s.length : j); i = j < 0 ? s.length : j + 1; } const a = atom(); out += n ? `\\sqrt[${conv(n)}]{${a}}` : `\\sqrt{${a}}`; continue; }
+      if (c === '^' || c === '_') { i++; out += `${c}{${atom()}}`; continue; }
+      if (c === '(') { const g = conv(group()); if (s[i] === '/' && s[i + 1] === '(') { i++; out += `\\frac{${g}}{${conv(group())}}`; } else out += `\\left(${g}\\right)`; continue; }
+      const f = FN.find(f => s.startsWith(f, i) && !/[a-z]/i.test(s[i - 1] || ''));
+      if (f) { out += f.startsWith('arc') ? `\\operatorname{${f}}` : '\\' + f; i += f.length; continue; }
+      out += MAP[c] ?? c; i++;
+    }
+    return out;
+  }
+  try { return conv(src); } catch (e) { return src; }
+}
 
-/* ====================================================================== état global */
+/* ============================================================ état */
 const APP = {
-  C: {matieres: [], chap: {}, serie: {}, notions: {}, variantes: {}},     // corpus
-  EX: {}, ITEM: {}, PASS: {}, NOTION: {}, VAR: {}, VARBASE: {},          // index
-  S: {profil: null, ex: {}, notion: {}, session: null, fils: {}},        // état d'apprentissage
-  cap: {db: null, sample: null, user: null, limits: null},
-  store: 'local', sympy: {state: 'off', info: null},
-  view: {tab: 'today', route: null},
-  chat: {open: false, ref: 'general', busy: false, ctl: null, photos: []},
-  answers: {},                                                            // brouillons, par item
+  PASS: {}, NOTION: {}, EX: {}, ITEM: {}, VAR: {}, SERIE: {}, CHAP: {},
+  cap: {db: null, sample: null, limits: null},
+  store: 'local', sympy: {state: 'off'},
+  profil: null, ex: {}, mem: null, msgs: [], cards: [], current: null, photos: [], busy: false, ctl: null,
 };
 
-/* ====================================================================== stockage : db synchronisée, sinon navigateur */
+/* ============================================================ stockage (db synchronisée, sinon ce navigateur) */
 const Store = {
-  q: {},
-  async init() {
-    const db = await (window.claude?.use ? claude.use('db').catch(() => null) : null);
-    if (db) { APP.cap.db = db; this.mode = 'db'; } else { this.mode = 'local'; }
-    APP.store = this.mode;
+  q: {}, mode: 'local',
+  async init() { const db = window.claude?.use ? await claude.use('db').catch(() => null) : null; if (db) { APP.cap.db = db; this.mode = 'db'; } APP.store = this.mode; },
+  async get(p) {
+    if (this.mode === 'db') { try { const s = await APP.cap.db.doc(p).get(); return s.exists ? s.data() : null; } catch (e) { return null; } }
+    try { return JSON.parse(localStorage.getItem('carnet:' + p) || 'null'); } catch (e) { return null; }
   },
-  key: p => 'carnet:' + p,
-  async get(path) {
-    if (this.mode === 'db') { const s = await APP.cap.db.doc(path).get(); return s.exists ? s.data() : null; }
-    try { return JSON.parse(localStorage.getItem(this.key(path)) || 'null'); } catch (e) { return null; }
+  async list(c) {
+    if (this.mode === 'db') { try { const s = await APP.cap.db.collection(c).limit(1000).get(); return Object.fromEntries(s.docs.map(d => [d.id, d.data()])); } catch (e) { return {}; } }
+    const o = {}; try { for (let k = 0; k < localStorage.length; k++) { const key = localStorage.key(k); if (key.startsWith('carnet:' + c + '/')) o[key.split('/').pop()] = JSON.parse(localStorage.getItem(key)); } } catch (e) {} return o;
   },
-  async list(coll) {
-    if (this.mode === 'db') { const s = await APP.cap.db.collection(coll).limit(1000).get(); return Object.fromEntries(s.docs.map(d => [d.id, d.data()])); }
-    const out = {};
-    try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith('carnet:' + coll + '/')) out[k.split('/').pop()] = JSON.parse(localStorage.getItem(k)); } } catch (e) {}
-    return out;
-  },
-  set(path, data) {                                                        // une écriture à la fois par document
+  set(p, data) {
     const body = JSON.parse(JSON.stringify(data));
     const run = async () => {
-      if (this.mode === 'db') {
-        try { await APP.cap.db.doc(path).set(body); }
-        catch (e) { if (e?.code === 'unavailable') { await new Promise(r => setTimeout(r, 800 + Math.random() * 800)); await APP.cap.db.doc(path).set(body); } else { toast('Sauvegarde impossible : ' + (e?.message || e?.code)); } }
-      } else { try { localStorage.setItem(this.key(path), JSON.stringify(body)); } catch (e) {} }
+      if (this.mode === 'db') { try { await APP.cap.db.doc(p).set(body); } catch (e) { if (e?.code === 'unavailable') { await new Promise(r => setTimeout(r, 900)); try { await APP.cap.db.doc(p).set(body); } catch (e2) {} } else if (e?.code !== 'revoked') toast('Sauvegarde impossible (' + (e?.code || e) + ')'); } }
+      else { try { localStorage.setItem('carnet:' + p, JSON.stringify(body)); } catch (e) {} }
     };
-    this.q[path] = (this.q[path] || Promise.resolve()).then(run, run);
-    return this.q[path];
-  },
-  watch(coll, onChange) {                                                  // synchro iPad ↔ ordinateur
-    if (this.mode !== 'db') return;
-    APP.cap.db.collection(coll).onSnapshot(s => {
-      let changed = false;
-      for (const ch of s.docChanges()) if (ch.type !== 'removed' && !ch.doc.metadata.hasPendingWrites) { onChange(ch.doc.id, ch.doc.data()); changed = true; }
-      if (changed) render();
-    }, () => {});
+    return (this.q[p] = (this.q[p] || Promise.resolve()).then(run, run));
   },
 };
-function toast(msg) { const t = document.createElement('div'); t.className = 'chip warn'; t.style.cssText = 'position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:50;padding:8px 14px;font-size:.9rem;white-space:normal;max-width:calc(100% - 32px);text-align:center'; t.textContent = msg; document.body.append(t); setTimeout(() => t.remove(), 4000); }
+const saveTimers = {};
+function saveLater(key, fn, ms = 600) { clearTimeout(saveTimers[key]); saveTimers[key] = setTimeout(fn, ms); }
+const saveProfil = () => saveLater('profil', () => Store.set('profil/moi', APP.profil));
+const saveBoard = () => saveLater('board', () => Store.set('tableau/actuel', {cards: APP.cards.filter(c => c.type !== 'photo').map(({_pts, ...c}) => c)}), 800);
+const saveConv = d => saveLater('conv' + d, () => Store.set('conv/' + d, {msgs: APP.msgs.filter(m => m.d === d).map(({d, ...m}) => m)}));
+const saveMem = () => Store.set('memoire/longue', APP.mem);
 
-/* ====================================================================== SymPy (worker Pyodide) */
+/* ============================================================ SymPy (worker Pyodide) */
 const Sym = {
   w: null, n: 0, wait: {},
   start() {
@@ -258,21 +258,15 @@ const Sym = {
     const boot = w => {
       this.w = w;
       w.onmessage = e => { const p = this.wait[e.data.id]; if (p) { delete this.wait[e.data.id]; e.data.ok ? p.res(e.data.result) : p.rej(new Error(e.data.error)); } };
-      w.onerror = e => { this.fail('le worker ne démarre pas (' + (e.message || 'erreur') + ')'); };
-      this.call('init', {}, 180000).then(info => { APP.sympy = {state: 'pret', info}; renderStatus(); }, err => this.fail(err.message));
+      w.onerror = e => this.fail('le worker ne démarre pas (' + (e.message || 'erreur') + ')');
+      this.call('init', {}, 180000).then(info => { APP.sympy = {state: 'pret', info}; renderStatus(); APP.cards.filter(c => c.type === 'graphe').forEach(drawPlot); }, err => this.fail(err.message));
     };
     try { boot(new Worker(base + 'worker.js', {type: 'module'})); }
-    catch (e) {                                                            // repli : worker depuis un blob
-      fetch(base + 'worker.js').then(r => r.text()).then(src => {
-        const w = new Worker(URL.createObjectURL(new Blob([src], {type: 'text/javascript'})), {type: 'module'});
-        w.postMessage({id: -1, op: 'noop', base}); boot(w);
-      }).catch(err => this.fail(err.message));
-    }
+    catch (e) { fetch(base + 'worker.js').then(r => r.text()).then(src => boot(new Worker(URL.createObjectURL(new Blob([src], {type: 'text/javascript'})), {type: 'module'}))).catch(err => this.fail(err.message)); }
   },
   fail(msg) { APP.sympy = {state: 'ko', info: msg}; Object.values(this.wait).forEach(p => p.rej(new Error(msg))); this.wait = {}; renderStatus(); },
-  call(op, args, timeout = 60000) {
-    this.start();
-    if (!this.w) return Promise.reject(new Error('SymPy indisponible'));
+  call(op, args, timeout = 90000) {
+    this.start(); if (!this.w) return Promise.reject(new Error('SymPy indisponible'));
     const id = ++this.n;
     return new Promise((res, rej) => {
       this.wait[id] = {res, rej};
@@ -280,727 +274,594 @@ const Sym = {
       setTimeout(() => { if (this.wait[id]) { delete this.wait[id]; rej(new Error('SymPy trop lent')); } }, timeout);
     });
   },
-  check(spec, text) { return this.call('check_text', {spec, text}, 90000); },
-  run(spec, answer) { return this.call('run', {spec, answer}, 90000); },
-  compute(spec) { return this.call('compute', {spec}, 90000); },
 };
-function badge(v) {                                                        // l'app dit toujours d'où vient la validation
-  if (!v) return '<span class="chip">non vérifié</span>';
-  if (v === 'sympy_ok') return '<span class="chip ok">✓ vérifié par SymPy</span>';
-  if (v === 'sympy_ko') return '<span class="chip bad">✗ SymPy : faux</span>';
-  if (v === 'conforme') return '<span class="chip ok">✓ conforme au corrigé EPFL (SymPy)</span>';
-  if (v === 'divergence') return '<span class="chip bad">⚠ SymPy contredit le corrigé EPFL</span>';
-  if (v === 'solution_sympy') return '<span class="chip pen">solution calculée par SymPy</span>';
-  if (v === 'non_verifiable') return '<span class="chip">non vérifiable par SymPy</span>';
-  return '<span class="chip">non vérifié</span>';
-}
+const B = {                                                          // l'app dit toujours d'où vient une validation
+  ok: t => `<span class="chip ok">✓ vérifié par SymPy${t ? ' · ' + esc(t) : ''}</span>`,
+  ko: t => `<span class="chip bad">✗ SymPy : faux${t ? ' · ' + esc(t) : ''}</span>`,
+  nv: t => `<span class="chip">non vérifié${t ? ' · ' + esc(t) : ''}</span>`,
+  sol: () => '<span class="chip pen">solution calculée par SymPy</span>',
+};
 
-/* ====================================================================== corpus */
+/* ============================================================ corpus */
 async function loadCorpus() {
   const idx = await getJSON('corpus/index.json');
-  APP.C.matieres = idx.matieres;
   for (const m of idx.matieres) for (const ch of m.chapitres) {
     const [chap, notions, serie, vars] = await Promise.all([getJSON(ch.chapitre), getJSON(ch.notions), getJSON(ch.serie), ch.variantes ? getJSON(ch.variantes) : null]);
-    APP.C.chap[chap.id] = chap; APP.C.serie[serie.id] = serie;
-    for (const s of chap.sections) for (const p of s.passages) APP.PASS[p.id] = {...p, section: s};
-    for (const c of chap.complements) APP.PASS[c.id] = {...c, complementaire: true};
+    APP.CHAP[chap.id] = chap; APP.SERIE[serie.id] = serie;
+    for (const s of chap.sections) for (const p of s.passages) APP.PASS[p.id] = {...p, section: s.titre};
+    for (const c of chap.complements) APP.PASS[c.id] = c;
     for (const n of notions.notions) APP.NOTION[n.id] = n;
-    for (const e of serie.exercices) {
-      e.serie = serie.id; APP.EX[e.id] = e;
-      for (const it of e.items) { it.ex = e; APP.ITEM[it.id] = it; }
-    }
-    for (const v of vars?.variantes || []) { APP.VAR[v.id] = v; (APP.VARBASE[v.base] ||= []).push(v); }
+    for (const e of serie.exercices) { e.serie = serie.id; APP.EX[e.id] = e; for (const it of e.items) { it.ex = e; APP.ITEM[it.id] = it; } }
+    for (const v of vars?.variantes || []) APP.VAR[v.id] = v;
   }
 }
 const itemKey = it => it.sub || '_';
-const exOfItem = id => APP.ITEM[id]?.ex;
-const label = id => {                                                      // « Série -1 · I.7 i »
-  const it = APP.ITEM[id]; const e = it ? it.ex : APP.EX[id];
-  if (e) return `Série ${APP.C.serie[e.serie].numero} · ${e.partie}.${e.num}${it?.sub ? ' ' + it.sub : ''}`;
-  if (APP.PASS[id]) return APP.PASS[id].titre;
-  if (APP.NOTION[id]) return APP.NOTION[id].titre;
-  if (APP.VAR[id]) return 'Variante de ' + label(APP.VAR[id].base);
-  return 'Question libre';
-};
-
-/* ====================================================================== état d'apprentissage */
-function exState(exId) { return (APP.S.ex[exId] ||= {items: {}, variantes: {}}); }
-function itemState(id) { const it = APP.ITEM[id]; const st = exState(it.ex.id); return (st.items[itemKey(it)] ||= {statut: 'nouveau', tentatives: 0}); }
-function notionState(id) { return (APP.S.notion[id] ||= {maitrise: null, n: 0}); }
-function saveEx(exId) { const st = exState(exId); st.maj = new Date().toISOString(); return Store.set('ex/' + exId, st); }
-function saveNotion(id) { return Store.set('notion/' + id, notionState(id)); }
-function saveProfil() { return Store.set('profil/moi', APP.S.profil); }
-
-// Répétition espacée (SM-2 simplifié) : q = 1 juste, 0.5 partiel, 0 faux.
-function srs(st, q) {
-  const s = st.srs || {int: 0, ease: 2.5, reps: 0};
-  if (q >= 1) { s.reps += 1; s.int = s.reps === 1 ? 1 : s.reps === 2 ? 3 : Math.round(s.int * s.ease); s.ease = clamp(s.ease + .1, 1.3, 3); }
-  else if (q > 0) { s.reps = Math.max(0, s.reps - 1); s.int = 1; s.ease = clamp(s.ease - .15, 1.3, 3); }
-  else { s.reps = 0; s.int = 1; s.ease = clamp(s.ease - .2, 1.3, 3); }
-  s.due = addDays(today(), s.int);
-  st.srs = s;
+function label(id) {
+  const it = APP.ITEM[id], e = it ? it.ex : APP.EX[id];
+  if (e) return `série ${APP.SERIE[e.serie].numero}, ${e.partie}.${e.num}${it?.sub ? ' ' + it.sub : ''}`;
+  return APP.PASS[id]?.titre || APP.NOTION[id]?.titre || id;
 }
-function record(id, {verdict, reponse, verif, erreurs = [], blocage, source = 'texte'}) {
-  const it = APP.ITEM[id]; const st = itemState(id);
-  const q = verdict === 'juste' ? 1 : verdict === 'partiel' ? .5 : 0;
-  st.tentatives = (st.tentatives || 0) + 1;
-  st.statut = q >= 1 ? 'reussi' : 'a_revoir';
-  st.derniere = {date: new Date().toISOString(), reponse: String(reponse || '').slice(0, 300), verdict, verif: verif || null, source};
-  if (erreurs.length) st.erreurs = [...new Set([...(st.erreurs || []), ...erreurs.map(e => e.tag)])].slice(-6);
-  if (blocage) st.blocage = blocage.slice(0, 160);
-  srs(st, q);
-  for (const n of it.ex.notions) { const ns = notionState(n); ns.maitrise = ns.maitrise == null ? q : .7 * ns.maitrise + .3 * q; ns.n = (ns.n || 0) + 1; ns.derniere = today(); saveNotion(n); }
-  const P = APP.S.profil;
-  P.erreurs ||= {};
-  for (const e of erreurs) {
-    const r = (P.erreurs[e.tag] ||= {n: 0, description: e.description, refs: []});
-    r.n += 1; r.derniere = today(); r.description = e.description || r.description; r.refs = [...new Set([...r.refs, id])].slice(-8);
-  }
-  P.dernier = id; saveProfil(); saveEx(it.ex.id);
-  logEvent({type: 'reponse', ref: id, verdict, verif});
-}
-function markManual(id, statut) {                                          // import de ce qui était déjà fait sur papier
-  const st = itemState(id); st.statut = statut;
-  if (statut === 'fait') { st.srs = {int: 3, ease: 2.5, reps: 1, due: addDays(today(), 3)}; }
-  if (statut === 'a_revoir') { st.srs = {int: 1, ease: 2.3, reps: 0, due: today()}; }
-  if (statut === 'nouveau') { delete st.srs; }
-  saveEx(APP.ITEM[id].ex.id); logEvent({type: 'marque', ref: id, statut});
-}
-function logEvent(ev) {
-  const S = APP.S.session;
-  S.evenements.push({...ev, t: new Date().toTimeString().slice(0, 5)});
-  if (S.evenements.length > 150) S.evenements = S.evenements.slice(-150);
-  Store.set('session/' + S.date, S);
-}
-async function loadState() {
-  const [profil, ex, notion] = await Promise.all([Store.get('profil/moi'), Store.list('ex'), Store.list('notion')]);
-  APP.S.profil = profil || {prenom: 'Ryan', debut: today(), erreurs: {}, stats: {reponses: 0, longues: 0}};
-  APP.S.profil.stats ||= {reponses: 0, longues: 0};
-  APP.S.ex = ex; APP.S.notion = notion;
-  const d = today();
-  APP.S.session = (await Store.get('session/' + d)) || {date: d, evenements: []};
-  if (!profil) saveProfil();
-  if (APP.S.profil.derniere_session !== d) {                               // la session précédente devient « à résumer »
-    APP.S.profil.session_precedente = APP.S.profil.derniere_session || null;
-    APP.S.profil.derniere_session = d; saveProfil();
-  }
-  Store.watch('ex', (id, data) => { APP.S.ex[id] = data; });
-  Store.watch('notion', (id, data) => { APP.S.notion[id] = data; });
-}
-
-/* ====================================================================== « Analyse I, série 2, exercice 1 » → identifiant */
-const ROMAN = {i: 'I', ii: 'II', iii: 'III', iv: 'IV', '1': 'I', '2': 'II', '3': 'III', '4': 'IV'};
-function resolveRef(text, ctxEx) {
+const ROMAN = {i: 'I', ii: 'II', iii: 'III', iv: 'IV', 1: 'I', 2: 'II', 3: 'III', 4: 'IV'};
+function resolveRef(text) {                                            // « série -1, I.7 i » → AN1.S-1.I.7.i
   const t = deaccent(text).replace(/\s+/g, ' ');
-  let serie = (t.match(/serie\s*(-\s*1|-?\d+)/) || [])[1];
-  if (serie == null && /prelude/.test(t)) serie = '-1';
-  if (serie != null) serie = serie.replace(/\s/g, '');
-  const partie = ROMAN[(t.match(/partie\s*(iv|iii|ii|i|[1-4])\b/) || [])[1]];
-  let num = null, sub = null, p2 = null;
-  let m = t.match(/\b(iv|iii|ii|i)\s*[.\s]\s*(\d{1,2})\s*[.\s]?\s*([a-m])?\b/);                     // « I.7.i », « II 4 b »
-  if (m) { p2 = ROMAN[m[1]]; num = +m[2]; sub = m[3] || null; }
-  m = !num && t.match(/ex(?:ercice|o)?\.?\s*(\d{1,2})\s*(?:[.,]?\s*(?:question\s*)?\(?([a-m])\)?)?\b/);
-  if (m) { num = +m[1]; sub = m[2] || null; }
+  let serie = (t.match(/serie\s*(-\s*1|-?\d+)/) || [])[1]; if (serie == null && /prelude/.test(t)) serie = '-1';
+  let num = null, sub = null, part = ROMAN[(t.match(/partie\s*(iv|iii|ii|i|[1-4])\b/) || [])[1]] || null;
+  let m = t.match(/\b(iv|iii|ii|i)\s*[.\s]\s*(\d{1,2})\s*[.\s]?\s*([a-m])?\b/);
+  if (m) { part = ROMAN[m[1]]; num = +m[2]; sub = m[3] || null; }
+  else if ((m = t.match(/\bex(?:ercice|o)?\.?\s*(\d{1,2})\s*(?:[.,]?\s*\(?([a-m])\)?)?\b/))) { num = +m[1]; sub = m[2] || null; }
   if (!num) return null;
-  const sid = 'AN1.S' + (serie ?? (ctxEx ? String(APP.C.serie[ctxEx.serie].numero) : '-1'));
-  const S = APP.C.serie[sid]; if (!S) return null;
-  const part = p2 || partie || (ctxEx && ctxEx.serie === sid ? ctxEx.partie : null);
-  const cands = S.exercices.filter(e => e.num === num && (!part || e.partie === part));
-  if (!cands.length) return null;
-  const e = cands[0];
+  const S = APP.SERIE['AN1.S' + String(serie ?? '-1').replace(/\s/g, '')]; if (!S) return null;
+  const cur = APP.current?.ref && (APP.ITEM[APP.current.ref]?.ex || APP.EX[APP.current.ref]);
+  const e = S.exercices.find(x => x.num === num && (part ? x.partie === part : (!cur || x.partie === cur.partie))) || S.exercices.find(x => x.num === num);
+  if (!e) return null;
   const it = sub && e.items.find(i => i.sub === sub);
-  return {id: it ? it.id : e.id, ambigu: cands.length > 1 ? cands.map(c => c.id) : null};
+  return it ? it.id : e.id;
 }
 
-/* ====================================================================== plan du jour */
-function plan() {
-  const d = today(), out = [];
-  const P = APP.S.profil;
-  const last = P.dernier && APP.ITEM[P.dernier];
-  if (last && itemState(last.id).statut !== 'reussi') out.push({kind: 'reprendre', ref: last.id, why: 'là où tu t\'étais arrêté'});
-  const dues = [];
-  for (const [exId, st] of Object.entries(APP.S.ex)) for (const [k, s] of Object.entries(st.items || {}))
-    if (s.srs?.due && s.srs.due <= d) { const e = APP.EX[exId]; const it = e && e.items.find(i => itemKey(i) === k); if (it) dues.push({it, due: s.srs.due}); }
-  dues.sort((a, b) => a.due.localeCompare(b.due));
-  for (const x of dues.slice(0, 3)) if (!out.some(o => o.ref === x.it.id)) out.push({kind: 'revision', ref: x.it.id, why: 'révision prévue ' + (x.due < d ? 'en retard' : 'aujourd\'hui')});
-  // suite logique : premier item jamais touché, dans l'ordre de la série, précédé des passages de ses notions pas encore lus
-  for (const S of Object.values(APP.C.serie)) {
-    const next = S.exercices.flatMap(e => e.items).find(it => (itemState(it.id).statut || 'nouveau') === 'nouveau');
-    if (next) {
-      const unread = next.ex.notions.flatMap(n => APP.NOTION[n]?.passages || []).find(p => !(P.lus || {})[p]);
-      if (unread) out.push({kind: 'lire', ref: unread, why: 'avant ' + label(next.id)});
-      out.push({kind: 'nouveau', ref: next.id, why: 'suite de la série'});
-      break;
-    }
+/* ============================================================ mémoire d'apprentissage */
+function exState(id) { return (APP.ex[id] ||= {items: {}}); }
+function itemState(id) { const it = APP.ITEM[id]; return (exState(it.ex.id).items[itemKey(it)] ||= {statut: 'nouveau'}); }
+function notion(id) { return ((APP.profil.notions ||= {})[id] ||= {m: null, n: 0}); }
+function setItem(id, statut, extra = {}) {
+  const st = itemState(id); Object.assign(st, {statut, date: today()}, extra);
+  const q = statut === 'reussi' || statut === 'fait' ? 1 : statut === 'a_revoir' ? 0 : null;
+  if (q != null) {                                                     // répétition espacée
+    const s = st.srs || {int: 0, reps: 0};
+    if (q) { s.reps++; s.int = s.reps === 1 ? (statut === 'fait' ? 3 : 1) : s.reps === 2 ? 4 : Math.round(s.int * 2.3); } else { s.reps = 0; s.int = 1; }
+    s.due = addDays(today(), s.int); st.srs = s;
   }
-  const weak = Object.entries(APP.S.notion).filter(([id, s]) => s.n >= 2 && s.maitrise < .5 && APP.NOTION[id]).sort((a, b) => a[1].maitrise - b[1].maitrise)[0];
-  if (weak) out.push({kind: 'notion', ref: weak[0], why: 'notion fragile (' + Math.round(weak[1].maitrise * 100) + ' %)'});
-  return out.slice(0, 6);
+  const exId = APP.ITEM[id].ex.id; saveLater('ex' + exId, () => Store.set('ex/' + exId, exState(exId)), 300);
 }
-
-/* ====================================================================== navigation */
-function go(tab, route = null) { APP.view = {tab, route}; render(); $('#main').scrollTop = 0; }
-function openRef(id) {
-  if (APP.ITEM[id]) return go('exos', {ex: APP.ITEM[id].ex.id, focus: id});
-  if (APP.EX[id]) return go('exos', {ex: id});
-  if (APP.PASS[id]) return go('cours', {passage: id});
-  if (APP.NOTION[id]) return go('cours', {notion: id});
-  if (APP.VAR[id]) return go('exos', {ex: APP.VAR[id].base, variante: id});
+function learn(notions, q) { for (const n of notions || []) { if (!APP.NOTION[n]) continue; const s = notion(n); s.m = s.m == null ? q : .7 * s.m + .3 * q; s.n++; s.d = today(); } saveProfil(); }
+function difficulty(tag, description, notionId, ref) {
+  const D = (APP.profil.difficultes ||= {}); const d = (D[tag] ||= {n: 0, refs: []});
+  d.n++; d.description = description || d.description; d.notion = notionId || d.notion; d.derniere = today();
+  if (ref) d.refs = [...new Set([...d.refs, ref])].slice(-6);
+  saveProfil();
 }
-function render() {
-  document.querySelectorAll('.tab[data-tab]').forEach(b => b.setAttribute('aria-current', b.dataset.tab === APP.view.tab ? 'page' : 'false'));
-  const V = {today: viewToday, cours: viewCours, exos: viewExos, progres: viewProgres}[APP.view.tab];
-  $('#main').innerHTML = `<div class="wrap">${V()}</div>`;
-  renderStatus();
-  const r = APP.view.route || {};
-  const anchor = r.focus ? 'it-' + r.focus : r.variante ? 'it-' + r.variante : r.passage ? 'pa-' + r.passage : null;
-  if (anchor && !r.scrolled) { r.scrolled = true; document.getElementById(anchor)?.scrollIntoView({block: 'start'}); }
-}
-function renderStatus() {
-  const el = $('#status'); if (!el) return;
-  const s = APP.sympy.state;
-  const sy = s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>'
-    : s === 'ko' ? `<span class="chip bad" title="${esc(APP.sympy.info)}">SymPy indisponible</span>` : '<button class="chip" data-a="sympy-start">Charger SymPy</button>';
-  const st = APP.store === 'db' ? '<span class="chip ok">synchronisé</span>' : '<span class="chip warn" title="La progression reste dans ce navigateur">non synchronisé</span>';
-  const cl = APP.cap.sample ? '' : '<span class="chip warn">professeur indisponible</span>';
-  el.innerHTML = sy + st + cl;
-}
-const statusBar = () => '<div class="status" id="status"></div>';
-
-/* ====================================================================== vue : Aujourd'hui */
-function viewToday() {
-  const P = APP.S.profil, items = plan();
-  const kinds = {reprendre: 'Reprendre', revision: 'Réviser', nouveau: 'Nouvel exercice', lire: 'Lire', notion: 'Consolider'};
-  const allItems = Object.values(APP.ITEM);
-  const done = allItems.filter(i => ['reussi', 'fait'].includes(itemState(i.id).statut)).length;
-  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 3);
-  const prev = P.session_precedente;
-  return `
-  <div class="topline"><div><div class="eyebrow">${esc(fmtDate(today()))}</div><h1>Salut ${esc(P.prenom)}</h1></div>${statusBar()}</div>
-  <form class="goto" data-f="goto"><input id="gotoInput" placeholder="Aller à… ex. « série -1, I.7 i »" autocomplete="off" aria-label="Aller à un exercice"><button class="btn">Ouvrir</button></form>
-  <section class="card lift"><div class="row" style="justify-content:space-between"><h2>Plan du jour</h2><span class="muted small">${items.length} étapes</span></div>
-    ${items.map((p, i) => `<div class="plan-item"><span class="plan-n">${i + 1}</span>
-      <div><div><b>${kinds[p.kind]}</b> · ${esc(label(p.ref))}</div><div class="muted small">${esc(p.why)}</div></div>
-      <button class="btn small" data-a="open" data-ref="${esc(p.ref)}">Ouvrir</button></div>`).join('') || '<p class="muted">Rien de prévu : tout est à jour.</p>'}
-  </section>
-  <section class="card"><div class="row" style="justify-content:space-between"><h2>Où tu en es</h2><button class="btn ghost small" data-tab-go="progres">Détails</button></div>
-    <div class="row"><span class="mono">${done}/${allItems.length}</span><span class="muted small">questions de la série -1 faites</span></div>
-    <div class="bar"><i style="width:${Math.round(100 * done / Math.max(1, allItems.length))}%"></i></div>
-    ${errs.length ? `<div class="small"><span class="eyebrow">Erreurs qui reviennent</span><div class="list">${errs.map(([t, e]) => `<div class="row"><span class="chip bad">${e.n}×</span><span>${esc(e.description || t)}</span></div>`).join('')}</div></div>` : ''}
-    ${prev ? `<div class="row small"><span class="muted">Session du ${esc(fmtDate(prev))} pas encore résumée.</span><button class="btn small" data-a="resume-session" data-d="${esc(prev)}">Résumer</button></div>` : ''}
-  </section>
-  <section class="card"><h2>Déjà commencé sur papier ?</h2><p class="muted small">Dans Exercices, marque ce que tu as déjà fait (« fait » ou « à revoir »). Le plan en tiendra compte.</p>
-    <div class="row"><button class="btn" data-a="open" data-ref="AN1.S-1.I.1">Série -1, partie I</button></div></section>`;
-}
-
-/* ====================================================================== vue : Cours */
-function viewCours() {
-  const r = APP.view.route || {};
-  if (r.notion) return viewNotion(r.notion);
-  const chap = Object.values(APP.C.chap)[0];
-  const P = APP.S.profil; P.lus ||= {};
-  const passageCard = p => {
-    const lu = P.lus[p.id];
-    const comp = p.complement && APP.PASS[p.complement];
-    return `<article class="card" id="pa-${esc(p.id)}">
-      <div class="row" style="justify-content:space-between"><h3>${esc(p.titre)}</h3><span class="mono muted">${esc(p.id)}</span></div>
-      ${renderTex(p.tex)}
-      <div class="row">${p.notions.map(n => `<button class="chip pen" data-a="notion" data-ref="${n}">${esc(APP.NOTION[n]?.titre || n)}</button>`).join('')}
-        ${p.verification?.statut === 'conforme' ? '<span class="chip ok">calculs vérifiés par SymPy</span>' : ''}</div>
-      <details><summary>Voir l'original (manuscrit, p. ${p.source.page})</summary><img class="orig" loading="lazy" src="corpus/AN1/${esc(p.original)}" alt="Page manuscrite d'origine : ${esc(p.titre)}"></details>
-      ${p.video ? `<details><summary>Ce que dit le prof dans la vidéo (${esc(p.video.debut.slice(3))})</summary><div class="transcript">${esc(p.video.transcription)}</div></details>` : ''}
-      ${comp ? `<details><summary>Complément : ${esc(comp.titre)}</summary>${renderTex(comp.tex)}${comp.note ? `<p class="muted small">${esc(comp.note)}</p>` : ''}<img class="orig" loading="lazy" src="corpus/AN1/${esc(comp.original)}" alt="Complément d'origine"></details>` : ''}
-      <div class="row"><button class="btn small" data-a="ask" data-ref="${esc(p.id)}">Poser une question</button>
-        <button class="btn small ${lu ? '' : 'ghost'}" data-a="lu" data-ref="${esc(p.id)}">${lu ? '✓ Lu' : 'Marquer comme lu'}</button></div>
-    </article>`;
-  };
-  return `
-  <div class="topline"><div><div class="eyebrow">Analyse I</div><h1>${esc(chap.titre)}</h1></div>${statusBar()}</div>
-  <p class="muted">${esc(chap.but)}</p>
-  <div class="row">${chap.sections.map(s => `<button class="chip" data-a="scroll" data-ref="sec-${esc(s.id)}">${esc(s.titre)}</button>`).join('')}<button class="chip acc" data-a="notions">Carte des notions</button></div>
-  ${chap.sections.map(s => `<section class="wrap" id="sec-${esc(s.id)}" style="gap:12px"><h2>${esc(s.titre)}</h2>${s.passages.map(passageCard).join('')}</section>`).join('')}
-  <section class="card"><h2>Ensuite</h2><p>Série -1 : elle sert à repérer tes points faibles avant le chapitre 0.</p><div><button class="btn primary" data-a="open" data-ref="AN1.S-1.I.1">Ouvrir la série -1</button></div></section>`;
-}
-function viewNotion(id) {
-  if (id === '*') return viewNotionMap();
-  const n = APP.NOTION[id]; const s = notionState(id);
-  const pre = n.prerequis.map(p => `<button class="chip pen" data-a="notion" data-ref="${p}">${esc(APP.NOTION[p].titre)}</button>`).join('') || '<span class="muted small">aucun</span>';
-  const vars = n.exercices.flatMap(e => APP.VARBASE[e] || []);
-  return `
-  <div class="breadcrumb"><button data-tab-go="cours">Cours</button>›<button data-a="notions">Notions</button>›<span>${esc(n.titre)}</span></div>
-  <div class="topline"><h1>${esc(n.titre)}</h1>${statusBar()}</div>
-  <section class="card lift"><div class="row" style="justify-content:space-between"><span class="eyebrow">Fiche du tuteur</span>${n.verification?.statut === 'conforme' ? '<span class="chip ok">formules vérifiées par SymPy</span>' : ''}</div>
-    <p style="margin:0">${inline(n.idee)}</p>${math(n.formule, true)}
-    <div class="feedback warn"><div><b>Piège</b> · ${inline(n.piege)}</div></div>
-    <div class="row small"><span class="muted">Prérequis :</span>${pre}</div>
-    <div class="row small"><span class="muted">Maîtrise :</span>${s.maitrise == null ? '<span class="muted">pas encore mesurée</span>' : `<div class="bar" style="width:140px"><i style="width:${Math.round(s.maitrise * 100)}%"></i></div><span class="mono">${Math.round(s.maitrise * 100)} %</span>`}</div>
-  </section>
-  ${n.passages.length ? `<section class="card"><h3>Dans le cours officiel</h3><div class="list">${n.passages.map(p => `<button class="li" data-a="open" data-ref="${p}"><span class="grow">${esc(APP.PASS[p].titre)}</span><span class="mono muted">${p}</span></button>`).join('')}</div></section>` : ''}
-  ${n.exercices.length ? `<section class="card"><h3>Exercices officiels</h3><div class="list">${n.exercices.map(e => `<button class="li" data-a="open" data-ref="${e}"><span class="grow">${esc(label(e))}</span>${exDots(e)}</button>`).join('')}</div></section>` : ''}
-  <div class="row"><button class="btn primary" data-a="new-variant" data-notion="${esc(id)}" ${vars.length ? '' : 'disabled'}>Un exercice sur cette notion</button><button class="btn" data-a="ask" data-ref="${esc(id)}">Poser une question</button></div>`;
-}
-function viewNotionMap() {
-  const N = Object.values(APP.NOTION);
-  const depth = {}; const d = id => depth[id] ??= (APP.NOTION[id].prerequis.length ? 1 + Math.max(...APP.NOTION[id].prerequis.map(d)) : 0);
-  N.forEach(n => d(n.id));
-  const levels = [...new Set(Object.values(depth))].sort();
-  return `
-  <div class="breadcrumb"><button data-tab-go="cours">Cours</button>›<span>Carte des notions</span></div>
-  <div class="topline"><h1>Carte des notions</h1>${statusBar()}</div>
-  <p class="muted small">Chaque niveau s'appuie sur les précédents. La barre montre ta maîtrise mesurée.</p>
-  ${levels.map(l => `<section class="card"><span class="eyebrow">Niveau ${l}</span><div class="list">${N.filter(n => depth[n.id] === l).map(n => {
-    const s = notionState(n.id);
-    return `<button class="li" data-a="notion" data-ref="${n.id}"><span class="grow"><b>${esc(n.titre)}</b>${n.prerequis.length ? `<br><span class="muted small">après : ${n.prerequis.map(p => esc(APP.NOTION[p].titre)).join(', ')}</span>` : ''}</span>
-      <div class="bar" style="width:80px"><i style="width:${Math.round((s.maitrise || 0) * 100)}%"></i></div></button>`; }).join('')}</div></section>`).join('')}`;
-}
-
-/* ====================================================================== vue : Exercices */
-function exDots(exId) {
-  const e = APP.EX[exId];
-  return `<span class="row" style="gap:3px">${e.items.map(it => `<span class="dot ${itemState(it.id).statut}" title="${esc(it.sub || '')} ${itemState(it.id).statut}"></span>`).join('')}</span>`;
-}
-function viewExos() {
-  const r = APP.view.route || {};
-  if (r.ex) return viewExercise(r.ex, r);
-  const S = Object.values(APP.C.serie)[0];
-  const parts = [...new Set(S.exercices.map(e => e.partie))];
-  return `
-  <div class="topline"><div><div class="eyebrow">Analyse I · ${esc(S.chapitre)}</div><h1>${esc(S.titre)}</h1></div>${statusBar()}</div>
-  <p class="muted small">${esc(S.avant_propos)}</p>
-  <div class="row small"><span class="dot"></span>à faire <span class="dot en_cours"></span>en cours <span class="dot reussi"></span>réussi <span class="dot fait"></span>fait sur papier <span class="dot a_revoir"></span>à revoir</div>
-  ${parts.map(p => { const ex = S.exercices.filter(e => e.partie === p); return `<section class="card"><h2>Partie ${p} · ${esc(ex[0].partie_titre)}</h2><div class="list">
-    ${ex.map(e => `<button class="li" data-a="open" data-ref="${e.id}"><span class="mono muted" style="min-width:3.2em">${p}.${e.num}</span><span class="grow">${e.losange ? '♦ ' : ''}${inline(e.consigne.length > 90 ? e.consigne.slice(0, 88) + '…' : e.consigne)}</span>${exDots(e.id)}</button>`).join('')}
-  </div></section>`; }).join('')}`;
-}
-function viewExercise(exId, r) {
-  const e = APP.EX[exId]; const S = APP.C.serie[e.serie];
-  const idx = S.exercices.indexOf(e); const prev = S.exercices[idx - 1], next = S.exercices[idx + 1];
-  const img = (fs, alt) => (fs || []).map(f => `<img class="orig" loading="lazy" src="corpus/AN1/${esc(f)}" alt="${esc(alt)}">`).join('');
-  const variant = r.variante && APP.VAR[r.variante] ? APP.VAR[r.variante] : r.live || null;
-  return `
-  <div class="breadcrumb"><button data-tab-go="exos">${esc(S.titre)}</button>›<span>Partie ${e.partie} · ${esc(e.partie_titre)}</span></div>
-  <div class="topline"><div><div class="eyebrow mono">${esc(e.id)}${e.losange ? ' · ♦ revient dans le cours' : ''}</div><h1>Exercice ${e.partie}.${e.num}</h1></div>${statusBar()}</div>
-  ${e.intro_partie ? `<details class="card"><summary>Introduction de la partie ${e.partie}</summary>${renderTex(e.intro_partie)}${img(e.figures_intro, 'Tableaux de vérité')}</details>` : ''}
-  <section class="card lift">
-    ${renderTex(e.consigne)}${img(e.figures_enonce, 'Figure de l\'énoncé')}
-    <div class="row">${e.notions.map(n => `<button class="chip pen" data-a="notion" data-ref="${n}">${esc(APP.NOTION[n]?.titre || n)}</button>`).join('')}</div>
-    ${e.items.map(it => itemBlock(it)).join('')}
-    ${e.corrige_global || e.figures_corrige ? `<details class="corrige"><summary>Corrigé officiel (commentaire général)</summary>${e.corrige_global ? renderTex(e.corrige_global) : ''}${img(e.figures_corrige, 'Corrigé')}</details>` : ''}
-    ${e.apres ? `<div class="muted small">${renderTex(e.apres)}</div>` : ''}
-  </section>
-  ${variant ? variantBlock(variant) : ''}
-  <div class="row" style="justify-content:space-between">
-    ${prev ? `<button class="btn" data-a="open" data-ref="${prev.id}">← ${prev.partie}.${prev.num}</button>` : '<span></span>'}
-    <button class="btn" data-a="photo" data-ref="${esc(e.id)}" data-photo-only ${APP.cap.limits?.images ? '' : 'hidden'}>📷 Corriger une photo de ma feuille</button>
-    ${next ? `<button class="btn" data-a="open" data-ref="${next.id}">${next.partie}.${next.num} →</button>` : '<span></span>'}
-  </div>`;
-}
-function itemBlock(it) {
-  const st = itemState(it.id);
-  const v = it.verification;
-  const fb = APP.answers[it.id]?.fb;
-  const vbadge = v.statut === 'conforme' ? badge('conforme') : v.statut === 'divergence' ? badge('divergence') : badge('non_verifiable');
-  const canCheck = !!v.spec?.length;
-  return `<div class="item" id="it-${esc(it.id)}">
-    <div class="item-head">${it.sub ? `<span class="sub">${esc(it.sub)})</span>` : ''}<div class="grow" style="flex:1;min-width:0">${it.enonce ? `<div class="math-block">${kx(it.enonce, false)}</div>` : ''}</div>
-      <span class="dot ${st.statut}" title="${esc(st.statut)}"></span></div>
-    ${st.blocage ? `<div class="small muted">Dernière fois : ${esc(st.blocage)}</div>` : ''}
-    <div class="answer">
-      <textarea id="ans-${esc(it.id)}" rows="1" placeholder="${canCheck ? 'Ta réponse finale, ex. ]1,5[ ou (x-1)(x²+2x+2)' : 'Ta réponse (lue par le prof)'}" aria-label="Réponse ${esc(it.sub || '')}">${esc(APP.answers[it.id]?.text || '')}</textarea>
-      <div class="row">
-        <button class="btn primary small" data-a="check" data-ref="${esc(it.id)}">Vérifier</button>
-        <button class="btn small" data-a="photo" data-ref="${esc(it.id)}" ${APP.cap.limits?.images ? '' : 'hidden'}>📷 Photo</button>
-        <button class="btn small" data-a="ask" data-ref="${esc(it.id)}">Aide du prof</button>
-        ${(APP.VARBASE[it.ex.id] || []).length || canCheck ? `<button class="btn small ghost" data-a="variant" data-ref="${esc(it.id)}">Variante</button>` : ''}
-        <span style="flex:1"></span>
-        <button class="chip" data-a="mark" data-s="fait" data-ref="${esc(it.id)}" title="Déjà fait sur papier">fait</button>
-        <button class="chip" data-a="mark" data-s="a_revoir" data-ref="${esc(it.id)}">à revoir</button>
-      </div>
-      ${fb ? fb : ''}
-    </div>
-    <details class="corrige" ${APP.answers[it.id]?.showCorr ? 'open' : ''}><summary>Voir le corrigé officiel</summary>
-      <div class="math-block">${kx(it.corrige, false)}</div>
-      <div class="row">${vbadge}${v.statut === 'divergence' ? `<span class="small">SymPy trouve ${math(v.sympy)}. Non tranché : vérifie toi-même.</span>` : ''}</div>
-      ${it.note ? `<div class="small muted">Note du tuteur : ${esc(it.note)}</div>` : ''}
-      ${(it.figures_corrige || []).map(f => `<img class="orig" loading="lazy" src="corpus/AN1/${esc(f)}" alt="Figure du corrigé">`).join('')}
-    </details>
-  </div>`;
-}
-function variantBlock(v) {
-  const fb = APP.answers[v.id]?.fb;
-  return `<section class="card" id="it-${esc(v.id)}"><div class="row" style="justify-content:space-between"><span class="eyebrow">Variante · pas un exercice EPFL</span>${badge('solution_sympy')}</div>
-    <div class="muted small">${renderTex(v.consigne)}</div><div class="math-block">${kx(v.enonce, true)}</div>
-    <div class="answer"><textarea id="ans-${esc(v.id)}" rows="1" placeholder="Ta réponse">${esc(APP.answers[v.id]?.text || '')}</textarea>
-      <div class="row"><button class="btn primary small" data-a="check-var" data-ref="${esc(v.id)}">Vérifier</button><button class="btn small" data-a="ask" data-ref="${esc(v.id)}">Aide du prof</button>
-        <button class="btn small ghost" data-a="variant" data-ref="${esc(v.base)}">Une autre</button></div>${fb || ''}</div>
-    <details class="corrige"><summary>Voir la solution</summary><div class="math-block">${kx(v.solution_tex, true)}</div>${badge('solution_sympy')}</details></section>`;
-}
-
-/* ====================================================================== vue : Progrès */
-function viewProgres() {
-  const P = APP.S.profil;
-  const N = Object.values(APP.NOTION).map(n => ({n, s: notionState(n.id)})).sort((a, b) => (a.s.maitrise ?? 2) - (b.s.maitrise ?? 2));
-  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n);
-  const items = Object.values(APP.ITEM); const cnt = s => items.filter(i => itemState(i.id).statut === s).length;
-  const due = items.filter(i => itemState(i.id).srs?.due <= today()).length;
-  const st = P.stats || {};
-  return `
-  <div class="topline"><h1>Progrès</h1>${statusBar()}</div>
-  <section class="card"><h2>Série -1</h2><div class="row">
-    <span class="chip ok">${cnt('reussi')} réussies</span><span class="chip pen">${cnt('fait')} faites sur papier</span><span class="chip bad">${cnt('a_revoir')} à revoir</span><span class="chip">${cnt('nouveau')} à faire</span><span class="chip warn">${due} révisions dues</span></div></section>
-  <section class="card"><h2>Notions</h2><div class="list">${N.map(({n, s}) => `<button class="li" data-a="notion" data-ref="${n.id}"><span class="grow">${esc(n.titre)}</span>
-    ${s.maitrise == null ? '<span class="muted small">pas mesurée</span>' : `<div class="bar" style="width:110px"><i style="width:${Math.round(s.maitrise * 100)}%"></i></div><span class="mono" style="min-width:3em;text-align:right">${Math.round(s.maitrise * 100)}%</span>`}</button>`).join('')}</div></section>
-  <section class="card"><h2>Erreurs récurrentes</h2>${errs.length ? `<div class="list">${errs.map(([t, e]) => `<div class="li"><span class="chip bad">${e.n}×</span><span class="grow">${esc(e.description || t)}<br><span class="muted small">${e.refs.map(r => esc(label(r))).join(' · ')}</span></span></div>`).join('')}</div>` : '<p class="muted small">Aucune pour l\'instant.</p>'}</section>
-  <section class="card"><h2>Le professeur respecte-t-il la règle « court » ?</h2><p class="small">${st.reponses ? `${st.reponses - st.longues} réponses courtes sur ${st.reponses} (limite : 70 mots hors formules).` : 'Pas encore de réponse du professeur.'}</p></section>
-  <section class="card"><h2>Sessions</h2><div id="sessions" class="list small"><button class="btn small" data-a="load-sessions">Afficher l'historique</button></div></section>`;
-}
-
-/* ====================================================================== professeur : contexte minimal */
-const RULES = `Tu es le professeur particulier de Ryan, qui prépare son entrée à l'EPFL (bachelor en informatique, 2027) avec les cours de préparation en ligne. Il travaille sur papier. Tu le tutoies, en français.
-
-Règles, à respecter strictement :
-1. Court. 1 à 3 phrases, 60 mots au maximum sans compter les formules. L'idée clé d'abord, puis une formule ou un exemple si besoin. Pas de titres, pas de liste de plus de 3 points, pas de politesse, pas de récapitulatif.
-2. Pas à pas. Une seule étape par message, puis UNE question courte pour vérifier qu'il a compris ou pour le faire avancer.
-3. Jamais la réponse d'emblée. Ne donne ni le résultat final ni le corrigé tant qu'il ne l'a pas demandé explicitement (« montre le corrigé », « donne la réponse »). Guide-le pour qu'il la trouve.
-4. Le cours officiel d'abord. Appuie-toi sur les passages fournis et cite-les avec leur identifiant entre crochets, ex. [AN1.CH-1.3.p1]. Garde les notations du cours. Si le corpus ne couvre pas la question, dis-le en une phrase au lieu d'inventer.
-5. Maths en LaTeX entre $...$.
-6. S'il veut creuser (« explique plus », « pourquoi »), va plus loin, toujours par petites étapes.
-7. Si l'exercice est marqué DIVERGENCE, ne tranche pas : dis que SymPy et le corrigé EPFL ne sont pas d'accord et fais-lui vérifier le calcul.
-8. Si ton message affirme un calcul précis (une égalité, un ensemble de solutions), termine par une ligne seule, en syntaxe SymPy :
-VERIFS: [{"type":"eq","expr":"(x+1)**2","answer":"x**2+2*x+1"}]
-Types : "eq" (expr, answer) ; "solve" (lhs, rhs ou rel, answer comme "FiniteSet(2, -2)" ou "Interval.open(1, 5)"). La page les vérifie avec SymPy. Sinon, pas de ligne VERIFS.`;
-
-function passagesFor(ref, query) {
-  const ids = new Set();
-  const add = id => { if (APP.PASS[id]) ids.add(id); };
-  const it = APP.ITEM[ref] || (APP.VAR[ref] && APP.EX[APP.VAR[ref].base]?.items[0]);
-  const e = it?.ex || APP.EX[ref];
-  if (e) e.notions.forEach(n => (APP.NOTION[n]?.passages || []).slice(0, 2).forEach(add));
-  if (APP.PASS[ref]) { add(ref); add(APP.PASS[ref].complement); }
-  if (APP.NOTION[ref]) APP.NOTION[ref].passages.slice(0, 3).forEach(add);
-  if (query && ids.size < 3) {                                            // recherche simple par mots communs
-    const words = new Set(deaccent(query).split(/[^a-z0-9]+/).filter(w => w.length > 3));
-    const scored = Object.values(APP.PASS).map(p => [p.id, deaccent(p.titre + ' ' + p.tex).split(/[^a-z0-9]+/).filter(w => words.has(w)).length]).filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]);
-    scored.slice(0, 3 - ids.size).forEach(([id]) => add(id));
-  }
-  return [...ids].slice(0, 4);
-}
-function contextFor(ref, query) {
-  const P = APP.S.profil; const L = [];
-  const it = APP.ITEM[ref]; const v = APP.VAR[ref]; const e = it?.ex || (v && APP.EX[v.base]) || APP.EX[ref];
-  L.push(`[ÉLÈVE] ${P.prenom}. Début : ${P.debut}.`);
-  const errs = Object.entries(P.erreurs || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 3);
-  if (errs.length) L.push('[ERREURS RÉCURRENTES] ' + errs.map(([t, x]) => `${t} (${x.n}×) : ${x.description}`).join(' ; '));
-  const notions = e ? e.notions : APP.PASS[ref]?.notions || (APP.NOTION[ref] ? [ref] : []);
-  if (notions.length) L.push('[MAÎTRISE] ' + notions.map(n => `${APP.NOTION[n]?.titre} : ${notionState(n).maitrise == null ? 'non mesurée' : Math.round(notionState(n).maitrise * 100) + ' %'}`).join(' ; '));
-  if (it) {
-    const st = itemState(it.id);
-    L.push(`[EXERCICE ${it.id}] Consigne : ${e.consigne}`);
-    if (it.enonce) L.push(`Question ${it.sub || ''} : $${it.enonce}$`);
-    L.push(`Corrigé officiel EPFL (NE PAS RÉVÉLER sans demande explicite) : ${it.corrige}${e.corrige_global ? ' — ' + e.corrige_global : ''}`);
-    L.push(`Vérification : ${it.verification.statut === 'divergence' ? `DIVERGENCE — SymPy trouve ${it.verification.sympy}` : it.verification.statut}${it.note ? '. Note : ' + it.note : ''}`);
-    L.push(`[SON ÉTAT SUR CETTE QUESTION] statut ${st.statut}, ${st.tentatives || 0} tentative(s)` + (st.derniere ? `, dernière réponse « ${st.derniere.reponse} » (${st.derniere.verdict})` : '') + (st.blocage ? `, ce qui avait bloqué : ${st.blocage}` : ''));
-  } else if (v) {
-    L.push(`[VARIANTE ${v.id} de ${v.base}] Consigne : ${v.consigne} Question : $${v.enonce}$. Solution (SymPy, NE PAS RÉVÉLER sans demande) : $${v.solution_tex}$`);
-  } else if (e) {
-    L.push(`[EXERCICE ${e.id}] ${e.consigne} Questions : ${e.items.map(i => `${i.sub}) $${i.enonce}$`).join(' ; ')}`);
-  }
-  if (APP.NOTION[ref]) { const n = APP.NOTION[ref]; L.push(`[FICHE ${n.id}] ${n.idee} Formule : $${n.formule}$. Piège : ${n.piege}`); }
-  for (const pid of passagesFor(ref, query)) { const p = APP.PASS[pid]; L.push(`[${pid}] (cours officiel, ${p.titre}) ${p.tex}`); }
-  for (const n of notions.slice(0, 2)) { const f = APP.NOTION[n]; if (f && n !== ref) L.push(`[FICHE ${n}] (tuteur) ${f.idee} Piège : ${f.piege}`); }
-  const fil = APP.S.fils[ref];
-  if (fil?.resume) L.push('[RÉSUMÉ DE VOS ÉCHANGES PRÉCÉDENTS SUR CE SUJET] ' + fil.resume);
-  if (P.derniere_resume) L.push('[DERNIÈRE SESSION] ' + P.derniere_resume);
-  return L.join('\n').slice(0, 14000);
-}
-
-/* ====================================================================== professeur : discussion */
-async function loadFil(ref) { if (!APP.S.fils[ref]) APP.S.fils[ref] = (await Store.get('fil/' + ref)) || {resume: '', tours: []}; return APP.S.fils[ref]; }
-async function openChat(ref) {
-  APP.chat.open = true; APP.chat.ref = ref || APP.chat.ref || 'general';
-  await loadFil(APP.chat.ref);
-  $('#app').classList.add('with-chat'); $('#chat').hidden = false; $('#profBtn').setAttribute('aria-pressed', 'true');
-  renderChat(); setTimeout(() => $('#chatInput')?.focus(), 50);
-}
-function closeChat() { APP.chat.open = false; $('#app').classList.remove('with-chat'); $('#chat').hidden = true; $('#profBtn').setAttribute('aria-pressed', 'false'); }
-function wordCount(t) { return t.replace(/\$\$[\s\S]*?\$\$|\$[^$]*\$|VERIFS:.*$/gm, ' ').split(/\s+/).filter(Boolean).length; }
-function renderMsg(m) {
-  if (m.role === 'user') return `<div class="msg user">${inline(m.content)}${m.photos ? `<div class="meta"><span class="chip">📷 ${m.photos} photo(s)</span></div>` : ''}</div>`;
-  const body = m.content.replace(/^VERIFS:.*$/m, '').trim();
-  const meta = [];
-  for (const v of m.verifs || []) meta.push(v.ok === true ? `<span class="chip ok" title="${esc(v.detail)}">✓ SymPy : ${esc(v.label)}</span>` : v.ok === false ? `<span class="chip bad" title="${esc(v.detail)}">✗ SymPy conteste : ${esc(v.label)}</span>` : `<span class="chip">non vérifié : ${esc(v.label)}</span>`);
-  if (m.long) meta.push('<button class="chip warn" data-a="shorter">réponse longue · raccourcir</button>');
-  return `<div class="msg prof">${renderTex(body)}${meta.length ? `<div class="meta">${meta.join('')}</div>` : ''}</div>`;
-}
-function renderChat() {
-  const fil = APP.S.fils[APP.chat.ref] || {tours: []};
-  $('#chat').innerHTML = `
-    <div class="chat-head"><div class="row" style="justify-content:space-between"><b>Professeur</b><button class="btn small close-chat" data-a="close-chat">Fermer</button></div>
-      <div class="row small"><span class="muted">À propos de :</span><span class="chip acc">${esc(label(APP.chat.ref))}</span>${APP.chat.ref !== 'general' ? '<button class="chip" data-a="ctx-general">question libre</button>' : ''}</div></div>
-    <div class="chat-log" id="chatLog">${fil.resume ? `<div class="small muted">Déjà vu ensemble : ${esc(fil.resume)}</div>` : ''}
-      ${fil.tours.map(renderMsg).join('') || `<p class="muted small">Pose ta question sur la théorie ou l'exercice. Le prof avance une étape à la fois et cite le cours. Tu peux écrire « série -1, I.9 e » pour changer de sujet.</p>`}
-      <div id="liveMsg"></div></div>
-    <form class="chat-foot" data-f="chat">
-      ${APP.cap.sample ? '' : '<p class="small" style="margin:0;color:var(--bad)">Le professeur n\'est pas disponible dans cette vue (Claude non autorisé ou hors de claude.ai).</p>'}
-      <div class="thumbs">${APP.chat.photos.map(f => `<img alt="photo jointe" src="${URL.createObjectURL(f)}">`).join('')}</div>
-      <textarea id="chatInput" rows="2" placeholder="Écris ta question (ou dicte-la avec le micro du clavier)" ${APP.cap.sample ? '' : 'disabled'}></textarea>
-      <div class="row"><button class="btn primary" ${APP.chat.busy || !APP.cap.sample ? 'disabled' : ''}>Envoyer</button>
-        <button type="button" class="btn" data-a="chat-photo" ${APP.cap.limits?.images ? '' : 'hidden'}>📷</button>
-        ${APP.chat.busy ? '<button type="button" class="btn" data-a="stop">Stop</button>' : ''}
-        <span style="flex:1"></span><button type="button" class="chip" data-a="deeper">explique plus</button></div>
-    </form>`;
-  const log = $('#chatLog'); log.scrollTop = log.scrollHeight;
-}
-async function verifyClaims(text) {
-  const m = text.match(/^VERIFS:\s*(\[.*\])\s*$/m); if (!m) return [];
-  let specs; try { specs = JSON.parse(m[1]); } catch (e) { return [{ok: null, label: 'ligne VERIFS illisible', detail: ''}]; }
+function refsExpand(refs) {                                           // « AN1.S-1.I » → toutes les questions de la partie I
   const out = [];
-  for (const s of specs.slice(0, 4)) {
-    const lab = (s.type === 'solve' ? `${s.lhs || s.rel}${s.rhs ? ' = ' + s.rhs : ''} → ${s.answer}` : `${s.expr} = ${s.answer}`).replace(/\*\*/g, '^').replace(/\*/g, '·');
-    try { const r = await Sym.run(s, s.answer); out.push({ok: r.ok, label: lab.slice(0, 60), detail: r.detail}); }
-    catch (e) { out.push({ok: null, label: lab.slice(0, 60), detail: e.message}); }
-  }
+  for (const r of refs || []) { if (APP.ITEM[r]) out.push(r); else for (const id of Object.keys(APP.ITEM)) if (id.startsWith(r + '.')) out.push(id); }
+  return [...new Set(out)];
+}
+function duesToday() {
+  const d = today(), out = [];
+  for (const [exId, st] of Object.entries(APP.ex)) for (const [k, s] of Object.entries(st.items || {})) if (s.srs?.due && s.srs.due <= d) { const e = APP.EX[exId]; const it = e?.items.find(i => itemKey(i) === k); if (it) out.push(it.id); }
   return out;
 }
-async function sendChat(text, {photos = [], extra = ''} = {}) {
-  const sample = APP.cap.sample; if (!sample || APP.chat.busy) return;
-  const r = resolveRef(text, APP.ITEM[APP.chat.ref]?.ex);                  // « série -1, I.9 e » change le sujet
-  if (r && r.id !== APP.chat.ref) { APP.chat.ref = r.id; await loadFil(r.id); openRef(r.id); }
-  const ref = APP.chat.ref; const fil = await loadFil(ref);
-  fil.tours.push({role: 'user', content: text, photos: photos.length || undefined, t: Date.now()});
-  APP.chat.busy = true; APP.chat.photos = []; renderChat();
-  const live = $('#liveMsg'); live.innerHTML = '<div class="msg prof muted">Réflexion…</div>';
-  const turns = [{role: 'user', content: RULES + '\n\n' + contextFor(ref, text) + (extra ? '\n\n' + extra : '') + '\n\n(Fin du contexte. La discussion suit.)'}];
-  for (const t of fil.tours.slice(-7, -1)) turns.push({role: t.role === 'user' ? 'user' : 'assistant', content: t.content});
-  turns.push({role: 'user', content: text + (photos.length ? '\n(Photo de ma feuille jointe.)' : '')});
-  const ctl = APP.chat.ctl = new AbortController();
-  let reply = '';
+
+/* ============================================================ cartes modulables */
+const TITLES = {formules: 'Formules', graphe: 'Graphique', dessin: 'Dessin', tableau: 'Tableau', demo: 'Démonstration', exercice: 'Exercice officiel', cours: 'Cours officiel', exo: 'À toi', progression: 'Où tu en es', photo: 'Ta feuille'};
+const isNarrow = () => window.innerWidth < 900;
+function stageBox() { const r = $('#stage').getBoundingClientRect(); return {W: r.width, H: r.height}; }
+function place(c) {                                                  // à gauche : graphes, démonstrations, énoncés ; à droite : formules, progression, exercices
+  const {W, H} = stageBox(); const chatW = Math.min(640, W - 32);
+  const side = Math.max(250, (W - chatW) / 2 - 24);
+  const h = Math.min({formules: 230, graphe: 330, dessin: 330, demo: 360, exercice: 230, cours: 300, exo: 190, progression: 320, tableau: 220, photo: 300}[c.type] || 240, H - 16);
+  const cols = [12, W - side - 12];
+  const pref = ['formules', 'progression', 'tableau', 'exo'].includes(c.type) ? [1, 0] : [0, 1];
+  for (const k of pref) {                                            // première colonne avec assez de place en bas
+    const x = cols[k];
+    const y = APP.cards.filter(o => o !== c && !o.min && Math.abs(o.x - x) < 40).reduce((a, o) => Math.max(a, o.y + o.h + 10), 8);
+    if (y + h <= H) return Object.assign(c, {x, y, w: side, h});
+  }
+  const bottoms = cols.map(x => APP.cards.filter(o => o !== c && !o.min && Math.abs(o.x - x) < 40).reduce((a, o) => Math.max(a, o.y + o.h + 10), 8));
+  const k = bottoms[pref[0]] <= bottoms[pref[1]] ? pref[0] : pref[1];
+  if (H - bottoms[k] >= 150) return Object.assign(c, {x: cols[k], y: bottoms[k], w: side, h: H - bottoms[k] - 8});   // plus petite, mais visible
+  const n = APP.cards.filter(o => o !== c && !o.min && Math.abs(o.x - cols[pref[0]]) < 80).length;   // sinon empilée : les en-têtes restent visibles
+  Object.assign(c, {x: cols[pref[0]] + 16, y: Math.min(8 + 44 * n, H - 160), w: side, h: Math.min(h, H - Math.min(8 + 44 * n, H - 160) - 8)});
+}
+function addCard(spec) {
+  const same = APP.cards.find(c => c.type === spec.type && (c.titre || '') === (spec.titre || '') && c.type !== 'exo');
+  if (same) { Object.assign(same, spec, {min: false, _pts: null}); renderCards(); saveBoard(); return same; }
+  const c = {id: uid(), ...spec}; place(c); APP.cards.push(c);
+  const open = APP.cards.filter(x => !x.min); if (open.length > 5) open[0].min = true;   // pas plus de 5 cartes ouvertes
+  renderCards(); saveBoard(); return c;
+}
+function removeCards(target) {
+  const t = deaccent(target || 'tout');
+  APP.cards = t === 'tout' ? [] : APP.cards.filter(c => !(c.type === t || deaccent(c.titre || '').includes(t) || deaccent(TITLES[c.type]).includes(t)));
+  renderCards(); saveBoard();
+}
+function sanitizeSVG(src) {                                           // les dessins du prof : SVG sans script ni lien externe
   try {
-    const opts = {cache: false, signal: ctl.signal,
-      onText: ({text: t}) => { reply = t; live.innerHTML = renderMsg({role: 'prof', content: t}); const lg = $('#chatLog'); lg.scrollTop = lg.scrollHeight; }};
-    if (photos.length) opts.images = photos;
-    const res = await sample(turns, opts);
-    reply = res.text;
-  } catch (e) {
+    const doc = new DOMParser().parseFromString(String(src || ''), 'image/svg+xml');
+    const svg = doc.documentElement; if (svg.nodeName !== 'svg') return '<p>Dessin illisible.</p>';
+    svg.querySelectorAll('script, foreignObject, iframe, image, use, a, style').forEach(n => n.remove());
+    for (const el of [svg, ...svg.querySelectorAll('*')]) for (const at of [...el.attributes]) if (/^on/i.test(at.name) || /href/i.test(at.name) || /javascript:|url\(/i.test(at.value)) el.removeAttribute(at.name);
+    svg.setAttribute('width', '100%'); svg.removeAttribute('height'); svg.setAttribute('style', 'max-height:100%;color:var(--ink)');
+    return new XMLSerializer().serializeToString(svg);
+  } catch (e) { return '<p>Dessin illisible.</p>'; }
+}
+function cardBody(c) {
+  switch (c.type) {
+    case 'formules': return `<div class="enc">${(c.items || []).map(f => `<div class="math-block">${kx(f)}</div>`).join('')}</div>` + (c.source ? `<div class="src">Source : ${esc(c.source)}${APP.PASS[c.source] ? ' · polycopié EPFL' : ''}</div>` : '');
+    case 'graphe': return `<div class="plot" data-id="${c.id}"><span class="chip warn">SymPy calcule le graphique…</span></div>${c.legende ? `<div style="font-size:.85rem;color:var(--muted)">${inline(c.legende)}</div>` : ''}`;
+    case 'dessin': return `<div class="drawing">${sanitizeSVG(c.svg)}</div>${c.legende ? `<div style="font-size:.88rem;color:var(--muted)">${inline(c.legende)}</div>` : ''}`;
+    case 'tableau': return `<div style="overflow-x:auto"><table class="tbl">${(c.lignes || []).map((r, i) => `<tr>${(r || []).map(x => `<${i ? 'td' : 'th'}>${inline(String(x))}</${i ? 'td' : 'th'}>`).join('')}</tr>`).join('')}</table></div>${c.legende ? `<div style="font-size:.88rem;margin-top:6px">${inline(c.legende)}</div>` : ''}`;
+    case 'demo': {
+      const E = c.etapes || [], n = Math.min(c.vu ?? E.length, E.length);
+      return E.slice(0, n).map((s, i) => `<div class="step ${s.question ? 'q' : ''}"><span class="n">${i + 1}</span><div>${s.texte ? inline(s.texte) : ''}${s.tex ? `<div class="math-block">${kx(s.tex, true)}</div>` : ''}${s.v || ''}</div></div>`).join('')
+        + (n < E.length ? `<div style="display:flex;gap:6px;margin-top:6px"><button class="chip pen" data-a="next-step" data-id="${c.id}">Étape suivante (${n + 1}/${E.length})</button><button class="chip" data-a="all-steps" data-id="${c.id}">tout afficher</button></div>` : '');
+    }
+    case 'exercice': {
+      const it = APP.ITEM[c.ref], e = it ? it.ex : APP.EX[c.ref]; if (!e) return 'Exercice introuvable.';
+      const items = it ? [it] : e.items;
+      return `${renderTex(e.consigne)}${(e.figures_enonce || []).map(f => `<img class="orig" src="corpus/AN1/${esc(f)}" alt="figure de l'énoncé">`).join('')}
+        ${items.map(i => `<div class="step"><span class="n">${esc(i.sub || '•')}</span><div style="display:flex;gap:8px;align-items:center"><div class="math-block">${kx(i.enonce)}</div><span class="dot ${itemState(i.id).statut}"></span></div></div>`).join('')}
+        <div class="src">${esc(APP.SERIE[e.serie].titre)} · PDF officiel EPFL</div>`;
+    }
+    case 'cours': {
+      const p = APP.PASS[c.ref]; if (!p) return 'Passage introuvable.';
+      return `${renderTex(p.tex)}<details><summary class="src" style="cursor:pointer">voir le manuscrit original</summary><img class="orig" src="corpus/AN1/${esc(p.original)}" alt="manuscrit"></details><div class="src">${esc(p.id)} · polycopié EPFL</div>`;
+    }
+    case 'exo': return `<div>${inline(c.consigne || 'Calcule :')}</div><div class="math-block">${kx(c.enonce, true)}</div><div style="display:flex;gap:6px;flex-wrap:wrap">${c.statut === 'ok' ? B.ok('réussi') : c.statut === 'ko' ? B.ko('réessaie') : c.solution_tex ? B.sol() : c.solution_tex === null ? B.nv('SymPy ne sait pas le résoudre') : B.nv('SymPy calcule…')}</div>
+      ${c.solution_tex ? `<details><summary class="src" style="cursor:pointer">voir la solution</summary><div class="math-block">${kx(c.solution_tex, true)}</div></details>` : ''}`;
+    case 'progression': return progressionHTML();
+    case 'photo': return `<img class="orig" src="${esc(c.src || '')}" alt="ta feuille">`;
+  }
+  return '';
+}
+function renderCards() {
+  const host = $('#cards'); $('#app').classList.toggle('narrow', isNarrow());
+  const open = APP.cards.filter(c => !c.min);
+  host.innerHTML = open.map(c => `<article class="card ${c.big ? 'big' : ''}" data-id="${c.id}" style="left:${c.big ? 16 : c.x}px;top:${c.big ? 8 : c.y}px;width:${c.big ? 'calc(100% - 32px)' : c.w + 'px'};height:${c.big ? 'calc(100% - 16px)' : c.h + 'px'}">
+      <div class="card-h" data-drag="${c.id}"><span class="t">${esc(c.titre || TITLES[c.type])}</span>
+        <button data-a="min" data-id="${c.id}" title="Réduire" aria-label="Réduire">–</button><button data-a="big" data-id="${c.id}" title="${c.big ? 'Taille normale' : 'Agrandir'}" aria-label="Agrandir">${c.big ? '⤡' : '⤢'}</button><button data-a="close" data-id="${c.id}" title="Fermer" aria-label="Fermer">✕</button></div>
+      <div class="card-b">${cardBody(c)}</div><div class="rz" data-rz="${c.id}"></div></article>`).join('');
+  $('#dock').innerHTML = APP.cards.filter(c => c.min).map(c => `<button class="chip acc" data-a="restore" data-id="${c.id}">▢ ${esc(c.titre || TITLES[c.type])}</button>`).join('');
+  open.filter(c => c.type === 'graphe').forEach(c => drawPlot(c).catch(e => console.warn('graphique', e)));
+  renderStatus();
+}
+const p2t = e => String(e ?? '').replace(/\*\*/g, '^').replace(/\*/g, '·');
+async function drawPlot(c) {
+  const el = document.querySelector(`.plot[data-id="${c.id}"]`); if (!el) return;
+  const [x0, x1] = (Array.isArray(c.xr) ? c.xr : [-5, 5]).map(Number);
+  try { if (!c._pts) c._pts = await Promise.all((c.fonctions || []).map(f => Sym.call('plot', {expr: String(f.expr), xmin: x0, xmax: x1, n: 360}))); }
+  catch (e) { el.innerHTML = B.nv('SymPy : ' + e.message); return; }
+  const el2 = document.querySelector(`.plot[data-id="${c.id}"]`); if (!el2) return;
+  const W = Math.max(200, el2.clientWidth), H = Math.max(140, (el2.closest('.card-b')?.clientHeight || 280) - 46);
+  const ys = c._pts.flatMap(p => p.points.map(q => q[1])).filter(y => y != null).sort((a, b) => a - b);
+  let [y0, y1] = Array.isArray(c.yr) ? c.yr.map(Number) : [ys[Math.floor(ys.length * .03)] ?? -5, ys[Math.floor(ys.length * .97)] ?? 5];
+  if (!Array.isArray(c.yr)) { if (y1 - y0 < 1e-6) { y0 -= 1; y1 += 1; } const pad = (y1 - y0) * .1; y0 -= pad; y1 += pad; }
+  const sx = x => (x - x0) / (x1 - x0) * W, sy = y => H - (y - y0) / (y1 - y0) * H;
+  const step = v => { const r = Math.pow(10, Math.floor(Math.log10(v / 6))); return [1, 2, 5, 10].map(k => k * r).find(k => v / k <= 8); };
+  const gx = step(x1 - x0), gy = step(y1 - y0), fmt = v => String(+v.toFixed(4));
+  let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Graphique">`;
+  for (let x = Math.ceil(x0 / gx) * gx; x <= x1 + 1e-9; x += gx) s += `<line x1="${sx(x)}" x2="${sx(x)}" y1="0" y2="${H}" stroke="var(--grid)"/>` + (Math.abs(x) > 1e-9 ? `<text x="${sx(x)}" y="${clamp(sy(0) + 13, 11, H - 3)}" font-size="10" fill="var(--faint)" text-anchor="middle">${fmt(x)}</text>` : '');
+  for (let y = Math.ceil(y0 / gy) * gy; y <= y1 + 1e-9; y += gy) s += `<line y1="${sy(y)}" y2="${sy(y)}" x1="0" x2="${W}" stroke="var(--grid)"/>` + (Math.abs(y) > 1e-9 ? `<text x="${clamp(sx(0) - 5, 24, W - 2)}" y="${sy(y) + 3}" font-size="10" fill="var(--faint)" text-anchor="end">${fmt(y)}</text>` : '');
+  if (y0 < 0 && y1 > 0) s += `<line x1="0" x2="${W}" y1="${sy(0)}" y2="${sy(0)}" stroke="var(--faint)"/>`;
+  if (x0 < 0 && x1 > 0) s += `<line y1="0" y2="${H}" x1="${sx(0)}" x2="${sx(0)}" stroke="var(--faint)"/>`;
+  const cols = ['var(--c1)', 'var(--c2)', 'var(--c3)', 'var(--c4)'];
+  c._pts.forEach((p, k) => {
+    let d = '', pen = false, prev = null;
+    for (const [x, y] of p.points) {
+      const jump = prev != null && y != null && Math.abs(y - prev) > (y1 - y0) * .8;
+      if (y == null || jump) { pen = false; prev = y; continue; }
+      d += (pen ? 'L' : 'M') + sx(x).toFixed(1) + ' ' + clamp(sy(y), -20, H + 20).toFixed(1); pen = true; prev = y;
+    }
+    s += `<path d="${d}" fill="none" stroke="${cols[k % 4]}" stroke-width="2.2" ${c.fonctions[k].pointille ? 'stroke-dasharray="5 4"' : ''}/>`;
+  });
+  el2.innerHTML = s + `</svg><div style="display:flex;gap:12px;flex-wrap:wrap;font-size:.88rem">${c.fonctions.map((f, k) => `<span style="color:${cols[k % 4]}">━ ${kx(f.label || p2t(f.expr))}</span>`).join('')}<span class="chip ok">points calculés par SymPy</span></div>`;
+}
+function progressionHTML() {
+  const S = Object.values(APP.SERIE)[0]; const parts = [...new Set(S.exercices.map(e => e.partie))];
+  const done = ids => ids.filter(i => ['reussi', 'fait'].includes(itemState(i).statut)).length;
+  const D = Object.entries(APP.profil.difficultes || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 4);
+  const N = Object.entries(APP.profil.notions || {}).filter(([id, s]) => s.m != null && APP.NOTION[id]).sort((a, b) => a[1].m - b[1].m).slice(0, 6);
+  const due = duesToday().length;
+  return `<div style="display:grid;gap:8px;font-size:.92rem">
+    ${parts.map(p => { const ids = S.exercices.filter(e => e.partie === p).flatMap(e => e.items.map(i => i.id)); const k = done(ids);
+      return `<div><div style="display:flex;justify-content:space-between"><span>${esc(S.titre)} · partie ${p}</span><span class="mono">${k}/${ids.length}</span></div><div class="bar"><i style="width:${100 * k / ids.length}%"></i></div></div>`; }).join('')}
+    ${due ? `<div><span class="chip warn">${due} révision${due > 1 ? 's' : ''} prévue${due > 1 ? 's' : ''} aujourd'hui</span></div>` : ''}
+    ${D.length ? `<div><b>Ce qui revient</b>${D.map(([t, d]) => `<div>${esc(d.description || t)} <span class="chip warn">${d.n}×</span></div>`).join('')}</div>` : ''}
+    ${N.length ? `<div><b>Notions</b>${N.map(([id, s]) => `<div style="display:flex;gap:8px;align-items:center"><span style="flex:1">${esc(APP.NOTION[id].titre)}</span><div class="bar" style="width:70px"><i style="width:${Math.round(s.m * 100)}%"></i></div></div>`).join('')}</div>` : ''}
+  </div>`;
+}
+// Déplacer et redimensionner au doigt (souris, doigt, stylet)
+let drag = null;
+document.addEventListener('pointerdown', ev => {
+  if (isNarrow()) return;
+  const h = ev.target.closest('[data-drag]'), rz = ev.target.closest('[data-rz]');
+  if ((!h && !rz) || ev.target.closest('button')) return;
+  const c = APP.cards.find(x => x.id === (h ? h.dataset.drag : rz.dataset.rz)); if (!c || c.big) return;
+  drag = {c, mode: h ? 'move' : 'size', x: ev.clientX, y: ev.clientY, o: {x: c.x, y: c.y, w: c.w, h: c.h}, el: ev.target.closest('.card')};
+  drag.el.style.zIndex = 4; ev.preventDefault();
+});
+document.addEventListener('pointermove', ev => {
+  if (!drag) return; const {W, H} = stageBox(); const dx = ev.clientX - drag.x, dy = ev.clientY - drag.y, c = drag.c;
+  if (drag.mode === 'move') { c.x = clamp(drag.o.x + dx, -c.w + 80, W - 80); c.y = clamp(drag.o.y + dy, 0, H - 40); drag.el.style.left = c.x + 'px'; drag.el.style.top = c.y + 'px'; }
+  else { c.w = clamp(drag.o.w + dx, 200, W); c.h = clamp(drag.o.h + dy, 90, H); drag.el.style.width = c.w + 'px'; drag.el.style.height = c.h + 'px'; }
+});
+document.addEventListener('pointerup', () => { if (!drag) return; const c = drag.c, moved = drag.mode; drag.el.style.zIndex = ''; drag = null; saveBoard(); if (c.type === 'graphe' && moved === 'size') drawPlot(c); });
+window.addEventListener('resize', () => saveLater('rs', renderCards, 150));
+
+/* ============================================================ clavier maths : modèles à remplir */
+const KEYS = {
+  'Base': [['x', 'x'], ['y', 'y'], ['a', 'a'], ['n', 'n'], ['(▢)/(▢)', '\\frac{\\square }{\\square }', 'wide'], ['^(▢)', 'x^{\\square }'], ['^(2)', 'x^2'], ['√(▢)', '\\sqrt{\\square }'], ['√[▢](▢)', '\\sqrt[n]{\\square }'], ['|▢|', '|\\square |'], ['(', '('], [')', ')'], ['·', '\\cdot'], ['π', '\\pi'], ['±', '\\pm'], ['=', '=']],
+  'Fonctions': [['e^(▢)', 'e^{\\square }'], ['ln(▢)', '\\ln'], ['log_(▢)(▢)', '\\log_a', 'wide'], ['sin(▢)', '\\sin'], ['cos(▢)', '\\cos'], ['tan(▢)', '\\tan'], ['arctan(▢)', '\\arctan'], ['f(x)', 'f(x)'], ['∘', 'f\\circ g'], ['∞', '\\infty']],
+  'Ensembles': [[']▢,▢[', ']a,b['], ['[▢,▢]', '[a,b]'], ['[▢,▢[', '[a,b['], [']▢,▢]', ']a,b]'], ['{▢}', '\\{a\\}'], ['∪', '\\cup'], ['∩', '\\cap'], ['∈', '\\in'], ['ℝ', '\\mathbb R'], ['∅', '\\emptyset'], ['≤', '\\le'], ['≥', '\\ge'], ['≠', '\\ne'], ['<', '<'], ['>', '>']],
+  'Logique': [['⇒', '\\Rightarrow'], ['⇔', '\\Leftrightarrow'], ['∀', '\\forall'], ['∃', '\\exists'], ['¬', '\\neg'], ['∧', '\\wedge'], ['∨', '\\vee'], ['→', '\\to']],
+};
+let kbTab = 'Base';
+function renderKB() {
+  $('#mathkb').innerHTML = `<div class="kb-tabs">${Object.keys(KEYS).map(t => `<button type="button" data-kbtab="${t}" aria-pressed="${t === kbTab}">${t}</button>`).join('')}<span style="flex:1"></span><button type="button" data-key="__next">case suivante ▸</button><button type="button" data-key="__back" aria-label="Effacer">⌫</button></div>
+    <div class="keys">${KEYS[kbTab].map(([ins, tex, cls]) => `<button type="button" class="key ${cls || ''}" data-key="${esc(ins)}" aria-label="${esc(ins)}">${kx(tex)}</button>`).join('')}</div>`;
+}
+function insertTemplate(tpl) {
+  const ta = $('#input'); ta.focus();
+  const a = ta.selectionStart, b = ta.selectionEnd, v = ta.value;
+  if (tpl === '__back') { const k = a === b ? Math.max(0, a - 1) : a; ta.value = v.slice(0, k) + v.slice(b); ta.setSelectionRange(k, k); return onInput(); }
+  if (tpl === '__next') { let k = v.indexOf('▢', b); if (k < 0) k = v.indexOf('▢'); if (k >= 0) ta.setSelectionRange(k, k + 1); return; }
+  const sel = v.slice(a, b) === '▢' ? '' : v.slice(a, b);
+  const t = sel && tpl.includes('▢') ? tpl.replace('▢', sel) : tpl;      // la sélection va dans la première case
+  ta.value = v.slice(0, a) + t + v.slice(b);
+  const k = ta.value.indexOf('▢', a);
+  if (k >= 0 && k < a + t.length) ta.setSelectionRange(k, k + 1); else ta.setSelectionRange(a + t.length, a + t.length);
+  onInput();
+}
+function onInput() {
+  const ta = $('#input'); ta.style.height = 'auto'; ta.style.height = Math.min(150, ta.scrollHeight) + 'px';
+  const v = ta.value; const mathy = /[√^▢≤≥∈∪ℝ⇒⇔∀∃π]|\)\/\(|log_/.test(v);
+  const pv = $('#preview'); pv.hidden = !mathy; if (mathy) pv.innerHTML = kx(plainToTex(v));
+  $('#sendBtn').disabled = APP.busy || (!v.replace(/▢/g, '').trim() && !APP.photos.length);
+}
+
+/* ============================================================ conversation */
+function strip(t) { return String(t).replace(/```cartes[\s\S]*?(```|$)/g, '').trim(); }
+function msgHTML(m) {
+  if (m.r === 'u') return `<div class="msg me">${inline(m.x)}${m.ph ? `<div class="meta"><span class="chip">📷 ${m.ph} photo${m.ph > 1 ? 's' : ''}</span></div>` : ''}${m.v ? `<div class="meta">${m.v}</div>` : ''}</div>`;
+  const chips = (m.ops || []).map((o, k) => o.chip ? `<button class="chip acc" data-a="reopen" data-t="${m.t}" data-k="${k}">${esc(o.chip)}</button>` : '').join('');
+  return `<div class="msg prof">${renderTex(strip(m.x))}${chips || m.v ? `<div class="meta">${chips}${m.v || ''}</div>` : ''}</div>`;
+}
+function renderLog(live) {
+  const log = $('#log');
+  if (!APP.msgs.length && !live) { log.innerHTML = welcomeHTML(); return; }
+  log.innerHTML = APP.msgs.slice(-40).map(msgHTML).join('') + (live != null ? `<div class="msg prof" id="live">${live}</div>` : '');
+  log.scrollTop = log.scrollHeight;
+}
+function welcomeHTML() {
+  const P = APP.profil; const last = APP.mem?.sessions?.at(-1);
+  const D = Object.entries(P.difficultes || {}).sort((a, b) => b[1].n - a[1].n)[0];
+  const due = duesToday();
+  const sugg = [];
+  if (P.reprise) sugg.push(['Reprendre : ' + P.reprise, 'On reprend là où je me suis arrêté.']);
+  if (due.length) sugg.push([`Réviser (${due.length})`, 'On fait mes révisions du jour.']);
+  if (D) sugg.push(['Retravailler : ' + (D[1].description || D[0]).slice(0, 40), `Je veux retravailler ça : ${D[1].description || D[0]}.`]);
+  sugg.push(['Commencer le Prélude', 'On commence le Prélude. Par quoi je commence ?']);
+  sugg.push(['Je vais faire la série -1', 'Je vais faire la série -1. Qu\'est-ce que je dois maîtriser avant ?']);
+  sugg.push(['Formules puissances et logs', 'Épingle-moi les formules des puissances et des logarithmes.']);
+  return `<div class="welcome"><h1>Salut ${esc(P.prenom)}.</h1>
+    <div style="color:var(--muted)">${last ? esc(last.resume) : 'Dis-moi ce que tu veux travailler, pose une question, ou envoie une photo de ta feuille.'}</div>
+    <div class="sugg">${sugg.slice(0, 4).map(([l, t], k) => `<button class="chip ${k ? '' : 'acc'}" data-a="say" data-t="${esc(t)}">${esc(l)}</button>`).join('')}</div></div>`;
+}
+
+/* ============================================================ consignes du professeur */
+const RULES = `Tu es le professeur particulier de Ryan dans son application d'apprentissage. Il prépare son entrée à l'EPFL (bachelor en informatique, 2027) avec les cours officiels en ligne. Il fait les exercices sur papier, avec les PDF officiels. Tu le tutoies, en français.
+
+TON STYLE — le plus important :
+- Instinctif et simple. Très peu de mots : 1 à 3 phrases courtes, 50 mots maximum hors formules. Jamais de pavé, de titre, de récapitulatif ni de politesse.
+- L'idée clé d'abord, puis une formule ou un mini-exemple. S'il veut creuser, il le demandera.
+- Une étape à la fois, puis UNE question courte pour vérifier ou avancer.
+
+TA MÉTHODE :
+- Quand il annonce un sujet ou un exercice, vérifie d'abord en une question s'il maîtrise ce qu'il faut (prérequis de la carte des notions). Oui : on y va. Non : donne la base (formules épinglées + 1 phrase + 1 mini-exercice très simple), puis monte la difficulté jusqu'à l'exercice.
+- S'il dit qu'il a déjà fait quelque chose ou que c'était facile : crois-le, note-le (opération "etat") et passe à la suite.
+- Ne donne jamais le résultat ni le corrigé d'emblée. Guide-le. S'il demande explicitement la réponse, donne-la.
+- Appuie-toi sur le cours officiel fourni et cite l'identifiant entre crochets, ex. [AN1.CH-1.3.p1]. N'invente pas de notation. Si le corpus ne couvre pas la question, dis-le.
+- Retiens ses difficultés (opération "difficulte") et reviens dessus plus tard ; propose les révisions prévues.
+- Si un exercice est marqué DIVERGENCE, ne tranche pas : dis que SymPy et le corrigé EPFL ne sont pas d'accord et fais-lui vérifier.
+- Maths en LaTeX entre $...$ dans ton texte. Ryan écrit ses calculs avec un clavier maths : √(x), √[3](x), (a)/(b), x^(2), log_(a)(x).
+
+L'ÉCRAN : autour de la conversation, tu peux afficher des cartes. Utilise-les quand ça aide à comprendre ; sinon n'en mets pas. Pour agir, termine ta réponse par UN bloc :
+\`\`\`cartes
+[ ...opérations JSON... ]
+\`\`\`
+Opérations (LaTeX sans $ dans "tex", "items", "enonce") :
+{"op":"formules","titre":"Puissances","items":["a^m a^n=a^{m+n}","(a^m)^n=a^{mn}"],"source":"AN1.CH-1.3.p1"}
+{"op":"graphe","titre":"2^x et log2","fonctions":[{"expr":"2**x","label":"2^x"},{"expr":"log(x,2)","label":"\\\\log_2 x"}],"x":[-3,5],"y":[-3,5]}   (syntaxe SymPy : **, sqrt, log(x, base), exp, sin, pi, Abs ; SymPy calcule les points ; "y" facultatif)
+{"op":"dessin","titre":"Cercle trigonométrique","svg":"<svg viewBox='-130 -130 260 260'>…</svg>","legende":"…"}   (SVG simple : line, circle, path, polygon, text, g ; couleurs currentColor, #2F55D4, #C8127A, #1F7A4D ; en SVG l'axe y va vers le bas)
+{"op":"tableau","titre":"Tableau de signes","lignes":[["x","$-\\\\infty$","$-4$","$+\\\\infty$"],["$x+4$","−","0","+"]],"legende":"…"}
+{"op":"demo","titre":"…","etapes":[{"texte":"Poser $u=a^{2/3}$","tex":"(u^2-u+1)(u+1)","verif":{"type":"eq","expr":"…","answer":"…"}},{"texte":"À toi : que reste-t-il ?","question":true}]}   (étapes dévoilées une à une ; "verif" facultatif, vérifié par SymPy)
+{"op":"exercice","ref":"AN1.S-1.I.3.f"}   (énoncé officiel ; devient l'exercice en cours)
+{"op":"cours","ref":"AN1.CH-1.3.p1"}   (passage officiel du polycopié)
+{"op":"exo","consigne":"Simplifie","enonce":"2^3\\\\cdot 2^4","spec":{"type":"eq","expr":"2**3*2**4"},"notions":["AN1.N.puissances"]}   (mini-exercice ; SymPy calcule la solution et vérifie sa réponse ; spec : eq ; form avec "form":"developpee|factorisee|carre" ; solve avec "lhs","rhs" ou "rel")
+{"op":"retirer","cible":"formules"}   ("tout", un type ou un titre)
+{"op":"progression"}
+{"op":"etat","refs":["AN1.S-1.I.1","AN1.S-1.I.2.a"],"statut":"fait|reussi|a_revoir|nouveau"}   (une partie entière : "AN1.S-1.I")
+{"op":"maitrise","notion":"AN1.N.puissances","niveau":"acquis|fragile|non"}
+{"op":"difficulte","tag":"signe-inegalite","description":"multiplie une inégalité par une expression de signe inconnu","notion":"AN1.N.inequations","ref":"AN1.S-1.I.10.e"}
+{"op":"verdict","ref":"AN1.S-1.I.10.e","reponse":"sa réponse finale en texte simple","juge":"juste|faux|partiel"}   (quand il répond à un exercice officiel, par exemple en photo ; SymPy revérifie)
+{"op":"verifier","specs":[{"type":"eq","expr":"(x+1)**2","answer":"x**2+2*x+1"}]}   (chaque calcul précis que tu affirmes)
+{"op":"reprise","texte":"série -1, I.10 e — tableau de signes"}   (où reprendre la prochaine fois)
+Si un bloc [SYMPY] figure dans le contexte, il fait foi : ne le contredis pas.`;
+
+function coursePlan() {
+  const L = [];
+  for (const ch of Object.values(APP.CHAP)) {
+    L.push(`${ch.titre} (${ch.id}) : ` + ch.sections.map(s => `${s.titre} [${s.passages.map(p => p.id + ' ' + p.titre).join(' ; ')}]`).join(' | '));
+    const S = APP.SERIE[ch.serie];
+    for (const p of [...new Set(S.exercices.map(e => e.partie))]) {
+      L.push(`  ${S.titre} partie ${p} : ` + S.exercices.filter(e => e.partie === p).map(e => {
+        const st = e.items.map(i => itemState(i.id).statut); const ok = st.filter(s => s === 'reussi' || s === 'fait').length, bad = st.filter(s => s === 'a_revoir').length;
+        return `${e.id} ${e.consigne.replace(/\$[^$]*\$/g, '…').slice(0, 36)}${ok ? ` [${ok}/${st.length} faits]` : ''}${bad ? ` [${bad} à revoir]` : ''}`;
+      }).join(' ; '));
+    }
+  }
+  return L.join('\n');
+}
+function notionsLine() {
+  return Object.values(APP.NOTION).map(n => { const s = APP.profil.notions?.[n.id]; const lvl = s?.etat || (s?.m == null ? '?' : s.m > .75 ? 'acquis' : s.m > .4 ? 'fragile' : 'non'); return `${n.id} ${n.titre} (${lvl})${n.prerequis.length ? ' ← ' + n.prerequis.join(',') : ''}`; }).join('\n');
+}
+function corpusFor(texts) {                                           // seulement le nécessaire : passages et exercices liés
+  const refs = new Set(), pass = new Set(), notions = new Set();
+  if (APP.current?.ref) refs.add(APP.current.ref);
+  for (const t of texts) { const r = resolveRef(t); if (r) refs.add(r); for (const m of String(t).matchAll(/AN1\.[A-Za-z0-9.\-]+/g)) refs.add(m[0].replace(/\.$/, '')); }
+  for (const c of APP.cards) if (c.ref && !c.min) refs.add(c.ref);
+  const L = [];
+  for (const r of [...refs].slice(0, 4)) {
+    const it = APP.ITEM[r], e = it ? it.ex : APP.EX[r];
+    if (e) {
+      e.notions.forEach(n => notions.add(n));
+      L.push((`[EXERCICE ${e.id}] ${e.consigne}` + e.items.map(i => `\n  ${i.id} : $${i.enonce}$ — statut ${itemState(i.id).statut} — corrigé EPFL (ne pas révéler sans demande) : ${i.corrige}${i.verification.statut === 'divergence' ? ` — DIVERGENCE : SymPy trouve ${i.verification.sympy}` : ''}${i.note ? ' — note : ' + i.note : ''}`).join('')).slice(0, 4000));
+    } else if (APP.PASS[r]) pass.add(r); else if (APP.NOTION[r]) notions.add(r);
+  }
+  const words = new Set(deaccent(texts.join(' ')).split(/[^a-z0-9]+/).filter(w => w.length > 4));
+  if (words.size) {
+    Object.values(APP.NOTION).map(n => [n.id, deaccent(n.titre + ' ' + n.idee).split(/[^a-z0-9]+/).filter(w => words.has(w)).length]).filter(x => x[1]).sort((a, b) => b[1] - a[1]).slice(0, 2).forEach(([id]) => notions.add(id));
+    Object.values(APP.PASS).map(p => [p.id, deaccent(p.titre + ' ' + p.tex).split(/[^a-z0-9]+/).filter(w => words.has(w)).length]).filter(x => x[1] > 1).sort((a, b) => b[1] - a[1]).slice(0, 2).forEach(([id]) => pass.add(id));
+  }
+  for (const n of [...notions].slice(0, 4)) { const f = APP.NOTION[n]; if (!f) continue; L.push(`[FICHE ${f.id}] ${f.titre}. ${f.idee} Formule : $${f.formule}$. Piège : ${f.piege}`); f.passages.slice(0, 2).forEach(p => pass.add(p)); }
+  for (const p of [...pass].slice(0, 5)) { const P = APP.PASS[p]; if (P) L.push(`[${P.id}] (cours officiel) ${P.titre} : ${P.tex}`); }
+  return L.join('\n');
+}
+function contextBlock(userText, pre) {
+  const P = APP.profil;
+  const D = Object.entries(P.difficultes || {}).sort((a, b) => b[1].n - a[1].n).slice(0, 6).map(([t, d]) => `${t} (${d.n}×) : ${d.description}`).join(' ; ');
+  const due = duesToday();
+  const recentUser = APP.msgs.filter(m => m.r === 'u').slice(-3).map(m => m.x);
+  return [
+    `[AUJOURD'HUI] ${today()}`,
+    `[PLAN DU COURS ET SA PROGRESSION]\n${coursePlan()}`,
+    `[CARTE DES NOTIONS (niveau estimé) ← prérequis]\n${notionsLine()}`,
+    APP.mem?.resume ? `[MÉMOIRE DES ÉCHANGES PLUS ANCIENS] ${APP.mem.resume}` : '',
+    (APP.mem?.sessions || []).length ? `[SÉANCES PRÉCÉDENTES] ${APP.mem.sessions.slice(-3).map(s => s.date + ' : ' + s.resume).join(' | ')}` : '',
+    D ? `[DIFFICULTÉS RÉCURRENTES] ${D}` : '',
+    due.length ? `[RÉVISIONS PRÉVUES AUJOURD'HUI] ${due.slice(0, 8).join(', ')}` : '',
+    P.reprise ? `[OÙ REPRENDRE] ${P.reprise}` : '',
+    `[CARTES À L'ÉCRAN] ${APP.cards.map(c => (c.min ? '(réduite) ' : '') + (c.titre || TITLES[c.type])).join(', ') || 'aucune'}`,
+    APP.current ? `[EXERCICE EN COURS] ${APP.current.kind === 'exo' ? `mini-exercice : $${APP.current.enonce}$ (solution SymPy : $${APP.current.solution_tex || '?'}$)` : APP.current.ref}` : '',
+    `[EXTRAITS DU CORPUS]\n${corpusFor([...recentUser, userText])}`,
+    pre ? `[SYMPY] ${pre}` : '',
+  ].filter(Boolean).join('\n\n').slice(0, 42000);
+}
+
+/* ============================================================ vérification SymPy avant l'appel */
+function looksLikeAnswer(t) { return t.length < 90 && !/\?/.test(t) && !/^(pourquoi|comment|explique|montre|epingle|affiche|enleve|retire|je |j'|jai|c'est|ok\b|merci|oui\b|non\b|on |peux|tu |d'accord|bon\b)/i.test(deaccent(t.trim())); }
+async function precheck(text) {
+  let target = null, answer = text;
+  const r = resolveRef(text);
+  if (r && APP.ITEM[r] && /[:=]/.test(text)) { target = {kind: 'item', ref: r}; answer = text.slice(text.search(/[:=]/) + 1); }
+  else if (APP.current && looksLikeAnswer(text)) target = APP.current;
+  if (!target) return null;
+  const spec = target.kind === 'exo' ? target.spec : APP.ITEM[target.ref]?.verification.spec?.[0];
+  if (!spec) return null;
+  let res; try { res = await Sym.call('check_text', {spec, text: answer}); } catch (e) { return {line: `SymPy indisponible (${e.message}) : réponse non vérifiée.`, badge: B.nv('SymPy indisponible')}; }
+  if (res.ok == null) return {line: `SymPy n'a pas pu lire la réponse (${res.detail}).`, badge: B.nv('illisible pour SymPy')};
+  if (target.kind === 'exo') {
+    const card = APP.cards.find(c => c.id === target.card); if (card) { card.statut = res.ok ? 'ok' : 'ko'; renderCards(); saveBoard(); }
+    learn(target.notions, res.ok ? 1 : 0);
+    if (res.ok) APP.current = null;
+  } else {
+    const it = APP.ITEM[target.ref];
+    setItem(it.id, res.ok ? 'reussi' : 'a_revoir', {reponse: answer.trim().slice(0, 120)});
+    learn(it.ex.notions, res.ok ? 1 : 0);
+  }
+  return {line: `La réponse de Ryan « ${answer.trim()} » à ${target.kind === 'exo' ? 'ton mini-exercice' : target.ref} est ${res.ok ? 'JUSTE' : 'FAUSSE'} (SymPy ; lu : ${res.lu}). Attendu : ${res.sympy}.`,
+          badge: res.ok ? B.ok() : B.ko()};
+}
+
+/* ============================================================ exécution des opérations du prof */
+async function applyOps(ops, msg) {
+  const done = [];
+  for (const o of Array.isArray(ops) ? ops.slice(0, 10) : []) {
+    try {
+      switch (o.op) {
+        case 'formules': addCard({type: 'formules', titre: o.titre || 'Formules', items: (o.items || []).map(String).slice(0, 12), source: o.source}); done.push({...o, chip: '📌 ' + (o.titre || 'Formules')}); break;
+        case 'graphe': addCard({type: 'graphe', titre: o.titre || 'Graphique', fonctions: (o.fonctions || []).slice(0, 4), xr: o.x, yr: o.y, legende: o.legende}); done.push({...o, chip: '📈 ' + (o.titre || 'Graphique')}); break;
+        case 'dessin': addCard({type: 'dessin', titre: o.titre || 'Dessin', svg: String(o.svg || '').slice(0, 30000), legende: o.legende}); done.push({...o, chip: '✏️ ' + (o.titre || 'Dessin')}); break;
+        case 'tableau': addCard({type: 'tableau', titre: o.titre || 'Tableau', lignes: o.lignes, legende: o.legende}); done.push({...o, chip: '▦ ' + (o.titre || 'Tableau')}); break;
+        case 'demo': {
+          const etapes = (o.etapes || []).slice(0, 12).map(s => ({...s}));
+          const c = addCard({type: 'demo', titre: o.titre || 'Démonstration', etapes, vu: 1});
+          done.push({...o, chip: '🪜 ' + (o.titre || 'Démonstration')});
+          etapes.forEach(async s => { if (!s.verif) return; try { const r = await Sym.call('run', {spec: s.verif, answer: s.verif.answer}); s.v = r.ok ? B.ok() : r.ok === false ? B.ko() : B.nv(); } catch (e) { s.v = B.nv(); } if (APP.cards.includes(c)) { renderCards(); saveBoard(); } });
+          break;
+        }
+        case 'exercice': if (APP.ITEM[o.ref] || APP.EX[o.ref]) { addCard({type: 'exercice', titre: 'Exercice · ' + label(o.ref), ref: o.ref}); APP.current = {kind: 'item', ref: APP.ITEM[o.ref] ? o.ref : APP.EX[o.ref].items[0].id}; done.push({...o, chip: '📄 ' + label(o.ref)}); } break;
+        case 'cours': if (APP.PASS[o.ref]) { addCard({type: 'cours', titre: APP.PASS[o.ref].titre, ref: o.ref}); done.push({...o, chip: '📖 ' + APP.PASS[o.ref].titre}); } break;
+        case 'exo': {
+          const spec = {...(o.spec || {})}; delete spec.answer;
+          const c = addCard({type: 'exo', titre: 'À toi', consigne: o.consigne, enonce: String(o.enonce || ''), spec, notions: o.notions || []});
+          APP.current = {kind: 'exo', card: c.id, spec, enonce: c.enonce, notions: c.notions};
+          done.push({...o, chip: '✍️ ' + (o.consigne || 'À toi')});
+          Sym.call('compute', {spec}).then(sol => { c.solution_tex = sol.latex; if (APP.current?.card === c.id) APP.current.solution_tex = sol.latex; renderCards(); saveBoard(); })
+            .catch(() => { c.solution_tex = null; renderCards(); });
+          break;
+        }
+        case 'retirer': removeCards(o.cible); break;
+        case 'progression': addCard({type: 'progression', titre: 'Où tu en es'}); break;
+        case 'etat': { const ids = refsExpand(o.refs); const st = ['fait', 'reussi', 'a_revoir', 'nouveau'].includes(o.statut) ? o.statut : 'fait'; ids.forEach(id => setItem(id, st)); if (ids.length) done.push({...o, chip: `✓ ${ids.length} question${ids.length > 1 ? 's' : ''} : ${st.replace('_', ' ')}`}); break; }
+        case 'maitrise': if (APP.NOTION[o.notion]) { const s = notion(o.notion); s.etat = o.niveau; if (s.m == null) s.m = o.niveau === 'acquis' ? .85 : o.niveau === 'fragile' ? .5 : .15; saveProfil(); } break;
+        case 'difficulte': difficulty(String(o.tag || 'difficulte').slice(0, 40), String(o.description || '').slice(0, 100), o.notion, o.ref); done.push({...o, chip: '🧠 noté : ' + String(o.description || o.tag).slice(0, 40)}); break;
+        case 'reprise': APP.profil.reprise = String(o.texte || '').slice(0, 80); saveProfil(); break;
+        case 'verdict': {
+          const it = APP.ITEM[o.ref]; if (!it) break;
+          const spec = it.verification.spec?.[0]; let ok = o.juge === 'juste' ? true : o.juge === 'faux' ? false : null, badge = B.nv('jugé par le prof');
+          if (spec && o.reponse) { try { const r = await Sym.call('check_text', {spec, text: String(o.reponse)}); if (r.ok != null) { const b = r.ok ? B.ok(label(it.id)) : B.ko(label(it.id)); badge = ok != null && r.ok !== ok ? b + ' <span class="chip warn">le prof avait jugé l\'inverse : SymPy fait foi</span>' : b; ok = r.ok; } } catch (e) {} }
+          if (ok != null) { setItem(it.id, ok ? 'reussi' : 'a_revoir', {reponse: String(o.reponse || '').slice(0, 120)}); learn(it.ex.notions, ok ? 1 : 0); }
+          msg.v = (msg.v || '') + badge; break;
+        }
+        case 'verifier': for (const s of (o.specs || []).slice(0, 5)) {
+          const lab = (s.expr ? `${p2t(s.expr)} = ${p2t(s.answer)}` : `${p2t(s.lhs || s.rel)}${s.rhs ? ' = ' + p2t(s.rhs) : ''} → ${p2t(s.answer)}`).slice(0, 50);
+          try { const r = await Sym.call('run', {spec: s, answer: s.answer}); msg.v = (msg.v || '') + (r.ok ? B.ok(lab) : r.ok === false ? B.ko(lab) : B.nv(lab)); } catch (e) { msg.v = (msg.v || '') + B.nv(lab); }
+        } break;
+      }
+    } catch (e) { console.warn('opération ignorée', o, e); }
+  }
+  return done;
+}
+
+/* ============================================================ envoi d'un message */
+async function send(text, photos = []) {
+  if (APP.busy) return;
+  const d = today();
+  const um = {r: 'u', x: text, t: Date.now(), d, ph: photos.length || undefined};
+  APP.msgs.push(um); renderLog(); saveConv(d);
+  const sample = APP.cap.sample;
+  if (!sample) { toast('Le professeur n\'est pas disponible ici : ouvre la page dans claude.ai et autorise Claude.'); return; }
+  APP.busy = true; onInput(); renderLog('<span style="color:var(--faint)">…</span>');
+  let pre = null; try { pre = await precheck(text); } catch (e) {}
+  if (pre) { um.v = pre.badge; renderLog('<span style="color:var(--faint)">…</span>'); }
+  const hist = APP.msgs.filter(m => m.t > (APP.mem?.jusqua || 0) && m !== um).slice(-14);
+  const turns = [{role: 'user', content: RULES + '\n\n' + contextBlock(text, pre?.line) + '\n\n(Fin du contexte. La conversation suit.)'}];
+  for (const m of hist) turns.push({role: m.r === 'u' ? 'user' : 'assistant', content: m.r === 'u' ? m.x + (m.ph ? ' (photo jointe)' : '') : m.x});
+  turns.push({role: 'user', content: text + (photos.length ? '\n(Photo de ma feuille jointe : lis-la et repère l\'étape exacte qui coince.)' : '')});
+  const ctl = APP.ctl = new AbortController();
+  const tier = $('#tier').value; let reply = '', applied = null;
+  const opts = {cache: false, signal: ctl.signal, modelTier: tier, onText: ({text: t}) => { reply = t; const L = $('#live'); if (L) { L.innerHTML = renderTex(strip(t)) || '…'; $('#log').scrollTop = $('#log').scrollHeight; } }};
+  if (photos.length) opts.images = photos;
+  try { const r = await sample(turns, opts); reply = r.text; applied = r.modelTierApplied; if (r.truncated) toast('Réponse coupée : demande-lui de continuer.'); }
+  catch (e) {
     reply = e.text || '';
-    if (e.code !== 'cancelled') toast(e.code === 'rate_limited' ? 'Limite d\'usage atteinte : réessaie plus tard.' : e.code === 'not_granted' ? 'Claude n\'est pas autorisé pour cette page.' : 'Le professeur n\'a pas pu répondre (' + e.code + ').');
+    if (e.code !== 'cancelled') toast({rate_limited: 'Limite d\'usage atteinte : réessaie plus tard.', not_granted: 'Claude n\'est pas autorisé pour cette page.', images_unavailable: 'Les photos ne passent pas dans cette vue.', prompt_too_large: 'Message trop long.'}[e.code] || 'Pas de réponse (' + e.code + ').');
     if (e.code === 'not_granted' || e.code === 'sampling_disabled') APP.cap.sample = null;
   }
-  APP.chat.busy = false;
+  const tn = $('#tierNote'); tn.hidden = !applied || applied === tier; if (applied && applied !== tier) tn.textContent = 'réponse en mode ' + ({quick: 'Rapide', default: 'Normal', complex: 'Réfléchi'}[applied] || applied);
+  APP.busy = false;
   if (reply.trim()) {
-    const long = wordCount(reply) > 70;
-    const msg = {role: 'prof', content: reply, t: Date.now(), long};
-    fil.tours.push(msg);
-    const P = APP.S.profil; P.stats.reponses += 1; if (long) P.stats.longues += 1; saveProfil();
-    renderChat();
-    msg.verifs = await verifyClaims(reply); renderChat();
-  } else renderChat();
-  if (fil.tours.length > 14) await compressFil(ref, fil);
-  fil.maj = new Date().toISOString(); Store.set('fil/' + ref, fil);
-  logEvent({type: 'question', ref});
+    const pm = {r: 'p', x: reply, t: Date.now(), d};
+    APP.msgs.push(pm); renderLog();
+    let ops = []; const m = reply.match(/```cartes\s*([\s\S]*?)```/);
+    if (m) { try { ops = JSON.parse(m[1]); } catch (e) { pm.v = B.nv('cartes illisibles'); } }
+    pm.ops = await applyOps(ops, pm);
+    renderLog(); saveConv(d);
+    const st = (APP.profil.stats ||= {n: 0, longs: 0}); st.n++; if (strip(reply).replace(/\$[^$]*\$/g, '').split(/\s+/).filter(Boolean).length > 70) st.longs++; saveProfil();
+  } else renderLog();
+  onInput();
+  maintainMemory();
 }
-async function compressFil(ref, fil) {                                    // la mémoire ne sature pas : les vieux échanges deviennent un résumé
-  const old = fil.tours.slice(0, 8);
-  try {
-    const {text} = await APP.cap.sample(`Résume en 60 mots maximum, en texte simple, cette discussion entre Ryan et son professeur sur « ${label(ref)} » : ce qui est compris, ce qui bloque encore.\n\nRésumé précédent : ${fil.resume || '(aucun)'}\n\n` + old.map(t => (t.role === 'user' ? 'Ryan : ' : 'Prof : ') + t.content.replace(/^VERIFS:.*$/m, '')).join('\n'), {modelTier: 'quick', cache: false});
-    fil.resume = text.trim().slice(0, 600); fil.tours = fil.tours.slice(8);
-  } catch (e) { fil.tours = fil.tours.slice(-14); }
-}
-
-/* ====================================================================== correction */
-function setFb(id, html) { (APP.answers[id] ||= {}).fb = html; const el = document.getElementById('it-' + id); if (el) render(); }
-async function checkItem(id) {
-  const it = APP.ITEM[id]; const text = ($('#ans-' + CSS.escape(id))?.value || '').trim();
-  (APP.answers[id] ||= {}).text = text;
-  if (!text) return toast('Écris d\'abord ta réponse, ou envoie une photo.');
-  const spec = it.verification.spec?.[0];
-  let sym = null;
-  if (spec) {
-    setFb(id, '<div class="feedback info">SymPy vérifie… (le premier chargement peut prendre 10 à 30 s)</div>');
-    try { sym = await Sym.check(spec, text); } catch (e) { sym = {ok: null, detail: e.message}; }
-  }
-  if (sym?.ok === true) {                                                  // juste et vérifié : pas besoin d'appeler Claude
-    record(id, {verdict: 'juste', reponse: text, verif: 'sympy_ok'});
-    return setFb(id, `<div class="feedback ok"><div><b>Juste.</b> ${badge('sympy_ok')}</div><div class="small">Lu : ${math(sym.lu)}</div></div>`);
-  }
-  const symLine = sym ? (sym.ok === false ? `SymPy : FAUX (réponse lue : ${sym.lu || text} ; ${sym.detail})` : `SymPy n'a pas pu conclure (${sym.detail})`) : 'Pas de vérification SymPy possible pour cette question.';
-  if (!APP.cap.sample) {
-    record(id, {verdict: sym?.ok === false ? 'faux' : 'partiel', reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null});
-    return setFb(id, `<div class="feedback ${sym?.ok === false ? 'bad' : 'warn'}"><div>${sym?.ok === false ? '<b>Pas encore.</b> ' + badge('sympy_ko') : badge(null)}</div>${sym?.lu ? `<div class="small">Lu : ${math(sym.lu)}</div>` : ''}</div>`);
-  }
-  setFb(id, `<div class="feedback info">${sym?.ok === false ? badge('sympy_ko') + ' ' : ''}Le prof regarde où ça coince…</div>`);
-  const tags = Object.keys(APP.S.profil.erreurs || {}).join(', ') || '(aucun)';
-  const prompt = `Tu corriges la réponse de Ryan à une question d'exercice. Réponds UNIQUEMENT par un objet JSON :
-{"verdict":"juste|partiel|faux","ou":"où exactement ça coince, 1 phrase de 25 mots max","indice":"une question ou un indice court pour avancer, sans donner la réponse, 25 mots max","erreurs":[{"tag":"mot-cle-court-en-kebab","description":"12 mots max"}],"blocage":"ce qui lui a posé problème, 15 mots max"}
-SymPy fait foi pour la valeur finale. Réutilise un tag d'erreur existant si c'est la même erreur : ${tags}. Liste vide si pas d'erreur.
-
-${contextFor(id)}
-
-Réponse de Ryan : « ${text} »
-${symLine}`;
-  try {
-    const j = await APP.cap.sample.json(prompt, {cache: false});
-    let verdict = ['juste', 'partiel', 'faux'].includes(j.verdict) ? j.verdict : 'partiel';
-    if (sym?.ok === false) verdict = 'faux';                                // SymPy l'emporte sur la valeur finale
-    const errs = Array.isArray(j.erreurs) ? j.erreurs.filter(x => x?.tag).map(x => ({tag: String(x.tag).slice(0, 40), description: String(x.description || '').slice(0, 90)})) : [];
-    record(id, {verdict, reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null, erreurs: verdict === 'juste' ? [] : errs, blocage: verdict === 'juste' ? null : j.blocage});
-    setFb(id, `<div class="feedback ${verdict === 'juste' ? 'ok' : verdict === 'faux' ? 'bad' : 'warn'}">
-      <div class="row"><b>${verdict === 'juste' ? 'Juste.' : verdict === 'faux' ? 'Pas encore.' : 'Presque.'}</b>${sym?.ok === false ? badge('sympy_ko') : badge(null)}</div>
-      ${sym?.lu ? `<div class="small">Lu : ${math(sym.lu)}</div>` : ''}
-      ${j.ou && verdict !== 'juste' ? `<div>${inline(String(j.ou))}</div>` : ''}${j.indice && verdict !== 'juste' ? `<div><b>Indice</b> · ${inline(String(j.indice))}</div>` : ''}
-      <div><button class="btn small" data-a="ask" data-ref="${esc(id)}">Continuer avec le prof</button></div></div>`);
-  } catch (e) {
-    record(id, {verdict: sym?.ok === false ? 'faux' : 'partiel', reponse: text, verif: sym?.ok === false ? 'sympy_ko' : null});
-    setFb(id, `<div class="feedback warn">${sym?.ok === false ? badge('sympy_ko') : ''} Le prof n'a pas pu analyser (${esc(e.code || e.message)}).</div>`);
-  }
-}
-async function checkPhoto(ref, files) {
-  const it = APP.ITEM[ref]; const e = it ? it.ex : APP.EX[ref];
-  const items = it ? [it] : e.items;
-  const target = it ? it.id : e.items[0].id;
-  items.forEach(i => setFb(i.id, '<div class="feedback info">Lecture de ta feuille…</div>'));
-  const prompt = `Voici la photo de la feuille de Ryan pour l'exercice ${e.id}. Consigne : ${e.consigne}
-Sous-questions : ${items.map(i => `${i.sub || '(unique)'}) $${i.enonce}$`).join(' ; ')}
-Transcris ce qu'il a écrit, sans rien corriger. Réponds UNIQUEMENT par un JSON :
-{"items":[{"sub":"a","lu":"réponse finale lue, en LaTeX","texte":"réponse finale en texte simple, ex. 6/5 ou ]1,5[ ou (x-1)(x^2+2x+2)","etapes":"étapes principales lues, 30 mots max","doute":"ce qui est illisible, sinon vide","ou":"si une étape est fausse, laquelle exactement (20 mots max), sinon vide"}]}
-Seulement les sous-questions visibles sur la photo. Pour une question sans sous-lettre, "sub" vaut "".
-Corrigé officiel (pour repérer l'étape fausse, ne pas le recopier) : ${items.map(i => `${i.sub}) ${i.corrige}`).join(' ; ')}`;
-  try {
-    const j = await APP.cap.sample.json(prompt, {images: files, cache: false});
-    for (const r of j.items || []) {
-      const i = items.find(x => (x.sub || '') === String(r.sub || '')); if (!i) continue;
-      const spec = i.verification.spec?.[0];
-      let sym = null;
-      if (spec && r.texte) { try { sym = await Sym.check(spec, String(r.texte)); } catch (err) { sym = {ok: null, detail: err.message}; } }
-      const verdict = sym?.ok === true ? (r.ou ? 'partiel' : 'juste') : sym?.ok === false ? 'faux' : (r.ou ? 'partiel' : 'partiel');
-      record(i.id, {verdict, reponse: r.texte || r.lu, verif: sym?.ok === true ? 'sympy_ok' : sym?.ok === false ? 'sympy_ko' : null, source: 'photo',
-        erreurs: r.ou && verdict !== 'juste' ? [{tag: 'etape-fausse', description: String(r.ou).slice(0, 90)}] : [], blocage: r.ou || null});
-      (APP.answers[i.id] ||= {}).text = r.texte || '';
-      APP.answers[i.id].fb = `<div class="feedback ${verdict === 'juste' ? 'ok' : verdict === 'faux' ? 'bad' : 'warn'}">
-        <div class="row"><b>${verdict === 'juste' ? 'Juste.' : verdict === 'faux' ? 'Pas encore.' : 'À regarder.'}</b>${sym?.ok === true ? badge('sympy_ok') : sym?.ok === false ? badge('sympy_ko') : badge(null)}</div>
-        <div class="small">Lu sur ta feuille : ${r.lu ? math(String(r.lu)) : esc(r.texte)}${r.doute ? ` · <span style="color:var(--warn)">doute : ${esc(r.doute)}</span>` : ''}</div>
-        ${r.ou ? `<div>${inline(String(r.ou))}</div>` : ''}<div class="small muted">Si la lecture est fausse, corrige le texte ci-dessus et appuie sur Vérifier.</div></div>`;
-    }
-    render();
-  } catch (err) { items.forEach(i => setFb(i.id, `<div class="feedback warn">Lecture impossible (${esc(err.code || err.message)}). Essaie une photo plus nette ou tape ta réponse.</div>`)); }
-}
-
-/* ====================================================================== variantes : solution calculée par SymPy */
-async function showVariant(baseItemOrEx, notionId) {
-  const done = new Set(Object.keys(Object.values(APP.S.ex).reduce((a, s) => Object.assign(a, s.variantes || {}), {})));
-  let pool;
-  if (notionId) pool = APP.NOTION[notionId].exercices.flatMap(e => APP.VARBASE[e] || []);
-  else { const e = APP.ITEM[baseItemOrEx]?.ex || APP.EX[baseItemOrEx]; pool = APP.VARBASE[e.id] || []; }
-  const fresh = pool.filter(v => !done.has(v.id));
-  if (fresh.length) { const v = fresh[Math.floor(Math.random() * fresh.length)]; return openRef(v.id); }
-  if (notionId || !APP.cap.sample) return toast('Plus de variante en réserve pour ici.');
-  return liveVariant(APP.ITEM[baseItemOrEx]);
-}
-async function liveVariant(it) {
-  const spec = it?.verification.spec?.[0]; if (!spec) return toast('Pas de variante possible pour cette question.');
-  toast('Le prof prépare une variante, SymPy calculera la solution…');
-  const prompt = `Crée UNE variante de la question ci-dessous : même notion, même difficulté, nombres ou expression différents. Ne donne PAS la solution : SymPy la calculera.
-Réponds UNIQUEMENT par un JSON : {"enonce":"LaTeX de la nouvelle question, sans $","spec":{...}}
-"spec" garde exactement les mêmes clés que la spécification d'origine, sans "answer", avec de nouvelles expressions en syntaxe SymPy (** pour les puissances, sqrt(), pi, Abs()).
-Spécification d'origine : ${JSON.stringify({...spec, answer: undefined})}
-Consigne : ${it.ex.consigne}
-Question d'origine : ${it.enonce}`;
-  try {
-    const j = await APP.cap.sample.json(prompt, {cache: false});
-    const s = {...j.spec, type: spec.type}; if (spec.form) s.form = spec.form; delete s.answer;
-    const sol = await Sym.compute(s);
-    const back = await Sym.run(s, sol.answer);
-    if (back.ok !== true) throw new Error('SymPy ne confirme pas sa propre solution');
-    const v = {id: `${it.ex.id}.live${Date.now().toString(36)}`, base: it.ex.id, consigne: it.ex.consigne, enonce: String(j.enonce), notions: it.ex.notions, spec: s, solution: sol.answer, solution_tex: sol.latex, origine: 'tuteur'};
-    APP.VAR[v.id] = v; go('exos', {ex: it.ex.id, variante: v.id});
-  } catch (e) { toast('Variante écartée : ' + (e.code || e.message) + '. Réessaie.'); }
-}
-async function checkVariant(id) {
-  const v = APP.VAR[id]; const text = ($('#ans-' + CSS.escape(id))?.value || '').trim();
-  (APP.answers[id] ||= {}).text = text; if (!text) return;
-  setFb(id, '<div class="feedback info">SymPy vérifie…</div>');
-  let r; try { r = await Sym.check(v.spec, text); } catch (e) { r = {ok: null, detail: e.message}; }
-  const st = exState(v.base); st.variantes[v.id] = {date: today(), ok: r.ok, reponse: text.slice(0, 120)}; saveEx(v.base);
-  for (const n of v.notions) { const ns = notionState(n); if (r.ok != null) { const q = r.ok ? 1 : 0; ns.maitrise = ns.maitrise == null ? q : .7 * ns.maitrise + .3 * q; ns.n = (ns.n || 0) + 1; saveNotion(n); } }
-  logEvent({type: 'variante', ref: v.id, ok: r.ok});
-  setFb(id, `<div class="feedback ${r.ok ? 'ok' : r.ok === false ? 'bad' : 'warn'}"><div class="row"><b>${r.ok ? 'Juste.' : r.ok === false ? 'Pas encore.' : 'Non vérifié.'}</b>${r.ok === true ? badge('sympy_ok') : r.ok === false ? badge('sympy_ko') : badge(null)}</div>${r.lu ? `<div class="small">Lu : ${math(r.lu)}</div>` : ''}</div>`);
-}
-
-/* ====================================================================== sessions */
-async function summarizeSession(d) {
-  const S = await Store.get('session/' + d); const P = APP.S.profil;
-  if (!S?.evenements?.length) { P.session_precedente = null; saveProfil(); return render(); }
-  const counts = S.evenements.reduce((a, e) => (a[e.type] = (a[e.type] || 0) + 1, a), {});
-  let resume = `${counts.reponse || 0} réponses, ${counts.question || 0} questions au prof, ${counts.variante || 0} variantes.`;
-  let aRevoir = [...new Set(S.evenements.filter(e => e.verdict && e.verdict !== 'juste').map(e => e.ref))];
-  if (APP.cap.sample) {
+async function maintainMemory() {                                      // la mémoire ne sature jamais : les vieux échanges deviennent un résumé
+  const sample = APP.cap.sample; if (!sample) return;
+  const fresh = APP.msgs.filter(m => m.t > (APP.mem.jusqua || 0));
+  if (fresh.length > 28) {
+    const old = fresh.slice(0, 16);
     try {
-      const j = await APP.cap.sample.json(`Résume la session d'étude de Ryan (${d}) pour s'en souvenir plus tard. Réponds UNIQUEMENT par un JSON : {"resume":"3 phrases courtes max : ce qui a été travaillé, ce qui a bloqué","a_revoir":["identifiants"]}\nÉvénements : ` +
-        S.evenements.map(e => `${e.t} ${e.type} ${e.ref || ''} ${e.verdict || e.statut || ''}`).join('\n') + '\nErreurs connues : ' + JSON.stringify(P.erreurs || {}).slice(0, 1500), {modelTier: 'quick', cache: false});
-      if (j.resume) resume = String(j.resume); if (Array.isArray(j.a_revoir)) aRevoir = j.a_revoir.filter(x => APP.ITEM[x]);
+      const {text} = await sample(`Mets à jour la mémoire d'un professeur particulier sur son élève Ryan. En 120 mots maximum, texte simple : ce qui a été travaillé, ce qui est acquis, ce qui bloque encore, où on en est.\nMémoire actuelle : ${APP.mem.resume || '(vide)'}\n\nÉchanges à intégrer :\n` + old.map(m => (m.r === 'u' ? 'Ryan : ' : 'Prof : ') + strip(m.x).slice(0, 600)).join('\n'), {modelTier: 'quick', cache: false});
+      APP.mem.resume = text.trim().slice(0, 1200); APP.mem.jusqua = old.at(-1).t; saveMem();
     } catch (e) {}
   }
-  S.resume = resume; S.a_revoir = aRevoir; await Store.set('session/' + d, S);
-  P.derniere_resume = `${d} : ${resume}`; P.session_precedente = null; saveProfil(); render();
+  const prev = APP.profil.dernier_jour;
+  if (prev && prev !== today() && !(APP.mem.sessions || []).some(s => s.date === prev)) {
+    const conv = await Store.get('conv/' + prev);
+    if (conv?.msgs?.length) {
+      try {
+        const {text} = await sample(`Résume en 2 phrases très courtes la séance d'étude de Ryan du ${prev} : ce qui a été fait, ce qui bloque. Texte simple.\n\n` + conv.msgs.map(m => (m.r === 'u' ? 'Ryan : ' : 'Prof : ') + strip(m.x).slice(0, 300)).join('\n').slice(0, 20000), {modelTier: 'quick', cache: false});
+        (APP.mem.sessions ||= []).push({date: prev, resume: text.trim().slice(0, 400)}); APP.mem.sessions = APP.mem.sessions.slice(-15); saveMem();
+      } catch (e) {}
+    }
+  }
+  if (APP.profil.dernier_jour !== today()) { APP.profil.dernier_jour = today(); saveProfil(); }
 }
 
-/* ====================================================================== évènements */
-document.addEventListener('click', async ev => {
-  const t = ev.target.closest('[data-a],[data-tab],[data-tab-go]'); if (!t) return;
-  if (t.dataset.tab) return go(t.dataset.tab);
-  if (t.dataset.tabGo) return go(t.dataset.tabGo);
-  const a = t.dataset.a, ref = t.dataset.ref;
-  if (a === 'open') return openRef(ref);
-  if (a === 'notion') return go('cours', {notion: ref});
-  if (a === 'notions') return go('cours', {notion: '*'});
-  if (a === 'scroll') return document.getElementById(ref)?.scrollIntoView({behavior: 'smooth'});
-  if (a === 'ask') { if (APP.ITEM[ref]) (APP.answers[ref] ||= {}).text = $('#ans-' + CSS.escape(ref))?.value || ''; return openChat(ref); }
-  if (a === 'lu') { const P = APP.S.profil; (P.lus ||= {})[ref] = P.lus[ref] ? undefined : today(); if (!P.lus[ref]) delete P.lus[ref]; saveProfil(); logEvent({type: 'lecture', ref}); return render(); }
-  if (a === 'mark') { const cur = itemState(ref).statut; markManual(ref, cur === t.dataset.s ? 'nouveau' : t.dataset.s); return render(); }
-  if (a === 'check') return checkItem(ref);
-  if (a === 'check-var') return checkVariant(ref);
-  if (a === 'variant') return showVariant(ref);
-  if (a === 'new-variant') return showVariant(null, t.dataset.notion);
-  if (a === 'photo') { APP.photoTarget = ref; return $('#photoInput').click(); }
-  if (a === 'chat-photo') { APP.photoTarget = '@chat'; return $('#photoInput').click(); }
-  if (a === 'close-chat') return closeChat();
-  if (a === 'ctx-general') { APP.chat.ref = 'general'; await loadFil('general'); return renderChat(); }
-  if (a === 'stop') return APP.chat.ctl?.abort();
-  if (a === 'shorter') return sendChat('Trop long. Redis-le en 2 phrases maximum.');
-  if (a === 'deeper') return sendChat('Explique plus, pas à pas.');
-  if (a === 'sympy-start') return Sym.start();
-  if (a === 'resume-session') { t.disabled = true; t.textContent = 'Résumé…'; return summarizeSession(t.dataset.d); }
-  if (a === 'load-sessions') {
-    const list = await Store.list('session');
-    $('#sessions').innerHTML = Object.values(list).sort((x, y) => y.date.localeCompare(x.date)).slice(0, 20).map(s => `<div class="li"><span class="mono">${esc(s.date)}</span><span class="grow">${esc(s.resume || s.evenements.length + ' événements (pas encore résumée)')}</span></div>`).join('') || '<p class="muted">Aucune session.</p>';
-  }
-});
-document.addEventListener('submit', ev => {
-  ev.preventDefault();
-  const f = ev.target.dataset.f;
-  if (f === 'goto') { const v = $('#gotoInput').value; const r = resolveRef(v); if (r) openRef(r.id); else toast('Je ne trouve pas « ' + v + ' ». Essaie « série -1, II.4 b ».'); }
-  if (f === 'chat') { const inp = $('#chatInput'); const v = inp.value.trim(); if (!v && !APP.chat.photos.length) return; const ph = APP.chat.photos; inp.value = ''; sendChat(v || 'Voici ma feuille.', {photos: ph}); }
-});
-document.addEventListener('input', ev => { if (ev.target.id?.startsWith('ans-')) (APP.answers[ev.target.id.slice(4)] ||= {}).text = ev.target.value; });
-document.addEventListener('keydown', ev => { if (ev.target.id === 'chatInput' && ev.key === 'Enter' && !ev.shiftKey) { ev.preventDefault(); ev.target.form.requestSubmit(); } });
-$('#photoInput').addEventListener('change', ev => {
-  const files = [...ev.target.files].slice(0, APP.cap.limits?.images?.maxCount || 1); ev.target.value = '';
-  if (!files.length) return;
-  if (APP.photoTarget === '@chat') { APP.chat.photos = files; return renderChat(); }
-  checkPhoto(APP.photoTarget, files);
-});
-$('#profBtn').addEventListener('click', () => APP.chat.open ? closeChat() : openChat(APP.view.route?.focus || APP.view.route?.ex || APP.view.route?.passage || APP.view.route?.notion || 'general'));
+/* ============================================================ statut */
+function renderStatus() {
+  if (!APP.profil) return;
+  const s = APP.sympy.state;
+  $('#status').innerHTML = (s === 'pret' ? '<span class="chip ok">SymPy prêt</span>' : s === 'chargement' ? '<span class="chip warn">SymPy se charge…</span>' : s === 'ko' ? `<span class="chip bad" title="${esc(APP.sympy.info)}">SymPy indisponible</span>` : '')
+    + (APP.store === 'db' ? '' : '<span class="chip warn" title="La progression reste dans ce navigateur">non synchronisé</span>')
+    + (APP.cap.sample ? '' : '<span class="chip warn">prof indisponible ici</span>');
+  const mc = $('#memChip'); const D = Object.entries(APP.profil.difficultes || {}).sort((a, b) => b[1].n - a[1].n)[0];
+  const txt = [APP.profil.reprise && 'reprise : ' + APP.profil.reprise, D && 'à revoir : ' + (D[1].description || D[0])].filter(Boolean).join(' · ');
+  mc.hidden = !txt || isNarrow(); mc.textContent = 'Mémoire · ' + txt;
+}
 
-/* ====================================================================== démarrage */
+/* ============================================================ évènements */
+document.addEventListener('click', ev => {
+  const t = ev.target.closest('[data-a],[data-key],[data-kbtab]'); if (!t) return;
+  if (t.dataset.kbtab) { kbTab = t.dataset.kbtab; return renderKB(); }
+  if (t.dataset.key) { ev.preventDefault(); return insertTemplate(t.dataset.key); }
+  const a = t.dataset.a, c = APP.cards.find(x => x.id === t.dataset.id);
+  if (a === 'close' && c) { APP.cards = APP.cards.filter(x => x !== c); if (APP.current?.card === c.id) APP.current = null; renderCards(); saveBoard(); }
+  if (a === 'min' && c) { c.min = true; c.big = false; renderCards(); saveBoard(); }
+  if (a === 'restore' && c) { c.min = false; renderCards(); saveBoard(); }
+  if (a === 'big' && c) { c.big = !c.big; renderCards(); saveBoard(); }
+  if (a === 'next-step' && c) { c.vu = (c.vu || 1) + 1; renderCards(); saveBoard(); }
+  if (a === 'all-steps' && c) { c.vu = c.etapes.length; renderCards(); saveBoard(); }
+  if (a === 'say') { $('#input').value = t.dataset.t; onInput(); $('#composer').requestSubmit(); }
+  if (a === 'reopen') { const m = APP.msgs.find(x => String(x.t) === t.dataset.t); const o = m?.ops?.[+t.dataset.k]; if (o) applyOps([o], {}); }
+});
+$('#composer').addEventListener('submit', ev => {
+  ev.preventDefault(); if (APP.busy) return;
+  const v = $('#input').value.replace(/▢/g, '').trim(); const ph = APP.photos;
+  if (!v && !ph.length) return;
+  $('#input').value = ''; APP.photos = []; $('#thumbs').innerHTML = ''; onInput();
+  send(v || 'Voici ma feuille.', ph);
+});
+$('#input').addEventListener('input', onInput);
+$('#input').addEventListener('keydown', ev => { if (ev.key === 'Enter' && !ev.shiftKey && !isNarrow()) { ev.preventDefault(); $('#composer').requestSubmit(); } });
+$('#kbBtn').addEventListener('click', () => { const kb = $('#mathkb'); kb.hidden = !kb.hidden; $('#kbBtn').setAttribute('aria-pressed', String(!kb.hidden)); if (!kb.hidden) renderKB(); });
+$('#photoBtn').addEventListener('click', () => $('#photoInput').click());
+$('#photoInput').addEventListener('change', ev => {
+  APP.photos = [...ev.target.files].slice(0, APP.cap.limits?.images?.maxCount || 1); ev.target.value = '';
+  $('#thumbs').innerHTML = APP.photos.map(f => `<img src="${URL.createObjectURL(f)}" alt="photo jointe">`).join('');
+  if (APP.photos[0]) addCard({type: 'photo', titre: 'Ta feuille', src: URL.createObjectURL(APP.photos[0])});
+  onInput();
+});
+$('#progBtn').addEventListener('click', () => { const c = APP.cards.find(x => x.type === 'progression' && !x.min); if (c) { APP.cards = APP.cards.filter(x => x !== c); renderCards(); saveBoard(); } else addCard({type: 'progression', titre: 'Où tu en es'}); });
+$('#tier').addEventListener('change', () => { APP.profil.tier = $('#tier').value; saveProfil(); });
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && APP.busy) APP.ctl?.abort(); });
+
+/* ============================================================ démarrage */
 (async function boot() {
-  fetch('katex/katex.css').then(r => r.ok ? r.text() : '').then(css => { const s = document.createElement('style'); s.textContent = css; document.head.append(s); if (APP.C.matieres.length) render(); }).catch(() => {});
-  try { await loadCorpus(); } catch (e) { $('#main').innerHTML = `<div class="wrap"><p>Le cours ne se charge pas : ${esc(e.message)}</p></div>`; return; }
+  fetch('katex/katex.css').then(r => r.ok ? r.text() : '').then(css => { const s = document.createElement('style'); s.textContent = css; document.head.append(s); }).catch(() => {});
+  try { await loadCorpus(); } catch (e) { $('#log').innerHTML = `<p>Le cours ne se charge pas : ${esc(e.message)}</p>`; return; }
   await Store.init();
-  await loadState();
-  render();
-  if (window.claude?.use) {
-    claude.use('sample').then(async s => { APP.cap.sample = s; if (s) APP.cap.limits = await s.limits().catch(() => null); render(); if (APP.chat.open) renderChat(); });
-  }
-  setTimeout(() => Sym.start(), 1500);                                    // SymPy se charge en arrière-plan
+  const [profil, ex, mem, board] = await Promise.all([Store.get('profil/moi'), Store.list('ex'), Store.get('memoire/longue'), Store.get('tableau/actuel')]);
+  APP.profil = profil || {prenom: 'Ryan', debut: today(), notions: {}, difficultes: {}};
+  APP.ex = ex || {}; APP.mem = mem || {resume: '', jusqua: 0, sessions: []};
+  APP.cards = (board?.cards || []).filter(c => c.type !== 'photo');
+  if (APP.profil.tier) $('#tier').value = APP.profil.tier;
+  const d = today(), prev = APP.profil.dernier_jour;
+  const convs = await Promise.all([prev && prev !== d ? Store.get('conv/' + prev) : null, Store.get('conv/' + d)]);
+  APP.msgs = [...(convs[0]?.msgs || []).slice(-12).map(m => ({...m, d: prev})), ...(convs[1]?.msgs || []).map(m => ({...m, d}))];
+  if (!profil) Store.set('profil/moi', APP.profil);
+  renderLog(); renderCards(); onInput();
+  if (window.claude?.use) claude.use('sample').then(async s => {
+    APP.cap.sample = s;
+    if (s) { APP.cap.limits = await s.limits().catch(() => null); $('#photoBtn').hidden = !APP.cap.limits?.images; if (APP.cap.limits?.images) $('#photoInput').accept = APP.cap.limits.images.mediaTypes.join(','); }
+    renderStatus();
+  });
+  setTimeout(() => Sym.start(), 800);
 })();
 </script>

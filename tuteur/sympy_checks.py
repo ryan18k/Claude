@@ -319,6 +319,43 @@ def _sqrt_unicode(s):
     return "".join(out)
 
 
+def _group(s, j):
+    """Renvoie (contenu, fin) du groupe parenthésé qui commence en s[j] == '('."""
+    depth = 0
+    for k in range(j, len(s)):
+        depth += s[k] == "("
+        depth -= s[k] == ")"
+        if depth == 0:
+            return s[j + 1:k], k + 1
+    return s[j + 1:], len(s)
+
+
+def _nroot(s):
+    """√[n](x) → (x)**(1/(n))  (clavier maths)."""
+    while True:
+        m = re.search(r"√\[([^\]]+)\]\(", s)
+        if not m:
+            return s
+        arg, end = _group(s, m.end() - 1)
+        s = s[:m.start()] + f"(({arg})**(1/({m.group(1)})))" + s[end:]
+
+
+def _logbase(s):
+    """log_2(x), log_(a)(x), log_a(x) → log(x, base)."""
+    while True:
+        m = re.search(r"log_(?:(\()|([A-Za-z0-9.]+)\s*\()", s)
+        if not m:
+            return s
+        if m.group(1):
+            base, j = _group(s, m.start() + 4)
+            if j >= len(s) or s[j] != "(":
+                return s
+        else:
+            base, j = m.group(2), m.end() - 1
+        arg, end = _group(s, j)
+        s = s[:m.start()] + f"log({arg}, {base})" + s[end:]
+
+
 def normalize_expr(t, decimal_comma=True):
     """Écriture manuscrite/clavier → syntaxe SymPy pour une expression."""
     s = t.strip()
@@ -326,7 +363,10 @@ def normalize_expr(t, decimal_comma=True):
     s = s.replace("π", "pi").replace("∞", "oo").replace("≤", "<=").replace("≥", ">=").replace("≠", "!=")
     s = s.replace("θ", "theta").replace("α", "alpha").replace("β", "beta").replace("°", "")
     s = _SUPRUN.sub(lambda m: "**(" + m.group(0).translate(_SUP) + ")", s)
+    s = s.replace("▢", "")
+    s = _nroot(s)
     s = _sqrt_unicode(s)
+    s = _logbase(s)
     s = re.sub(r"\bln\b", "log", s)
     s = re.sub(r"\btg\b", "tan", s)
     s = re.sub(r"\barctg\b|\bArctg\b|\bArctan\b", "atan", s)
