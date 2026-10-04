@@ -1,40 +1,66 @@
 {
   "app": {
-    "name": "Swiss Halal",
-    "tagline": "Les restaurants halal de Suisse romande, informations vérifiées"
+    "name": "Swiss Halal"
   },
   "common": {
     "sponsored": "Sponsorisé",
     "loading": "Chargement…",
     "retry": "Réessayer",
-    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "error": "Une erreur est survenue.",
     "back": "Retour",
-    "fictionalData": "Données fictives de démonstration",
-    "demoMode": "Mode démonstration : données fictives, aucun serveur n’est configuré.",
-    "sponsoredSection": "Mis en avant",
-    "sponsoredExplanation": "Emplacement payé par le restaurant. Le classement des autres résultats n’en dépend pas."
+    "close": "Fermer",
+    "demo": "Démo · données fictives"
   },
-  "list": {
-    "title": "Restaurants",
+  "search": {
+    "placeholder": "Restaurant, cuisine, ville…",
+    "clear": "Effacer la recherche",
+    "filters": "Filtres",
+    "activeFilters": "{count, plural, one {# filtre actif} other {# filtres actifs}}"
+  },
+  "explore": {
+    "showList": "Liste",
+    "showMap": "Carte",
+    "locate": "Me localiser",
     "count": "{count, plural, =0 {Aucun restaurant} one {# restaurant} other {# restaurants}}",
-    "empty": "Aucun restaurant ne correspond à votre recherche."
+    "empty": "Aucun restaurant ne correspond. Essayez d’élargir les filtres.",
+    "mapUnavailable": "Carte indisponible dans Expo Go : elle nécessite la version de développement de l’app.",
+    "locationDenied": "Localisation refusée. Vous pouvez l’autoriser dans les réglages du téléphone."
+  },
+  "filters": {
+    "title": "Filtres",
+    "distance": "Distance",
+    "anyDistance": "Toutes",
+    "needsLocation": "Autorisez la localisation pour filtrer par distance.",
+    "price": "Prix",
+    "anyPrice": "Tous",
+    "cheap": "Bon marché",
+    "medium": "Moyen",
+    "cuisine": "Cuisine",
+    "halal": "Halal",
+    "certifiedMeat": "Viande certifiée",
+    "noAlcohol": "Sans alcool",
+    "fullyHalal": "100 % halal",
+    "verifiedOnly": "Infos vérifiées",
+    "openNow": "Ouvert maintenant",
+    "reset": "Effacer",
+    "show": "{count, plural, =0 {Aucun résultat} one {Voir # restaurant} other {Voir # restaurants}}"
   },
   "restaurant": {
     "openNow": "Ouvert",
     "closedNow": "Fermé",
     "priceRange": "{range, select, 1 {Bon marché} 2 {Prix moyens} 3 {Assez cher} 4 {Haut de gamme} other {Prix non indiqué}}",
-    "rating": "{average} sur 5 ({count, plural, one {# avis} other {# avis}})",
-    "noRating": "Pas encore d’avis",
-    "hours": "Horaires",
+    "directions": "Itinéraire",
+    "call": "Appeler",
+    "today": "Aujourd’hui",
+    "allHours": "Tous les horaires",
+    "hideHours": "Masquer",
     "closedAllDay": "Fermé",
-    "specialHours": "Horaires exceptionnels",
-    "address": "Adresse",
     "notFound": "Restaurant introuvable."
   },
   "cuisine": {
     "kebab": "Kebab",
     "chicken": "Poulet",
-    "burger": "Burger / fast-food",
+    "burger": "Burger",
     "tacos": "Tacos",
     "pizza": "Pizza",
     "grill": "Grillades",
@@ -48,59 +74,52 @@
     "indian": "Indien",
     "pakistani": "Pakistanais",
     "asian": "Asiatique",
-    "traditional": "Restaurant traditionnel",
+    "traditional": "Traditionnel",
     "sandwich": "Sandwichs",
-    "bakery": "Boulangerie / pâtisserie",
-    "cafe": "Café / salon de thé"
+    "bakery": "Boulangerie",
+    "cafe": "Café"
   },
   "halal": {
-    "title": "Statut halal",
+    "title": "Halal",
+    "badge": {
+      "certified_by_body": "Certifié · {certifier}",
+      "team_verified": "Vérifié",
+      "unverified": "Non vérifié"
+    },
     "level": {
-      "unverified": "Informations non vérifiées",
+      "unverified": "Non vérifié",
       "team_verified": "Vérifié par notre équipe",
-      "certified_by_body": "Établissement certifié par {certifier} (certificat valable jusqu’au {expiresOn})"
+      "certified_by_body": "Certifié par {certifier} jusqu’au {expiresOn}"
     },
     "meat": {
-      "certified": "Viande certifiée halal par {certifier}",
-      "certified_unverified": "Viande déclarée certifiée par le restaurant (non vérifié par notre équipe)",
-      "supplier_declared": "Viande déclarée halal par le fournisseur, sans certificat",
-      "unknown": "Origine de la viande non renseignée",
-      "no_meat": "Pas de viande servie"
+      "certified": "Viande certifiée par {certifier}",
+      "certified_unverified": "Viande dite certifiée (non vérifié)",
+      "supplier_declared": "Viande déclarée halal, sans certificat",
+      "unknown": "Viande : non renseigné",
+      "no_meat": "Pas de viande"
     },
     "scope": {
-      "fully_halal": "Établissement 100 % halal",
-      "halal_options": "Options halal (tout n’est pas halal)",
-      "unknown": "Périmètre halal non renseigné"
+      "fully_halal": "100 % halal",
+      "halal_options": "Options halal seulement",
+      "unknown": "Périmètre : non renseigné"
     },
     "alcohol": {
       "yes": "Alcool servi",
-      "no": "Pas d’alcool servi",
-      "unknown": "Alcool : information non renseignée"
+      "no": "Sans alcool",
+      "unknown": "Alcool : non renseigné"
     },
     "pork": {
       "yes": "Porc servi",
-      "no": "Pas de porc servi",
-      "unknown": "Porc : information non renseignée"
+      "no": "Sans porc",
+      "unknown": "Porc : non renseigné"
     },
-    "verifiedOn": "Informations vérifiées le {date}, source : {source}",
-    "lastVerifiedOn": "Dernière vérification le {date} : informations à reconfirmer",
+    "verifiedOn": "Vérifié le {date} · {source}",
+    "lastVerifiedOn": "Dernière vérification le {date}, à reconfirmer",
     "warning": {
-      "certificate_expired": "Le certificat a expiré : en attente de renouvellement.",
-      "certificate_incomplete": "Certificat incomplet : en attente de justificatifs.",
-      "review_overdue": "La dernière vérification date de plus d’un an."
+      "certificate_expired": "Certificat expiré",
+      "certificate_incomplete": "Certificat incomplet",
+      "review_overdue": "Vérification de plus d’un an"
     },
-    "disclaimer": "Ces informations reflètent la situation constatée à la date indiquée. Elles ne garantissent pas chaque plat ni chaque livraison. En cas de doute, renseignez-vous directement auprès du restaurant.",
-    "badge": {
-      "certified_by_body": "Certifié ({certifier})",
-      "team_verified": "Vérifié par l’équipe",
-      "unverified": "Non vérifié"
-    },
-    "short": {
-      "noAlcohol": "Sans alcool",
-      "fullyHalal": "100 % halal"
-    }
-  },
-  "config": {
-    "missingSupabase": "Configuration manquante : renseignez EXPO_PUBLIC_SUPABASE_URL et EXPO_PUBLIC_SUPABASE_ANON_KEY dans apps/mobile/.env (voir le README)."
+    "disclaimer": "Situation constatée à la date indiquée. En cas de doute, demandez au restaurant."
   }
 }

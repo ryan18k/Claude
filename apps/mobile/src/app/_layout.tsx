@@ -1,6 +1,6 @@
 /**
- * Mise en page racine : fournisseurs globaux (données, traductions, zones
- * sûres de l'écran) et navigation en pile (liste → fiche).
+ * Mise en page racine : fournisseurs globaux (données, traductions, recherche,
+ * zones sûres de l'écran) et navigation : carte → fiche, et filtres en fenêtre modale.
  */
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslations } from 'use-intl';
 import { I18nProvider } from '@/lib/i18n';
+import { SearchProvider } from '@/lib/search';
 import { useColors } from '@/theme';
 
 const queryClient = new QueryClient({
@@ -24,10 +25,15 @@ function ThemedStack() {
         screenOptions={{
           headerStyle: { backgroundColor: colors.background },
           headerTintColor: colors.text,
+          headerShadowVisible: false,
           contentStyle: { backgroundColor: colors.background },
         }}
       >
-        <Stack.Screen name="index" options={{ title: t('app.name') }} />
+        <Stack.Screen name="index" options={{ headerShown: false, title: t('app.name') }} />
+        <Stack.Screen
+          name="filters"
+          options={{ presentation: 'modal', title: t('filters.title') }}
+        />
         <Stack.Screen
           name="restaurant/[slug]"
           options={{ title: '', headerBackTitle: t('common.back') }}
@@ -42,7 +48,9 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
         <I18nProvider>
-          <ThemedStack />
+          <SearchProvider>
+            <ThemedStack />
+          </SearchProvider>
         </I18nProvider>
       </QueryClientProvider>
     </SafeAreaProvider>

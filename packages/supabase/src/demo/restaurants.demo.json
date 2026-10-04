@@ -5,7 +5,7 @@
   },
   "restaurants": [
     {
-      "id": "efc8118f-9123-4d7c-96e3-17ceb87d5063",
+      "id": "b645e01f-3125-4df5-a311-c5d57e9b708b",
       "slug": "fictif-beyrouth-express",
       "name": "[FICTIF] Beyrouth Express",
       "street": "Rue Fictive 15",
@@ -71,10 +71,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": "Fictif A"
     },
     {
-      "id": "75ae0d01-07cf-422f-bd19-bf7abcfd0fcc",
+      "id": "ba4c0f63-6a57-404d-85c2-733d3f96e398",
       "slug": "fictif-bistrot-du-quai",
       "name": "[FICTIF] Bistrot du Quai",
       "street": "Quai Fictif 10",
@@ -175,10 +177,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "0c4956b4-1c9f-445b-ad2d-92a8a7055f12",
+      "id": "145cb6fc-bb7a-47a1-8c7c-ede14ce0ff5a",
       "slug": "fictif-boulangerie-orientale",
       "name": "[FICTIF] Boulangerie Orientale",
       "street": "Rue Fictive 14",
@@ -244,10 +248,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "768d15da-e187-498d-99ab-dcbf64868cd7",
+      "id": "b52812e5-6551-4ca1-9afa-6c9754284705",
       "slug": "fictif-brasserie-exemple",
       "name": "[FICTIF] Brasserie Exemple",
       "street": "Place Inventée 24",
@@ -348,10 +354,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "ec6eb70f-b46f-4233-bd0c-557e8758453b",
+      "id": "02baaffe-6dae-4a99-b9ec-328a677fd2b9",
       "slug": "fictif-burger-riviera",
       "name": "[FICTIF] Burger Riviera",
       "street": "Avenue Imaginaire 3",
@@ -417,10 +425,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "38e4f209-6206-4d74-a036-b96322918d45",
+      "id": "dde24feb-bbef-4dc1-9417-eda91492e45c",
       "slug": "fictif-campus-burger",
       "name": "[FICTIF] Campus Burger",
       "street": "Route Inventée 20",
@@ -486,10 +496,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "e6fd589a-a737-4bee-b706-2754ec3d0f28",
+      "id": "d132dba7-d73e-4853-9958-3c3f376afaae",
       "slug": "fictif-chicken-house",
       "name": "[FICTIF] Chicken House",
       "street": "Avenue Imaginaire 8",
@@ -555,10 +567,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": "Fictif B"
     },
     {
-      "id": "fb8aa7d2-792d-4f94-9bde-50aceeab249d",
+      "id": "e160d873-d525-472d-bbae-a1c34fbceb3a",
       "slug": "fictif-delices-de-delhi",
       "name": "[FICTIF] Délices de Delhi",
       "street": "Rue Fictive 19",
@@ -649,10 +663,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "324d79e2-2c76-47f7-8b8a-cbe48297f585",
+      "id": "db8abd27-0d71-49d9-a582-116b30057391",
       "slug": "fictif-grill-du-port",
       "name": "[FICTIF] Grill du Port",
       "street": "Quai Fictif 13",
@@ -718,10 +734,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "0ba886b6-4b35-4b69-99b0-47fbd4364a91",
+      "id": "47ae58ce-a3b8-4dfc-8443-6d1df2462798",
       "slug": "fictif-istanbul-grill",
       "name": "[FICTIF] Istanbul Grill",
       "street": "Avenue Imaginaire 16",
@@ -787,10 +805,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": null
     },
     {
-      "id": "bd4a550e-1da4-49d4-8cc1-3880ec85665b",
+      "id": "f7452889-cf56-4da2-ac37-56a3237bb13a",
       "slug": "fictif-jasmin-de-damas",
       "name": "[FICTIF] Jasmin de Damas",
       "street": "Rue Fictive 22",
@@ -891,10 +911,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "efc0f01a-fb1c-4170-bd43-dd5d31124471",
+      "id": "07a55eb6-fc03-4db6-afc6-a205a8e220de",
       "slug": "fictif-kebab-du-lac",
       "name": "[FICTIF] Kebab du Lac",
       "street": "Rue Fictive 1",
@@ -960,10 +982,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "402cd4b2-8717-4813-9091-d5943960164a",
+      "id": "d4fe72d4-9137-4571-b5a2-382d4cbdf793",
       "slug": "fictif-lahore-kitchen",
       "name": "[FICTIF] Lahore Kitchen",
       "street": "Rue Fictive 18",
@@ -1064,10 +1088,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": null
     },
     {
-      "id": "22bd950f-b328-4250-b1a9-dec4e3a0288a",
+      "id": "d0ddda5a-3a19-43c4-8730-0d5a553ad3ad",
       "slug": "fictif-le-cedre",
       "name": "[FICTIF] Le Cèdre",
       "street": "Rue Fictive 2",
@@ -1179,10 +1205,12 @@
             }
           ]
         }
-      ]
+      ],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": "Fictif A"
     },
     {
-      "id": "895acd6a-8312-44e1-a214-1e7d9d5101e8",
+      "id": "efb13a80-53b7-4d38-a754-b0e362abe45d",
       "slug": "fictif-le-petit-alger",
       "name": "[FICTIF] Le Petit Alger",
       "street": "Rue Fictive 23",
@@ -1248,10 +1276,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "fd81a416-664d-4a7b-be2a-c40e7bebbc56",
+      "id": "7db6a4d3-2a71-4587-9b5f-1d9a2214fd12",
       "slug": "fictif-le-petit-tunis",
       "name": "[FICTIF] Le Petit Tunis",
       "street": "Rue Fictive 12",
@@ -1317,10 +1347,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     },
     {
-      "id": "f5a8d7fc-2ae6-4cd8-abda-cd4be1ac08fb",
+      "id": "2aef930c-51fd-4508-8076-a08241b35f94",
       "slug": "fictif-le-riad",
       "name": "[FICTIF] Le Riad",
       "street": "Grand-Rue Fictive 7",
@@ -1427,10 +1459,12 @@
           "closed": true,
           "ranges": []
         }
-      ]
+      ],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "8c9a6ae4-9d3c-4558-a256-72d0202ebf45",
+      "id": "9498d37b-ee02-4062-a567-04a1a382f6f8",
       "slug": "fictif-pizza-du-flon",
       "name": "[FICTIF] Pizza du Flon",
       "street": "Rue Fictive 21",
@@ -1496,10 +1530,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": "Fictif B"
     },
     {
-      "id": "5f24f4ed-bc19-439e-8dc2-bd4f766f5d09",
+      "id": "400029bb-5324-449c-8538-acf4afe98739",
       "slug": "fictif-pizzeria-exemple",
       "name": "[FICTIF] Pizzeria Exemple",
       "street": "Rue Fictive 4",
@@ -1600,10 +1636,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": null
     },
     {
-      "id": "4654b7bd-cae8-41d3-bf21-81325b966e6b",
+      "id": "c2f2e004-6d10-41f0-9673-e5c1b13f9e3b",
       "slug": "fictif-saveurs-d-anatolie",
       "name": "[FICTIF] Saveurs d'Anatolie",
       "street": "Rue Fictive 6",
@@ -1694,10 +1732,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif B",
+      "certifier_short_name": "Fictif B"
     },
     {
-      "id": "fa91a61e-8f15-4010-b738-af3bb1683c8d",
+      "id": "69d44af4-7e08-4cfe-bfad-af4dd1d0e535",
       "slug": "fictif-saveurs-de-kaboul",
       "name": "[FICTIF] Saveurs de Kaboul",
       "street": "Rue Fictive 11",
@@ -1788,10 +1828,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "4a3aec2a-3fc5-4d1b-8692-cf2750932b05",
+      "id": "08c4d6b4-be99-4481-b9ed-c7074fdf765a",
       "slug": "fictif-saveurs-de-marrakech",
       "name": "[FICTIF] Saveurs de Marrakech",
       "street": "Rue Fictive 17",
@@ -1892,10 +1934,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "e287d6bb-1fcf-437f-96fc-7988f40c7f03",
+      "id": "f2a844d0-e0e1-467f-8401-d584b0d11528",
       "slug": "fictif-tacos-de-la-gare",
       "name": "[FICTIF] Tacos de la Gare",
       "street": "Place Inventée 5",
@@ -1961,10 +2005,12 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": "Fictif A",
+      "certifier_short_name": null
     },
     {
-      "id": "852986ad-5599-4a4a-a04f-b34986429ab4",
+      "id": "ee031d59-964b-4c27-899d-56966ddff760",
       "slug": "fictif-wok-exemple",
       "name": "[FICTIF] Wok Exemple",
       "street": "Rue Fictive 9",
@@ -2065,19 +2111,21 @@
           "isoWeekday": 7
         }
       ],
-      "special_days": []
+      "special_days": [],
+      "meat_certifier_short_name": null,
+      "certifier_short_name": null
     }
   ],
   "sponsoredPlacements": [
     {
-      "restaurantId": "e6fd589a-a737-4bee-b706-2754ec3d0f28",
+      "restaurantId": "d132dba7-d73e-4853-9958-3c3f376afaae",
       "kind": "search",
       "position": 1,
       "startsInDays": -1,
       "endsInDays": 30
     },
     {
-      "restaurantId": "0ba886b6-4b35-4b69-99b0-47fbd4364a91",
+      "restaurantId": "47ae58ce-a3b8-4dfc-8443-6d1df2462798",
       "kind": "home",
       "position": 1,
       "startsInDays": -1,

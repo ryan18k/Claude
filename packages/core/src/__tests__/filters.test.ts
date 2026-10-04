@@ -128,3 +128,48 @@ describe('utilitaires', () => {
     ).toThrow();
   });
 });
+
+describe('recherche et filtres de l’écran carte', () => {
+  it('trouve un restaurant par le libellé traduit de sa cuisine', async () => {
+    const { matchesFilters: match, searchFiltersSchema: schema } = await import('../filters');
+    const r = makeRestaurant({ name: '[FICTIF] Chez Exemple', cuisines: ['lebanese'] });
+    const label = (slug: string) => ({ lebanese: 'Libanais' })[slug] ?? slug;
+    expect(match(r, schema.parse({ query: 'libanais' }), { ...ctx, cuisineLabel: label })).toBe(
+      true,
+    );
+    expect(match(r, schema.parse({ query: 'libanais' }), ctx)).toBe(false);
+  });
+
+  it('classe la pertinence : début du nom > nom > autres champs', async () => {
+    const { textRelevance } = await import('../filters');
+    expect(textRelevance('ced', '[FICTIF] Le Cèdre', [])).toBe(0.7);
+    expect(textRelevance('le ce', '[FICTIF] Le Cèdre', [])).toBe(1);
+    expect(textRelevance('vevey', '[FICTIF] Le Cèdre', ['Vevey'])).toBe(0.4);
+    expect(textRelevance('sushi', '[FICTIF] Le Cèdre', ['Vevey'])).toBe(0);
+    expect(textRelevance('  ', '[FICTIF] Le Cèdre', [])).toBe(0);
+  });
+
+  it('compte les filtres actifs', async () => {
+    const { countActiveFilters, EMPTY_FILTERS } = await import('../filters');
+    expect(countActiveFilters(EMPTY_FILTERS)).toBe(0);
+    expect(
+      countActiveFilters({
+        ...EMPTY_FILTERS,
+        cuisines: ['kebab', 'pizza'],
+        noAlcohol: true,
+        maxDistanceMeters: 1000,
+      }),
+    ).toBe(3);
+  });
+
+  it('calcule le rectangle qui contient des points', async () => {
+    const { boundsOf } = await import('../geo');
+    expect(boundsOf([])).toBeNull();
+    expect(
+      boundsOf([
+        { lat: 46.4, lng: 6.9 },
+        { lat: 46.5, lng: 6.6 },
+      ]),
+    ).toEqual([6.6, 46.4, 6.9, 46.5]);
+  });
+});

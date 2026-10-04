@@ -5,7 +5,7 @@
 
 Légende : ✅ en place et testé · 🟡 partiellement en place · ⏳ prévu (phase indiquée) · ❓ question pour le juriste
 
-Dernière mise à jour : **04.10.2026 (fin de la phase 1)**
+Dernière mise à jour : **04.10.2026 (phase 2 : carte et filtres)**
 
 ## Protection des données (nLPD suisse, RGPD pour les utilisateurs de l'UE)
 

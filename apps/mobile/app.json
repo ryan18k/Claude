@@ -10,7 +10,19 @@
       "output": "single",
       "bundler": "metro"
     },
-    "plugins": ["expo-router", "expo-localization"],
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      "@maplibre/maplibre-react-native",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Swiss Halal utilise votre position uniquement pour afficher les restaurants proches de vous. Elle n’est ni enregistrée ni partagée.",
+          "isIosBackgroundLocationEnabled": false,
+          "isAndroidBackgroundLocationEnabled": false
+        }
+      ]
+    ],
     "extra": {
       "supportsRTL": true
     },

@@ -6,7 +6,7 @@ Annuaire des restaurants halal de Suisse romande (Riviera–Lausanne d'abord, pu
 - Base de données **Supabase** (PostgreSQL + PostGIS), sécurisée par des règles d'accès sur chaque table.
 - Langues : français (référence), puis anglais, arabe, espagnol, allemand.
 
-> **Statut : phase 1 (fondations) terminée.** Voir [`docs/phases/phase-1/RAPPORT.md`](docs/phases/phase-1/RAPPORT.md).
+> **Statut : phase 2 en cours** (carte, recherche, filtres). Voir [`docs/phases/phase-2/RAPPORT.md`](docs/phases/phase-2/RAPPORT.md) et, pour les fondations, [`docs/phases/phase-1/RAPPORT.md`](docs/phases/phase-1/RAPPORT.md).
 > Plan complet : [`docs/PLAN.md`](docs/PLAN.md) · Décisions : [`docs/DECISIONS.md`](docs/DECISIONS.md) · Obligations légales : [`docs/legal/OBLIGATIONS.md`](docs/legal/OBLIGATIONS.md)
 
 ---

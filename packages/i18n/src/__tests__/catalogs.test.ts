@@ -111,7 +111,7 @@ describe('langue et sens d’écriture', () => {
   });
 
   it('formate les messages avec des pluriels', () => {
-    const message = lookup(getMessages('fr'), 'list.count')!;
+    const message = lookup(getMessages('fr'), 'explore.count')!;
     const format = (count: number) =>
       new IntlMessageFormat(message, formattingLocale('fr')).format({ count });
     expect(format(0)).toBe('Aucun restaurant');

@@ -18,9 +18,9 @@ insert into public.cuisines (slug, sort_order) values
   ('traditional', 170), ('sandwich', 180), ('bakery', 190), ('cafe', 200);
 
 -- Organismes de certification INVENTÉS --------------------------------------------
-insert into public.certifiers (id, name, website) values
-  ('00000000-0000-4000-a000-00000000000a', 'Organisme Fictif de Certification A', null),
-  ('00000000-0000-4000-a000-00000000000b', 'Organisme Fictif de Certification B', null);
+insert into public.certifiers (id, name, short_name, website) values
+  ('00000000-0000-4000-a000-00000000000a', 'Organisme Fictif de Certification A', 'Fictif A', null),
+  ('00000000-0000-4000-a000-00000000000b', 'Organisme Fictif de Certification B', 'Fictif B', null);
 
 -- Offres payantes (PRIX CONFIGURABLES par l'admin, valeurs de départ) ----------------
 insert into public.plans (code, name, description, price_cents, billing_interval, trial_days, max_subscribers, features, sort_order) values

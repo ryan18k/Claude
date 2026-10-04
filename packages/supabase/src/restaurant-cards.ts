@@ -56,6 +56,8 @@ export const restaurantCardRowSchema = z.object({
   rating_average: nullableNumber,
   rating_count: z.number().int(),
   opening_periods: z.array(timeRange.extend({ isoWeekday: z.number().int().min(1).max(7) })),
+  meat_certifier_short_name: z.string().nullable().optional(),
+  certifier_short_name: z.string().nullable().optional(),
   special_days: z.array(
     z.object({ date: z.string(), closed: z.boolean(), ranges: z.array(timeRange) }),
   ),
@@ -93,6 +95,7 @@ export function toRestaurantCard(raw: unknown): RestaurantCard {
     halal: {
       meat: row.meat,
       meatCertifierName: row.meat_certifier_name,
+      meatCertifierShortName: row.meat_certifier_short_name ?? null,
       scope: row.scope,
       alcoholServed: row.alcohol_served,
       porkServed: row.pork_served,
@@ -103,6 +106,7 @@ export function toRestaurantCard(raw: unknown): RestaurantCard {
       verifiedAt: row.verified_at,
       sourceDescription: row.source_description,
       certifierName: row.certifier_name,
+      certifierShortName: row.certifier_short_name ?? null,
       certificateExpiresAt: row.certificate_expires_at,
       hasEvidence: row.has_evidence,
       nextReviewDueAt: row.next_review_due_at,

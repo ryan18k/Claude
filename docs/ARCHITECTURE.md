@@ -53,6 +53,20 @@ La logique d'**affichage** (libellés, classement, filtres, horaires) est dans `
 | Sponsorisé séparé, limité, toujours étiqueté                    | `sponsored.ts`     | `integrity-ranking.test.ts`                 |
 | « Ouvert maintenant » en heure suisse (été/hiver, après minuit) | `opening-hours.ts` | `opening-hours.test.ts`                     |
 
+## Écran carte (app mobile)
+
+```
+src/app/index.tsx          carte plein écran ou liste, barre de recherche, boutons flottants
+src/app/filters.tsx        filtres (fenêtre modale) : brouillon appliqué au bouton « Voir N restaurants »
+src/app/restaurant/[slug]  fiche épurée
+src/lib/search.tsx         état partagé : recherche, filtres, position
+src/lib/explore.ts         calcul des résultats (pur, testé) : filtres → classement organique → sponsorisés séparés
+src/components/map/        carte : mapConfig.ts (commun), NativeMap.tsx (iOS/Android), RestaurantMap.web.tsx (aperçu)
+```
+
+- Les marqueurs sont dans une source GeoJSON avec regroupement (`cluster`) : c'est MapLibre qui regroupe, côté natif, ce qui reste fluide avec des milliers de points.
+- Dans Expo Go, le module natif de carte n'existe pas : `RestaurantMap.tsx` ne le charge pas et l'écran passe en mode liste.
+
 ## Rôles PostgreSQL
 
 | Rôle            | Qui                                      | Ce qu'il peut faire                                                                                                           |

@@ -30,10 +30,37 @@ export const searchFiltersSchema = z.object({
 
 export type SearchFilters = z.infer<typeof searchFiltersSchema>;
 
+/** Aucun filtre actif. */
+export const EMPTY_FILTERS: SearchFilters = searchFiltersSchema.parse({});
+
+/** Choix de distance proposés à l'écran (en mètres). */
+export const DISTANCE_OPTIONS = [500, 1000, 2000, 5000] as const;
+
+/** Nombre de filtres actifs (pour la pastille du bouton « Filtres »). La recherche texte n'est pas comptée. */
+export function countActiveFilters(filters: SearchFilters): number {
+  return (
+    (filters.cuisines.length > 0 ? 1 : 0) +
+    (filters.maxPriceRange !== undefined ? 1 : 0) +
+    (filters.maxDistanceMeters !== undefined ? 1 : 0) +
+    [
+      filters.openNow,
+      filters.certifiedMeatOnly,
+      filters.noAlcohol,
+      filters.fullyHalalOnly,
+      filters.verifiedOnly,
+    ].filter(Boolean).length
+  );
+}
+
 export interface FilterContext {
   now: Date;
   /** Position de l'utilisateur, si elle a été partagée. */
   position?: LatLng | null;
+  /**
+   * Libellé traduit d'un type de cuisine (ex. 'lebanese' → « Libanais ») :
+   * permet de trouver « libanais » même si l'identifiant est en anglais.
+   */
+  cuisineLabel?: (slug: string) => string;
 }
 
 /** Minuscules et sans accents : « Libanais », « libanais » et « LIBANAÎS » se valent. */
@@ -54,8 +81,9 @@ export function matchesFilters(
 
   if (filters.query) {
     const needle = normalizeText(filters.query);
+    const labels = restaurant.cuisines.map((slug) => context.cuisineLabel?.(slug) ?? slug);
     const haystack = normalizeText(
-      [restaurant.name, restaurant.city, ...restaurant.cuisines].join(' '),
+      [restaurant.name, restaurant.city, ...restaurant.cuisines, ...labels].join(' '),
     );
     if (!haystack.includes(needle)) return false;
   }
@@ -97,4 +125,18 @@ export function matchesFilters(
   }
 
   return true;
+}
+
+/**
+ * Pertinence d'un restaurant pour une recherche texte, entre 0 et 1 :
+ * nom qui commence par la recherche > nom qui la contient > autre champ.
+ */
+export function textRelevance(query: string, name: string, otherFields: readonly string[]): number {
+  const needle = normalizeText(query);
+  if (!needle) return 0;
+  const cleanName = normalizeText(name.replace(/^\[FICTIF\]\s*/, ''));
+  if (cleanName.startsWith(needle)) return 1;
+  if (cleanName.includes(needle)) return 0.7;
+  if (otherFields.some((field) => normalizeText(field).includes(needle))) return 0.4;
+  return 0;
 }

@@ -55,6 +55,8 @@ export interface HalalProfile {
   meat: MeatStatus;
   /** Organisme qui certifie la viande ; obligatoire pour afficher « certifiée ». */
   meatCertifierName: string | null;
+  /** Nom court de cet organisme, pour les badges (facultatif). */
+  meatCertifierShortName?: string | null;
   scope: HalalScope;
   alcoholServed: TriState;
   porkServed: TriState;
@@ -70,6 +72,8 @@ export interface HalalVerification {
   sourceDescription: string | null;
   /** Organisme qui certifie l'établissement (niveau certified_by_body). */
   certifierName: string | null;
+  /** Nom court de cet organisme, pour les badges (facultatif). */
+  certifierShortName?: string | null;
   /** Fin de validité du certificat, format ISO « AAAA-MM-JJ ». */
   certificateExpiresAt: string | null;
   /** Une preuve (photo, document) est stockée dans le bucket privé. */
