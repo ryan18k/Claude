@@ -15,12 +15,12 @@ Annuaire des restaurants halal de Suisse romande (Riviera–Lausanne d'abord, pu
 
 ### 1. Installer les outils (une seule fois)
 
-| Outil                             | Pourquoi                                  | Installation                                     |
-| --------------------------------- | ----------------------------------------- | ------------------------------------------------ |
-| **Git**                           | récupérer le code                         | <https://git-scm.com>                            |
-| **Node.js 22**                    | exécuter JavaScript sur ton ordinateur    | <https://nodejs.org> (version « LTS » 22)        |
-| **pnpm**                          | installer les dépendances du monorepo     | dans un terminal : `corepack enable`             |
-| **Docker Desktop** _(facultatif)_ | faire tourner Supabase sur ton ordinateur | <https://www.docker.com/products/docker-desktop> |
+| Outil                             | Pourquoi                                  | Installation                                                     |
+| --------------------------------- | ----------------------------------------- | ---------------------------------------------------------------- |
+| **Git**                           | récupérer le code                         | <https://git-scm.com>                                            |
+| **Node.js 22**                    | exécuter JavaScript sur ton ordinateur    | <https://nodejs.org/fr/download> (version v22 ou v24, pas la 26) |
+| **pnpm**                          | installer les dépendances du monorepo     | dans un terminal : `corepack enable`                             |
+| **Docker Desktop** _(facultatif)_ | faire tourner Supabase sur ton ordinateur | <https://www.docker.com/products/docker-desktop>                 |
 
 ### 2. Récupérer le code et installer les dépendances
 
@@ -38,7 +38,6 @@ pnpm install
 
 - **Sur iPhone** : suis le guide [`docs/guides/TESTER-SUR-IPHONE.md`](docs/guides/TESTER-SUR-IPHONE.md) (aperçu gratuit dans Safari, ou vraie app de test).
 - **Dans le navigateur de l'ordinateur** (le plus rapide) : `pnpm web:mobile`, puis ouvre <http://localhost:8081>.
-- **Avec une app de test déjà installée** sur le téléphone : `pnpm dev:mobile`, puis ouvre l'app (même Wi-Fi ; sinon `pnpm --filter @swisshalal/mobile start --tunnel`).
 
 Sans configuration, l'app utilise des **données 100 % fictives** intégrées (une pastille « Démo » le signale).
 

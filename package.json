@@ -19,7 +19,12 @@
     "db:reset": "supabase db reset",
     "db:test": "supabase test db",
     "db:types": "supabase gen types typescript --local > packages/supabase/src/database.types.ts",
-    "web:mobile": "pnpm --filter @swisshalal/mobile web"
+    "web:mobile": "pnpm --filter @swisshalal/mobile web",
+    "ios:device": "pnpm --filter @swisshalal/mobile ios:device",
+    "ios:simulator": "pnpm --filter @swisshalal/mobile ios:simulator",
+    "ios:rebuild": "pnpm --filter @swisshalal/mobile ios:rebuild",
+    "build:ios:dev": "pnpm --filter @swisshalal/mobile build:ios:dev",
+    "eas": "pnpm --filter @swisshalal/mobile eas"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

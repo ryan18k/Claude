@@ -28,6 +28,7 @@
       "typedRoutes": true
     },
     "ios": {
+      "bundleIdentifier": "ch.swisshalal.dev",
       "supportsTablet": false,
       "config": {
         "usesNonExemptEncryption": false
