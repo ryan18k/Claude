@@ -1,7 +1,8 @@
 # Plan détaillé et architecture — Annuaire des restaurants halal de Suisse romande
 
-> **Statut : proposition en attente de validation.** Aucune ligne de code applicatif ne sera écrite avant ton accord.
-> Nom de code provisoire du projet : `halal-romandie` (le nom commercial et l'identifiant de l'app restent à choisir, voir §13).
+> **Statut : plan validé le 04.10.2026 (réponses au §13), phase 1 terminée** — voir `docs/phases/phase-1/RAPPORT.md`.
+> Nom de l'app : **Swiss Halal** (identifiant de l'app figé en phase 6). Branche : `halal-romandie`.
+> Les décisions prises depuis sont tenues à jour dans `docs/DECISIONS.md`, qui fait foi en cas d'écart avec ce document.
 
 ---
 
@@ -83,18 +84,18 @@ docs/
 
 ### 1.3 Ce que je garde de ta proposition, et ce que je propose d'améliorer
 
-| Sujet | Ta proposition | Mon avis |
-|---|---|---|
-| Monorepo Expo + Next.js + packages partagés | ✅ | Validé. Outil : **pnpm + Turborepo**. Depuis Expo SDK 54, pnpm et les monorepos sont officiellement pris en charge. |
-| Partage de l'interface entre mobile et web | (non précisé) | **Je déconseille de partager les composants d'interface** (React Native Web, Tamagui…) : c'est la source de bugs la plus fréquente dans ce type de projet et c'est difficile à apprendre en même temps que le reste. On partage la **logique**, les **types**, les **traductions** et les **design tokens** (couleurs, espacements) ; chaque app a ses propres composants visuels. |
-| Supabase en Europe | ✅ | Je propose **Zurich** plutôt que Francfort : les données restent en Suisse, ce qui simplifie la politique de confidentialité nLPD (pas de transfert à l'étranger pour la base). |
-| Logique métier dans un package partagé | ✅ | Oui pour l'affichage et les calculs, **mais les règles d'intégrité sont aussi imposées dans PostgreSQL** (RLS + triggers). Raison : un client mobile ou web peut être modifié ou contourné ; la base de données est le seul point par lequel tout passe. |
-| MapLibre / OpenStreetMap | ✅ | Validé, avec une précision importante : on **ne doit pas** utiliser les tuiles du serveur `tile.openstreetmap.org` pour une app en production (leur politique d'usage l'interdit). Je propose les **tuiles vectorielles swisstopo** : gratuites, données ouvertes (OGD), couvrent la Suisse et les régions frontalières, compatibles MapLibre, attribution obligatoire. Plan B si besoin hors de Suisse : Protomaps (fichier de tuiles auto-hébergé) ou MapTiler. |
-| Géocodage (adresse → coordonnées) | (non précisé) | API de recherche **geo.admin.ch** (gratuite), utilisée seulement dans le back-office quand tu crées une fiche. Aucune API Google. |
-| Bouton itinéraire | ✅ | Ouvre l'app de navigation de l'utilisateur (Plans d'Apple, Google Maps, Waze) avec les coordonnées. C'est un simple lien sortant : on ne récupère aucune donnée de Google, ce qui est autorisé. |
-| Stripe en CHF | ✅ | Stripe Checkout + Customer Portal (résiliation, factures, changement de carte gérés par Stripe) + webhook vers Supabase. **Web uniquement.** |
-| Hébergement du site web | (non précisé) | ⚠️ Le plan gratuit de Vercel (Hobby) **interdit l'usage commercial** ; dès qu'on vend des abonnements, il faut Vercel Pro (~20 USD/mois). Alternative gratuite : Cloudflare. **Décision à prendre (§13).** |
-| E-mails (connexion, récap mensuel) | (non précisé) | Le serveur d'e-mails par défaut de Supabase est limité et réservé aux tests. Il faudra un fournisseur SMTP (de préférence suisse ou européen). Décision en phase 3. |
+| Sujet                                       | Ta proposition | Mon avis                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Monorepo Expo + Next.js + packages partagés | ✅             | Validé. Outil : **pnpm + Turborepo**. Depuis Expo SDK 54, pnpm et les monorepos sont officiellement pris en charge.                                                                                                                                                                                                                                                                                                                                               |
+| Partage de l'interface entre mobile et web  | (non précisé)  | **Je déconseille de partager les composants d'interface** (React Native Web, Tamagui…) : c'est la source de bugs la plus fréquente dans ce type de projet et c'est difficile à apprendre en même temps que le reste. On partage la **logique**, les **types**, les **traductions** et les **design tokens** (couleurs, espacements) ; chaque app a ses propres composants visuels.                                                                                |
+| Supabase en Europe                          | ✅             | Je propose **Zurich** plutôt que Francfort : les données restent en Suisse, ce qui simplifie la politique de confidentialité nLPD (pas de transfert à l'étranger pour la base).                                                                                                                                                                                                                                                                                   |
+| Logique métier dans un package partagé      | ✅             | Oui pour l'affichage et les calculs, **mais les règles d'intégrité sont aussi imposées dans PostgreSQL** (RLS + triggers). Raison : un client mobile ou web peut être modifié ou contourné ; la base de données est le seul point par lequel tout passe.                                                                                                                                                                                                          |
+| MapLibre / OpenStreetMap                    | ✅             | Validé, avec une précision importante : on **ne doit pas** utiliser les tuiles du serveur `tile.openstreetmap.org` pour une app en production (leur politique d'usage l'interdit). Je propose les **tuiles vectorielles swisstopo** : gratuites, données ouvertes (OGD), couvrent la Suisse et les régions frontalières, compatibles MapLibre, attribution obligatoire. Plan B si besoin hors de Suisse : Protomaps (fichier de tuiles auto-hébergé) ou MapTiler. |
+| Géocodage (adresse → coordonnées)           | (non précisé)  | API de recherche **geo.admin.ch** (gratuite), utilisée seulement dans le back-office quand tu crées une fiche. Aucune API Google.                                                                                                                                                                                                                                                                                                                                 |
+| Bouton itinéraire                           | ✅             | Ouvre l'app de navigation de l'utilisateur (Plans d'Apple, Google Maps, Waze) avec les coordonnées. C'est un simple lien sortant : on ne récupère aucune donnée de Google, ce qui est autorisé.                                                                                                                                                                                                                                                                   |
+| Stripe en CHF                               | ✅             | Stripe Checkout + Customer Portal (résiliation, factures, changement de carte gérés par Stripe) + webhook vers Supabase. **Web uniquement.**                                                                                                                                                                                                                                                                                                                      |
+| Hébergement du site web                     | (non précisé)  | ⚠️ Le plan gratuit de Vercel (Hobby) **interdit l'usage commercial** ; dès qu'on vend des abonnements, il faut Vercel Pro (~20 USD/mois). Alternative gratuite : Cloudflare. **Décision à prendre (§13).**                                                                                                                                                                                                                                                        |
+| E-mails (connexion, récap mensuel)          | (non précisé)  | Le serveur d'e-mails par défaut de Supabase est limité et réservé aux tests. Il faudra un fournisseur SMTP (de préférence suisse ou européen). Décision en phase 3.                                                                                                                                                                                                                                                                                               |
 
 ### 1.4 Choix techniques secondaires (modifiables facilement, je les prends par défaut)
 
@@ -107,7 +108,7 @@ docs/
 - **CI GitHub Actions** : lint, typecheck, tests, recherche de secrets.
 - **Polices** : une police qui couvre aussi l'arabe (famille Noto Sans / Noto Sans Arabic).
 
-> Note : la carte MapLibre nécessite du code natif, donc **Expo Go ne suffira pas** : on utilisera des *development builds* (une version de développement de l'app installée sur ton téléphone ou ton simulateur, construite par EAS Build ou sur ton Mac).
+> Note : la carte MapLibre nécessite du code natif, donc **Expo Go ne suffira pas** : on utilisera des _development builds_ (une version de développement de l'app installée sur ton téléphone ou ton simulateur, construite par EAS Build ou sur ton Mac).
 
 ---
 
@@ -115,13 +116,14 @@ docs/
 
 Détail et citations : [`RECHERCHE_STORES_PAIEMENTS.md`](./RECHERCHE_STORES_PAIEMENTS.md). Résumé :
 
-1. **Apple 3.1.1** : débloquer une fonctionnalité *dans l'app* (abonnement, contenu premium…) impose l'achat intégré d'Apple.
+1. **Apple 3.1.1** : débloquer une fonctionnalité _dans l'app_ (abonnement, contenu premium…) impose l'achat intégré d'Apple.
 2. **Apple 3.1.3(g)** dit explicitement que l'achat de publicité **affichée dans la même app** (exemple cité : les « boosts ») est un achat numérique qui **doit passer par l'achat intégré** lorsqu'il est fait dans l'app. C'est exactement le cas d'une mise en avant sponsorisée.
 3. **Apple 3.1.3(b)** : une fonctionnalité achetée sur le web ne peut être utilisée dans l'app iOS que si elle est **aussi** vendue en achat intégré. → Si le tableau de bord Premium (statistiques détaillées, publication d'offres) était dans l'app iOS, Apple pourrait exiger l'achat intégré.
 4. **Liens vers un paiement externe** : autorisés **uniquement sur le storefront des États-Unis** (et selon des régimes particuliers dans l'UE). **Aucune exception pour la Suisse** dans les règles actuelles. L'enquête de la COMCO (WEKO) ouverte en décembre 2025 concerne l'accès NFC (Twint / Apple Pay), pas les achats dans les apps.
 5. **Google Play** : même logique (facturation Google obligatoire pour les fonctionnalités et logiciels vendus dans l'app, y compris les « logiciels de productivité pour entreprises » ; pas d'incitation vers un paiement externe sauf programmes spécifiques à certains pays).
 
 **Recommandation (= ton choix par défaut, confirmé par la recherche)** :
+
 - Les apps iOS et Android sont **exclusivement destinées aux clients** : aucune fonctionnalité restaurateur payante, aucun prix, aucun bouton ni lien vers l'espace restaurateur.
 - Tout l'espace restaurateur (revendication, tableau de bord, statistiques, paiements) est **sur le web**.
 - Les restaurants peuvent être informés **en dehors de l'app** (e-mail, visite, site web), ce qu'Apple autorise expressément.
@@ -135,35 +137,35 @@ Détail et citations : [`RECHERCHE_STORES_PAIEMENTS.md`](./RECHERCHE_STORES_PAIE
 
 Toutes les tables ont la **RLS activée**. « Admin » = utilisateur ayant le rôle `admin` dans `user_roles`. Les écritures marquées « service » ne sont faites que par les Edge Functions avec la clé de service (jamais exposée aux apps).
 
-| Table | Rôle | Lecture | Écriture |
-|---|---|---|---|
-| `profiles` | nom affiché, langue préférée | soi-même ; nom affiché public pour les avis | soi-même |
-| `user_roles` | admin, modérateur | admin | admin |
-| `restaurants` | fiche : nom, slug, adresse, `location` (PostGIS), téléphone, site, gamme de prix, statut de publication, n° IDE | public (si publiée) | admin ; membres du restaurant pour les champs **non sensibles** |
-| `cuisines`, `restaurant_cuisines` | types de cuisine/produits | public | admin ; membres |
-| `opening_hours`, `special_hours` | horaires, fermetures exceptionnelles, horaires du Ramadan | public | admin ; membres |
-| `halal_profiles` | viande (certifiée / déclarée par le fournisseur / inconnue), périmètre (100 % halal / options halal), alcool servi, porc servi | public | **admin uniquement** (trigger qui refuse tout le reste) |
-| `halal_verifications` | historique : niveau (non vérifié / vérifié par l'équipe / certifié par un organisme), méthode, date, preuve, organisme, date d'expiration, prochaine revérification | public (sans la preuve) | **admin uniquement** |
-| `certifiers` | organismes de certification (nom, site ; **pas de logo**) | public | admin |
-| `menu_sections`, `menu_items` | carte et prix en CHF | public | admin ; membres |
-| `photos` | photos, source (équipe / restaurant), accord de droits, statut de modération, texte alternatif | public si approuvée | admin ; membres (en attente de modération) |
-| `offers` | offres (menu du Ramadan, promo étudiante…) | public si active | membres d'un restaurant **Premium** ; admin |
-| `change_requests` | demandes de modification sensibles (halal, certification, alcool) | demandeur ; admin | membres (création) ; admin (décision) |
-| `reviews` | note 1–5 + texte, statut (en attente / publié / masqué / retiré) | public si publié ; l'auteur voit le sien | auteur (avec limites, voir §5) ; admin/modérateur |
-| `review_confirmations` | « viande certifiée confirmée », « pas d'alcool servi »… | public (agrégé) | auteur de l'avis |
-| `review_responses` | droit de réponse du restaurant | public | membres du restaurant ; admin |
-| `reports` | signalements (avis, réponse, photo, info erronée, contenu illicite) | auteur du signalement ; admin | utilisateur connecté (création) ; admin |
-| `user_blocks` | blocage d'un utilisateur (exigé par Apple 1.2) | soi-même | soi-même |
-| `favorites`, `view_history` | favoris, historique (limité, effaçable, durée de conservation courte) | soi-même | soi-même |
-| `restaurant_claims` | revendications : méthode, code (haché), essais, n° IDE vérifié, statut | demandeur ; admin | service ; admin |
-| `restaurant_members` | qui gère quel restaurant | membres ; admin | service ; admin |
-| `plans` | offres et **prix configurables** (CHF, intervalle, id de prix Stripe, places limitées) | public (web) | admin |
-| `subscriptions` | état de l'abonnement Stripe d'un restaurant | membres ; admin | **service (webhook Stripe) uniquement** |
-| `sponsored_placements` | emplacements sponsorisés (accueil, résultats), dates, position, nombre limité | public (actifs) | service ; admin |
-| `restaurant_stats_daily` | compteurs agrégés par jour (vues, itinéraires, appels, apparitions) — **sans aucune donnée personnelle** | membres ; admin | service |
-| `app_settings` | réglages (TVA activée/taux, nombre de places « fondateur », durée de conservation…) | public (partiel) | admin |
-| `audit_log` | qui a modifié quoi et quand (surtout statut halal, modération, abonnements) | admin | triggers uniquement |
-| `legal_acceptances` | version des CGU/CGV acceptée et date | soi-même ; admin | soi-même |
+| Table                             | Rôle                                                                                                                                                                | Lecture                                     | Écriture                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- | --------------------------------------------------------------- |
+| `profiles`                        | nom affiché, langue préférée                                                                                                                                        | soi-même ; nom affiché public pour les avis | soi-même                                                        |
+| `user_roles`                      | admin, modérateur                                                                                                                                                   | admin                                       | admin                                                           |
+| `restaurants`                     | fiche : nom, slug, adresse, `location` (PostGIS), téléphone, site, gamme de prix, statut de publication, n° IDE                                                     | public (si publiée)                         | admin ; membres du restaurant pour les champs **non sensibles** |
+| `cuisines`, `restaurant_cuisines` | types de cuisine/produits                                                                                                                                           | public                                      | admin ; membres                                                 |
+| `opening_hours`, `special_hours`  | horaires, fermetures exceptionnelles, horaires du Ramadan                                                                                                           | public                                      | admin ; membres                                                 |
+| `halal_profiles`                  | viande (certifiée / déclarée par le fournisseur / inconnue), périmètre (100 % halal / options halal), alcool servi, porc servi                                      | public                                      | **admin uniquement** (trigger qui refuse tout le reste)         |
+| `halal_verifications`             | historique : niveau (non vérifié / vérifié par l'équipe / certifié par un organisme), méthode, date, preuve, organisme, date d'expiration, prochaine revérification | public (sans la preuve)                     | **admin uniquement**                                            |
+| `certifiers`                      | organismes de certification (nom, site ; **pas de logo**)                                                                                                           | public                                      | admin                                                           |
+| `menu_sections`, `menu_items`     | carte et prix en CHF                                                                                                                                                | public                                      | admin ; membres                                                 |
+| `photos`                          | photos, source (équipe / restaurant), accord de droits, statut de modération, texte alternatif                                                                      | public si approuvée                         | admin ; membres (en attente de modération)                      |
+| `offers`                          | offres (menu du Ramadan, promo étudiante…)                                                                                                                          | public si active                            | membres d'un restaurant **Premium** ; admin                     |
+| `change_requests`                 | demandes de modification sensibles (halal, certification, alcool)                                                                                                   | demandeur ; admin                           | membres (création) ; admin (décision)                           |
+| `reviews`                         | note 1–5 + texte, statut (en attente / publié / masqué / retiré)                                                                                                    | public si publié ; l'auteur voit le sien    | auteur (avec limites, voir §5) ; admin/modérateur               |
+| `review_confirmations`            | « viande certifiée confirmée », « pas d'alcool servi »…                                                                                                             | public (agrégé)                             | auteur de l'avis                                                |
+| `review_responses`                | droit de réponse du restaurant                                                                                                                                      | public                                      | membres du restaurant ; admin                                   |
+| `reports`                         | signalements (avis, réponse, photo, info erronée, contenu illicite)                                                                                                 | auteur du signalement ; admin               | utilisateur connecté (création) ; admin                         |
+| `user_blocks`                     | blocage d'un utilisateur (exigé par Apple 1.2)                                                                                                                      | soi-même                                    | soi-même                                                        |
+| `favorites`, `view_history`       | favoris, historique (limité, effaçable, durée de conservation courte)                                                                                               | soi-même                                    | soi-même                                                        |
+| `restaurant_claims`               | revendications : méthode, code (haché), essais, n° IDE vérifié, statut                                                                                              | demandeur ; admin                           | service ; admin                                                 |
+| `restaurant_members`              | qui gère quel restaurant                                                                                                                                            | membres ; admin                             | service ; admin                                                 |
+| `plans`                           | offres et **prix configurables** (CHF, intervalle, id de prix Stripe, places limitées)                                                                              | public (web)                                | admin                                                           |
+| `subscriptions`                   | état de l'abonnement Stripe d'un restaurant                                                                                                                         | membres ; admin                             | **service (webhook Stripe) uniquement**                         |
+| `sponsored_placements`            | emplacements sponsorisés (accueil, résultats), dates, position, nombre limité                                                                                       | public (actifs)                             | service ; admin                                                 |
+| `restaurant_stats_daily`          | compteurs agrégés par jour (vues, itinéraires, appels, apparitions) — **sans aucune donnée personnelle**                                                            | membres ; admin                             | service                                                         |
+| `app_settings`                    | réglages (TVA activée/taux, nombre de places « fondateur », durée de conservation…)                                                                                 | public (partiel)                            | admin                                                           |
+| `audit_log`                       | qui a modifié quoi et quand (surtout statut halal, modération, abonnements)                                                                                         | admin                                       | triggers uniquement                                             |
+| `legal_acceptances`               | version des CGU/CGV acceptée et date                                                                                                                                | soi-même ; admin                            | soi-même                                                        |
 
 **Données de test** : restaurants nommés « [FICTIF] Restaurant Exemple 01 », adresses « Rue Fictive », coordonnées dispersées autour de Vevey, Montreux, La Tour-de-Peilz et Lausanne, aucun nom réel, aucun numéro de téléphone réel (numéros réservés à la fiction).
 
@@ -197,9 +199,10 @@ Toutes les tables ont la **RLS activée**. « Admin » = utilisateur ayant le r�
 ## 5. Statut halal, avis et modération
 
 **Affichage du statut halal** (jamais « certifié » sans source) :
-- *Certifié par un organisme* : « Viande certifiée par [Organisme] — certificat valable jusqu'au JJ.MM.AAAA — informations vérifiées le JJ.MM.AAAA ».
-- *Vérifié par l'équipe* : « Informations vérifiées par notre équipe le JJ.MM.AAAA (méthode : visite sur place / document fourni par le restaurant) ».
-- *Non vérifié* : « Informations non vérifiées — déclarées par [source] ».
+
+- _Certifié par un organisme_ : « Viande certifiée par [Organisme] — certificat valable jusqu'au JJ.MM.AAAA — informations vérifiées le JJ.MM.AAAA ».
+- _Vérifié par l'équipe_ : « Informations vérifiées par notre équipe le JJ.MM.AAAA (méthode : visite sur place / document fourni par le restaurant) ».
+- _Non vérifié_ : « Informations non vérifiées — déclarées par [source] ».
 - Toujours suivi d'un **avertissement** : la vérification reflète la situation à la date indiquée, elle ne garantit pas chaque plat ni chaque livraison ; en cas de doute, demander au restaurant.
 - Certificat expiré ou revérification dépassée → le statut redescend automatiquement d'un niveau et l'admin reçoit un rappel.
 - Les confirmations de la communauté (« pas d'alcool servi ») sont affichées **séparément** et ne modifient jamais le statut officiel ; des confirmations contradictoires déclenchent une alerte de revérification pour l'admin.
@@ -241,6 +244,7 @@ Toutes les tables ont la **RLS activée**. « Admin » = utilisateur ayant le r�
 ## 9. Juridique : ce qui sera dans le dépôt
 
 Tous marqués **« À RELIRE PAR UN JURISTE — NE PAS PUBLIER EN L'ÉTAT »** :
+
 - `docs/legal/politique-confidentialite.md` (nLPD + RGPD)
 - `docs/legal/mentions-legales.md` (LCD : identité et coordonnées complètes)
 - `docs/legal/cgu-clients.md`
@@ -252,6 +256,7 @@ Tous marqués **« À RELIRE PAR UN JURISTE — NE PAS PUBLIER EN L'ÉTAT »** :
 - **`docs/legal/OBLIGATIONS.md`** : tableau « obligation → texte de loi / règle du store → fichier(s) de code → test(s) », mis à jour à chaque phase.
 
 Points déjà repérés pour ton juriste :
+
 - **« Tarif réduit à vie »** (partenaire fondateur) : formulation risquée au regard de la LCD si le service s'arrête ou change ; je propose « tant que l'abonnement reste actif sans interruption ».
 - **Utilisateurs de l'UE** (frontaliers autour de Genève) : vérifier si le RGPD et éventuellement le règlement européen sur les services numériques (DSA) s'appliquent, selon le ciblage.
 - Les prix aux restaurants sont des offres entre professionnels ; mentionner clairement « TVA non applicable » tant que tu n'es pas assujetti.
@@ -263,6 +268,7 @@ Points déjà repérés pour ton juriste :
 À la fin de chaque phase : démonstration (captures d'écran web, résultats des tests, explications), mise à jour de `OBLIGATIONS.md`, puis **ta validation avant de passer à la suivante**.
 
 ### Phase 1 — Fondations
+
 - Monorepo (pnpm, Turborepo, TypeScript, ESLint, Prettier, CI GitHub Actions).
 - Projet Supabase local : migrations du schéma complet (§3), RLS, triggers d'intégrité, `audit_log`, données fictives.
 - `packages/core` : types, schémas zod, horaires (« ouvert maintenant » en heure suisse, y compris les horaires qui passent minuit), libellés halal, classement + premiers tests.
@@ -272,61 +278,67 @@ Points déjà repérés pour ton juriste :
 - **Ce que tu devras faire** : créer un compte Supabase (gratuit pour commencer).
 
 ### Phase 2 — MVP clients
+
 - Mobile : carte MapLibre + tuiles swisstopo, géolocalisation avec texte d'explication clair, regroupement des marqueurs, liste synchronisée avec la carte, filtres combinables (cuisine, prix, distance, ouvert maintenant, critères halal), fiche complète (photos, horaires, carte et prix, adresse, téléphone, itinéraire, bloc statut halal + avertissement).
 - Web : pages publiques des restaurants rendues côté serveur, SEO (métadonnées, données structurées schema.org `Restaurant`, sitemap, `hreflang`), carte web.
 - Back-office minimal : création manuelle de fiches avec géocodage geo.admin.ch, workflow de vérification halal (niveaux, preuves, expiration, rappel annuel).
 
 ### Phase 3 — Comptes, avis, modération
+
 - Connexion e-mail, Apple, Google (Apple obligatoire dès qu'on propose Google, règle 4.8), favoris, historique.
 - Avis + confirmations précises, signalements, blocage, file de modération, protections anti-faux avis.
 - Export des données, suppression du compte dans l'app + page web de demande de suppression.
 - Fournisseur d'e-mails configuré.
 
 ### Phase 4 — Espace restaurant (web)
+
 - Revendication : code de vérification au numéro **public** du restaurant + vérification du n° IDE dans le registre UID (service public gratuit, 20 requêtes/min) / Zefix (accès gratuit sur demande à l'Office fédéral de la justice). ⚠️ Beaucoup de restaurants ont un numéro fixe : un SMS ne suffit pas ; il faut un appel vocal automatique ou, au lancement, **un appel manuel de ta part** (voir §13).
 - Tableau de bord : infos, photos (avec accord sur les droits), carte et prix, horaires, offres, réponses aux avis, demandes de modification sensibles.
 - Statistiques + récapitulatif mensuel par e-mail.
 
 ### Phase 5 — Paiements Stripe (web), offres, sponsorisé
+
 - Revérification des règles des stores.
 - Plans configurables par l'admin (Gratuit, Premium ~25 CHF, Partenaire fondateur limité à 10, mise en avant accueil limitée), Stripe Checkout + Customer Portal + webhook, TVA désactivable, factures.
 - Emplacements sponsorisés étiquetés, classement séparé, tests d'intégrité complets.
 
 ### Phase 6 — Préparation à la publication
+
 - EAS Build, TestFlight, Google Play test fermé.
-- ⚠️ **Google Play** : un compte développeur *personnel* créé après novembre 2023 doit faire un **test fermé avec au moins 12 testeurs pendant 14 jours** avant de pouvoir publier. Un compte *organisation* en est dispensé mais demande un numéro D-U-N-S. À anticiper (il faut trouver 12 testeurs).
+- ⚠️ **Google Play** : un compte développeur _personnel_ créé après novembre 2023 doit faire un **test fermé avec au moins 12 testeurs pendant 14 jours** avant de pouvoir publier. Un compte _organisation_ en est dispensé mais demande un numéro D-U-N-S. À anticiper (il faut trouver 12 testeurs).
 - Étiquettes de confidentialité Apple, formulaire « Sécurité des données » Google, captures d'écran, textes des fiches store, checklist complète de soumission.
 
 ### Phase 7 — Traductions
+
 - Anglais, arabe, espagnol, allemand ; vérification de l'affichage arabe ; pages web traduites et indexables ; versions traduites des textes juridiques à faire relire.
 
 ---
 
 ## 11. Ce que je peux vérifier moi-même, et ce que tu devras tester
 
-Je travaille dans un conteneur Linux dans le cloud : je peux écrire et tester la logique, la base de données, le site web (y compris des captures d'écran). **Je ne peux pas lancer un simulateur iOS.** Pour l'app mobile, tu la testeras sur ton téléphone via une *development build* (EAS Build dans le cloud, ou Xcode si tu as un Mac). Je te donnerai les commandes exactes.
+Je travaille dans un conteneur Linux dans le cloud : je peux écrire et tester la logique, la base de données, le site web (y compris des captures d'écran). **Je ne peux pas lancer un simulateur iOS.** Pour l'app mobile, tu la testeras sur ton téléphone via une _development build_ (EAS Build dans le cloud, ou Xcode si tu as un Mac). Je te donnerai les commandes exactes.
 
 ## 12. Coûts estimés (ordre de grandeur, à vérifier au moment de souscrire)
 
-| Poste | Coût |
-|---|---|
-| Apple Developer Program | ~99 USD / an |
-| Google Play Console | 25 USD une fois |
-| Supabase | gratuit en développement ; plan Pro ~25 USD / mois en production (le plan gratuit met le projet en pause après une semaine d'inactivité) |
-| Hébergement web | Vercel Pro ~20 USD / mois, ou Cloudflare (gratuit) |
-| Tuiles de carte swisstopo / géocodage geo.admin.ch | gratuit (attribution obligatoire) |
-| E-mails | gratuit à ~15 CHF / mois selon le volume |
-| Stripe | pas d'abonnement ; commission par paiement + frais Stripe Billing |
-| Nom de domaine | ~15–30 CHF / an |
-| EAS Build (Expo) | gratuit avec un nombre limité de builds par mois |
+| Poste                                              | Coût                                                                                                                                     |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Apple Developer Program                            | ~99 USD / an                                                                                                                             |
+| Google Play Console                                | 25 USD une fois                                                                                                                          |
+| Supabase                                           | gratuit en développement ; plan Pro ~25 USD / mois en production (le plan gratuit met le projet en pause après une semaine d'inactivité) |
+| Hébergement web                                    | Vercel Pro ~20 USD / mois, ou Cloudflare (gratuit)                                                                                       |
+| Tuiles de carte swisstopo / géocodage geo.admin.ch | gratuit (attribution obligatoire)                                                                                                        |
+| E-mails                                            | gratuit à ~15 CHF / mois selon le volume                                                                                                 |
+| Stripe                                             | pas d'abonnement ; commission par paiement + frais Stripe Billing                                                                        |
+| Nom de domaine                                     | ~15–30 CHF / an                                                                                                                          |
+| EAS Build (Expo)                                   | gratuit avec un nombre limité de builds par mois                                                                                         |
 
 ---
 
-## 13. Décisions à prendre maintenant
+## 13. Décisions (réponses du 04.10.2026)
 
-1. **Nom de l'app et identifiant** : l'identifiant de l'app (ex. `ch.monappli.app`) est **définitif** une fois publié. Je peux travailler avec le nom de code `halal-romandie` et ne figer l'identifiant qu'en phase 6. D'accord ?
-2. **Périmètre des apps mobiles** : 100 % clients, aucun espace restaurateur ni lien vers celui-ci (recommandé), ou ajouter plus tard dans l'app des fonctions restaurateur **gratuites** (répondre aux avis), avec un petit risque face à Apple ?
-3. **Hébergement du site web** : Vercel Pro (~20 USD/mois, le plus simple avec Next.js) ou Cloudflare (gratuit, un peu plus de configuration) ?
-4. **Région Supabase** : Zurich (recommandé) ou Francfort ?
-5. **Vérification des revendications au lancement** : appel manuel de ta part au numéro public + vérification IDE automatique (gratuit, recommandé pour les 10 premiers restaurants), ou code automatique par SMS/appel vocal dès la phase 4 (service payant) ?
-6. **Dépôt** : j'ai créé la branche `halal-romandie` **sans historique commun** avec le reste du dépôt (le dépôt contient un projet sans rapport, le tuteur de maths ; repartir d'une branche vide donne une racine propre au monorepo). À terme, je te conseille un **dépôt GitHub dédié** à ce projet (plus clair pour la CI, les secrets et les déploiements) ; je peux t'y aider quand tu veux.
+1. **Nom** : Swiss Halal ; identifiant de l'app figé en phase 6. ✅
+2. **Apps mobiles** : 100 % clients pour l'instant. ✅
+3. **Site web** : réponse « ce sera une app, pas un site » → **à clarifier** (voir `docs/DECISIONS.md`, D10).
+4. **Région Supabase** : question réexpliquée ; Zurich proposée par défaut.
+5. **Revendications** : vérification manuelle au lancement. ✅
+6. **Dépôt** : on reste sur la branche `halal-romandie` de ce dépôt pour l'instant. ✅

@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+supabase/migrations/
+supabase/tests/
+supabase/seed.sql
+packages/supabase/src/database.types.ts

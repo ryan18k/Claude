@@ -1,0 +1,37 @@
+# Dépendances
+node_modules/
+.pnpm-store/
+
+# Builds
+dist/
+build/
+.turbo/
+coverage/
+.expo/
+web-build/
+ios/
+android/
+*.tsbuildinfo
+
+# Variables d'environnement : JAMAIS dans le dépôt (seuls les *.example le sont)
+.env
+.env.*
+!.env.example
+!**/.env.example
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Divers
+.DS_Store
+*.log
+npm-debug.log*
+*.pem
+*.p8
+*.p12
+*.jks
+*.keystore
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist

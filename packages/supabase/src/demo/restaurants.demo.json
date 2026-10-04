@@ -1,0 +1,2087 @@
+{
+  "meta": {
+    "description": "Données 100 % FICTIVES exportées de la vue restaurant_cards (seed.sql). Les dates sont décalées au chargement pour rester relatives à aujourd'hui.",
+    "exportedOn": "2026-10-04"
+  },
+  "restaurants": [
+    {
+      "id": "efc8118f-9123-4d7c-96e3-17ceb87d5063",
+      "slug": "fictif-beyrouth-express",
+      "name": "[FICTIF] Beyrouth Express",
+      "street": "Rue Fictive 15",
+      "postal_code": "1003",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.5208,
+      "lng": 6.6301,
+      "cuisines": ["lebanese", "sandwich"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "certified_by_body",
+      "verification_method": "certificate",
+      "verified_at": "2026-09-04",
+      "source_description": "Certificat présenté sur place",
+      "certifier_name": "Organisme Fictif de Certification A",
+      "certificate_expires_at": "2027-08-30",
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "75ae0d01-07cf-422f-bd19-bf7abcfd0fcc",
+      "slug": "fictif-bistrot-du-quai",
+      "name": "[FICTIF] Bistrot du Quai",
+      "street": "Quai Fictif 10",
+      "postal_code": "1820",
+      "city": "Montreux",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 3,
+      "is_fictional": true,
+      "lat": 46.4321,
+      "lng": 6.9139,
+      "cuisines": ["traditional"],
+      "meat": "unknown",
+      "meat_certifier_name": null,
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "unknown",
+      "verification_level": "unverified",
+      "verification_method": null,
+      "verified_at": null,
+      "source_description": "",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": false,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "0c4956b4-1c9f-445b-ad2d-92a8a7055f12",
+      "slug": "fictif-boulangerie-orientale",
+      "name": "[FICTIF] Boulangerie Orientale",
+      "street": "Rue Fictive 14",
+      "postal_code": "1814",
+      "city": "La Tour-de-Peilz",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.4549,
+      "lng": 6.8615,
+      "cuisines": ["bakery", "cafe"],
+      "meat": "no_meat",
+      "meat_certifier_name": null,
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-09-24",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "07:00",
+          "closes": "18:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "08:00",
+          "closes": "13:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "768d15da-e187-498d-99ab-dcbf64868cd7",
+      "slug": "fictif-brasserie-exemple",
+      "name": "[FICTIF] Brasserie Exemple",
+      "street": "Place Inventée 24",
+      "postal_code": "1003",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 3,
+      "is_fictional": true,
+      "lat": 46.5195,
+      "lng": 6.635,
+      "cuisines": ["traditional"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "yes",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-07-21",
+      "source_description": "Visite sur place : plats halal indiqués sur la carte",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "ec6eb70f-b46f-4233-bd0c-557e8758453b",
+      "slug": "fictif-burger-riviera",
+      "name": "[FICTIF] Burger Riviera",
+      "street": "Avenue Imaginaire 3",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4598,
+      "lng": 6.8402,
+      "cuisines": ["burger", "chicken"],
+      "meat": "supplier_declared",
+      "meat_certifier_name": null,
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "no",
+      "verification_level": "unverified",
+      "verification_method": null,
+      "verified_at": null,
+      "source_description": "",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": false,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "12:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "38e4f209-6206-4d74-a036-b96322918d45",
+      "slug": "fictif-campus-burger",
+      "name": "[FICTIF] Campus Burger",
+      "street": "Route Inventée 20",
+      "postal_code": "1015",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.522,
+      "lng": 6.568,
+      "cuisines": ["burger", "chicken"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-09-19",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "e6fd589a-a737-4bee-b706-2754ec3d0f28",
+      "slug": "fictif-chicken-house",
+      "name": "[FICTIF] Chicken House",
+      "street": "Avenue Imaginaire 8",
+      "postal_code": "1820",
+      "city": "Montreux",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.4298,
+      "lng": 6.9122,
+      "cuisines": ["burger", "chicken"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "certified_by_body",
+      "verification_method": "certificate",
+      "verified_at": "2026-08-05",
+      "source_description": "Certificat présenté sur place",
+      "certifier_name": "Organisme Fictif de Certification B",
+      "certificate_expires_at": "2027-07-31",
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "fb8aa7d2-792d-4f94-9bde-50aceeab249d",
+      "slug": "fictif-delices-de-delhi",
+      "name": "[FICTIF] Délices de Delhi",
+      "street": "Rue Fictive 19",
+      "postal_code": "1003",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.5169,
+      "lng": 6.6312,
+      "cuisines": ["indian"],
+      "meat": "supplier_declared",
+      "meat_certifier_name": null,
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "no",
+      "verification_level": "unverified",
+      "verification_method": null,
+      "verified_at": null,
+      "source_description": "",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": false,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "324d79e2-2c76-47f7-8b8a-cbe48297f585",
+      "slug": "fictif-grill-du-port",
+      "name": "[FICTIF] Grill du Port",
+      "street": "Quai Fictif 13",
+      "postal_code": "1814",
+      "city": "La Tour-de-Peilz",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4522,
+      "lng": 6.8601,
+      "cuisines": ["grill", "kebab"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "unverified",
+      "verification_method": null,
+      "verified_at": null,
+      "source_description": "",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": false,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "12:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "0ba886b6-4b35-4b69-99b0-47fbd4364a91",
+      "slug": "fictif-istanbul-grill",
+      "name": "[FICTIF] Istanbul Grill",
+      "street": "Avenue Imaginaire 16",
+      "postal_code": "1004",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.5232,
+      "lng": 6.629,
+      "cuisines": ["grill", "kebab", "turkish"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-06-06",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "12:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "bd4a550e-1da4-49d4-8cc1-3880ec85665b",
+      "slug": "fictif-jasmin-de-damas",
+      "name": "[FICTIF] Jasmin de Damas",
+      "street": "Rue Fictive 22",
+      "postal_code": "1006",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.51,
+      "lng": 6.633,
+      "cuisines": ["lebanese", "syrian"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2025-10-29",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "efc0f01a-fb1c-4170-bd43-dd5d31124471",
+      "slug": "fictif-kebab-du-lac",
+      "name": "[FICTIF] Kebab du Lac",
+      "street": "Rue Fictive 1",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.4612,
+      "lng": 6.8421,
+      "cuisines": ["kebab"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-08-25",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "402cd4b2-8717-4813-9091-d5943960164a",
+      "slug": "fictif-lahore-kitchen",
+      "name": "[FICTIF] Lahore Kitchen",
+      "street": "Rue Fictive 18",
+      "postal_code": "1004",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.5225,
+      "lng": 6.6255,
+      "cuisines": ["indian", "pakistani"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "documents",
+      "verified_at": "2026-08-05",
+      "source_description": "Certificat du fournisseur de viande",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "22bd950f-b328-4250-b1a9-dec4e3a0288a",
+      "slug": "fictif-le-cedre",
+      "name": "[FICTIF] Le Cèdre",
+      "street": "Rue Fictive 2",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4625,
+      "lng": 6.8457,
+      "cuisines": ["lebanese"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "certified_by_body",
+      "verification_method": "certificate",
+      "verified_at": "2026-06-26",
+      "source_description": "Certificat présenté sur place",
+      "certifier_name": "Organisme Fictif de Certification A",
+      "certificate_expires_at": "2027-04-22",
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": [
+        {
+          "date": "2026-10-07",
+          "closed": false,
+          "ranges": [
+            {
+              "opens": "19:00",
+              "closes": "02:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "895acd6a-8312-44e1-a214-1e7d9d5101e8",
+      "slug": "fictif-le-petit-alger",
+      "name": "[FICTIF] Le Petit Alger",
+      "street": "Rue Fictive 23",
+      "postal_code": "1004",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.525,
+      "lng": 6.634,
+      "cuisines": ["algerian", "sandwich"],
+      "meat": "unknown",
+      "meat_certifier_name": null,
+      "scope": "unknown",
+      "alcohol_served": "unknown",
+      "pork_served": "unknown",
+      "verification_level": "unverified",
+      "verification_method": null,
+      "verified_at": null,
+      "source_description": "",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": false,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "fd81a416-664d-4a7b-be2a-c40e7bebbc56",
+      "slug": "fictif-le-petit-tunis",
+      "name": "[FICTIF] Le Petit Tunis",
+      "street": "Rue Fictive 12",
+      "postal_code": "1814",
+      "city": "La Tour-de-Peilz",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.4541,
+      "lng": 6.8578,
+      "cuisines": ["sandwich", "tunisian"],
+      "meat": "supplier_declared",
+      "meat_certifier_name": null,
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-09-04",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "f5a8d7fc-2ae6-4cd8-abda-cd4be1ac08fb",
+      "slug": "fictif-le-riad",
+      "name": "[FICTIF] Le Riad",
+      "street": "Grand-Rue Fictive 7",
+      "postal_code": "1820",
+      "city": "Montreux",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 3,
+      "is_fictional": true,
+      "lat": 46.433,
+      "lng": 6.9105,
+      "cuisines": ["moroccan"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-09-14",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": [
+        {
+          "date": "2026-10-11",
+          "closed": true,
+          "ranges": []
+        }
+      ]
+    },
+    {
+      "id": "8c9a6ae4-9d3c-4558-a256-72d0202ebf45",
+      "slug": "fictif-pizza-du-flon",
+      "name": "[FICTIF] Pizza du Flon",
+      "street": "Rue Fictive 21",
+      "postal_code": "1003",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.5214,
+      "lng": 6.6283,
+      "cuisines": ["pizza"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "certified_by_body",
+      "verification_method": "certificate",
+      "verified_at": "2026-08-20",
+      "source_description": "Certificat présenté sur place",
+      "certifier_name": "Organisme Fictif de Certification B",
+      "certificate_expires_at": "2027-08-20",
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "12:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "5f24f4ed-bc19-439e-8dc2-bd4f766f5d09",
+      "slug": "fictif-pizzeria-exemple",
+      "name": "[FICTIF] Pizzeria Exemple",
+      "street": "Rue Fictive 4",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4631,
+      "lng": 6.8389,
+      "cuisines": ["pizza"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "yes",
+      "verification_level": "team_verified",
+      "verification_method": "documents",
+      "verified_at": "2025-10-24",
+      "source_description": "Factures du fournisseur",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "4654b7bd-cae8-41d3-bf21-81325b966e6b",
+      "slug": "fictif-saveurs-d-anatolie",
+      "name": "[FICTIF] Saveurs d'Anatolie",
+      "street": "Rue Fictive 6",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4589,
+      "lng": 6.8461,
+      "cuisines": ["grill", "turkish"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification B",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "certified_by_body",
+      "verification_method": "certificate",
+      "verified_at": "2026-03-18",
+      "source_description": "Certificat présenté sur place",
+      "certifier_name": "Organisme Fictif de Certification B",
+      "certificate_expires_at": "2026-09-24",
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "fa91a61e-8f15-4010-b738-af3bb1683c8d",
+      "slug": "fictif-saveurs-de-kaboul",
+      "name": "[FICTIF] Saveurs de Kaboul",
+      "street": "Rue Fictive 11",
+      "postal_code": "1820",
+      "city": "Montreux",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4287,
+      "lng": 6.915,
+      "cuisines": ["afghan", "grill"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-05-07",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:30",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "4a3aec2a-3fc5-4d1b-8692-cf2750932b05",
+      "slug": "fictif-saveurs-de-marrakech",
+      "name": "[FICTIF] Saveurs de Marrakech",
+      "street": "Rue Fictive 17",
+      "postal_code": "1005",
+      "city": "Lausanne",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 3,
+      "is_fictional": true,
+      "lat": 46.518,
+      "lng": 6.6375,
+      "cuisines": ["moroccan"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2026-03-18",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "e287d6bb-1fcf-437f-96fc-7988f40c7f03",
+      "slug": "fictif-tacos-de-la-gare",
+      "name": "[FICTIF] Tacos de la Gare",
+      "street": "Place Inventée 5",
+      "postal_code": "1800",
+      "city": "Vevey",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 1,
+      "is_fictional": true,
+      "lat": 46.4632,
+      "lng": 6.8436,
+      "cuisines": ["chicken", "tacos"],
+      "meat": "certified",
+      "meat_certifier_name": "Organisme Fictif de Certification A",
+      "scope": "fully_halal",
+      "alcohol_served": "no",
+      "pork_served": "no",
+      "verification_level": "team_verified",
+      "verification_method": "on_site_visit",
+      "verified_at": "2025-08-30",
+      "source_description": "Visite sur place",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:00",
+          "closes": "00:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:00",
+          "closes": "03:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "12:00",
+          "closes": "23:00",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    },
+    {
+      "id": "852986ad-5599-4a4a-a04f-b34986429ab4",
+      "slug": "fictif-wok-exemple",
+      "name": "[FICTIF] Wok Exemple",
+      "street": "Rue Fictive 9",
+      "postal_code": "1820",
+      "city": "Montreux",
+      "canton": "VD",
+      "phone": null,
+      "website": null,
+      "price_range": 2,
+      "is_fictional": true,
+      "lat": 46.4345,
+      "lng": 6.909,
+      "cuisines": ["asian"],
+      "meat": "supplier_declared",
+      "meat_certifier_name": null,
+      "scope": "halal_options",
+      "alcohol_served": "yes",
+      "pork_served": "yes",
+      "verification_level": "team_verified",
+      "verification_method": "phone_call",
+      "verified_at": "2026-07-06",
+      "source_description": "Appel au restaurant",
+      "certifier_name": null,
+      "certificate_expires_at": null,
+      "has_evidence": true,
+      "next_review_due_at": null,
+      "rating_average": null,
+      "rating_count": 0,
+      "opening_periods": [
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 1
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 2
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 3
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 4
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 5
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 6
+        },
+        {
+          "opens": "11:30",
+          "closes": "14:00",
+          "isoWeekday": 7
+        },
+        {
+          "opens": "18:00",
+          "closes": "22:30",
+          "isoWeekday": 7
+        }
+      ],
+      "special_days": []
+    }
+  ],
+  "sponsoredPlacements": [
+    {
+      "restaurantId": "e6fd589a-a737-4bee-b706-2754ec3d0f28",
+      "kind": "search",
+      "position": 1,
+      "startsInDays": -1,
+      "endsInDays": 30
+    },
+    {
+      "restaurantId": "0ba886b6-4b35-4b69-99b0-47fbd4364a91",
+      "kind": "home",
+      "position": 1,
+      "startsInDays": -1,
+      "endsInDays": 30
+    }
+  ]
+}

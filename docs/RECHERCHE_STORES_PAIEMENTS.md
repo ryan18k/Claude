@@ -24,13 +24,13 @@ Source : <https://developer.apple.com/app-store/review/guidelines/>
 
 ## Conséquences pour notre projet
 
-| Situation | Risque | Décision |
-|---|---|---|
-| Un restaurant achète une mise en avant **dans l'app iOS** | Explicitement visé par 3.1.3(g) → achat intégré obligatoire (commission Apple) | ❌ Interdit dans notre conception |
-| Tableau de bord Premium (stats, offres) **dans l'app iOS**, payé sur le web | 3.1.3(b) : il faudrait aussi le vendre en achat intégré | ❌ Le tableau de bord reste sur le web |
-| Bouton, prix ou lien vers l'espace restaurateur dans l'app iOS | Incitation à un achat externe, autorisée seulement sur le storefront US | ❌ Aucun prix, bouton ni lien |
+| Situation                                                                                            | Risque                                                                                                                                           | Décision                                                                    |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| Un restaurant achète une mise en avant **dans l'app iOS**                                            | Explicitement visé par 3.1.3(g) → achat intégré obligatoire (commission Apple)                                                                   | ❌ Interdit dans notre conception                                           |
+| Tableau de bord Premium (stats, offres) **dans l'app iOS**, payé sur le web                          | 3.1.3(b) : il faudrait aussi le vendre en achat intégré                                                                                          | ❌ Le tableau de bord reste sur le web                                      |
+| Bouton, prix ou lien vers l'espace restaurateur dans l'app iOS                                       | Incitation à un achat externe, autorisée seulement sur le storefront US                                                                          | ❌ Aucun prix, bouton ni lien                                               |
 | L'app iOS affiche des fiches sponsorisées vendues sur le web, sans aucune mention d'achat dans l'app | Publicité vendue hors de l'app, cas courant des apps gratuites financées par la publicité ; aucune fonctionnalité n'est « débloquée » dans l'app | ✅ Retenu, risque résiduel faible documenté dans la checklist de soumission |
-| E-mails, démarchage, site web pour informer les restaurants | Autorisé par le préambule de 3.1.3 | ✅ |
+| E-mails, démarchage, site web pour informer les restaurants                                          | Autorisé par le préambule de 3.1.3                                                                                                               | ✅                                                                          |
 
 ## Situation particulière de la Suisse
 

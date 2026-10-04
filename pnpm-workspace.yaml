@@ -1,0 +1,10 @@
+# Les "workspaces" : chaque dossier listé ici est un paquet du monorepo.
+packages:
+  - apps/*
+  - packages/*
+
+# Le binaire de la CLI Supabase est téléchargé par un script d'installation :
+# on l'autorise explicitement (pnpm bloque ces scripts par défaut, par sécurité).
+onlyBuiltDependencies:
+  - supabase
+  - esbuild

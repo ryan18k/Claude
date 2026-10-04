@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Swiss Halal",
+    "slug": "swiss-halal",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "swisshalal",
+    "userInterfaceStyle": "automatic",
+    "web": {
+      "output": "single",
+      "bundler": "metro"
+    },
+    "plugins": ["expo-router", "expo-localization"],
+    "extra": {
+      "supportsRTL": true
+    },
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
