@@ -32,7 +32,7 @@ Date : 04.10.2026 · Branche : `halal-romandie`
 
 **Un test a trouvé une vraie faille pendant le développement** : la vue `restaurant_cards` héritait des droits d'écriture que Supabase donne par défaut aux visiteurs. C'est corrigé, et les nouvelles tables ne recevront plus ces droits automatiquement.
 
-> Note technique : Docker n'est pas disponible dans mon environnement. Les tests de la base ont tourné sur un PostgreSQL 16 + PostGIS + pgTAP local, avec une imitation minimale de Supabase (rôles, `auth`, `storage`). La CI GitHub les relancera sur un vrai Supabase local (PostgreSQL 17).
+> Les 70 tests de la base ont tourné deux fois : sur un PostgreSQL 16 local (sans Docker, avec une imitation minimale de Supabase), puis dans la **CI GitHub sur un vrai Supabase local (PostgreSQL 17) : tous verts**.
 
 ## Captures d'écran (aperçu, données fictives)
 
