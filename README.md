@@ -20,7 +20,6 @@ Annuaire des restaurants halal de Suisse romande (Riviera–Lausanne d'abord, pu
 | **Git**                           | récupérer le code                         | <https://git-scm.com>                            |
 | **Node.js 22**                    | exécuter JavaScript sur ton ordinateur    | <https://nodejs.org> (version « LTS » 22)        |
 | **pnpm**                          | installer les dépendances du monorepo     | dans un terminal : `corepack enable`             |
-| **Expo Go** (sur ton téléphone)   | essayer l'app sans la compiler            | App Store / Google Play                          |
 | **Docker Desktop** _(facultatif)_ | faire tourner Supabase sur ton ordinateur | <https://www.docker.com/products/docker-desktop> |
 
 ### 2. Récupérer le code et installer les dépendances
@@ -33,17 +32,15 @@ corepack enable
 pnpm install
 ```
 
-### 3. Lancer l'app en mode démonstration (sans serveur)
+### 3. Voir l'app
 
-```bash
-pnpm dev:mobile
-```
+> ⚠️ **Expo Go ne fonctionne pas pour ce projet sur iPhone** : l'app Expo Go de l'App Store s'arrête au SDK 54 (le projet utilise le SDK 57), et la carte (MapLibre) ne marche jamais dans Expo Go.
 
-Un QR code s'affiche : scanne-le avec **Expo Go** (Android) ou l'appareil photo (iPhone). Ton téléphone et ton ordinateur doivent être sur le même Wi-Fi ; sinon, lance `pnpm --filter @swisshalal/mobile start --tunnel`.
+- **Sur iPhone** : suis le guide [`docs/guides/TESTER-SUR-IPHONE.md`](docs/guides/TESTER-SUR-IPHONE.md) (aperçu gratuit dans Safari, ou vraie app de test).
+- **Dans le navigateur de l'ordinateur** (le plus rapide) : `pnpm web:mobile`, puis ouvre <http://localhost:8081>.
+- **Avec une app de test déjà installée** sur le téléphone : `pnpm dev:mobile`, puis ouvre l'app (même Wi-Fi ; sinon `pnpm --filter @swisshalal/mobile start --tunnel`).
 
-Sans configuration, l'app utilise des **données 100 % fictives** intégrées (un bandeau jaune le signale).
-
-> À partir de la phase 2 (carte), Expo Go ne suffira plus : il faudra une _development build_ (instructions ajoutées à ce moment-là).
+Sans configuration, l'app utilise des **données 100 % fictives** intégrées (une pastille « Démo » le signale).
 
 ### 4. Vérifier que tout fonctionne
 

@@ -1,7 +1,7 @@
 {
   "name": "swiss-halal",
   "private": true,
-  "description": "Swiss Halal — annuaire vérifié des restaurants halal de Suisse romande (monorepo)",
+  "description": "Swiss Halal \u2014 annuaire v\u00e9rifi\u00e9 des restaurants halal de Suisse romande (monorepo)",
   "packageManager": "pnpm@10.28.0",
   "engines": {
     "node": ">=22"
@@ -18,7 +18,8 @@
     "db:stop": "supabase stop",
     "db:reset": "supabase db reset",
     "db:test": "supabase test db",
-    "db:types": "supabase gen types typescript --local > packages/supabase/src/database.types.ts"
+    "db:types": "supabase gen types typescript --local > packages/supabase/src/database.types.ts",
+    "web:mobile": "pnpm --filter @swisshalal/mobile web"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

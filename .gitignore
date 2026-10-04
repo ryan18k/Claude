@@ -35,3 +35,6 @@ npm-debug.log*
 *.mobileprovision
 google-services.json
 GoogleService-Info.plist
+
+# Fichier généré par Expo
+expo-env.d.ts

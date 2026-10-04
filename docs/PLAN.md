@@ -322,7 +322,7 @@ Je travaille dans un conteneur Linux dans le cloud : je peux écrire et tester l
 
 | Poste                                              | Coût                                                                                                                                     |
 | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Apple Developer Program                            | ~99 USD / an                                                                                                                             |
+| Apple Developer Program                            | 99 USD / an (CHF 109 sur l'App Store suisse, vérifié le 04.10.2026)                                                                      |
 | Google Play Console                                | 25 USD une fois                                                                                                                          |
 | Supabase                                           | gratuit en développement ; plan Pro ~25 USD / mois en production (le plan gratuit met le projet en pause après une semaine d'inactivité) |
 | Hébergement web                                    | Vercel Pro ~20 USD / mois, ou Cloudflare (gratuit)                                                                                       |
@@ -330,7 +330,7 @@ Je travaille dans un conteneur Linux dans le cloud : je peux écrire et tester l
 | E-mails                                            | gratuit à ~15 CHF / mois selon le volume                                                                                                 |
 | Stripe                                             | pas d'abonnement ; commission par paiement + frais Stripe Billing                                                                        |
 | Nom de domaine                                     | ~15–30 CHF / an                                                                                                                          |
-| EAS Build (Expo)                                   | gratuit avec un nombre limité de builds par mois                                                                                         |
+| EAS Build (Expo)                                   | gratuit : 15 constructions iOS et 15 Android par mois, file d'attente lente (vérifié le 04.10.2026)                                      |
 
 ---
 

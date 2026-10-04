@@ -18,16 +18,20 @@
         "expo-location",
         {
           "locationWhenInUsePermission": "Swiss Halal utilise votre position uniquement pour afficher les restaurants proches de vous. Elle n’est ni enregistrée ni partagée.",
-          "isIosBackgroundLocationEnabled": false,
-          "isAndroidBackgroundLocationEnabled": false
+          "locationAlwaysAndWhenInUsePermission": false,
+          "locationAlwaysPermission": false,
+          "motionUsagePermission": "Swiss Halal n’utilise pas les données de mouvement de votre téléphone."
         }
       ]
     ],
-    "extra": {
-      "supportsRTL": true
-    },
     "experiments": {
       "typedRoutes": true
+    },
+    "ios": {
+      "supportsTablet": false,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     }
   }
 }
